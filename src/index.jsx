@@ -8,7 +8,9 @@ const promoFilmMock = {
   date: `2014`
 };
 
+const films = [`Fantastic Beasts: The Crimes of Grindelwald`, `The Grand Budapest Hotel`, `Bohemian Rhapsody`, `Macbeth`];
+
 ReactDOM.render(
-    <App promoFilmMock = {promoFilmMock} />,
+    <App promoFilmMock = {promoFilmMock} films = {films} />,
     document.querySelector(`#root`)
 );
