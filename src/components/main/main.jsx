@@ -3,7 +3,7 @@ import FilmCard from '../film-card/film-card.jsx';
 import PropTypes from 'prop-types';
 
 const Main = (props) => {
-  const {promoFilmMock, films} = props;
+  const {promoFilmMock, films, onFilmCardTitleClick} = props;
 
   return <React.Fragment>
     <section className="movie-card">
@@ -101,6 +101,7 @@ const Main = (props) => {
         <div className="catalog__movies-list">
           {films.map((el, i) => <FilmCard
             title={el}
+            onFilmCardTitleClick={onFilmCardTitleClick}
             key={el + i}
           />)}
         </div>
@@ -133,7 +134,8 @@ Main.propTypes = {
     genre: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired
   }),
-  films: PropTypes.arrayOf(PropTypes.string).isRequired
+  films: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onFilmCardTitleClick: PropTypes.func.isRequired
 };
 
 export default Main;
