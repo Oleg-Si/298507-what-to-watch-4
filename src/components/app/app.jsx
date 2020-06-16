@@ -5,7 +5,10 @@ import PropTypes from 'prop-types';
 const App = (props) => {
   const {films, promoFilmMock} = props;
 
-  return <Main promoFilmMock={promoFilmMock} films={films} />;
+  return <Main
+    promoFilmMock={promoFilmMock}
+    films={films}
+  />;
 };
 
 App.propTypes = {
