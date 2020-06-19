@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Main should render main screen 1`] = `
+exports[`Проверяет снепшот компонента Main 1`] = `
 Array [
   <section
     className="movie-card"

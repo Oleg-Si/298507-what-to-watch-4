@@ -15,11 +15,13 @@ const film = {
 
 it(`Клик на заголовок вызывает коллбэк`, () => {
   const onFilmCardTitleClick = jest.fn();
+  const onFilmCardMouseEnter = jest.fn();
 
   const filmCard = shallow(
       <FilmCard
         film={film}
         onFilmCardTitleClick={onFilmCardTitleClick}
+        onFilmCardMouseEnter={onFilmCardMouseEnter}
       />
   );
 
@@ -32,11 +34,13 @@ it(`Клик на заголовок вызывает коллбэк`, () => {
 });
 
 it(`При наведении на карточку фильма в обработчик попадает информация о фильме`, () => {
+  const onFilmCardTitleClick = jest.fn();
   const onFilmCardMouseEnter = jest.fn();
 
   const filmCard = shallow(
       <FilmCard
         film={film}
+        onFilmCardTitleClick={onFilmCardTitleClick}
         onFilmCardMouseEnter={onFilmCardMouseEnter}
       />
   );
