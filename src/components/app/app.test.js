@@ -33,7 +33,7 @@ const films = [
 
 const onFilmCardTitleClick = () => {};
 
-it(`App should render application`, () => {
+it(`Проверяет снепшот компонента App`, () => {
   const tree = renderer.create(
       <App
         promoFilmMock={promoFilmMock}

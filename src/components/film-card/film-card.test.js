@@ -11,7 +11,7 @@ const film = {
 const onFilmCardTitleClick = () => {};
 const onFilmCardMouseEnter = () => {};
 
-it(`FilmCard should render film card`, () => {
+it(`Проверяет снепшот компонента FilmCard`, () => {
   const tree = renderer.create(
       <FilmCard
         film={film}
