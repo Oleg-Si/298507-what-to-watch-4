@@ -7,12 +7,18 @@ Enzyme.configure({
   adapter: new Adapter()
 });
 
-it(`Сlick on the title should cause a callback`, () => {
+const film = {
+  id: 0,
+  title: `Fantastic Beasts: The Crimes of Grindelwald`,
+  img: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`
+};
+
+it(`Клик на заголовок вызывает коллбэк`, () => {
   const onFilmCardTitleClick = jest.fn();
 
   const filmCard = shallow(
       <FilmCard
-        title={`Macbeth`}
+        film={film}
         onFilmCardTitleClick={onFilmCardTitleClick}
       />
   );
@@ -21,5 +27,25 @@ it(`Сlick on the title should cause a callback`, () => {
 
   title.simulate(`click`);
 
-  expect(onFilmCardTitleClick.mock.calls.length).toBe(1);
+  // Обработчик был вызван 1 раз
+  expect(onFilmCardTitleClick).toHaveBeenCalledTimes(1);
+});
+
+it(`При наведении на карточку фильма в обработчик попадает информация о фильме`, () => {
+  const onFilmCardMouseEnter = jest.fn();
+
+  const filmCard = shallow(
+      <FilmCard
+        film={film}
+        onFilmCardMouseEnter={onFilmCardMouseEnter}
+      />
+  );
+
+  filmCard.simulate(`mouseenter`);
+
+  // Обработчик был вызван 1 раз
+  expect(onFilmCardMouseEnter).toHaveBeenCalledTimes(1);
+
+  // В обработчик попадает информация о фильме
+  expect(onFilmCardMouseEnter.mock.calls[0][0]).toMatchObject(film);
 });
