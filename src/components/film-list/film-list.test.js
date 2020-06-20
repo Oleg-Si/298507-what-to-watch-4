@@ -1,12 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from './app.jsx';
-
-const promoFilmMock = {
-  title: `The Grand Budapest Hotel`,
-  genre: `Drama`,
-  date: `2014`
-};
+import FilmList from './film-list.jsx';
 
 const films = [
   {
@@ -33,10 +27,9 @@ const films = [
 
 const onFilmCardTitleClick = () => {};
 
-it(`Проверяет снепшот компонента App`, () => {
+it(`Проверяет снепшот компонента FilmList`, () => {
   const tree = renderer.create(
-      <App
-        promoFilmMock={promoFilmMock}
+      <FilmList
         films={films}
         onFilmCardTitleClick={onFilmCardTitleClick}
       />

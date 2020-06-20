@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Main should render main screen 1`] = `
+exports[`Проверяет снепшот компонента Main 1`] = `
 Array [
   <section
     className="movie-card"
@@ -259,15 +259,16 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Macbeth"
-              height="175"
-              src="img/macbeth.jpg"
-              width="280"
+              alt="Fantastic Beasts: The Crimes of Grindelwald"
+              height={175}
+              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              width={280}
             />
           </div>
           <h3
@@ -284,40 +285,16 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Macbeth"
-              height="175"
-              src="img/macbeth.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              The Grand Budapest Hotel
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Macbeth"
-              height="175"
-              src="img/macbeth.jpg"
-              width="280"
+              alt="Bohemian Rhapsody"
+              height={175}
+              src="img/bohemian-rhapsody.jpg"
+              width={280}
             />
           </div>
           <h3
@@ -334,15 +311,16 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
               alt="Macbeth"
-              height="175"
+              height={175}
               src="img/macbeth.jpg"
-              width="280"
+              width={280}
             />
           </div>
           <h3
@@ -354,6 +332,32 @@ Array [
               onClick={[Function]}
             >
               Macbeth
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <img
+              alt="Aviator"
+              height={175}
+              src="img/aviator.jpg"
+              width={280}
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+              onClick={[Function]}
+            >
+              Aviator
             </a>
           </h3>
         </article>
