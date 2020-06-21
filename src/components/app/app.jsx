@@ -1,18 +1,40 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import Main from '../main/main.jsx';
 import PropTypes from 'prop-types';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
-const App = (props) => {
-  const {films, promoFilmMock, onFilmCardTitleClick} = props;
+class App extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
 
-  return (
-    <Main
-      promoFilmMock={promoFilmMock}
-      films={films}
-      onFilmCardTitleClick={onFilmCardTitleClick}
-    />
-  );
-};
+  _renderApp() {
+    const {films, promoFilmMock, onFilmCardTitleClick} = this.props;
+
+    return (
+      <Main
+        promoFilmMock={promoFilmMock}
+        films={films}
+        onFilmCardTitleClick={onFilmCardTitleClick}
+      />
+    );
+  }
+
+  render() {
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            {this._renderApp()}
+          </Route>
+          <Route exact path="/dev-film">
+            {}
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    );
+  }
+}
 
 App.propTypes = {
   films: PropTypes.arrayOf(
