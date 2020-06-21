@@ -8,17 +8,19 @@ const IMG_SETTINGS = {
 
 const FilmCard = (props) => {
   const {film, onFilmCardMouseEnter, onFilmCardTitleClick} = props;
-  const {title, img} = film;
 
   return (
     <article className="small-movie-card catalog__movies-card" onMouseEnter={() => {
       onFilmCardMouseEnter(film);
     }}>
       <div className="small-movie-card__image">
-        <img src={img} alt={title} width={IMG_SETTINGS.width} height={IMG_SETTINGS.height}/>
+        <img src={film.img} alt={film.title} width={IMG_SETTINGS.width} height={IMG_SETTINGS.height}/>
       </div>
       <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html" onClick={onFilmCardTitleClick}>{title}</a>
+        <a className="small-movie-card__link" href="movie-page.html" onClick={(evt) => {
+          evt.preventDefault();
+          onFilmCardTitleClick(film);
+        }}>{film.title}</a>
       </h3>
     </article>
   );

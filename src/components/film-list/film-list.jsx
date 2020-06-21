@@ -15,7 +15,6 @@ class FilmList extends PureComponent {
 
   _handlerFilmCardMouseEnter(film) {
     // Наведение на карточку фильма
-
     this.setState({
       activeCard: film
     });
