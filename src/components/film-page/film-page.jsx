@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import {getRandomInt} from './../../utils';
 
 class FilmPage extends PureComponent {
   constructor(props) {
@@ -39,7 +40,7 @@ class FilmPage extends PureComponent {
                 <h2 className="movie-card__title">{filmInfo.title}</h2>
                 <p className="movie-card__meta">
                   <span className="movie-card__genre">{filmInfo.genre}</span>
-                  <span className="movie-card__year">{filmInfo.releaseDate}</span>
+                  <span className="movie-card__year">{new Date(filmInfo.releaseDate).getFullYear()}</span>
                 </p>
 
                 <div className="movie-card__buttons">
@@ -93,8 +94,8 @@ class FilmPage extends PureComponent {
                 <div className="movie-card__text">
                   {filmInfo.description.map((text) => {
                     return (
-                      <p key={filmInfo.id}>{text}</p>
-                    )
+                      <p key={text}>{text}</p>
+                    );
                   })}
 
                   <p className="movie-card__director"><strong>Director: {filmInfo.director}</strong></p>
