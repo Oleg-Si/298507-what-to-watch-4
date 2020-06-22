@@ -13,6 +13,10 @@ const film = {
   img: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`
 };
 
+const mockEvent = {
+  preventDefault() {}
+};
+
 it(`Клик на заголовок вызывает коллбэк`, () => {
   const onFilmCardTitleClick = jest.fn();
   const onFilmCardMouseEnter = jest.fn();
@@ -27,7 +31,7 @@ it(`Клик на заголовок вызывает коллбэк`, () => {
 
   const title = filmCard.find(`a.small-movie-card__link`);
 
-  title.simulate(`click`);
+  title.simulate(`click`, mockEvent);
 
   // Обработчик был вызван 1 раз
   expect(onFilmCardTitleClick).toHaveBeenCalledTimes(1);
