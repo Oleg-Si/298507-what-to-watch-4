@@ -1,9 +1,13 @@
 import React, {PureComponent} from 'react';
-import {getRandomInt} from './../../utils';
+import PropTypes from 'prop-types';
 
 class FilmPage extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      activeTabs: null
+    };
   }
 
   render() {
@@ -168,5 +172,24 @@ class FilmPage extends PureComponent {
     );
   }
 }
+
+FilmPage.propTypes = {
+  activeFilm: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    rating: PropTypes.string.isRequired,
+    releaseDate: PropTypes.number.isRequired,
+    ratingCount: PropTypes.number.isRequired,
+    description: PropTypes.arrayOf(
+        PropTypes.string
+    ).isRequired,
+    director: PropTypes.arrayOf(
+        PropTypes.string
+    ).isRequired,
+    starring: PropTypes.arrayOf(
+        PropTypes.string
+    ).isRequired
+  }).isRequired
+};
 
 export default FilmPage;
