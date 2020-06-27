@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import FilmCard from './film-card.jsx';
+import {defaultFilmCard as FilmCard} from './film-card.jsx';
 
 const film = {
   id: 0,
@@ -8,16 +8,20 @@ const film = {
   img: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`
 };
 
-const onFilmCardTitleClick = () => {};
-const onFilmCardMouseEnter = () => {};
+const children = <div className="children-component"></div>;
 
 it(`Проверяет снепшот компонента FilmCard`, () => {
   const tree = renderer.create(
       <FilmCard
         film={film}
-        onFilmCardTitleClick={onFilmCardTitleClick}
-        onFilmCardMouseEnter={onFilmCardMouseEnter}
-      />
+        onFilmCardTitleClick={() => {}}
+        onFilmCardMouseEnter={() => {}}
+        onPlay={() => {}}
+        onStop={() => {}}
+      >{children}</FilmCard>, {
+        createNodeMock: () => {
+          return {};
+        }}
   ).toJSON();
 
   expect(tree).toMatchSnapshot();
