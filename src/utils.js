@@ -9,5 +9,9 @@ export const getRandomArrayItems = (array, count) => {
     newArray.push(el[0]);
   }
 
-  return newArray;
+  if (count === 1) {
+    return newArray[0];
+  } else {
+    return newArray;
+  }
 };
