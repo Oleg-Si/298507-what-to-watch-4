@@ -2,6 +2,8 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import VideoPlayer from './../components/video-player/video-player.jsx';
 
+const VIDEO_PLAY_TIMEOUT = 1000; // ms
+
 const withVideoPlayer = (Component) => {
   class WithVideoPlayer extends PureComponent {
     constructor(props) {
@@ -13,15 +15,19 @@ const withVideoPlayer = (Component) => {
         controls: false
       };
 
+      this._timer = null;
       this._handleVideoPlay = this._handleVideoPlay.bind(this);
       this._handleVideoStop = this._handleVideoStop.bind(this);
     }
 
     _handleVideoPlay() {
-      this.setState({isPlaying: true});
+      this._timer = setTimeout(() => {
+        this.setState({isPlaying: true});
+      }, VIDEO_PLAY_TIMEOUT);
     }
 
     _handleVideoStop() {
+      clearTimeout(this._timer);
       this.setState({isPlaying: false});
     }
 

@@ -12,7 +12,6 @@ class VideoPlayer extends PureComponent {
     super(props);
 
     this._videoRef = React.createRef();
-    this._timer = null;
   }
 
   componentDidMount() {
@@ -30,11 +29,8 @@ class VideoPlayer extends PureComponent {
     const {isPlaying} = this.props;
 
     if (isPlaying) {
-      this._timer = setTimeout(() => {
-        video.play();
-      }, VideoSettings.TIMEOUT);
+      video.play();
     } else {
-      clearTimeout(this._timer);
       video.load();
     }
   }
