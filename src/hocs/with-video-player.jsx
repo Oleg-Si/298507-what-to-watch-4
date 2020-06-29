@@ -13,23 +13,23 @@ const withVideoPlayer = (Component) => {
         controls: false
       };
 
-      this._handlerVideoPlay = this._handlerVideoPlay.bind(this);
-      this._handlerVideoStop = this._handlerVideoStop.bind(this);
+      this._handleVideoPlay = this._handleVideoPlay.bind(this);
+      this._handleVideoStop = this._handleVideoStop.bind(this);
     }
 
-    _handlerVideoPlay() {
+    _handleVideoPlay() {
       this.setState({isPlaying: true});
     }
 
-    _handlerVideoStop() {
+    _handleVideoStop() {
       this.setState({isPlaying: false});
     }
 
     render() {
       return (
         <Component
-          onPlay={this._handlerVideoPlay}
-          onStop={this._handlerVideoStop}
+          onPlay={this._handleVideoPlay}
+          onStop={this._handleVideoStop}
           {...this.props}
         >
           <VideoPlayer
