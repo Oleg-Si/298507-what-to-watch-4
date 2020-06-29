@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import withVideoPlayer from './../../hocs/with-video-player.jsx';
 
 const FilmCard = (props) => {
-  const {film, onPlay, onStop, onFilmCardMouseEnter, onFilmCardTitleClick} = props;
+  const {film, onPlay, onStop, onFilmCardTitleClick} = props;
 
   return (
     <article className="small-movie-card catalog__movies-card" onMouseEnter={() => {
       onPlay();
-      onFilmCardMouseEnter(film);
     }} onMouseLeave={() => {
       onStop();
     }}>
@@ -33,7 +32,6 @@ FilmCard.propTypes = {
   }),
   children: PropTypes.node.isRequired,
   onFilmCardTitleClick: PropTypes.func.isRequired,
-  onFilmCardMouseEnter: PropTypes.func.isRequired,
   onPlay: PropTypes.func.isRequired,
   onStop: PropTypes.func.isRequired
 };

@@ -29,13 +29,11 @@ const mockEvent = {
 
 it(`Клик на заголовок вызывает коллбэк`, () => {
   const onFilmCardTitleClick = jest.fn();
-  const onFilmCardMouseEnter = jest.fn();
 
   const filmCard = shallow(
       <FilmCard
         film={film}
         onFilmCardTitleClick={onFilmCardTitleClick}
-        onFilmCardMouseEnter={onFilmCardMouseEnter}
         onPlay={() => {}}
         onStop={() => {}}
       >{children}</FilmCard>
@@ -48,27 +46,4 @@ it(`Клик на заголовок вызывает коллбэк`, () => {
   // Обработчик был вызван 1 раз
   expect(onFilmCardTitleClick).toHaveBeenCalledTimes(1);
   expect(onFilmCardTitleClick.mock.calls[0][0]).toMatchObject(film);
-});
-
-it(`При наведении на карточку фильма в обработчик попадает информация о фильме`, () => {
-  const onFilmCardTitleClick = jest.fn();
-  const onFilmCardMouseEnter = jest.fn();
-
-  const filmCard = shallow(
-      <FilmCard
-        film={film}
-        onFilmCardTitleClick={onFilmCardTitleClick}
-        onFilmCardMouseEnter={onFilmCardMouseEnter}
-        onPlay={() => {}}
-        onStop={() => {}}
-      >{children}</FilmCard>
-  );
-
-  filmCard.simulate(`mouseenter`);
-
-  // Обработчик был вызван 1 раз
-  expect(onFilmCardMouseEnter).toHaveBeenCalledTimes(1);
-
-  // В обработчик попадает информация о фильме
-  expect(onFilmCardMouseEnter.mock.calls[0][0]).toMatchObject(film);
 });

@@ -15,7 +15,6 @@ it(`Проверяет снепшот компонента FilmCard`, () => {
       <FilmCard
         film={film}
         onFilmCardTitleClick={() => {}}
-        onFilmCardMouseEnter={() => {}}
         onPlay={() => {}}
         onStop={() => {}}
       >{children}</FilmCard>, {
