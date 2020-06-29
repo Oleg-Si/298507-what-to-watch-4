@@ -32,7 +32,6 @@ class VideoPlayer extends PureComponent {
     if (isPlaying) {
       this._timer = setTimeout(() => {
         video.play();
-        this.setState({initialPlay: false});
       }, VideoSettings.TIMEOUT);
     } else {
       clearTimeout(this._timer);
