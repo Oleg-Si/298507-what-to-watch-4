@@ -1,12 +1,11 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-const IMG_SETTINGS = {
-  width: 280,
-  height: 175
+const VideoSettings = {
+  WIDTH: 280,
+  HEIGHT: 175,
+  TIMEOUT: 1000 // ms
 };
-
-const VIDEO_PLAY_TIMEOUT = 1000; // ms
 
 class VideoPlayer extends PureComponent {
   constructor(props) {
@@ -38,7 +37,7 @@ class VideoPlayer extends PureComponent {
       this._timer = setTimeout(() => {
         video.play();
         this.setState({initialPlay: false});
-      }, VIDEO_PLAY_TIMEOUT);
+      }, VideoSettings.TIMEOUT);
     } else {
       clearTimeout(this._timer);
 
@@ -62,10 +61,8 @@ class VideoPlayer extends PureComponent {
   }
 
   render() {
-
-
     return (
-      <video width={IMG_SETTINGS.width} height={IMG_SETTINGS.height} ref={this._videoRef}></video>
+      <video width={VideoSettings.WIDTH} height={VideoSettings.HEIGHT} ref={this._videoRef}></video>
     );
   }
 }

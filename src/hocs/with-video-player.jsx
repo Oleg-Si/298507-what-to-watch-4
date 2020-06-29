@@ -8,7 +8,6 @@ const withVideoPlayer = (Component) => {
       super(props);
 
       this.state = {
-        activePlayerId: null,
         isPlaying: false,
         isMuted: true,
         controls: false
