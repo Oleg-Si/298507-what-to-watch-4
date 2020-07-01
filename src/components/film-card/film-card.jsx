@@ -1,20 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-const IMG_SETTINGS = {
-  width: 280,
-  height: 175
-};
+import withVideoPlayer from './../../hocs/with-video-player.jsx';
 
 const FilmCard = (props) => {
-  const {film, onFilmCardMouseEnter, onFilmCardTitleClick} = props;
+  const {film, onPlay, onStop, onFilmCardTitleClick} = props;
 
   return (
     <article className="small-movie-card catalog__movies-card" onMouseEnter={() => {
-      onFilmCardMouseEnter(film);
+      onPlay();
+    }} onMouseLeave={() => {
+      onStop();
     }}>
+
       <div className="small-movie-card__image">
-        <img src={film.img} alt={film.title} width={IMG_SETTINGS.width} height={IMG_SETTINGS.height}/>
+        {props.children}
       </div>
       <h3 className="small-movie-card__title">
         <a className="small-movie-card__link" href="movie-page.html" onClick={(evt) => {
@@ -31,8 +30,11 @@ FilmCard.propTypes = {
     title: PropTypes.string.isRequired,
     img: PropTypes.string.isRequired
   }),
-  onFilmCardMouseEnter: PropTypes.func.isRequired,
-  onFilmCardTitleClick: PropTypes.func.isRequired
+  children: PropTypes.node.isRequired,
+  onFilmCardTitleClick: PropTypes.func.isRequired,
+  onPlay: PropTypes.func.isRequired,
+  onStop: PropTypes.func.isRequired
 };
 
-export default FilmCard;
+export const defaultFilmCard = FilmCard;
+export default withVideoPlayer(FilmCard);

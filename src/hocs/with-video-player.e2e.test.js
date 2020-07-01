@@ -1,7 +1,7 @@
 import React from 'react';
-import Enzyme, {shallow} from 'enzyme';
+import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {defaultFilmCard as FilmCard} from './film-card.jsx';
+import withVideoPlayer from './with-video-player.jsx';
 
 Enzyme.configure({
   adapter: new Adapter()
@@ -23,27 +23,38 @@ const film = {
 
 const children = <div className="children-component"></div>;
 
-const mockEvent = {
-  preventDefault() {}
+const Component = () => {
+  return (
+    <div>
+      {children}
+    </div>
+  );
 };
 
-it(`Клик на заголовок вызывает коллбэк`, () => {
-  const onFilmCardTitleClick = jest.fn();
+const WrappedComponent = withVideoPlayer(Component);
 
-  const filmCard = shallow(
-      <FilmCard
+it(`Проверяет состояния Воспроизведение и Пауза`, () => {
+  jest.useFakeTimers();
+
+  const element = mount(
+      <WrappedComponent
         film={film}
-        onFilmCardTitleClick={onFilmCardTitleClick}
-        onPlay={() => {}}
-        onStop={() => {}}
-      >{children}</FilmCard>
+        controls={false}
+        isMuted={true}
+        isPlaying={false}
+      />
   );
 
-  const title = filmCard.find(`a.small-movie-card__link`);
+  const play = jest.spyOn(window.HTMLMediaElement.prototype, `play`).mockImplementation(() => {});
+  const load = jest.spyOn(window.HTMLMediaElement.prototype, `load`).mockImplementation(() => {});
 
-  title.simulate(`click`, mockEvent);
+  element.setState({isPlaying: true});
+  element.instance()._handleVideoStop();
+  expect(element.state(`isPlaying`)).toBe(false);
+  element.instance()._handleVideoPlay();
+  setTimeout(() => expect(element.state(`isPlaying`)).toBe(true), 1000);
+  jest.runAllTimers();
 
-  // Обработчик был вызван 1 раз
-  expect(onFilmCardTitleClick).toHaveBeenCalledTimes(1);
-  expect(onFilmCardTitleClick.mock.calls[0][0]).toMatchObject(film);
+  play.mockRestore();
+  load.mockRestore();
 });

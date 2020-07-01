@@ -180,12 +180,13 @@ FilmPage.propTypes = {
     rating: PropTypes.string.isRequired,
     releaseDate: PropTypes.number.isRequired,
     ratingCount: PropTypes.number.isRequired,
-    description: PropTypes.arrayOf(
-        PropTypes.string
-    ).isRequired,
-    director: PropTypes.arrayOf(
-        PropTypes.string
-    ).isRequired,
+    description: PropTypes.oneOfType([
+      PropTypes.arrayOf(
+          PropTypes.string
+      ),
+      PropTypes.string
+    ]).isRequired,
+    director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(
         PropTypes.string
     ).isRequired
