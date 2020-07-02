@@ -43,7 +43,7 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {films, promoFilmMock} = this.props;
+    const {promoFilmMock} = this.props;
     const screen = this.state.activeScreen;
 
     switch (screen) {
@@ -51,7 +51,6 @@ class App extends PureComponent {
         return (
           <Main
             promoFilmMock={promoFilmMock}
-            films={films}
             onFilmCardTitleClick={this._handlerFilmCardTitleClick}
           />
         );
@@ -82,12 +81,6 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  films: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        img: PropTypes.string.isRequired
-      })
-  ).isRequired,
   promoFilmMock: PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,

@@ -1,21 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app.jsx';
-import getMockFilm from './mock/films';
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
+import {reducer} from './reducer';
 
-const FILM_COUNT = 12;
-
-const getFilms = (count) => {
-  const allFilms = [];
-
-  for (let i = 0; i < count; i++) {
-    const element = getMockFilm();
-    element.id = i;
-    allFilms.push(element);
-  }
-
-  return allFilms;
-};
+const store = createStore(
+    reducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+);
 
 const promoFilmMock = {
   title: `The Grand Budapest Hotel`,
@@ -24,9 +17,10 @@ const promoFilmMock = {
 };
 
 ReactDOM.render(
-    <App
-      promoFilmMock={promoFilmMock}
-      films={getFilms(FILM_COUNT)}
-    />,
+    <Provider store={store}>
+      <App
+        promoFilmMock={promoFilmMock}
+      />
+    </Provider>,
     document.querySelector(`#root`)
 );
