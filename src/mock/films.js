@@ -1,4 +1,17 @@
 import {getRandomInt, getRandomArrayItems} from './../utils';
+import {FILM_COUNT} from '../constants';
+
+const getFilms = (count) => {
+  const allFilms = [];
+
+  for (let i = 0; i < count; i++) {
+    const element = getMockFilm();
+    element.id = i;
+    allFilms.push(element);
+  }
+
+  return allFilms;
+};
 
 const getMockFilm = () => ({
   id: 0,
@@ -32,12 +45,15 @@ const getMockFilm = () => ({
   ][Math.floor(Math.random() * 12)],
   poster: ``,
   genre: [
-    `Drama`,
+    `Dramas`,
     `Horror`,
-    `Comedy`,
-    `Action`,
-    `Adventure`,
-    `Documentary`
+    `Comedies`,
+    `Romance`,
+    `Crime`,
+    `Sci-Fi`,
+    `Documentary`,
+    `Thrillers`,
+    `Kids & Family`
   ][getRandomInt(0, 6)],
   src: getRandomArrayItems([`https://archive.org/download/ElephantsDream/ed_1024_512kb.mp4`, `https://interactive-examples.mdn.mozilla.net/media/examples/flower.mp4`, `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`, `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`, `https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4`], 1),
   rating: `${getRandomInt(0, 9)}.${getRandomInt(0, 9)}`,
@@ -48,4 +64,6 @@ const getMockFilm = () => ({
   starring: getRandomArrayItems([`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe and other`, `Wes Andreson`], getRandomInt(3, 5))
 });
 
-export default getMockFilm;
+const films = getFilms(FILM_COUNT);
+
+export default films;
