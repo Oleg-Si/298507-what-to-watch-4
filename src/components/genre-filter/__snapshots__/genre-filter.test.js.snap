@@ -5,14 +5,14 @@ exports[`Проверяет снепшот компонента GenreFilter 1`] 
   className="catalog__genres-list"
 >
   <li
-    className="catalog__genres-item false"
+    className="catalog__genres-item catalog__genres-item--active"
   >
     <a
       className="catalog__genres-link"
       href="#"
       onClick={[Function]}
     >
-      D
+      All genres
     </a>
   </li>
   <li
@@ -23,7 +23,7 @@ exports[`Проверяет снепшот компонента GenreFilter 1`] 
       href="#"
       onClick={[Function]}
     >
-      r
+      Dramas
     </a>
   </li>
   <li
@@ -34,7 +34,7 @@ exports[`Проверяет снепшот компонента GenreFilter 1`] 
       href="#"
       onClick={[Function]}
     >
-      a
+      Horror
     </a>
   </li>
   <li
@@ -45,7 +45,7 @@ exports[`Проверяет снепшот компонента GenreFilter 1`] 
       href="#"
       onClick={[Function]}
     >
-      m
+      Comedies
     </a>
   </li>
   <li
@@ -56,7 +56,62 @@ exports[`Проверяет снепшот компонента GenreFilter 1`] 
       href="#"
       onClick={[Function]}
     >
-      s
+      Romance
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item false"
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+      onClick={[Function]}
+    >
+      Crime
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item false"
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+      onClick={[Function]}
+    >
+      Sci-Fi
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item false"
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+      onClick={[Function]}
+    >
+      Documentary
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item false"
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+      onClick={[Function]}
+    >
+      Thrillers
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item false"
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+      onClick={[Function]}
+    >
+      Kids & Family
     </a>
   </li>
 </ul>

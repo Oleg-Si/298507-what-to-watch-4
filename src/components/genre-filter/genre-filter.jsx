@@ -23,7 +23,10 @@ const GenreFilter = (props) => {
 };
 
 GenreFilter.propTypes = {
-  genre: PropTypes.object.isRequired,
+  genre: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ]).isRequired,
   activeGenre: PropTypes.string.isRequired,
   onGenreCilck: PropTypes.func.isRequired
 };
