@@ -3,6 +3,7 @@ import Main from '../main/main.jsx';
 import PropTypes from 'prop-types';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import FilmPage from '../film-page/film-page.jsx';
+import {connect} from 'react-redux';
 
 const Screens = {
   MAIN: `Main`,
@@ -88,4 +89,9 @@ App.propTypes = {
   })
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  promoFilmMock: state.promoFilmMock
+});
+
+export {App};
+export default connect(mapStateToProps)(App);
