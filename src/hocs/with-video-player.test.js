@@ -1,12 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import withVideoPlayer from './with-video-player.jsx';
-
-const film = {
-  title: `Fantastic Beasts: The Crimes of Grindelwald`,
-  img: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-  src: `src1`
-};
+import {mockFilmForTests} from '../mock/films.js';
 
 const Component = (props) => {
   // eslint-disable-next-line
@@ -24,7 +19,7 @@ const WrappedComponent = withVideoPlayer(Component);
 it(`Проверяет снепшот хока withVideoPlayer`, () => {
   const tree = renderer.create(
       <WrappedComponent
-        film={film}
+        film={mockFilmForTests}
         controls={false}
         isMuted={true}
         isPlaying={false}

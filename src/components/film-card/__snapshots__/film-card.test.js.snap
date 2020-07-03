@@ -21,7 +21,7 @@ exports[`Проверяет снепшот компонента FilmCard 1`] = `
       href="movie-page.html"
       onClick={[Function]}
     >
-      Fantastic Beasts: The Crimes of Grindelwald
+      Revenant
     </a>
   </h3>
 </article>

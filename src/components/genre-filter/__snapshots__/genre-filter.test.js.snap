@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Проверяет снепшот компонента GenreFilter 1`] = `
+<ul
+  className="catalog__genres-list"
+>
+  <li
+    className="catalog__genres-item false"
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+      onClick={[Function]}
+    >
+      D
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item false"
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+      onClick={[Function]}
+    >
+      r
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item false"
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+      onClick={[Function]}
+    >
+      a
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item false"
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+      onClick={[Function]}
+    >
+      m
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item false"
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+      onClick={[Function]}
+    >
+      s
+    </a>
+  </li>
+</ul>
+`;
