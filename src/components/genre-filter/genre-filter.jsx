@@ -7,9 +7,9 @@ const GenreFilter = (props) => {
 
   return (
     <ul className="catalog__genres-list">
-      {genreArr.map((el, i) => {
+      {genreArr.map((el) => {
         return (
-          <li className={`catalog__genres-item ${el === activeGenre && `catalog__genres-item--active`}`} key={`genre-${i}`}>
+          <li className={`catalog__genres-item ${el === activeGenre ? `catalog__genres-item--active` : ``}`} key={`genre-${el}`}>
             <a href="#" className="catalog__genres-link" onClick={(evt) => {
               evt.preventDefault();
               onGenreCilck(el);

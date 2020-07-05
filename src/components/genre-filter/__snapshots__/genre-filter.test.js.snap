@@ -16,7 +16,7 @@ exports[`Проверяет снепшот компонента GenreFilter 1`] 
     </a>
   </li>
   <li
-    className="catalog__genres-item false"
+    className="catalog__genres-item "
   >
     <a
       className="catalog__genres-link"
@@ -27,7 +27,7 @@ exports[`Проверяет снепшот компонента GenreFilter 1`] 
     </a>
   </li>
   <li
-    className="catalog__genres-item false"
+    className="catalog__genres-item "
   >
     <a
       className="catalog__genres-link"
@@ -38,7 +38,7 @@ exports[`Проверяет снепшот компонента GenreFilter 1`] 
     </a>
   </li>
   <li
-    className="catalog__genres-item false"
+    className="catalog__genres-item "
   >
     <a
       className="catalog__genres-link"
@@ -49,7 +49,7 @@ exports[`Проверяет снепшот компонента GenreFilter 1`] 
     </a>
   </li>
   <li
-    className="catalog__genres-item false"
+    className="catalog__genres-item "
   >
     <a
       className="catalog__genres-link"
@@ -60,7 +60,7 @@ exports[`Проверяет снепшот компонента GenreFilter 1`] 
     </a>
   </li>
   <li
-    className="catalog__genres-item false"
+    className="catalog__genres-item "
   >
     <a
       className="catalog__genres-link"
@@ -71,7 +71,7 @@ exports[`Проверяет снепшот компонента GenreFilter 1`] 
     </a>
   </li>
   <li
-    className="catalog__genres-item false"
+    className="catalog__genres-item "
   >
     <a
       className="catalog__genres-link"
@@ -82,7 +82,7 @@ exports[`Проверяет снепшот компонента GenreFilter 1`] 
     </a>
   </li>
   <li
-    className="catalog__genres-item false"
+    className="catalog__genres-item "
   >
     <a
       className="catalog__genres-link"
@@ -93,7 +93,7 @@ exports[`Проверяет снепшот компонента GenreFilter 1`] 
     </a>
   </li>
   <li
-    className="catalog__genres-item false"
+    className="catalog__genres-item "
   >
     <a
       className="catalog__genres-link"
@@ -104,7 +104,7 @@ exports[`Проверяет снепшот компонента GenreFilter 1`] 
     </a>
   </li>
   <li
-    className="catalog__genres-item false"
+    className="catalog__genres-item "
   >
     <a
       className="catalog__genres-link"
