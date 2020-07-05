@@ -18,6 +18,11 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.FILTER_FILMS_BY_GENRE:
       return extend(state, {filteredFilmsByGenre: action.payload});
+
+    case ActionType.SHOW_MORE_FILMS:
+      const countFilms = state.countFilmsForRender + action.payload;
+
+      return extend(state, {countFilmsForRender: countFilms});
   }
 
   return state;

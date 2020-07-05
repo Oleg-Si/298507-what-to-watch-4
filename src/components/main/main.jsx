@@ -5,6 +5,7 @@ import GenreFilter from '../genre-filter/genre-filter.jsx';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../redux/action-creator';
 import {DEFAULT_GENRE} from './../../constants';
+import ShowMore from '../show-more/show-more.jsx';
 
 const Main = (props) => {
   const {
@@ -14,7 +15,8 @@ const Main = (props) => {
     onGenreCilck,
     activeGenre,
     onFilmCardTitleClick,
-    filmsCount
+    filmsCount,
+    onShowMoreClick
   } = props;
 
   const getAllgenre = (data) => {
@@ -103,9 +105,11 @@ const Main = (props) => {
             onFilmCardTitleClick={onFilmCardTitleClick}
           />
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
+          <ShowMore
+            allFilmsCount={filteredFilms.length}
+            filmsCount={filmsCount}
+            onShowMoreClick={onShowMoreClick}
+          />
         </section>
 
         <footer className="page-footer">
@@ -147,7 +151,8 @@ Main.propTypes = {
   onFilmCardTitleClick: PropTypes.func.isRequired,
   onGenreCilck: PropTypes.func.isRequired,
   activeGenre: PropTypes.string.isRequired,
-  filmsCount: PropTypes.number.isRequired
+  filmsCount: PropTypes.number.isRequired,
+  onShowMoreClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -161,6 +166,10 @@ const mapDispatchToProps = (dispatch) => ({
   onGenreCilck(newGenre) {
     dispatch(ActionCreator.genreFilterChange(newGenre));
     dispatch(ActionCreator.filterFilmsByGenre(newGenre));
+  },
+
+  onShowMoreClick() {
+    dispatch(ActionCreator.showMoreFilms());
   }
 });
 
