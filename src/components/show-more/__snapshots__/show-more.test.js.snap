@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Проверяет снепшоты компонента ShowMore Проверяет снепшот компонента ShowMore без кнопки 1`] = `
+<div
+  className="catalog__more"
+/>
+`;
+
+exports[`Проверяет снепшоты компонента ShowMore Проверяет снепшот компонента ShowMore с кнопкой 1`] = `
+<div
+  className="catalog__more"
+>
+  <button
+    className="catalog__button"
+    onClick={[Function]}
+    type="button"
+  >
+    Show more
+  </button>
+</div>
+`;
