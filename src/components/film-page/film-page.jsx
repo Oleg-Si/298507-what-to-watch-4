@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TabList from '../tab-list/tab-list.jsx';
+import {Tabs} from '../../constants';
 import {connect} from 'react-redux';
 import {ActionCreator} from './../../redux/action-creator';
 
@@ -71,6 +72,7 @@ const FilmPage = (props) => {
               <nav className="movie-nav movie-card__nav">
 
                 <TabList
+                  tabs={Tabs}
                   activeTab={activeTab}
                   onTabClick={onTabClick}
                 />
