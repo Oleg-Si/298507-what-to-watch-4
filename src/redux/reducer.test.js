@@ -1,10 +1,11 @@
-import {DEFAULT_GENRE, RENDERED_FILMS_COUNT, COUNT_MORE_FILMS} from '../constants';
+import {DEFAULT_GENRE, RENDERED_FILMS_COUNT, COUNT_MORE_FILMS, DEFAULT_TAB} from '../constants';
 import films, {promoFilmMock, mockFilmsForTests} from '../mock/films';
 import {ActionType} from './action-type';
 import reducer from './reducer';
 
 const initialState = {
   activeGenre: DEFAULT_GENRE,
+  activeTab: DEFAULT_TAB,
   films,
   countFilmsForRender: RENDERED_FILMS_COUNT,
   filteredFilmsByGenre: films,
