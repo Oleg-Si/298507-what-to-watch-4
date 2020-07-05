@@ -86,4 +86,23 @@ describe(`Reducer работает корректно`, () => {
       promoFilmMock
     });
   });
+
+  it(`Reducer меняет activeTab на переданный`, () => {
+    expect(reducer({
+      activeGenre: DEFAULT_GENRE,
+      activeTab: DEFAULT_TAB,
+      films,
+      filteredFilmsByGenre: films,
+      promoFilmMock
+    }, {
+      type: ActionType.CHANGE_TAB,
+      payload: `Details`
+    })).toEqual({
+      activeGenre: DEFAULT_GENRE,
+      activeTab: `Details`,
+      films,
+      filteredFilmsByGenre: films,
+      promoFilmMock
+    });
+  });
 });

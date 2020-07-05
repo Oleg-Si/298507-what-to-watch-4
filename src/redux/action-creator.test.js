@@ -33,4 +33,11 @@ describe(`ActionCreator работает корректно`, () => {
       payload: COUNT_MORE_FILMS
     });
   });
+
+  it(`filmsPageTabChange устанавливает переданный таб`, () => {
+    expect(ActionCreator.filmsPageTabChange(`Details`)).toEqual({
+      type: ActionType.CHANGE_TAB,
+      payload: `Details`
+    });
+  });
 });
