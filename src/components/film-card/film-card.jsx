@@ -36,5 +36,5 @@ FilmCard.propTypes = {
   onStop: PropTypes.func.isRequired
 };
 
-export const defaultFilmCard = FilmCard;
+export {FilmCard};
 export default withVideoPlayer(FilmCard);

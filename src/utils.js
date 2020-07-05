@@ -15,3 +15,7 @@ export const getRandomArrayItems = (array, count) => {
     return newArray;
   }
 };
+
+export const extend = (a, b) => {
+  return Object.assign({}, a, b);
+};

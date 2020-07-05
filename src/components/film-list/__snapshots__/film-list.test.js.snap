@@ -25,32 +25,7 @@ exports[`Проверяет снепшот компонента FilmList 1`] = `
         href="movie-page.html"
         onClick={[Function]}
       >
-        Fantastic Beasts: The Crimes of Grindelwald
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-  >
-    <div
-      className="small-movie-card__image"
-    >
-      <video
-        height={175}
-        width={280}
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-    >
-      <a
-        className="small-movie-card__link"
-        href="movie-page.html"
-        onClick={[Function]}
-      >
-        Bohemian Rhapsody
+        Aviator
       </a>
     </h3>
   </article>
@@ -100,7 +75,7 @@ exports[`Проверяет снепшот компонента FilmList 1`] = `
         href="movie-page.html"
         onClick={[Function]}
       >
-        Aviator
+        Snatch
       </a>
     </h3>
   </article>

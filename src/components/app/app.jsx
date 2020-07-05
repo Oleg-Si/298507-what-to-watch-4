@@ -3,6 +3,7 @@ import Main from '../main/main.jsx';
 import PropTypes from 'prop-types';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import FilmPage from '../film-page/film-page.jsx';
+import {connect} from 'react-redux';
 
 const Screens = {
   MAIN: `Main`,
@@ -43,7 +44,7 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {films, promoFilmMock} = this.props;
+    const {promoFilmMock} = this.props;
     const screen = this.state.activeScreen;
 
     switch (screen) {
@@ -51,7 +52,6 @@ class App extends PureComponent {
         return (
           <Main
             promoFilmMock={promoFilmMock}
-            films={films}
             onFilmCardTitleClick={this._handlerFilmCardTitleClick}
           />
         );
@@ -82,12 +82,6 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  films: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        img: PropTypes.string.isRequired
-      })
-  ).isRequired,
   promoFilmMock: PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
@@ -95,4 +89,9 @@ App.propTypes = {
   })
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  promoFilmMock: state.promoFilmMock
+});
+
+export {App};
+export default connect(mapStateToProps)(App);
