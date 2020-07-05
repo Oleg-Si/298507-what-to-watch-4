@@ -5,9 +5,19 @@ import GenreFilter from '../genre-filter/genre-filter.jsx';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../redux/action-creator';
 import {DEFAULT_GENRE} from './../../constants';
+import ShowMore from '../show-more/show-more.jsx';
 
 const Main = (props) => {
-  const {promoFilmMock, films, filteredFilms, onGenreCilck, activeGenre, onFilmCardTitleClick} = props;
+  const {
+    promoFilmMock,
+    films,
+    filteredFilms,
+    onGenreCilck,
+    activeGenre,
+    onFilmCardTitleClick,
+    filmsCount,
+    onShowMoreClick
+  } = props;
 
   const getAllgenre = (data) => {
     const allGenre = new Set();
@@ -91,12 +101,15 @@ const Main = (props) => {
 
           <FilmList
             films={filteredFilms}
+            filmsCount={filmsCount}
             onFilmCardTitleClick={onFilmCardTitleClick}
           />
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
+          <ShowMore
+            allFilmsCount={filteredFilms.length}
+            filmsCount={filmsCount}
+            onShowMoreClick={onShowMoreClick}
+          />
         </section>
 
         <footer className="page-footer">
@@ -137,12 +150,15 @@ Main.propTypes = {
   ).isRequired,
   onFilmCardTitleClick: PropTypes.func.isRequired,
   onGenreCilck: PropTypes.func.isRequired,
-  activeGenre: PropTypes.string.isRequired
+  activeGenre: PropTypes.string.isRequired,
+  filmsCount: PropTypes.number.isRequired,
+  onShowMoreClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
   activeGenre: state.activeGenre,
   films: state.films,
+  filmsCount: state.countFilmsForRender,
   filteredFilms: state.filteredFilmsByGenre
 });
 
@@ -150,6 +166,10 @@ const mapDispatchToProps = (dispatch) => ({
   onGenreCilck(newGenre) {
     dispatch(ActionCreator.genreFilterChange(newGenre));
     dispatch(ActionCreator.filterFilmsByGenre(newGenre));
+  },
+
+  onShowMoreClick() {
+    dispatch(ActionCreator.showMoreFilms());
   }
 });
 

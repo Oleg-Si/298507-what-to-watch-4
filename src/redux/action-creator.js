@@ -1,5 +1,5 @@
 import {ActionType} from './action-type';
-import {DEFAULT_GENRE} from './../constants';
+import {DEFAULT_GENRE, COUNT_MORE_FILMS} from './../constants';
 import films from './../mock/films';
 
 export const ActionCreator = {
@@ -21,5 +21,10 @@ export const ActionCreator = {
       type: ActionType.FILTER_FILMS_BY_GENRE,
       payload: filteredFilms
     });
-  }
+  },
+
+  showMoreFilms: () => ({
+    type: ActionType.SHOW_MORE_FILMS,
+    payload: COUNT_MORE_FILMS
+  })
 };
