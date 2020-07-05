@@ -7,7 +7,15 @@ import {ActionCreator} from '../../redux/action-creator';
 import {DEFAULT_GENRE} from './../../constants';
 
 const Main = (props) => {
-  const {promoFilmMock, films, filteredFilms, onGenreCilck, activeGenre, onFilmCardTitleClick} = props;
+  const {
+    promoFilmMock,
+    films,
+    filteredFilms,
+    onGenreCilck,
+    activeGenre,
+    onFilmCardTitleClick,
+    filmsCount
+  } = props;
 
   const getAllgenre = (data) => {
     const allGenre = new Set();
@@ -91,6 +99,7 @@ const Main = (props) => {
 
           <FilmList
             films={filteredFilms}
+            filmsCount={filmsCount}
             onFilmCardTitleClick={onFilmCardTitleClick}
           />
 
@@ -137,12 +146,14 @@ Main.propTypes = {
   ).isRequired,
   onFilmCardTitleClick: PropTypes.func.isRequired,
   onGenreCilck: PropTypes.func.isRequired,
-  activeGenre: PropTypes.string.isRequired
+  activeGenre: PropTypes.string.isRequired,
+  filmsCount: PropTypes.number.isRequired
 };
 
 const mapStateToProps = (state) => ({
   activeGenre: state.activeGenre,
   films: state.films,
+  filmsCount: state.countFilmsForRender,
   filteredFilms: state.filteredFilmsByGenre
 });
 

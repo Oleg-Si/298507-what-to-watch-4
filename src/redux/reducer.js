@@ -1,4 +1,4 @@
-import {DEFAULT_GENRE} from '../constants';
+import {DEFAULT_GENRE, RENDERED_FILMS_COUNT} from '../constants';
 import films, {promoFilmMock} from '../mock/films';
 import {extend} from '../utils';
 import {ActionType} from './action-type';
@@ -6,6 +6,7 @@ import {ActionType} from './action-type';
 const initialState = {
   activeGenre: DEFAULT_GENRE,
   films,
+  countFilmsForRender: RENDERED_FILMS_COUNT,
   filteredFilmsByGenre: films,
   promoFilmMock
 };
