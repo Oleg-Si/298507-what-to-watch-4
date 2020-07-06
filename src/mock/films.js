@@ -58,7 +58,7 @@ const getMockFilm = () => ({
   src: getRandomArrayItems([`https://archive.org/download/ElephantsDream/ed_1024_512kb.mp4`, `https://interactive-examples.mdn.mozilla.net/media/examples/flower.mp4`, `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`, `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`, `https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4`], 1),
   rating: `${getRandomInt(0, 9)}.${getRandomInt(0, 9)}`,
   releaseDate: getRandomInt(1262293200000, 1552915226386),
-  runTime: getRandomInt(1262293200000, 1552915226386),
+  runTime: getRandomInt(4000, 7800),
   ratingCount: getRandomInt(5, 250),
   description: getRandomArrayItems([`In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave&aposs friend and protege.`, `Gustave prides himself on providing first-class service to the hotel&apos;s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave&aposs lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`, `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra.`, `Nullam nunc ex, convallis sed finibus eget, sollicitudin eget ante. Phasellus eros mauris, condimentum sed nibh vitae, sodales efficitur ipsum. Sed blandit, eros vel aliquam faucibus, purus ex euismod diam, eu luctus nunc ante ut dui.`, `Sed sed nisi sed augue convallis suscipit in sed felis. Aliquam erat volutpat. Nunc fermentum tortor ac porta dapibus. In rutrum ac purus sit amet tempus.`], getRandomInt(2, 5)),
   director: getRandomArrayItems([
@@ -144,10 +144,31 @@ const mockFilmForTests = {
   rating: `8.5`,
   src: `https://archive.org/download/ElephantsDream/ed_1024_512kb.mp4`,
   releaseDate: 1552915226386,
+  runTime: 5084,
   ratingCount: 148,
   description: [`In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave&aposs friend and protege.`, `Gustave prides himself on providing first-class service to the hotel&apos;s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave&aposs lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`],
   director: `Bill Murray`,
-  starring: [`Edward Norton`, `Jude Law`, `Willem Dafoe and other`, `Wes Andreson`]
+  starring: [`Edward Norton`, `Jude Law`, `Willem Dafoe and other`, `Wes Andreson`],
+  reviews: [
+    {
+      author: `Edward Norton`,
+      rating: `3.5`,
+      date: 1500793355882,
+      comment: `It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.`
+    },
+    {
+      author: `Willem Dafoe`,
+      rating: `6.7`,
+      date: 1302908542303,
+      comment: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes I wish I could take back.`
+    },
+    {
+      author: `Ralph Fiennes`,
+      rating: `8.9`,
+      date: 1444604462862,
+      comment: `The mannered, madcap proceedings are often delightful, occasionally silly, and here and there, gruesome and/or heartbreaking.`
+    }
+  ]
 };
 
 const mockFilmsForTests = [
@@ -159,10 +180,31 @@ const mockFilmsForTests = [
     rating: `8.1`,
     src: `https://archive.org/download/ElephantsDream/ed_1024_512kb.mp4`,
     releaseDate: 1552905226386,
+    runTime: 6104,
     ratingCount: 198,
     description: [`In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave&aposs friend and protege.`],
     director: `Bill Murray`,
-    starring: [`Edward Norton`, `Jude Law`, `Willem Dafoe and other`, `Wes Andreson`]
+    starring: [`Edward Norton`, `Jude Law`, `Willem Dafoe and other`, `Wes Andreson`],
+    reviews: [
+      {
+        author: `Edward Norton`,
+        rating: `3.5`,
+        date: 1500793355882,
+        comment: `It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.`
+      },
+      {
+        author: `Willem Dafoe`,
+        rating: `6.7`,
+        date: 1302908542303,
+        comment: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes I wish I could take back.`
+      },
+      {
+        author: `Ralph Fiennes`,
+        rating: `8.9`,
+        date: 1444604462862,
+        comment: `The mannered, madcap proceedings are often delightful, occasionally silly, and here and there, gruesome and/or heartbreaking.`
+      }
+    ]
   },
   {
     id: 1,
@@ -175,7 +217,27 @@ const mockFilmsForTests = [
     ratingCount: 248,
     description: [`Gustave prides himself on providing first-class service to the hotel&apos;s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave&aposs lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`],
     director: `Edward Norton`,
-    starring: [`Jude Law`, `Willem Dafoe and other`, `Wes Andreson`]
+    starring: [`Jude Law`, `Willem Dafoe and other`, `Wes Andreson`],
+    reviews: [
+      {
+        author: `Edward Norton`,
+        rating: `3.5`,
+        date: 1500793355882,
+        comment: `It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.`
+      },
+      {
+        author: `Willem Dafoe`,
+        rating: `6.7`,
+        date: 1302908542303,
+        comment: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes I wish I could take back.`
+      },
+      {
+        author: `Ralph Fiennes`,
+        rating: `8.9`,
+        date: 1444604462862,
+        comment: `The mannered, madcap proceedings are often delightful, occasionally silly, and here and there, gruesome and/or heartbreaking.`
+      }
+    ]
   },
   {
     id: 2,
@@ -185,10 +247,31 @@ const mockFilmsForTests = [
     rating: `2.5`,
     src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     releaseDate: 1552518826386,
+    runTime: 7100,
     ratingCount: 850,
     description: [`In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave&aposs friend and protege.`, `Gustave prides himself on providing first-class, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`],
     director: `Jude Law`,
-    starring: [`Edward Norton`, `Willem Dafoe and other`, `Wes Andreson`]
+    starring: [`Edward Norton`, `Willem Dafoe and other`, `Wes Andreson`],
+    reviews: [
+      {
+        author: `Edward Norton`,
+        rating: `3.5`,
+        date: 1500793355882,
+        comment: `It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.`
+      },
+      {
+        author: `Willem Dafoe`,
+        rating: `6.7`,
+        date: 1302908542303,
+        comment: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes I wish I could take back.`
+      },
+      {
+        author: `Ralph Fiennes`,
+        rating: `8.9`,
+        date: 1444604462862,
+        comment: `The mannered, madcap proceedings are often delightful, occasionally silly, and here and there, gruesome and/or heartbreaking.`
+      }
+    ]
   }
 ];
 
