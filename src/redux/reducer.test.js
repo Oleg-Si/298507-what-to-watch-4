@@ -1,4 +1,4 @@
-import {DEFAULT_GENRE} from '../constants';
+import {DEFAULT_GENRE, RENDERED_FILMS_COUNT, COUNT_MORE_FILMS} from '../constants';
 import films, {promoFilmMock, mockFilmsForTests} from '../mock/films';
 import {ActionType} from './action-type';
 import reducer from './reducer';
@@ -6,6 +6,7 @@ import reducer from './reducer';
 const initialState = {
   activeGenre: DEFAULT_GENRE,
   films,
+  countFilmsForRender: RENDERED_FILMS_COUNT,
   filteredFilmsByGenre: films,
   promoFilmMock
 };
@@ -61,6 +62,25 @@ describe(`Reducer работает корректно`, () => {
     })).toEqual({
       activeGenre: DEFAULT_GENRE,
       films,
+      filteredFilmsByGenre: films,
+      promoFilmMock
+    });
+  });
+
+  it(`Reducer возвращает правильное количество фильмов для отрисовки`, () => {
+    expect(reducer({
+      activeGenre: DEFAULT_GENRE,
+      films,
+      countFilmsForRender: RENDERED_FILMS_COUNT,
+      filteredFilmsByGenre: films,
+      promoFilmMock
+    }, {
+      type: ActionType.SHOW_MORE_FILMS,
+      payload: COUNT_MORE_FILMS
+    })).toEqual({
+      activeGenre: DEFAULT_GENRE,
+      films,
+      countFilmsForRender: RENDERED_FILMS_COUNT + COUNT_MORE_FILMS,
       filteredFilmsByGenre: films,
       promoFilmMock
     });

@@ -1,6 +1,7 @@
 import {ActionCreator} from './action-creator';
 import {ActionType} from './action-type';
 import films from './../mock/films';
+import {COUNT_MORE_FILMS} from '../constants';
 
 const filteredFilms = films.filter((el) => el.genre === `Horror`);
 
@@ -26,4 +27,10 @@ describe(`ActionCreator работает корректно`, () => {
     });
   });
 
+  it(`showMoreFilms работает корректно`, () => {
+    expect(ActionCreator.showMoreFilms(`All genres`)).toEqual({
+      type: ActionType.SHOW_MORE_FILMS,
+      payload: COUNT_MORE_FILMS
+    });
+  });
 });

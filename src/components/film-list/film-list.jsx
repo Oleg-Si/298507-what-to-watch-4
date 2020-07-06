@@ -3,11 +3,18 @@ import PropTypes from 'prop-types';
 import FilmCard from '../film-card/film-card.jsx';
 
 const FilmList = (props) => {
-  const {films, onFilmCardTitleClick} = props;
+  const {films, onFilmCardTitleClick, filmsCount} = props;
+  const filmsForRender = [];
+
+  for (let i = 0; i < filmsCount; i++) {
+    if (films[i]) {
+      filmsForRender.push(films[i]);
+    }
+  }
 
   return (
     <div className="catalog__movies-list">
-      {films.map((film) => (
+      {filmsForRender.map((film) => (
         <FilmCard
           film={film}
           onFilmCardTitleClick={onFilmCardTitleClick}
@@ -25,7 +32,8 @@ FilmList.propTypes = {
         img: PropTypes.string.isRequired
       })
   ).isRequired,
-  onFilmCardTitleClick: PropTypes.func.isRequired
+  onFilmCardTitleClick: PropTypes.func.isRequired,
+  filmsCount: PropTypes.number.isRequired
 };
 
 export default FilmList;

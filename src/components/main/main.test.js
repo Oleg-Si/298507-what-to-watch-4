@@ -16,8 +16,10 @@ it(`Проверяет снепшот компонента Main`, () => {
         films={mockFilmsForTests}
         activeGenre={`All genres`}
         filteredFilms={mockFilmsForTests}
+        filmsCount={3}
         onFilmCardTitleClick={() => {}}
         onGenreCilck={() => {}}
+        onShowMoreClick={() => {}}
       />, {
         createNodeMock: () => {
           return {};

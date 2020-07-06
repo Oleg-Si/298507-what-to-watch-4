@@ -16,6 +16,7 @@ const promoFilmMock = {
 it(`Проверяет снепшот компонента App`, () => {
   const store = mockStore({
     films: mockFilmsForTests,
+    countFilmsForRender: 3,
     filteredFilmsByGenre: mockFilmsForTests,
     activeGenre: `All genres`
   });
