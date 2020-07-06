@@ -23,9 +23,9 @@ export const ActionCreator = {
     });
   },
 
-  showMoreFilms: () => ({
+  showMoreFilms: (filmsCount) => ({
     type: ActionType.SHOW_MORE_FILMS,
-    payload: COUNT_MORE_FILMS
+    payload: filmsCount + COUNT_MORE_FILMS
   }),
 
   filmsPageTabChange: (newTab) => ({

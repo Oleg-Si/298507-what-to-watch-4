@@ -21,9 +21,7 @@ const reducer = (state = initialState, action) => {
       return extend(state, {filteredFilmsByGenre: action.payload});
 
     case ActionType.SHOW_MORE_FILMS:
-      const countFilms = state.countFilmsForRender + action.payload;
-
-      return extend(state, {countFilmsForRender: countFilms});
+      return extend(state, {countFilmsForRender: action.payload});
 
     case ActionType.CHANGE_TAB:
       return extend(state, {activeTab: action.payload});

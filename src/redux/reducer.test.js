@@ -77,7 +77,7 @@ describe(`Reducer работает корректно`, () => {
       promoFilmMock
     }, {
       type: ActionType.SHOW_MORE_FILMS,
-      payload: COUNT_MORE_FILMS
+      payload: RENDERED_FILMS_COUNT + COUNT_MORE_FILMS
     })).toEqual({
       activeGenre: DEFAULT_GENRE,
       films,

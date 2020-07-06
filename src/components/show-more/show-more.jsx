@@ -8,17 +8,9 @@ const ShowMore = (props) => {
     allFilmsCount
   } = props;
 
-  const isMoreFilms = () => {
-    if (filmsCount < allFilmsCount) {
-      return <button className="catalog__button" type="button" onClick={onShowMoreClick}>Show more</button>;
-    }
-
-    return null;
-  };
-
   return (
     <div className="catalog__more">
-      {isMoreFilms()}
+      {filmsCount < allFilmsCount ? <button className="catalog__button" type="button" onClick={() => onShowMoreClick(filmsCount)}>Show more</button> : null}
     </div>
   );
 };
