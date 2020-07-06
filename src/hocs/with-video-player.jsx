@@ -31,6 +31,10 @@ const withVideoPlayer = (Component) => {
       this.setState({isPlaying: false});
     }
 
+    componentWillUnmount() {
+      clearTimeout(this._timer);
+    }
+
     render() {
       return (
         <Component
