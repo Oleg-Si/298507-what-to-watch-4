@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Проверяет снепшот компонента FilmPageReviews 1`] = `
+<div
+  className="movie-card__reviews movie-card__row"
+>
+  <div
+    className="movie-card__reviews-col"
+  >
+    <div
+      className="review"
+    >
+      <blockquote
+        className="review__quote"
+      >
+        <p
+          className="review__text"
+        >
+          It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.
+        </p>
+        <footer
+          className="review__details"
+        >
+          <cite
+            className="review__author"
+          >
+            Edward Norton
+          </cite>
+          <time
+            className="review__date"
+            dateTime="2017-7-23"
+          >
+            July 23, 2017
+          </time>
+        </footer>
+      </blockquote>
+      <div
+        className="review__rating"
+      >
+        3.5
+      </div>
+    </div>
+    <div
+      className="review"
+    >
+      <blockquote
+        className="review__quote"
+      >
+        <p
+          className="review__text"
+        >
+          The mannered, madcap proceedings are often delightful, occasionally silly, and here and there, gruesome and/or heartbreaking.
+        </p>
+        <footer
+          className="review__details"
+        >
+          <cite
+            className="review__author"
+          >
+            Ralph Fiennes
+          </cite>
+          <time
+            className="review__date"
+            dateTime="2015-10-12"
+          >
+            October 12, 2015
+          </time>
+        </footer>
+      </blockquote>
+      <div
+        className="review__rating"
+      >
+        8.9
+      </div>
+    </div>
+  </div>
+  <div
+    className="movie-card__reviews-col"
+  >
+    <div
+      className="review"
+    >
+      <blockquote
+        className="review__quote"
+      >
+        <p
+          className="review__text"
+        >
+          I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes I wish I could take back.
+        </p>
+        <footer
+          className="review__details"
+        >
+          <cite
+            className="review__author"
+          >
+            Willem Dafoe
+          </cite>
+          <time
+            className="review__date"
+            dateTime="2011-4-16"
+          >
+            April 16, 2011
+          </time>
+        </footer>
+      </blockquote>
+      <div
+        className="review__rating"
+      >
+        6.7
+      </div>
+    </div>
+  </div>
+</div>
+`;
