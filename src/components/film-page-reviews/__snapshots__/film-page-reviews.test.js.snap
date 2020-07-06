@@ -98,9 +98,9 @@ exports[`Проверяет снепшот компонента FilmPageReviews 
           </cite>
           <time
             className="review__date"
-            dateTime="2011-4-9"
+            dateTime="2011-4-8"
           >
-            April 9, 2011
+            April 8, 2011
           </time>
         </footer>
       </blockquote>
