@@ -1,15 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {RatingKey} from './../../constants';
 
 const FilmPageOverview = (props) => {
   const {filmInfo} = props;
+
+  const getRatingDescr = () => {
+    const rating = parseFloat(filmInfo.rating);
+
+    if (rating < 2) {
+      return RatingKey.BAD;
+    } else if (rating >= 2 && rating < 4) {
+      return RatingKey.NORMAL;
+    } else if (rating >= 4 && rating < 6) {
+      return RatingKey.GOOD;
+    } else if (rating >= 6 && rating < 8) {
+      return RatingKey.VERY_GOOD;
+    } else if (rating >= 8) {
+      return RatingKey.AWESOME;
+    }
+
+    return rating;
+  };
 
   return (
     <React.Fragment>
       <div className="movie-rating">
         <div className="movie-rating__score">{filmInfo.rating}</div>
         <p className="movie-rating__meta">
-          <span className="movie-rating__level">Very good</span>
+          <span className="movie-rating__level">{getRatingDescr()}</span>
           <span className="movie-rating__count">{filmInfo.ratingCount} ratings</span>
         </p>
       </div>

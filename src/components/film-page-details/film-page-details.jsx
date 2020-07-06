@@ -1,8 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 const FilmPageDetalis = (props) => {
   const {filmInfo} = props;
+
+  const getDurationFromMins = (min) => {
+    return Math.trunc(min / 60) + `h` + ` ` + (min % 60) + `m`;
+  };
 
   return (
     <div className="movie-card__text movie-card__row">
@@ -14,7 +19,7 @@ const FilmPageDetalis = (props) => {
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Starring</strong>
           <span className="movie-card__details-value">
-            {filmInfo.starring.map((el) => (el))}
+            {filmInfo.starring.map((el) => el)}
           </span>
         </p>
       </div>
@@ -22,7 +27,7 @@ const FilmPageDetalis = (props) => {
       <div className="movie-card__text-col">
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Run Time</strong>
-          <span className="movie-card__details-value">{`${new Date(filmInfo.runTime).getHours()}h ${new Date(filmInfo.runTime).getMinutes()}min`}</span>
+          <span className="movie-card__details-value">{getDurationFromMins(Math.round(moment.duration(filmInfo.runTime, `seconds`).asMinutes()))}</span>
         </p>
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Genre</strong>
@@ -30,7 +35,7 @@ const FilmPageDetalis = (props) => {
         </p>
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Released</strong>
-          <span className="movie-card__details-value">{new Date(filmInfo.releaseDate).getFullYear()}</span>
+          <span className="movie-card__details-value">{moment(filmInfo.releaseDate).format(`Y`)}</span>
         </p>
       </div>
     </div>
