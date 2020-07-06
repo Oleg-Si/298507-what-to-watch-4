@@ -4,10 +4,34 @@ import TabList from '../tab-list/tab-list.jsx';
 import {Tabs} from '../../constants';
 import {connect} from 'react-redux';
 import {ActionCreator} from './../../redux/action-creator';
+import FilmPageOverview from './../film-page-overview/film-page-overview.jsx';
+import FilmPageDetalis from '../film-page-details/film-page-details.jsx';
+import FilmPageReviews from '../film-page-reviews/film-page-reviews.jsx';
 
 const FilmPage = (props) => {
   const filmInfo = props.activeFilm;
   const {activeTab, onTabClick} = props;
+
+  const getFilmInfo = () => {
+    switch (activeTab) {
+      case `Overview`:
+        return <FilmPageOverview
+          filmInfo={filmInfo}
+        />;
+
+      case `Details`:
+        return <FilmPageDetalis
+          filmInfo={filmInfo}
+        />;
+
+      case `Reviews`:
+        return <FilmPageReviews
+          filmInfo={filmInfo}
+        />;
+    }
+
+    return null;
+  };
 
   return (
     <React.Fragment>
@@ -79,25 +103,8 @@ const FilmPage = (props) => {
 
               </nav>
 
-              <div className="movie-rating">
-                <div className="movie-rating__score">{filmInfo.rating}</div>
-                <p className="movie-rating__meta">
-                  <span className="movie-rating__level">Very good</span>
-                  <span className="movie-rating__count">{filmInfo.ratingCount} ratings</span>
-                </p>
-              </div>
+              {getFilmInfo()}
 
-              <div className="movie-card__text">
-                {filmInfo.description.map((text) => {
-                  return (
-                    <p key={text}>{text}</p>
-                  );
-                })}
-
-                <p className="movie-card__director"><strong>Director: {filmInfo.director}</strong></p>
-
-                <p className="movie-card__starring"><strong>Starring: {filmInfo.starring.join(`, `)}</strong></p>
-              </div>
             </div>
           </div>
         </div>
