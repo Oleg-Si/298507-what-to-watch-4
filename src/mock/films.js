@@ -153,19 +153,19 @@ const mockFilmForTests = {
     {
       author: `Edward Norton`,
       rating: `3.5`,
-      date: 1500793355882,
+      date: 1500713355882,
       comment: `It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.`
     },
     {
       author: `Willem Dafoe`,
       rating: `6.7`,
-      date: 1302908542303,
+      date: 1302298542303,
       comment: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes I wish I could take back.`
     },
     {
       author: `Ralph Fiennes`,
       rating: `8.9`,
-      date: 1444604462862,
+      date: 1445604462862,
       comment: `The mannered, madcap proceedings are often delightful, occasionally silly, and here and there, gruesome and/or heartbreaking.`
     }
   ]
