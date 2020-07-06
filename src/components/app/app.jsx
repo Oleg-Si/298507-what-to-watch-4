@@ -46,7 +46,10 @@ class App extends PureComponent {
 
       case Screens.FILM_PAGE:
         return (
-          <FilmPage activeFilm={this.state.activeFilm} />
+          <FilmPage
+            activeFilm={this.state.activeFilm}
+            onFilmCardTitleClick={this._handlerFilmCardTitleClick}
+          />
         );
     }
 
@@ -61,7 +64,10 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/dev-film">
-            <FilmPage activeFilm={mockFilmForTests} />
+            <FilmPage
+              activeFilm={mockFilmForTests}
+              onFilmCardTitleClick={this._handlerFilmCardTitleClick}
+            />
           </Route>
         </Switch>
       </BrowserRouter>

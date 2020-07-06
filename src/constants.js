@@ -3,6 +3,7 @@ export const DEFAULT_TAB = `Overview`;
 export const FILM_COUNT = 40;
 export const RENDERED_FILMS_COUNT = 8;
 export const COUNT_MORE_FILMS = 8;
+export const COUNT_MORE_LIKE_THIS_FILMS = 4;
 
 export const Tabs = [
   `Overview`,

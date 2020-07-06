@@ -140,7 +140,7 @@ const mockFilmForTests = {
   id: 0,
   title: `Revenant`,
   img: `img/revenant.jpg`,
-  genre: `Drama`,
+  genre: `Dramas`,
   rating: `8.5`,
   src: `https://archive.org/download/ElephantsDream/ed_1024_512kb.mp4`,
   releaseDate: 1552915226386,
