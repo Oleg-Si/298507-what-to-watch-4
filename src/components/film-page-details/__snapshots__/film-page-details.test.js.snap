@@ -67,7 +67,7 @@ exports[`Проверяет снепшот компонента FilmPageDetalis 
       <span
         className="movie-card__details-value"
       >
-        Drama
+        Dramas
       </span>
     </p>
     <p
