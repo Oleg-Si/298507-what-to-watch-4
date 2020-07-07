@@ -4,13 +4,8 @@ import FilmCard from '../film-card/film-card.jsx';
 
 const FilmList = (props) => {
   const {films, onFilmCardTitleClick, filmsCount} = props;
-  const filmsForRender = [];
 
-  for (let i = 0; i < filmsCount; i++) {
-    if (films[i]) {
-      filmsForRender.push(films[i]);
-    }
-  }
+  const filmsForRender = films.slice(0, filmsCount);
 
   return (
     <div className="catalog__movies-list">

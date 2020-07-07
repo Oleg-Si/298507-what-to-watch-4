@@ -1,10 +1,11 @@
-import {DEFAULT_GENRE, RENDERED_FILMS_COUNT, COUNT_MORE_FILMS} from '../constants';
+import {DEFAULT_GENRE, RENDERED_FILMS_COUNT, COUNT_MORE_FILMS, DEFAULT_TAB} from '../constants';
 import films, {promoFilmMock, mockFilmsForTests} from '../mock/films';
 import {ActionType} from './action-type';
 import reducer from './reducer';
 
 const initialState = {
   activeGenre: DEFAULT_GENRE,
+  activeTab: DEFAULT_TAB,
   films,
   countFilmsForRender: RENDERED_FILMS_COUNT,
   filteredFilmsByGenre: films,
@@ -76,11 +77,30 @@ describe(`Reducer работает корректно`, () => {
       promoFilmMock
     }, {
       type: ActionType.SHOW_MORE_FILMS,
-      payload: COUNT_MORE_FILMS
+      payload: RENDERED_FILMS_COUNT + COUNT_MORE_FILMS
     })).toEqual({
       activeGenre: DEFAULT_GENRE,
       films,
       countFilmsForRender: RENDERED_FILMS_COUNT + COUNT_MORE_FILMS,
+      filteredFilmsByGenre: films,
+      promoFilmMock
+    });
+  });
+
+  it(`Reducer меняет activeTab на переданный`, () => {
+    expect(reducer({
+      activeGenre: DEFAULT_GENRE,
+      activeTab: DEFAULT_TAB,
+      films,
+      filteredFilmsByGenre: films,
+      promoFilmMock
+    }, {
+      type: ActionType.CHANGE_TAB,
+      payload: `Details`
+    })).toEqual({
+      activeGenre: DEFAULT_GENRE,
+      activeTab: `Details`,
+      films,
       filteredFilmsByGenre: films,
       promoFilmMock
     });

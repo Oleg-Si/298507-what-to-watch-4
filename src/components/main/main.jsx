@@ -168,8 +168,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.filterFilmsByGenre(newGenre));
   },
 
-  onShowMoreClick() {
-    dispatch(ActionCreator.showMoreFilms());
+  onShowMoreClick(filmsCount) {
+    dispatch(ActionCreator.showMoreFilms(filmsCount));
   }
 });
 

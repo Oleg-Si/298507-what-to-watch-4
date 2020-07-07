@@ -28,9 +28,16 @@ describe(`ActionCreator работает корректно`, () => {
   });
 
   it(`showMoreFilms работает корректно`, () => {
-    expect(ActionCreator.showMoreFilms(`All genres`)).toEqual({
+    expect(ActionCreator.showMoreFilms(8)).toEqual({
       type: ActionType.SHOW_MORE_FILMS,
-      payload: COUNT_MORE_FILMS
+      payload: COUNT_MORE_FILMS + 8
+    });
+  });
+
+  it(`filmsPageTabChange устанавливает переданный таб`, () => {
+    expect(ActionCreator.filmsPageTabChange(`Details`)).toEqual({
+      type: ActionType.CHANGE_TAB,
+      payload: `Details`
     });
   });
 });
