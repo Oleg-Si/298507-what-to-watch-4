@@ -19,8 +19,8 @@ it(`Проверяет снепшот компонента GenreFilter`, () => {
   const tree = renderer.create(
       <GenreFilter
         genre={genre}
-        activeGenre={`All genres`}
-        onGenreCilck={() => {}}
+        activeTab={`All genres`}
+        onTabClick={() => {}}
       />
   ).toJSON();
 
