@@ -18,3 +18,8 @@ export const RatingKey = {
   VERY_GOOD: `Very good`,
   AWESOME: `Awesome`
 };
+
+export const Screens = {
+  MAIN: `Main`,
+  FILM_PAGE: `FilmPage`
+};
