@@ -2,7 +2,7 @@ import React from 'react';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import withVideoPlayer from './with-video-player.jsx';
-import {mockFilmForTests} from '../mock/films';
+import {mockFilmForTests} from '../../mock/films';
 
 Enzyme.configure({
   adapter: new Adapter()

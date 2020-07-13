@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import VideoPlayer from './../components/video-player/video-player.jsx';
+import VideoPlayer from './../../components/video-player/video-player.jsx';
 
 const VIDEO_PLAY_TIMEOUT = 1000; // ms
 
