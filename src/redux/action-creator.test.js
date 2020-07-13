@@ -1,6 +1,6 @@
 import {ActionCreator} from './action-creator';
 import {ActionType} from './action-type';
-import films from './../mock/films';
+import films, {mockFilmForTests} from './../mock/films';
 import {COUNT_MORE_FILMS} from '../constants';
 
 const filteredFilms = films.filter((el) => el.genre === `Horror`);
@@ -38,6 +38,13 @@ describe(`ActionCreator работает корректно`, () => {
     expect(ActionCreator.filmsPageTabChange(`Details`)).toEqual({
       type: ActionType.CHANGE_TAB,
       payload: `Details`
+    });
+  });
+
+  it(`selectsFilm записывает выбранный фильм`, () => {
+    expect(ActionCreator.selectsFilm(mockFilmForTests)).toEqual({
+      type: ActionType.SELECTS_FILM,
+      payload: mockFilmForTests,
     });
   });
 });
