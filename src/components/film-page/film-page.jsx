@@ -15,17 +15,17 @@ const FilmPage = (props) => {
 
   const getFilmInfo = () => {
     switch (activeTab) {
-      case `Overview`:
+      case Tabs.OVERVIEW:
         return <FilmPageOverview
           filmInfo={filmInfo}
         />;
 
-      case `Details`:
+      case Tabs.DETAILS:
         return <FilmPageDetalis
           filmInfo={filmInfo}
         />;
 
-      case `Reviews`:
+      case Tabs.REVIEWS:
         return <FilmPageReviews
           filmInfo={filmInfo}
         />;
@@ -107,8 +107,8 @@ const FilmPage = (props) => {
               <nav className="movie-nav movie-card__nav">
 
                 <TabList
-                  tabs={Tabs}
-                  activeTab={activeTab}
+                  tabs={Object.values(Tabs)}
+                  activeTab={Tabs.OVERVIEW}
                   onTabClick={onTabClick}
                 />
 

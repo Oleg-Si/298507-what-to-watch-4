@@ -94,9 +94,9 @@ const Main = (props) => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <GenreFilter
-            genre={genre}
-            activeGenre={activeGenre}
-            onGenreCilck={onGenreCilck}
+            genre={Array.from(genre)}
+            activeTab={activeGenre}
+            onTabClick={onGenreCilck}
           />
 
           <FilmList

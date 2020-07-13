@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import withActiveTab from '../../hocs/with-active-tab/with-active-tab.jsx';
 
 const TabList = (props) => {
   const {tabs, activeTab, onTabClick} = props;
@@ -24,4 +25,5 @@ TabList.propTypes = {
   onTabClick: PropTypes.func.isRequired
 };
 
-export default TabList;
+export {TabList};
+export default withActiveTab(TabList);
