@@ -5,50 +5,27 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import FilmPage from '../film-page/film-page.jsx';
 import {connect} from 'react-redux';
 import {mockFilmForTests} from '../../mock/films.js';
-
-const Screens = {
-  MAIN: `Main`,
-  FILM_PAGE: `FilmPage`
-};
+import {ActionCreator} from './../../redux/action-creator';
+import {Screens} from '../../constants.js';
 
 class App extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeScreen: Screens.MAIN,
-      activeFilm: {}
-    };
-
-    this._handlerFilmCardTitleClick = this._handlerFilmCardTitleClick.bind(this);
-  }
-
-  _handlerFilmCardTitleClick(film) {
-    // Клик по заголовку карточки фильма
-    this.setState({
-      activeScreen: Screens.FILM_PAGE,
-      activeFilm: film
-    });
-  }
-
   _renderApp() {
-    const {promoFilmMock} = this.props;
-    const screen = this.state.activeScreen;
+    const {promoFilmMock, screen, onFilmCardTitleClick, activeFilm} = this.props;
 
     switch (screen) {
       case Screens.MAIN:
         return (
           <Main
             promoFilmMock={promoFilmMock}
-            onFilmCardTitleClick={this._handlerFilmCardTitleClick}
+            onFilmCardTitleClick={onFilmCardTitleClick}
           />
         );
 
       case Screens.FILM_PAGE:
         return (
           <FilmPage
-            activeFilm={this.state.activeFilm}
-            onFilmCardTitleClick={this._handlerFilmCardTitleClick}
+            activeFilm={activeFilm}
+            onFilmCardTitleClick={onFilmCardTitleClick}
           />
         );
     }
@@ -57,6 +34,8 @@ class App extends PureComponent {
   }
 
   render() {
+    const {onFilmCardTitleClick} = this.props;
+
     return (
       <BrowserRouter>
         <Switch>
@@ -66,7 +45,7 @@ class App extends PureComponent {
           <Route exact path="/dev-film">
             <FilmPage
               activeFilm={mockFilmForTests}
-              onFilmCardTitleClick={this._handlerFilmCardTitleClick}
+              onFilmCardTitleClick={onFilmCardTitleClick}
             />
           </Route>
         </Switch>
@@ -80,12 +59,23 @@ App.propTypes = {
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired
-  })
+  }),
+  screen: PropTypes.string.isRequired,
+  onFilmCardTitleClick: PropTypes.func.isRequired,
+  activeFilm: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  promoFilmMock: state.promoFilmMock
+  promoFilmMock: state.promoFilmMock,
+  screen: state.currentScreen,
+  activeFilm: state.selectedFilm
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onFilmCardTitleClick(film) {
+    dispatch(ActionCreator.selectsFilm(film));
+  }
 });
 
 export {App};
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

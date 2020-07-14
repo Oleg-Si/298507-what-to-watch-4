@@ -4,6 +4,7 @@ import {App} from './app.jsx';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {mockFilmsForTests} from '../../mock/films.js';
+import {Screens} from '../../constants.js';
 
 const mockStore = configureStore([]);
 
@@ -25,6 +26,9 @@ it(`Проверяет снепшот компонента App`, () => {
       <Provider store={store}>
         <App
           promoFilmMock={promoFilmMock}
+          screen={Screens.MAIN}
+          activeFilm={{}}
+          onFilmCardTitleClick={() => {}}
         />
       </Provider>, {
         createNodeMock: () => {

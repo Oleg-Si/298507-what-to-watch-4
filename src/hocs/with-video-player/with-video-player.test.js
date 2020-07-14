@@ -1,10 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import withVideoPlayer from './with-video-player.jsx';
-import {mockFilmForTests} from '../mock/films.js';
+import {mockFilmForTests} from '../../mock/films.js';
+import PropTypes from 'prop-types';
 
 const Component = (props) => {
-  // eslint-disable-next-line
   const {children} = props;
 
   return (
@@ -12,6 +12,10 @@ const Component = (props) => {
       {children}
     </div>
   );
+};
+
+Component.propTypes = {
+  children: PropTypes.node.isRequired
 };
 
 const WrappedComponent = withVideoPlayer(Component);

@@ -6,7 +6,7 @@ const FilmPageDetalis = (props) => {
   const {filmInfo} = props;
 
   const getDurationFromMins = (min) => {
-    return Math.trunc(min / 60) + `h` + ` ` + (min % 60) + `m`;
+    return `${Math.trunc(min / 60)}h ${(min % 60)}m`;
   };
 
   return (

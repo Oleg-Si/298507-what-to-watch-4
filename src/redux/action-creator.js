@@ -32,4 +32,9 @@ export const ActionCreator = {
     type: ActionType.CHANGE_TAB,
     payload: newTab
   }),
+
+  selectsFilm: (film) => ({
+    type: ActionType.SELECTS_FILM,
+    payload: film
+  })
 };

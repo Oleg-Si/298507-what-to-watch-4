@@ -2,13 +2,13 @@ import {getRandomInt, getRandomArrayItems} from './../utils';
 import {FILM_COUNT} from '../constants';
 
 const getFilms = (count) => {
-  const allFilms = [];
+  const allFilms = new Array(count).fill(``);
 
-  for (let i = 0; i < count; i++) {
+  allFilms.forEach((el, i, arr) => {
     const element = getMockFilm();
     element.id = i;
-    allFilms.push(element);
-  }
+    arr[i] = element;
+  });
 
   return allFilms;
 };
@@ -92,16 +92,7 @@ const getMockFilm = () => ({
   reviews: getMockReviews(getRandomInt(3, 7))
 });
 
-const getMockReviews = (count) => {
-  const allReviews = [];
-
-  for (let i = 0; i < count; i++) {
-    const element = getReviews();
-    allReviews.push(element);
-  }
-
-  return allReviews;
-};
+const getMockReviews = (count) => new Array(count).fill(``).map(() => getReviews());
 
 const getReviews = () => ({
   author: getRandomArrayItems([

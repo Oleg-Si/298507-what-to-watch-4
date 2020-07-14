@@ -5,11 +5,11 @@ export const RENDERED_FILMS_COUNT = 8;
 export const COUNT_MORE_FILMS = 8;
 export const COUNT_MORE_LIKE_THIS_FILMS = 4;
 
-export const Tabs = [
-  `Overview`,
-  `Details`,
-  `Reviews`
-];
+export const Tabs = {
+  OVERVIEW: `Overview`,
+  DETAILS: `Details`,
+  REVIEWS: `Reviews`
+};
 
 export const RatingKey = {
   BAD: `Bad`,
@@ -17,4 +17,9 @@ export const RatingKey = {
   GOOD: `Good`,
   VERY_GOOD: `Very good`,
   AWESOME: `Awesome`
+};
+
+export const Screens = {
+  MAIN: `Main`,
+  FILM_PAGE: `FilmPage`
 };
