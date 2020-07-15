@@ -7,7 +7,7 @@ const Operations = {
       .then((response) => {
         let formattedData;
 
-        if (typeof response.data === Array) {
+        if (Array.isArray(response.data)) {
           formattedData = response.data.map((el) => createFilm(el));
         } else {
           formattedData = response.data;
