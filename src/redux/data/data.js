@@ -14,10 +14,12 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.LOAD_FILMS:
       return extend(state, {
-        films: action.payload.films,
-        filteredFilmsByGenre: action.payload.films,
-        promoFilm: action.payload.promoFilm
+        films: action.payload,
+        filteredFilmsByGenre: action.payload
       });
+
+    case ActionType.LOAD_PROMO_FILM:
+      return extend(state, {promoFilm: action.payload});
   }
 
   return state;

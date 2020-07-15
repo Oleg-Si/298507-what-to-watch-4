@@ -6,6 +6,8 @@ import {mockFilmsForTests} from '../../mock/films.js';
 const promoFilm = {
   title: `The Grand Budapest Hotel`,
   genre: `Drama`,
+  bgImg: `img/bg-the-grand-budapest-hotel.jpg`,
+  poster: `img/the-grand-budapest-hotel-poster.jpg`,
   releaseDate: 2014
 };
 

@@ -53,7 +53,7 @@ const Main = (props) => {
     <React.Fragment>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+          <img src={promoFilm.bgImg} alt={promoFilm.title} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -75,7 +75,7 @@ const Main = (props) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={promoFilm.poster} alt={promoFilm.title} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
@@ -152,7 +152,9 @@ Main.propTypes = {
   promoFilm: PropTypes.shape({
     title: PropTypes.string,
     genre: PropTypes.string,
-    releaseDate: PropTypes.number
+    releaseDate: PropTypes.number,
+    bgImg: PropTypes.string,
+    poster: PropTypes.string,
   }),
   films: PropTypes.arrayOf(
       PropTypes.shape({
