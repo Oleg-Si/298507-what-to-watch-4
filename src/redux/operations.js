@@ -1,10 +1,13 @@
 import {ActionCreator} from './action-creator';
+import {createFilm} from '../adapter';
 
 const Operations = {
   loadFilms: () => (dispatch, getState, api) => {
     api.get(`/films`)
       .then((response) => {
-        dispatch(ActionCreator.loadFilms(response.data));
+        const formattedData = response.data.map((el) => createFilm(el));
+
+        dispatch(ActionCreator.loadFilms(formattedData));
       });
   }
 };

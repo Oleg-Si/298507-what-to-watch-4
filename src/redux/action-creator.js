@@ -1,6 +1,5 @@
 import {ActionType} from './action-type';
-import {DEFAULT_GENRE, COUNT_MORE_FILMS} from './../constants';
-// import films from './../mock/films';
+import {COUNT_MORE_FILMS} from './../constants';
 
 export const ActionCreator = {
   genreFilterChange: (newGenre) => ({
@@ -8,20 +7,10 @@ export const ActionCreator = {
     payload: newGenre
   }),
 
-  filterFilmsByGenre: (newGenre) => {
-    let filteredFilms = null;
-
-    if (newGenre === DEFAULT_GENRE) {
-      filteredFilms = films;
-    } else {
-      filteredFilms = films.filter((el) => el.genre === newGenre);
-    }
-
-    return ({
-      type: ActionType.FILTER_FILMS_BY_GENRE,
-      payload: filteredFilms
-    });
-  },
+  filterFilmsByGenre: () => ({
+    type: ActionType.FILTER_FILMS_BY_GENRE,
+    payload: null
+  }),
 
   showMoreFilms: (filmsCount) => ({
     type: ActionType.SHOW_MORE_FILMS,

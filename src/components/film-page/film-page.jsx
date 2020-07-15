@@ -46,10 +46,10 @@ const FilmPage = (props) => {
 
   return (
     <React.Fragment>
-      <section className="movie-card movie-card--full">
+      <section className="movie-card movie-card--full" style={{backgroundColor: filmInfo.bgColor}}>
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+            <img src={filmInfo.bgImg} alt={filmInfo.title} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -75,13 +75,16 @@ const FilmPage = (props) => {
               <h2 className="movie-card__title">{filmInfo.title}</h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{filmInfo.genre}</span>
-                <span className="movie-card__year">{new Date(filmInfo.releaseDate).getFullYear()}</span>
+                <span className="movie-card__year">{filmInfo.releaseDate}</span>
               </p>
 
               <div className="movie-card__buttons">
                 <button className="btn btn--play movie-card__button" type="button">
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
+                    <symbol id="play-s" viewBox="0 0 19 19">
+                      <path fillRule="evenodd" clipRule="evenodd" d="M0 0L19 9.5L0 19V0Z" fill="#EEE5B5" />
+                    </symbol>
                   </svg>
                   <span>Play</span>
                 </button>
@@ -100,7 +103,7 @@ const FilmPage = (props) => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={filmInfo.poster} alt={filmInfo.title} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
@@ -143,7 +146,7 @@ const FilmPage = (props) => {
           </div>
 
           <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
+            <p>© 2020 What to watch Ltd.</p>
           </div>
         </footer>
       </div>
@@ -156,16 +159,14 @@ FilmPage.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    rating: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
     releaseDate: PropTypes.number.isRequired,
     ratingCount: PropTypes.number.isRequired,
-    description: PropTypes.oneOfType([
-      PropTypes.arrayOf(
-          PropTypes.string
-      ),
-      PropTypes.string
-    ]).isRequired,
+    description: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
+    bgImg: PropTypes.string.isRequired,
+    bgColor: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(
         PropTypes.string
     ).isRequired

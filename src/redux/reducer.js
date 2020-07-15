@@ -1,14 +1,15 @@
 import {DEFAULT_GENRE, RENDERED_FILMS_COUNT, DEFAULT_TAB, Screens} from '../constants';
-import films, {promoFilmMock} from '../mock/films';
+import {promoFilmMock} from '../mock/films';
 import {extend} from '../utils';
 import {ActionType} from './action-type';
+import {getFilmsByGenre} from './selectors';
 
 const initialState = {
   activeGenre: DEFAULT_GENRE,
   activeTab: DEFAULT_TAB,
-  films,
+  films: [],
   countFilmsForRender: RENDERED_FILMS_COUNT,
-  filteredFilmsByGenre: films,
+  filteredFilmsByGenre: [],
   promoFilmMock,
   currentScreen: Screens.MAIN,
   selectedFilm: {}
@@ -20,7 +21,7 @@ const reducer = (state = initialState, action) => {
       return extend(state, {activeGenre: action.payload});
 
     case ActionType.FILTER_FILMS_BY_GENRE:
-      return extend(state, {filteredFilmsByGenre: action.payload});
+      return extend(state, {filteredFilmsByGenre: getFilmsByGenre(state)});
 
     case ActionType.SHOW_MORE_FILMS:
       return extend(state, {countFilmsForRender: action.payload});
@@ -32,6 +33,12 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         currentScreen: Screens.FILM_PAGE,
         selectedFilm: action.payload
+      });
+
+    case ActionType.LOAD_FILMS:
+      return extend(state, {
+        films: action.payload,
+        filteredFilmsByGenre: action.payload
       });
   }
 

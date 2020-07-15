@@ -21,7 +21,7 @@ class VideoPlayer extends PureComponent {
     video.poster = film.img;
     video.controls = controls;
     video.muted = isMuted;
-    video.src = film.src;
+    video.src = film.previewVideoLink;
   }
 
   componentDidUpdate() {
@@ -56,7 +56,7 @@ VideoPlayer.propTypes = {
   film: PropTypes.shape({
     title: PropTypes.string.isRequired,
     img: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired
+    previewVideoLink: PropTypes.string.isRequired
   }),
   controls: PropTypes.bool.isRequired,
   isMuted: PropTypes.bool.isRequired,
