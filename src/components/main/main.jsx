@@ -5,10 +5,11 @@ import GenreFilter from '../genre-filter/genre-filter.jsx';
 import {connect} from 'react-redux';
 import dataActionCreator from '../../redux/data/action-creator';
 import appActionCreator from '../../redux/app/action-creator';
-import {DEFAULT_GENRE} from './../../constants';
+import {DEFAULT_GENRE, AuthorizationStatus} from './../../constants';
 import ShowMore from '../show-more/show-more.jsx';
 import {getPromoFilm, getFilteredFilmsByGenre, getFilms} from './../../redux/data/selectors';
 import {getActiveGenre, getCountFilmsForRender} from './../../redux/app/selectors';
+import {getAuthorizationStatus} from './../../redux/user/selectors';
 
 const Main = (props) => {
   const {
@@ -19,7 +20,8 @@ const Main = (props) => {
     activeGenre,
     onFilmCardTitleClick,
     filmsCount,
-    onShowMoreClick
+    onShowMoreClick,
+    authorizationStatus
   } = props;
 
   const getAllgenre = (data) => {
@@ -34,6 +36,18 @@ const Main = (props) => {
   };
 
   const genre = getAllgenre(films);
+
+  const getAuthStatusMarkup = () => {
+    if (authorizationStatus === AuthorizationStatus.AUTH) {
+      return (
+        <div className="user-block__avatar">
+          <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+        </div>
+      );
+    } else {
+      return <a href="sign-in.html" className="user-block__link">Sign in</a>;
+    }
+  };
 
   return (
     <React.Fragment>
@@ -54,9 +68,7 @@ const Main = (props) => {
           </div>
 
           <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
+            {getAuthStatusMarkup()}
           </div>
         </header>
 
@@ -158,7 +170,8 @@ Main.propTypes = {
   onGenreCilck: PropTypes.func.isRequired,
   activeGenre: PropTypes.string.isRequired,
   filmsCount: PropTypes.number.isRequired,
-  onShowMoreClick: PropTypes.func.isRequired
+  onShowMoreClick: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -166,7 +179,8 @@ const mapStateToProps = (state) => ({
   films: getFilms(state),
   promoFilm: getPromoFilm(state),
   filmsCount: getCountFilmsForRender(state),
-  filteredFilms: getFilteredFilmsByGenre(state)
+  filteredFilms: getFilteredFilmsByGenre(state),
+  authorizationStatus: getAuthorizationStatus(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

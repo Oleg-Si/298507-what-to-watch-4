@@ -10,6 +10,7 @@ import createAPI from './api';
 import dataOperations from './redux/data/operations';
 import userActionCreator from './redux/user/action-creator';
 import {AuthorizationStatus} from './constants';
+import userOperations from './redux/user/operations';
 
 const onUnauthorized = () => {
   store.dispatch(userActionCreator.requiredAuthorization(AuthorizationStatus.NO_AUTH));
@@ -22,6 +23,7 @@ const store = createStore(
     composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api)))
 );
 
+store.dispatch(userOperations.requiredAuthorization());
 store.dispatch(dataOperations.loadFilms());
 
 ReactDOM.render(
