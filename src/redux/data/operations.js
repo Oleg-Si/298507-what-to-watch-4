@@ -10,10 +10,19 @@ const Operations = {
         if (Array.isArray(response.data)) {
           formattedData = response.data.map((el) => createFilm(el));
         } else {
-          formattedData = response.data;
+          formattedData = createFilm(response.data);
         }
 
         dispatch(ActionCreator.loadFilms(formattedData));
+      });
+  },
+
+  loadPromoFilm: () => (dispatch, getState, api) => {
+    return api.get(`/films/promo`)
+      .then((response) => {
+        const formattedData = createFilm(response.data);
+
+        dispatch(ActionCreator.loadPromoFilm(formattedData));
       });
   }
 };
