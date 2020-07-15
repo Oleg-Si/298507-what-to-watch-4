@@ -131,13 +131,16 @@ const mockFilmForTests = {
   id: 0,
   title: `Revenant`,
   img: `img/revenant.jpg`,
-  genre: `Dramas`,
-  rating: `8.5`,
+  genre: `Drama`,
+  rating: 8.5,
+  bgImg: `https://htmlacademy-react-3.appspot.com/wtw/static/film/background/Revenant.jpg`,
+  bgColor: `rgb(146, 145, 139)`,
   src: `https://archive.org/download/ElephantsDream/ed_1024_512kb.mp4`,
-  releaseDate: 1552915226386,
+  releaseDate: 2015,
+  poster: `https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Revenant.jpg`,
   runTime: 5084,
   ratingCount: 148,
-  description: [`In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave&aposs friend and protege.`, `Gustave prides himself on providing first-class service to the hotel&apos;s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave&aposs lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`],
+  description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave&aposs friend and protege.`,
   director: `Bill Murray`,
   starring: [`Edward Norton`, `Jude Law`, `Willem Dafoe and other`, `Wes Andreson`],
   reviews: [
@@ -168,30 +171,30 @@ const mockFilmsForTests = [
     title: `Aviator`,
     img: `img/aviator.jpg`,
     genre: `Comedies`,
-    rating: `8.1`,
+    rating: 8.1,
     src: `https://archive.org/download/ElephantsDream/ed_1024_512kb.mp4`,
-    releaseDate: 1552905226386,
+    releaseDate: 2015,
     runTime: 6104,
     ratingCount: 198,
-    description: [`In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave&aposs friend and protege.`],
+    description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave&aposs friend and protege.`,
     director: `Bill Murray`,
     starring: [`Edward Norton`, `Jude Law`, `Willem Dafoe and other`, `Wes Andreson`],
     reviews: [
       {
         author: `Edward Norton`,
-        rating: `3.5`,
+        rating: 3.5,
         date: 1500793355882,
         comment: `It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.`
       },
       {
         author: `Willem Dafoe`,
-        rating: `6.7`,
+        rating: 6.7,
         date: 1302908542303,
         comment: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes I wish I could take back.`
       },
       {
         author: `Ralph Fiennes`,
-        rating: `8.9`,
+        rating: 8.9,
         date: 1444604462862,
         comment: `The mannered, madcap proceedings are often delightful, occasionally silly, and here and there, gruesome and/or heartbreaking.`
       }
@@ -202,29 +205,29 @@ const mockFilmsForTests = [
     title: `Macbeth`,
     img: `img/macbeth.jpg`,
     genre: `Horror`,
-    rating: `3.6`,
+    rating: 3.6,
     src: `https://interactive-examples.mdn.mozilla.net/media/examples/flower.mp4`,
-    releaseDate: 1552005226386,
+    releaseDate: 2014,
     ratingCount: 248,
-    description: [`Gustave prides himself on providing first-class service to the hotel&apos;s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave&aposs lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`],
+    description: `Gustave prides himself on providing first-class service to the hotel&apos;s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave&aposs lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`,
     director: `Edward Norton`,
     starring: [`Jude Law`, `Willem Dafoe and other`, `Wes Andreson`],
     reviews: [
       {
         author: `Edward Norton`,
-        rating: `3.5`,
+        rating: 3.5,
         date: 1500793355882,
         comment: `It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.`
       },
       {
         author: `Willem Dafoe`,
-        rating: `6.7`,
+        rating: 6.7,
         date: 1302908542303,
         comment: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes I wish I could take back.`
       },
       {
         author: `Ralph Fiennes`,
-        rating: `8.9`,
+        rating: 8.9,
         date: 1444604462862,
         comment: `The mannered, madcap proceedings are often delightful, occasionally silly, and here and there, gruesome and/or heartbreaking.`
       }
@@ -235,30 +238,30 @@ const mockFilmsForTests = [
     title: `Snatch`,
     img: `img/snatch.jpg`,
     genre: `Documentary`,
-    rating: `2.5`,
+    rating: 2.5,
     src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-    releaseDate: 1552518826386,
+    releaseDate: 2008,
     runTime: 7100,
     ratingCount: 850,
-    description: [`In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave&aposs friend and protege.`, `Gustave prides himself on providing first-class, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`],
+    description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave&aposs friend and protege.`,
     director: `Jude Law`,
     starring: [`Edward Norton`, `Willem Dafoe and other`, `Wes Andreson`],
     reviews: [
       {
         author: `Edward Norton`,
-        rating: `3.5`,
+        rating: 3.5,
         date: 1500793355882,
         comment: `It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.`
       },
       {
         author: `Willem Dafoe`,
-        rating: `6.7`,
+        rating: 6.7,
         date: 1302908542303,
         comment: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes I wish I could take back.`
       },
       {
         author: `Ralph Fiennes`,
-        rating: `8.9`,
+        rating: 8.9,
         date: 1444604462862,
         comment: `The mannered, madcap proceedings are often delightful, occasionally silly, and here and there, gruesome and/or heartbreaking.`
       }

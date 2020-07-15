@@ -1,15 +1,10 @@
-import {ActionType} from './action-type';
-import {COUNT_MORE_FILMS} from './../constants';
+import ActionType from './action-type';
+import {COUNT_MORE_FILMS} from './../../constants';
 
-export const ActionCreator = {
+const ActionCreator = {
   genreFilterChange: (newGenre) => ({
     type: ActionType.CHANGE_GENRE,
     payload: newGenre
-  }),
-
-  filterFilmsByGenre: () => ({
-    type: ActionType.FILTER_FILMS_BY_GENRE,
-    payload: null
   }),
 
   showMoreFilms: (filmsCount) => ({
@@ -25,10 +20,7 @@ export const ActionCreator = {
   selectsFilm: (film) => ({
     type: ActionType.SELECTS_FILM,
     payload: film
-  }),
-
-  loadFilms: (films) => ({
-    type: ActionType.LOAD_FILMS,
-    payload: films
   })
 };
+
+export default ActionCreator;

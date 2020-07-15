@@ -5,18 +5,18 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import FilmPage from '../film-page/film-page.jsx';
 import {connect} from 'react-redux';
 import {mockFilmForTests} from '../../mock/films.js';
-import {ActionCreator} from './../../redux/action-creator';
+import appActionCreator from './../../redux/app/action-creator';
 import {Screens} from '../../constants.js';
+import {getCurrentScreen, getSelectedFilm} from '../../redux/app/selectors.js';
 
 class App extends PureComponent {
   _renderApp() {
-    const {promoFilmMock, screen, onFilmCardTitleClick, activeFilm} = this.props;
+    const {screen, onFilmCardTitleClick, activeFilm} = this.props;
 
     switch (screen) {
       case Screens.MAIN:
         return (
           <Main
-            promoFilmMock={promoFilmMock}
             onFilmCardTitleClick={onFilmCardTitleClick}
           />
         );
@@ -55,25 +55,19 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  promoFilmMock: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired
-  }),
   screen: PropTypes.string.isRequired,
   onFilmCardTitleClick: PropTypes.func.isRequired,
   activeFilm: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  promoFilmMock: state.promoFilmMock,
-  screen: state.currentScreen,
-  activeFilm: state.selectedFilm
+  screen: getCurrentScreen(state),
+  activeFilm: getSelectedFilm(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onFilmCardTitleClick(film) {
-    dispatch(ActionCreator.selectsFilm(film));
+    dispatch(appActionCreator.selectsFilm(film));
   }
 });
 

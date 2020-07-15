@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import FilmList from './../film-list/film-list.jsx';
 import GenreFilter from '../genre-filter/genre-filter.jsx';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../redux/action-creator';
+import dataActionCreator from '../../redux/data/action-creator';
+import appActionCreator from '../../redux/app/action-creator';
 import {DEFAULT_GENRE} from './../../constants';
 import ShowMore from '../show-more/show-more.jsx';
+import {getPromoFilm, getFilteredFilmsByGenre, getFilms} from './../../redux/data/selectors';
+import {getActiveGenre, getCountFilmsForRender} from './../../redux/app/selectors';
 
 const Main = (props) => {
   const {
-    promoFilmMock,
+    promoFilm,
     films,
     filteredFilms,
     onGenreCilck,
@@ -64,10 +67,10 @@ const Main = (props) => {
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{promoFilmMock.title}</h2>
+              <h2 className="movie-card__title">{promoFilm.title}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{promoFilmMock.genre}</span>
-                <span className="movie-card__year">{promoFilmMock.date}</span>
+                <span className="movie-card__genre">{promoFilm.genre}</span>
+                <span className="movie-card__year">{promoFilm.releaseDate}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -134,10 +137,10 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  promoFilmMock: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired
+  promoFilm: PropTypes.shape({
+    title: PropTypes.string,
+    genre: PropTypes.string,
+    releaseDate: PropTypes.number
   }),
   films: PropTypes.arrayOf(
       PropTypes.shape({
@@ -159,20 +162,21 @@ Main.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  activeGenre: state.activeGenre,
-  films: state.films,
-  filmsCount: state.countFilmsForRender,
-  filteredFilms: state.filteredFilmsByGenre
+  activeGenre: getActiveGenre(state),
+  films: getFilms(state),
+  promoFilm: getPromoFilm(state),
+  filmsCount: getCountFilmsForRender(state),
+  filteredFilms: getFilteredFilmsByGenre(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onGenreCilck(newGenre) {
-    dispatch(ActionCreator.genreFilterChange(newGenre));
-    dispatch(ActionCreator.filterFilmsByGenre(newGenre));
+    dispatch(appActionCreator.genreFilterChange(newGenre));
+    dispatch(dataActionCreator.filterFilmsByGenre());
   },
 
   onShowMoreClick(filmsCount) {
-    dispatch(ActionCreator.showMoreFilms(filmsCount));
+    dispatch(appActionCreator.showMoreFilms(filmsCount));
   }
 });
 

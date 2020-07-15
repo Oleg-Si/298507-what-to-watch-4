@@ -7,7 +7,7 @@ import reducer from './redux/reducer';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import createAPI from './api';
-import Operations from './redux/operations';
+import dataOperations from './redux/data/operations';
 
 const api = createAPI();
 
@@ -16,7 +16,7 @@ const store = createStore(
     composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api)))
 );
 
-store.dispatch(Operations.loadFilms());
+store.dispatch(dataOperations.loadFilms());
 
 ReactDOM.render(
     <Provider store={store}>

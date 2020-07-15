@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import TabList from '../tab-list/tab-list.jsx';
 import {Tabs, COUNT_MORE_LIKE_THIS_FILMS} from '../../constants';
 import {connect} from 'react-redux';
-import {ActionCreator} from './../../redux/action-creator';
+import appActionCreator from './../../redux/app/action-creator';
 import FilmPageOverview from './../film-page-overview/film-page-overview.jsx';
 import FilmPageDetalis from '../film-page-details/film-page-details.jsx';
 import FilmPageReviews from '../film-page-reviews/film-page-reviews.jsx';
 import FilmList from './../film-list/film-list.jsx';
+import {getActiveTab} from '../../redux/app/selectors.js';
+import {getFilms} from './../../redux/data/selectors';
 
 const FilmPage = (props) => {
   const filmInfo = props.activeFilm;
@@ -183,13 +185,13 @@ FilmPage.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  activeTab: state.activeTab,
-  films: state.films
+  activeTab: getActiveTab(state),
+  films: getFilms(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onTabClick(newTab) {
-    dispatch(ActionCreator.filmsPageTabChange(newTab));
+    dispatch(appActionCreator.filmsPageTabChange(newTab));
   }
 });
 
