@@ -10,7 +10,7 @@ const ActionCreator = {
     type: ActionType.LOAD_FILMS,
     payload: {
       films,
-      promoFilm: films[5]
+      promoFilm: films[0]
     }
   })
 };

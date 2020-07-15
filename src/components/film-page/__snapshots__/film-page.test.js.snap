@@ -4,6 +4,11 @@ exports[`Проверяет снепшот компонента FilmPage 1`] = `
 Array [
   <section
     className="movie-card movie-card--full"
+    style={
+      Object {
+        "backgroundColor": "rgb(146, 145, 139)",
+      }
+    }
   >
     <div
       className="movie-card__hero"
@@ -12,8 +17,8 @@ Array [
         className="movie-card__bg"
       >
         <img
-          alt="The Grand Budapest Hotel"
-          src="img/bg-the-grand-budapest-hotel.jpg"
+          alt="Revenant"
+          src="https://htmlacademy-react-3.appspot.com/wtw/static/film/background/Revenant.jpg"
         />
       </div>
       <h1
@@ -80,12 +85,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Dramas
+              Drama
             </span>
             <span
               className="movie-card__year"
             >
-              2019
+              2015
             </span>
           </p>
           <div
@@ -103,6 +108,17 @@ Array [
                 <use
                   xlinkHref="#play-s"
                 />
+                <symbol
+                  id="play-s"
+                  viewBox="0 0 19 19"
+                >
+                  <path
+                    clipRule="evenodd"
+                    d="M0 0L19 9.5L0 19V0Z"
+                    fill="#EEE5B5"
+                    fillRule="evenodd"
+                  />
+                </symbol>
               </svg>
               <span>
                 Play
@@ -145,9 +161,9 @@ Array [
           className="movie-card__poster movie-card__poster--big"
         >
           <img
-            alt="The Grand Budapest Hotel poster"
+            alt="Revenant"
             height="327"
-            src="img/the-grand-budapest-hotel-poster.jpg"
+            src="https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Revenant.jpg"
             width="218"
           />
         </div>
@@ -225,9 +241,6 @@ Array [
             <p>
               In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave&aposs friend and protege.
             </p>
-            <p>
-              Gustave prides himself on providing first-class service to the hotel&apos;s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave&aposs lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.
-            </p>
             <p
               className="movie-card__director"
             >
@@ -295,7 +308,7 @@ Array [
         className="copyright"
       >
         <p>
-          © 2019 What to watch Ltd.
+          © 2020 What to watch Ltd.
         </p>
       </div>
     </footer>

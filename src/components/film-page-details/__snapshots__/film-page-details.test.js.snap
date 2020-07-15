@@ -53,7 +53,7 @@ exports[`Проверяет снепшот компонента FilmPageDetalis 
       <span
         className="movie-card__details-value"
       >
-        1h 25m
+        1h 24m
       </span>
     </p>
     <p
@@ -67,7 +67,7 @@ exports[`Проверяет снепшот компонента FilmPageDetalis 
       <span
         className="movie-card__details-value"
       >
-        Dramas
+        Drama
       </span>
     </p>
     <p
@@ -81,7 +81,7 @@ exports[`Проверяет снепшот компонента FilmPageDetalis 
       <span
         className="movie-card__details-value"
       >
-        2019
+        2015
       </span>
     </p>
   </div>

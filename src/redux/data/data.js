@@ -4,7 +4,7 @@ import {extend} from './../../utils';
 const initialState = {
   films: [],
   filteredFilmsByGenre: [],
-  promoFilm: {},
+  promoFilm: {}
 };
 
 const reducer = (state = initialState, action) => {

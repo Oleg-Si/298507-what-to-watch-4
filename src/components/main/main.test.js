@@ -3,16 +3,16 @@ import renderer from 'react-test-renderer';
 import {Main} from './main.jsx';
 import {mockFilmsForTests} from '../../mock/films.js';
 
-const promoFilmMock = {
+const promoFilm = {
   title: `The Grand Budapest Hotel`,
   genre: `Drama`,
-  date: `2014`
+  releaseDate: 2014
 };
 
 it(`Проверяет снепшот компонента Main`, () => {
   const tree = renderer.create(
       <Main
-        promoFilmMock={promoFilmMock}
+        promoFilm={promoFilm}
         films={mockFilmsForTests}
         activeGenre={`All genres`}
         filteredFilms={mockFilmsForTests}
