@@ -2,25 +2,15 @@ import ActionCreator from './action-creator';
 import ActionType from './action-type';
 import films from './../../mock/films';
 
-// const filteredFilms = films.filter((el) => el.genre === `Horror`);
-
 describe(`ActionCreator работает корректно`, () => {
-  /*
-  it(`filterFilmsByGenre сортирует фильмы по переданному жанру`, () => {
-    expect(ActionCreator.filterFilmsByGenre()).toEqual({
-      type: ActionType.FILTER_FILMS_BY_GENRE,
-      payload: filteredFilms
-    });
-  });
-
-  it(`filterFilmsByGenre правильно возвращает категорию "Все жанры"`, () => {
-    expect(ActionCreator.filterFilmsByGenre(`All genres`)).toEqual({
+  it(`filterFilmsByGenre возвращает отсортированные фильмы`, () => {
+    expect(ActionCreator.filterFilmsByGenre(films)).toEqual({
       type: ActionType.FILTER_FILMS_BY_GENRE,
       payload: films
     });
   });
-  */
-  it(`filterFilmsByGenre сортирует фильмы по переданному жанру`, () => {
+
+  it(`filterFilmsByGenre возвращает загруженные фильмы`, () => {
     expect(ActionCreator.loadFilms(films)).toEqual({
       type: ActionType.LOAD_FILMS,
       payload: {
