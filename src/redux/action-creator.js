@@ -1,6 +1,6 @@
 import {ActionType} from './action-type';
 import {DEFAULT_GENRE, COUNT_MORE_FILMS} from './../constants';
-import films from './../mock/films';
+// import films from './../mock/films';
 
 export const ActionCreator = {
   genreFilterChange: (newGenre) => ({
@@ -36,5 +36,10 @@ export const ActionCreator = {
   selectsFilm: (film) => ({
     type: ActionType.SELECTS_FILM,
     payload: film
+  }),
+
+  loadFilms: (films) => ({
+    type: ActionType.LOAD_FILMS,
+    payload: films
   })
 };
