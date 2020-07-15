@@ -2,7 +2,7 @@ import MockAdapter from 'axios-mock-adapter';
 import createAPI from '../../api';
 import ActionType from './action-type';
 import Operation from './operations';
-import {mockFilmsForTests} from '../../mock/films';
+import {mockFilmForTests} from '../../mock/films';
 
 
 const api = createAPI(() => {});
@@ -14,7 +14,7 @@ it(`Operation должен сделать корректный запрос`, ()
 
   apiMock
     .onGet(`/films`)
-    .reply(200, mockFilmsForTests);
+    .reply(200, mockFilmForTests);
 
   return questionLoader(dispatch, () => {}, api)
     .then(() => {
@@ -22,8 +22,8 @@ it(`Operation должен сделать корректный запрос`, ()
       expect(dispatch).toHaveBeenNthCalledWith(1, {
         type: ActionType.LOAD_FILMS,
         payload: {
-          films: mockFilmsForTests,
-          promoFilm: mockFilmsForTests[0]
+          films: mockFilmForTests,
+          promoFilm: mockFilmForTests[0]
         },
       });
     });
