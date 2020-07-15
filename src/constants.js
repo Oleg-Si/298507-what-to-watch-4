@@ -27,3 +27,8 @@ export const Screens = {
 export const APIErrorsCode = {
   UNAUTHORIZED: 401
 };
+
+export const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`
+};

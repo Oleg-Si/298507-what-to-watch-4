@@ -8,8 +8,14 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import createAPI from './api';
 import dataOperations from './redux/data/operations';
+import userActionCreator from './redux/user/action-creator';
+import {AuthorizationStatus} from './constants';
 
-const api = createAPI();
+const onUnauthorized = () => {
+  store.dispatch(userActionCreator.requiredAuthorization(AuthorizationStatus.NO_AUTH));
+};
+
+const api = createAPI(onUnauthorized);
 
 const store = createStore(
     reducer,
