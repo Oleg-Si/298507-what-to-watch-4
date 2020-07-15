@@ -23,3 +23,7 @@ export const Screens = {
   MAIN: `Main`,
   FILM_PAGE: `FilmPage`
 };
+
+export const APIErrorsCode = {
+  UNAUTHORIZED: 401
+};
