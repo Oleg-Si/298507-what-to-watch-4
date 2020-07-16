@@ -14,6 +14,11 @@ const ActionCreator = {
   correctAuthorization: (response) => ({
     type: ActionType.CORRECT_AUTHORIZATION,
     payload: response
+  }),
+
+  addReview: (review) => ({
+    type: ActionType.ADD_REVIEW,
+    payload: review
   })
 };
 

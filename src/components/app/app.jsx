@@ -11,6 +11,7 @@ import {getCurrentScreen, getSelectedFilm} from '../../redux/app/selectors.js';
 import {getAuthorizationStatusCode} from '../../redux/user/selectors.js';
 import SignIn from './../sign-in/sign-in.jsx';
 import userOperations from './../../redux/user/operations';
+import dataOperations from './../../redux/data/operations';
 
 class App extends PureComponent {
   _renderApp() {
@@ -87,6 +88,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onFilmCardTitleClick(film) {
+    dispatch(dataOperations.loadComments(film.id));
     dispatch(appActionCreator.selectsFilm(film));
   },
 

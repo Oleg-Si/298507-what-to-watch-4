@@ -4,7 +4,8 @@ import {extend} from './../../utils';
 const initialState = {
   films: [],
   filteredFilmsByGenre: [],
-  promoFilm: {}
+  promoFilm: {},
+  currentFilmComments: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -20,6 +21,9 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.LOAD_PROMO_FILM:
       return extend(state, {promoFilm: action.payload});
+
+    case ActionType.ADD_FILM_COMMENTS:
+      return extend(state, {currentFilmComments: action.payload});
   }
 
   return state;

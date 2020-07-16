@@ -9,10 +9,11 @@ import FilmPageDetalis from '../film-page-details/film-page-details.jsx';
 import FilmPageReviews from '../film-page-reviews/film-page-reviews.jsx';
 import FilmList from './../film-list/film-list.jsx';
 import {getActiveTab} from '../../redux/app/selectors.js';
-import {getFilms} from './../../redux/data/selectors';
+import {getFilms, getFilmComments} from './../../redux/data/selectors';
 import AppHeader from '../app-header/app-header.jsx';
 import {getAuthorizationStatus, getUserAvatar} from './../../redux/user/selectors';
-import {Screens} from './../../constants';
+import {Screens, AuthorizationStatus} from './../../constants';
+import userOperations from './../../redux/user/operations';
 
 const FilmPage = (props) => {
   const filmInfo = props.activeFilm;
@@ -23,7 +24,9 @@ const FilmPage = (props) => {
     films,
     authorizationStatus,
     onSignIn,
-    userAvatar
+    userAvatar,
+    onAddReview,
+    filmReviews
   } = props;
 
   const getFilmInfo = () => {
@@ -40,7 +43,7 @@ const FilmPage = (props) => {
 
       case Tabs.REVIEWS:
         return <FilmPageReviews
-          filmInfo={filmInfo}
+          filmReviews={filmReviews}
         />;
     }
 
@@ -55,6 +58,17 @@ const FilmPage = (props) => {
     filteredFilms.splice(currentFilmIndex, 1);
 
     return filteredFilms;
+  };
+
+  const getButtonAddReview = () => {
+    if (authorizationStatus === AuthorizationStatus.AUTH) {
+      return <a href="add-review.html" className="btn movie-card__button" onClick={(evt) => {
+        evt.preventDefault();
+        onAddReview();
+      }}>Add review</a>;
+    }
+
+    return null;
   };
 
   return (
@@ -97,7 +111,9 @@ const FilmPage = (props) => {
                   </svg>
                   <span>My list</span>
                 </button>
-                <a href="add-review.html" className="btn movie-card__button">Add review</a>
+
+                {getButtonAddReview()}
+
               </div>
             </div>
           </div>
@@ -183,9 +199,11 @@ FilmPage.propTypes = {
       })
   ).isRequired,
   onFilmCardTitleClick: PropTypes.func.isRequired,
+  onAddReview: PropTypes.func.isRequired,
   onSignIn: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
-  userAvatar: PropTypes.string
+  userAvatar: PropTypes.string,
+  filmReviews: PropTypes.array
 };
 
 const mapStateToProps = (state) => ({
@@ -193,6 +211,7 @@ const mapStateToProps = (state) => ({
   films: getFilms(state),
   authorizationStatus: getAuthorizationStatus(state),
   userAvatar: getUserAvatar(state),
+  filmReviews: getFilmComments(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -202,6 +221,11 @@ const mapDispatchToProps = (dispatch) => ({
 
   onSignIn() {
     dispatch(appActionCreator.signIn(Screens.SIGN_IN));
+  },
+
+  onAddReview(review) {
+    console.log(`onAddReview`);
+    dispatch(userOperations.addReview(review));
   }
 });
 

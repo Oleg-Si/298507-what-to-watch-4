@@ -24,7 +24,14 @@ const Operations = {
 
         dispatch(ActionCreator.loadPromoFilm(formattedData));
       });
-  }
+  },
+
+  loadComments: (id) => (dispatch, getState, api) => {
+    return api.get(`/comments/${id}`)
+      .then((response) => {
+        dispatch(ActionCreator.addFilmComments(response.data));
+      });
+  },
 };
 
 export default Operations;

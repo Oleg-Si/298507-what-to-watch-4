@@ -14,6 +14,11 @@ const ActionCreator = {
   loadPromoFilm: (film) => ({
     type: ActionType.LOAD_PROMO_FILM,
     payload: film
+  }),
+
+  addFilmComments: (comments) => ({
+    type: ActionType.ADD_FILM_COMMENTS,
+    payload: comments
   })
 };
 
