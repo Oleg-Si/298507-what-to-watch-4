@@ -5,11 +5,12 @@ import GenreFilter from '../genre-filter/genre-filter.jsx';
 import {connect} from 'react-redux';
 import dataActionCreator from '../../redux/data/action-creator';
 import appActionCreator from '../../redux/app/action-creator';
-import {DEFAULT_GENRE, AuthorizationStatus} from './../../constants';
+import {DEFAULT_GENRE, Screens} from './../../constants';
 import ShowMore from '../show-more/show-more.jsx';
 import {getPromoFilm, getFilteredFilmsByGenre, getFilms} from './../../redux/data/selectors';
 import {getActiveGenre, getCountFilmsForRender} from './../../redux/app/selectors';
-import {getAuthorizationStatus} from './../../redux/user/selectors';
+import {getAuthorizationStatus, getUserAvatar} from './../../redux/user/selectors';
+import AppHeader from '../app-header/app-header.jsx';
 
 const Main = (props) => {
   const {
@@ -21,7 +22,9 @@ const Main = (props) => {
     onFilmCardTitleClick,
     filmsCount,
     onShowMoreClick,
-    authorizationStatus
+    authorizationStatus,
+    onSignIn,
+    userAvatar
   } = props;
 
   const getAllgenre = (data) => {
@@ -37,18 +40,6 @@ const Main = (props) => {
 
   const genre = getAllgenre(films);
 
-  const getAuthStatusMarkup = () => {
-    if (authorizationStatus === AuthorizationStatus.AUTH) {
-      return (
-        <div className="user-block__avatar">
-          <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-        </div>
-      );
-    } else {
-      return <a href="sign-in.html" className="user-block__link">Sign in</a>;
-    }
-  };
-
   return (
     <React.Fragment>
       <section className="movie-card">
@@ -58,19 +49,11 @@ const Main = (props) => {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <header className="page-header movie-card__head">
-          <div className="logo">
-            <a className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="user-block">
-            {getAuthStatusMarkup()}
-          </div>
-        </header>
+        <AppHeader
+          authorizationStatus={authorizationStatus}
+          userAvatar={userAvatar}
+          onSignIn={onSignIn}
+        />
 
         <div className="movie-card__wrap">
           <div className="movie-card__info">
@@ -173,7 +156,9 @@ Main.propTypes = {
   activeGenre: PropTypes.string.isRequired,
   filmsCount: PropTypes.number.isRequired,
   onShowMoreClick: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired
+  onSignIn: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
+  userAvatar: PropTypes.string,
 };
 
 const mapStateToProps = (state) => ({
@@ -182,7 +167,8 @@ const mapStateToProps = (state) => ({
   promoFilm: getPromoFilm(state),
   filmsCount: getCountFilmsForRender(state),
   filteredFilms: getFilteredFilmsByGenre(state),
-  authorizationStatus: getAuthorizationStatus(state)
+  authorizationStatus: getAuthorizationStatus(state),
+  userAvatar: getUserAvatar(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -193,6 +179,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   onShowMoreClick(filmsCount) {
     dispatch(appActionCreator.showMoreFilms(filmsCount));
+  },
+
+  onSignIn() {
+    dispatch(appActionCreator.signIn(Screens.SIGN_IN));
   }
 });
 

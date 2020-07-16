@@ -10,10 +10,21 @@ import FilmPageReviews from '../film-page-reviews/film-page-reviews.jsx';
 import FilmList from './../film-list/film-list.jsx';
 import {getActiveTab} from '../../redux/app/selectors.js';
 import {getFilms} from './../../redux/data/selectors';
+import AppHeader from '../app-header/app-header.jsx';
+import {getAuthorizationStatus, getUserAvatar} from './../../redux/user/selectors';
+import {Screens} from './../../constants';
 
 const FilmPage = (props) => {
   const filmInfo = props.activeFilm;
-  const {activeTab, onTabClick, onFilmCardTitleClick, films} = props;
+  const {
+    activeTab,
+    onTabClick,
+    onFilmCardTitleClick,
+    films,
+    authorizationStatus,
+    onSignIn,
+    userAvatar
+  } = props;
 
   const getFilmInfo = () => {
     switch (activeTab) {
@@ -56,21 +67,11 @@ const FilmPage = (props) => {
 
           <h1 className="visually-hidden">WTW</h1>
 
-          <header className="page-header movie-card__head">
-            <div className="logo">
-              <a href="main.html" className="logo__link">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </a>
-            </div>
-
-            <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </div>
-            </div>
-          </header>
+          <AppHeader
+            authorizationStatus={authorizationStatus}
+            userAvatar={userAvatar}
+            onSignIn={onSignIn}
+          />
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
@@ -181,17 +182,26 @@ FilmPage.propTypes = {
         img: PropTypes.string.isRequired
       })
   ).isRequired,
-  onFilmCardTitleClick: PropTypes.func.isRequired
+  onFilmCardTitleClick: PropTypes.func.isRequired,
+  onSignIn: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
+  userAvatar: PropTypes.string
 };
 
 const mapStateToProps = (state) => ({
   activeTab: getActiveTab(state),
-  films: getFilms(state)
+  films: getFilms(state),
+  authorizationStatus: getAuthorizationStatus(state),
+  userAvatar: getUserAvatar(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onTabClick(newTab) {
     dispatch(appActionCreator.filmsPageTabChange(newTab));
+  },
+
+  onSignIn() {
+    dispatch(appActionCreator.signIn(Screens.SIGN_IN));
   }
 });
 

@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {APIErrorsCode} from '../../constants';
 
 class SignIn extends PureComponent {
   constructor(props) {
@@ -12,7 +13,7 @@ class SignIn extends PureComponent {
   _handleSubmit(evt) {
     evt.preventDefault();
 
-    const form = this._formRef;
+    const form = this._formRef.current;
 
     const login = form.querySelector(`#user-email`).value;
     const password = form.querySelector(`#user-password`).value;
@@ -25,7 +26,21 @@ class SignIn extends PureComponent {
     this.props.onSubmit(authData);
   }
 
+  _isIncorrectValue() {
+    if (this.props.authorizationStatusCode === APIErrorsCode.BAD_REQUEST) {
+      return (
+        <div className="sign-in__message">
+          <p>Please enter a valid email address</p>
+        </div>
+      );
+    }
+
+    return null;
+  }
+
   render() {
+    const code = this.props.authorizationStatusCode;
+
     return (
       <div className="user-page">
         <header className="page-header user-page__head">
@@ -42,8 +57,9 @@ class SignIn extends PureComponent {
 
         <div className="sign-in user-page__content">
           <form action="#" className="sign-in__form" ref={this._formRef} onSubmit={this._handleSubmit}>
+            {this._isIncorrectValue()}
             <div className="sign-in__fields">
-              <div className="sign-in__field">
+              <div className={`sign-in__field ${code === APIErrorsCode.BAD_REQUEST ? `sign-in__field--error` : ``}`} >
                 <input className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email" />
                 <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
               </div>
@@ -77,7 +93,8 @@ class SignIn extends PureComponent {
 }
 
 SignIn.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  authorizationStatusCode: PropTypes.number,
 };
 
 export default SignIn;
