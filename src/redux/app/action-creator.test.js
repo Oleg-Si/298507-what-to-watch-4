@@ -45,4 +45,18 @@ describe(`ActionCreator работает корректно`, () => {
       payload: Screens.MAIN,
     });
   });
+
+  it(`changeScreen меняет экран на переданный`, () => {
+    expect(ActionCreator.changeScreen(Screens.MAIN)).toEqual({
+      type: ActionType.CHANGE_SCREEN,
+      payload: Screens.MAIN,
+    });
+  });
+
+  it(`changeScreen меняет экран на переданный`, () => {
+    expect(ActionCreator.changeScreen(Screens.ADD_REVIEW)).toEqual({
+      type: ActionType.CHANGE_SCREEN,
+      payload: Screens.ADD_REVIEW,
+    });
+  });
 });
