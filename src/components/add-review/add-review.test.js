@@ -7,6 +7,8 @@ it(`Проверяет снепшот компонента AddReview`, () => {
   const tree = renderer.create(
       <AddReview
         filmReviews={mockReviews}
+        filmId={1}
+        onSubmit={() => {}}
       />
   ).toJSON();
 

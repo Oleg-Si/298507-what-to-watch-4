@@ -40,6 +40,7 @@ it(`Проверяет снепшот компонента App`, () => {
           activeFilm={{}}
           onFilmCardTitleClick={() => {}}
           onSignIn={() => {}}
+          onAddReviews={() => {}}
         />
       </Provider>, {
         createNodeMock: () => {
