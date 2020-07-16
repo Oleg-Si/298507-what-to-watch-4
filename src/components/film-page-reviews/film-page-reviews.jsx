@@ -59,16 +59,11 @@ FilmPageReviews.propTypes = {
   filmInfo: PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    rating: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
     releaseDate: PropTypes.number.isRequired,
     runTime: PropTypes.number.isRequired,
     ratingCount: PropTypes.number.isRequired,
-    description: PropTypes.oneOfType([
-      PropTypes.arrayOf(
-          PropTypes.string
-      ),
-      PropTypes.string
-    ]).isRequired,
+    description: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(
         PropTypes.string

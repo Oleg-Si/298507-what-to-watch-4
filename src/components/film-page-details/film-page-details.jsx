@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 
 const FilmPageDetalis = (props) => {
   const {filmInfo} = props;
@@ -27,7 +26,7 @@ const FilmPageDetalis = (props) => {
       <div className="movie-card__text-col">
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Run Time</strong>
-          <span className="movie-card__details-value">{getDurationFromMins(Math.round(moment.duration(filmInfo.runTime, `seconds`).asMinutes()))}</span>
+          <span className="movie-card__details-value">{getDurationFromMins(filmInfo.runTime)}</span>
         </p>
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Genre</strong>
@@ -35,7 +34,7 @@ const FilmPageDetalis = (props) => {
         </p>
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Released</strong>
-          <span className="movie-card__details-value">{moment(filmInfo.releaseDate).format(`Y`)}</span>
+          <span className="movie-card__details-value">{filmInfo.releaseDate}</span>
         </p>
       </div>
     </div>
@@ -46,16 +45,11 @@ FilmPageDetalis.propTypes = {
   filmInfo: PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    rating: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
     releaseDate: PropTypes.number.isRequired,
     runTime: PropTypes.number.isRequired,
     ratingCount: PropTypes.number.isRequired,
-    description: PropTypes.oneOfType([
-      PropTypes.arrayOf(
-          PropTypes.string
-      ),
-      PropTypes.string
-    ]).isRequired,
+    description: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(
         PropTypes.string
