@@ -9,7 +9,6 @@ exports[`Проверяет снепшот компонента AppHeader 1`] = 
   >
     <a
       className="logo__link"
-      href="main.html"
     >
       <span
         className="logo__letter logo__letter--1"
@@ -51,7 +50,6 @@ exports[`Проверяет снепшот компонента AppHeader 2`] = 
   >
     <a
       className="logo__link"
-      href="main.html"
     >
       <span
         className="logo__letter logo__letter--1"

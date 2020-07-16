@@ -4,8 +4,8 @@ import {App} from './app.jsx';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {mockFilmsForTests} from '../../mock/films.js';
-import {Screens} from '../../constants.js';
 import NameSpace from './../../redux/name-space';
+import {AuthorizationStatus, Screens} from './../../constants';
 
 const mockStore = configureStore([]);
 
@@ -25,6 +25,11 @@ it(`Проверяет снепшот компонента App`, () => {
     [NameSpace.APP]: {
       activeGenre: `All genres`,
       countFilmsForRender: 3
+    },
+    [NameSpace.USER]: {
+      authorizationStatus: AuthorizationStatus.AUTH,
+      userAvatar: `img/avatar.jpg`,
+      authorizationStatusCode: null
     }
   });
 
@@ -34,6 +39,7 @@ it(`Проверяет снепшот компонента App`, () => {
           screen={Screens.MAIN}
           activeFilm={{}}
           onFilmCardTitleClick={() => {}}
+          onSignIn={() => {}}
         />
       </Provider>, {
         createNodeMock: () => {

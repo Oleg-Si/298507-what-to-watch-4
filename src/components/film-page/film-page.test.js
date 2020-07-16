@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer';
 import {FilmPage} from './film-page.jsx';
 import {mockFilmForTests} from '../../mock/films.js';
 import {mockFilmsForTests} from '../../mock/films.js';
+import {AuthorizationStatus} from './../../constants';
 
 it(`Проверяет снепшот компонента FilmPage`, () => {
   const tree = renderer.create(
@@ -12,6 +13,9 @@ it(`Проверяет снепшот компонента FilmPage`, () => {
         activeTab={`Overview`}
         onTabClick={() => {}}
         onFilmCardTitleClick={() => {}}
+        onSignIn={() => {}}
+        authorizationStatus={AuthorizationStatus.AUTH}
+        userAvatar={`img/avatar.jpg`}
       />
   ).toJSON();
 
