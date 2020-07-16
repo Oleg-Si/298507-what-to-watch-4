@@ -25,6 +25,11 @@ const ActionCreator = {
   signIn: (screen) => ({
     type: ActionType.SIGN_IN,
     payload: screen
+  }),
+
+  changeScreen: (screen) => ({
+    type: ActionType.CHANGE_SCREEN,
+    payload: screen
   })
 };
 

@@ -13,7 +13,6 @@ import {getFilms, getFilmComments} from './../../redux/data/selectors';
 import AppHeader from '../app-header/app-header.jsx';
 import {getAuthorizationStatus, getUserAvatar} from './../../redux/user/selectors';
 import {Screens, AuthorizationStatus} from './../../constants';
-import userOperations from './../../redux/user/operations';
 
 const FilmPage = (props) => {
   const filmInfo = props.activeFilm;
@@ -223,9 +222,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(appActionCreator.signIn(Screens.SIGN_IN));
   },
 
-  onAddReview(review) {
-    console.log(`onAddReview`);
-    dispatch(userOperations.addReview(review));
+  onAddReview() {
+    dispatch(appActionCreator.changeScreen(Screens.ADD_REVIEW));
   }
 });
 

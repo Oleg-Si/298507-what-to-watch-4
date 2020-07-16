@@ -22,7 +22,8 @@ export const RatingKey = {
 export const Screens = {
   MAIN: `Main`,
   FILM_PAGE: `FilmPage`,
-  SIGN_IN: `SignIn`
+  SIGN_IN: `SignIn`,
+  ADD_REVIEW: `AddReview`,
 };
 
 export const APIErrorsCode = {

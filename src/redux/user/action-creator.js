@@ -16,8 +16,8 @@ const ActionCreator = {
     payload: response
   }),
 
-  addReview: (review) => ({
-    type: ActionType.ADD_REVIEW,
+  createReview: (review) => ({
+    type: ActionType.CREATE_REVIEW,
     payload: review
   })
 };

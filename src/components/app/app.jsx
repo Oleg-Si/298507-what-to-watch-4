@@ -12,6 +12,7 @@ import {getAuthorizationStatusCode} from '../../redux/user/selectors.js';
 import SignIn from './../sign-in/sign-in.jsx';
 import userOperations from './../../redux/user/operations';
 import dataOperations from './../../redux/data/operations';
+import AddReview from './../add-review/add-review.jsx';
 
 class App extends PureComponent {
   _renderApp() {
@@ -20,7 +21,8 @@ class App extends PureComponent {
       onFilmCardTitleClick,
       activeFilm,
       onSignIn,
-      authorizationStatusCode
+      authorizationStatusCode,
+      onAddReviews
     } = this.props;
 
     switch (screen) {
@@ -44,6 +46,14 @@ class App extends PureComponent {
           <SignIn
             authorizationStatusCode={authorizationStatusCode}
             onSubmit={onSignIn}
+          />
+        );
+
+      case Screens.ADD_REVIEW:
+        return (
+          <AddReview
+            onSubmit={onAddReviews}
+            filmId={activeFilm.id}
           />
         );
     }
@@ -77,6 +87,7 @@ App.propTypes = {
   authorizationStatusCode: PropTypes.number,
   onFilmCardTitleClick: PropTypes.func.isRequired,
   onSignIn: PropTypes.func.isRequired,
+  onAddReviews: PropTypes.func.isRequired,
   activeFilm: PropTypes.object.isRequired
 };
 
@@ -94,6 +105,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   onSignIn(authData) {
     dispatch(userOperations.login(authData));
+  },
+
+  onAddReviews(reviews) {
+    dispatch(userOperations.createReview(reviews));
   }
 });
 

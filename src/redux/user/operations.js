@@ -52,6 +52,17 @@ const Operations = {
       dispatch(ActionCreator.badAuthorization(err.response.status));
       throw err;
     });
+  },
+
+  createReview: (review) => (dispatch, getState, api) => {
+    return api.post(`/comments/${review.id}`, {
+      rating: review.rating,
+      comment: review.comment
+    })
+    .then((response) => response)
+    .catch((err) => {
+      throw err;
+    });
   }
 };
 

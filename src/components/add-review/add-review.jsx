@@ -6,6 +6,26 @@ class AddReview extends PureComponent {
     super(props);
 
     this._formRef = React.createRef();
+
+    this._handleSubmit = this._handleSubmit.bind(this);
+  }
+
+  _handleSubmit(evt) {
+    evt.preventDefault();
+
+    const form = this._formRef.current;
+
+    const id = this.props.filmId;
+    const rating = form.querySelector(`input[name="rating"]:checked`).value;
+    const comment = form.querySelector(`#review-text`).value;
+
+    const reviewData = {
+      id,
+      rating,
+      comment
+    };
+
+    this.props.onSubmit(reviewData);
   }
 
   render() {
@@ -51,7 +71,7 @@ class AddReview extends PureComponent {
         </div>
 
         <div className="add-review">
-          <form action="#" className="add-review__form">
+          <form action="#" className="add-review__form" ref={this._formRef} onSubmit={this._handleSubmit}>
             <div className="rating">
               <div className="rating__stars">
                 <input className="rating__input" id="star-1" type="radio" name="rating" value="1"/>
@@ -60,7 +80,7 @@ class AddReview extends PureComponent {
                 <input className="rating__input" id="star-2" type="radio" name="rating" value="2" />
                 <label className="rating__label" htmlFor="star-2">Rating 2</label>
 
-                <input className="rating__input" id="star-3" type="radio" name="rating" value="3" checked />
+                <input className="rating__input" id="star-3" type="radio" name="rating" value="3" defaultChecked />
                 <label className="rating__label" htmlFor="star-3">Rating 3</label>
 
                 <input className="rating__input" id="star-4" type="radio" name="rating" value="4" />
@@ -86,6 +106,9 @@ class AddReview extends PureComponent {
   }
 }
 
-AddReview.propTypes = {};
+AddReview.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  filmId: PropTypes.number.isRequired
+};
 
 export default AddReview;
