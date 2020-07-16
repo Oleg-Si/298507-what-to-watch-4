@@ -189,6 +189,7 @@ exports[`Проверяет снепшот компонента AddReview 1`] = 
           className="add-review__textarea"
           id="review-text"
           name="review-text"
+          onChange={[Function]}
           placeholder="Review text"
         />
         <div
@@ -196,6 +197,13 @@ exports[`Проверяет снепшот компонента AddReview 1`] = 
         >
           <button
             className="add-review__btn"
+            disabled={true}
+            style={
+              Object {
+                "cursor": "pointer",
+                "opacity": 1,
+              }
+            }
             type="submit"
           >
             Post
