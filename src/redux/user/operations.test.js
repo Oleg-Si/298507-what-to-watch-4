@@ -10,13 +10,13 @@ const api = createAPI(() => {});
 const correctResponse = {
   email: `mail`,
   // eslint-disable-next-line camelcase
-  avatar_url: `/link`,
+  avatar_url: `/wtw/static/avatar/6.jpg`,
   statusCode: 200
 };
 
 const userData = {
   email: `mail`,
-  avatar: `https://4.react.pages.academy/link`,
+  avatar: `https://4.react.pages.academy/wtw/static/avatar/6.jpg`,
   statusCode: 200
 };
 

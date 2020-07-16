@@ -2,13 +2,23 @@ import ActionCreator from './action-creator';
 import {AuthorizationStatus, Screens} from '../../constants';
 import appActionCreator from './../app/action-creator';
 
+const formatAvatarUrl = (url) => {
+  const splittedUrl = url.split(`/`);
+  const newLinkArr = splittedUrl.slice(2, splittedUrl.length);
+  const newUrl = newLinkArr.join(`/`);
+
+  return newUrl;
+};
+
 const Operations = {
   requiredAuthorization: () => (dispatch, getState, api) => {
     return api.get(`/login`)
       .then((response) => {
+        const avatarUrl = formatAvatarUrl(response.data.avatar_url);
+
         const userData = {
           email: response.data.email,
-          avatar: `https://4.react.pages.academy${response.data.avatar_url}`,
+          avatar: `${response.config.baseURL}/${avatarUrl}`,
           statusCode: response.status
         };
 
@@ -26,9 +36,11 @@ const Operations = {
       password: authData.password,
     })
     .then((response) => {
+      const avatarUrl = formatAvatarUrl(response.data.avatar_url);
+
       const userData = {
         email: response.data.email,
-        avatar: `https://4.react.pages.academy${response.data.avatar_url}`,
+        avatar: `${response.config.baseURL}/${avatarUrl}`,
         statusCode: response.status
       };
 
