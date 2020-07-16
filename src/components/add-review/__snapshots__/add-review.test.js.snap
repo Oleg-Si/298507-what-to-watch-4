@@ -3,6 +3,11 @@
 exports[`Проверяет снепшот компонента AddReview 1`] = `
 <section
   className="movie-card movie-card--full"
+  style={
+    Object {
+      "backgroundColor": "rgb(146, 145, 139)",
+    }
+  }
 >
   <div
     className="movie-card__header"
@@ -11,8 +16,8 @@ exports[`Проверяет снепшот компонента AddReview 1`] = 
       className="movie-card__bg"
     >
       <img
-        alt="The Grand Budapest Hotel"
-        src="img/bg-the-grand-budapest-hotel.jpg"
+        alt="Revenant"
+        src="https://htmlacademy-react-3.appspot.com/wtw/static/film/background/Revenant.jpg"
       />
     </div>
     <h1
@@ -21,14 +26,13 @@ exports[`Проверяет снепшот компонента AddReview 1`] = 
       WTW
     </h1>
     <header
-      className="page-header"
+      className="page-header movie-card__head"
     >
       <div
         className="logo"
       >
         <a
           className="logo__link"
-          href="main.html"
         >
           <span
             className="logo__letter logo__letter--1"
@@ -93,9 +97,9 @@ exports[`Проверяет снепшот компонента AddReview 1`] = 
       className="movie-card__poster movie-card__poster--small"
     >
       <img
-        alt="The Grand Budapest Hotel poster"
+        alt="https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Revenant.jpg poster"
         height="327"
-        src="img/the-grand-budapest-hotel-poster.jpg"
+        src="https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Revenant.jpg"
         width="218"
       />
     </div>

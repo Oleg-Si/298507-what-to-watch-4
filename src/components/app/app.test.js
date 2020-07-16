@@ -37,10 +37,12 @@ it(`Проверяет снепшот компонента App`, () => {
       <Provider store={store}>
         <App
           screen={Screens.MAIN}
+          authorizationStatus={AuthorizationStatus.AUTH}
           activeFilm={{}}
           onFilmCardTitleClick={() => {}}
           onSignIn={() => {}}
           onAddReviews={() => {}}
+          onSignInClick={() => {}}
         />
       </Provider>, {
         createNodeMock: () => {

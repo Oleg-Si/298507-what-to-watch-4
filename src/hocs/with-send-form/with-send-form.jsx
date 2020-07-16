@@ -19,7 +19,7 @@ const withSendForm = (Component) => {
     _handleSubmit() {
       const form = this._formRef.current;
 
-      const id = this.props.filmId;
+      const id = this.props.film.id;
       const rating = form.querySelector(`input[name="rating"]:checked`).value;
       const comment = form.querySelector(`#review-text`).value;
 
@@ -64,7 +64,7 @@ const withSendForm = (Component) => {
 
   WithSendForm.propTypes = {
     onSubmit: PropTypes.func.isRequired,
-    filmId: PropTypes.number.isRequired
+    film: PropTypes.object.isRequired
   };
 
   return WithSendForm;

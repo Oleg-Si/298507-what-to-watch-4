@@ -13,6 +13,7 @@ import SignIn from './../sign-in/sign-in.jsx';
 import userOperations from './../../redux/user/operations';
 import dataOperations from './../../redux/data/operations';
 import AddReview from './../add-review/add-review.jsx';
+import {getAuthorizationStatus, getUserAvatar} from './../../redux/user/selectors';
 
 class App extends PureComponent {
   _renderApp() {
@@ -22,7 +23,10 @@ class App extends PureComponent {
       activeFilm,
       onSignIn,
       authorizationStatusCode,
-      onAddReviews
+      onAddReviews,
+      authorizationStatus,
+      onSignInClick,
+      userAvatar
     } = this.props;
 
     switch (screen) {
@@ -53,7 +57,10 @@ class App extends PureComponent {
         return (
           <AddReview
             onSubmit={onAddReviews}
-            filmId={activeFilm.id}
+            film={activeFilm}
+            onSignIn={onSignInClick}
+            authorizationStatus={authorizationStatus}
+            userAvatar={userAvatar}
           />
         );
     }
@@ -88,13 +95,18 @@ App.propTypes = {
   onFilmCardTitleClick: PropTypes.func.isRequired,
   onSignIn: PropTypes.func.isRequired,
   onAddReviews: PropTypes.func.isRequired,
-  activeFilm: PropTypes.object.isRequired
+  activeFilm: PropTypes.object.isRequired,
+  onSignInClick: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
+  userAvatar: PropTypes.string
 };
 
 const mapStateToProps = (state) => ({
   screen: getCurrentScreen(state),
   activeFilm: getSelectedFilm(state),
-  authorizationStatusCode: getAuthorizationStatusCode(state)
+  authorizationStatusCode: getAuthorizationStatusCode(state),
+  authorizationStatus: getAuthorizationStatus(state),
+  userAvatar: getUserAvatar(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -109,6 +121,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   onAddReviews(reviews) {
     dispatch(userOperations.createReview(reviews));
+  },
+
+  onSignInClick() {
+    dispatch(appActionCreator.signIn(Screens.SIGN_IN));
   }
 });
 
