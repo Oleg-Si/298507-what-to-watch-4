@@ -71,7 +71,7 @@ it(`Operation должен сделать корректный post запрос
         payload: userData
       });
       expect(dispatch).toHaveBeenNthCalledWith(3, {
-        type: appActionType.SIGN_IN,
+        type: appActionType.CHANGE_SCREEN,
         payload: Screens.MAIN
       });
     });

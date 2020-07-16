@@ -32,20 +32,6 @@ describe(`ActionCreator работает корректно`, () => {
     });
   });
 
-  it(`signIn возвращает корректный экран`, () => {
-    expect(ActionCreator.signIn(Screens.SIGN_IN)).toEqual({
-      type: ActionType.SIGN_IN,
-      payload: Screens.SIGN_IN,
-    });
-  });
-
-  it(`signIn возвращает корректный экран`, () => {
-    expect(ActionCreator.signIn(Screens.MAIN)).toEqual({
-      type: ActionType.SIGN_IN,
-      payload: Screens.MAIN,
-    });
-  });
-
   it(`changeScreen меняет экран на переданный`, () => {
     expect(ActionCreator.changeScreen(Screens.MAIN)).toEqual({
       type: ActionType.CHANGE_SCREEN,
