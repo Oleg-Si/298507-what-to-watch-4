@@ -14,6 +14,7 @@ it(`Проверяет снепшот компонента FilmPage`, () => {
         onTabClick={() => {}}
         onFilmCardTitleClick={() => {}}
         onSignIn={() => {}}
+        onAddReview={() => {}}
         authorizationStatus={AuthorizationStatus.AUTH}
         userAvatar={`img/avatar.jpg`}
       />

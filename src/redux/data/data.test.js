@@ -1,11 +1,12 @@
-import {mockFilmsForTests} from '../../mock/films';
+import {mockFilmsForTests, mockReviews} from '../../mock/films';
 import ActionType from './action-type';
 import reducer from './data';
 
 const initialState = {
   films: [],
   filteredFilmsByGenre: [],
-  promoFilm: {}
+  promoFilm: {},
+  currentFilmComments: []
 };
 
 describe(`Reducer работает корректно`, () => {
@@ -40,6 +41,23 @@ describe(`Reducer работает корректно`, () => {
       films: [],
       filteredFilmsByGenre: [],
       promoFilm: {}
+    });
+  });
+
+  it(`Reducer меняет currentFilmComments на загруженные комментарии`, () => {
+    expect(reducer({
+      films: [],
+      filteredFilmsByGenre: [],
+      promoFilm: {},
+      currentFilmComments: []
+    }, {
+      type: ActionType.ADD_FILM_COMMENTS,
+      payload: mockReviews
+    })).toEqual({
+      films: [],
+      filteredFilmsByGenre: [],
+      promoFilm: {},
+      currentFilmComments: mockReviews
     });
   });
 });

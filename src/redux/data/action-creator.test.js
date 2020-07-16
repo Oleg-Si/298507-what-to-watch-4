@@ -1,6 +1,6 @@
 import ActionCreator from './action-creator';
 import ActionType from './action-type';
-import films, {mockFilmForTests} from './../../mock/films';
+import films, {mockFilmForTests, mockReviews} from './../../mock/films';
 
 describe(`ActionCreator работает корректно`, () => {
   it(`filterFilmsByGenre возвращает отсортированные фильмы`, () => {
@@ -21,6 +21,13 @@ describe(`ActionCreator работает корректно`, () => {
     expect(ActionCreator.loadPromoFilm(mockFilmForTests)).toEqual({
       type: ActionType.LOAD_PROMO_FILM,
       payload: mockFilmForTests
+    });
+  });
+
+  it(`addFilmComments возвращает загруженные комментарии`, () => {
+    expect(ActionCreator.addFilmComments(mockReviews)).toEqual({
+      type: ActionType.ADD_FILM_COMMENTS,
+      payload: mockReviews
     });
   });
 });
