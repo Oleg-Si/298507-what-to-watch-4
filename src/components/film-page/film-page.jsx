@@ -22,7 +22,7 @@ const FilmPage = (props) => {
     onFilmCardTitleClick,
     films,
     authorizationStatus,
-    onSignIn,
+    onSignInClick,
     userAvatar,
     onAddReview,
     filmReviews
@@ -83,7 +83,7 @@ const FilmPage = (props) => {
           <AppHeader
             authorizationStatus={authorizationStatus}
             userAvatar={userAvatar}
-            onSignIn={onSignIn}
+            onSignIn={onSignInClick}
           />
 
           <div className="movie-card__wrap">
@@ -199,7 +199,7 @@ FilmPage.propTypes = {
   ).isRequired,
   onFilmCardTitleClick: PropTypes.func.isRequired,
   onAddReview: PropTypes.func.isRequired,
-  onSignIn: PropTypes.func.isRequired,
+  onSignInClick: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   userAvatar: PropTypes.string,
   filmReviews: PropTypes.array
@@ -218,8 +218,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(appActionCreator.filmsPageTabChange(newTab));
   },
 
-  onSignIn() {
-    dispatch(appActionCreator.signIn(Screens.SIGN_IN));
+  onSignInClick() {
+    dispatch(appActionCreator.changeScreen(Screens.SIGN_IN));
   },
 
   onAddReview() {

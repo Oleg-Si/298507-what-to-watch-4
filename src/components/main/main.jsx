@@ -23,7 +23,7 @@ const Main = (props) => {
     filmsCount,
     onShowMoreClick,
     authorizationStatus,
-    onSignIn,
+    onSignInClick,
     userAvatar
   } = props;
 
@@ -52,7 +52,7 @@ const Main = (props) => {
         <AppHeader
           authorizationStatus={authorizationStatus}
           userAvatar={userAvatar}
-          onSignIn={onSignIn}
+          onSignIn={onSignInClick}
         />
 
         <div className="movie-card__wrap">
@@ -156,7 +156,7 @@ Main.propTypes = {
   activeGenre: PropTypes.string.isRequired,
   filmsCount: PropTypes.number.isRequired,
   onShowMoreClick: PropTypes.func.isRequired,
-  onSignIn: PropTypes.func.isRequired,
+  onSignInClick: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   userAvatar: PropTypes.string,
 };
@@ -181,8 +181,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(appActionCreator.showMoreFilms(filmsCount));
   },
 
-  onSignIn() {
-    dispatch(appActionCreator.signIn(Screens.SIGN_IN));
+  onSignInClick() {
+    dispatch(appActionCreator.changeScreen(Screens.SIGN_IN));
   }
 });
 

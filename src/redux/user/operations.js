@@ -46,7 +46,7 @@ const Operations = {
 
       dispatch(ActionCreator.requiredAuthorization(AuthorizationStatus.AUTH));
       dispatch(ActionCreator.correctAuthorization(userData));
-      dispatch(appActionCreator.signIn(Screens.MAIN));
+      dispatch(appActionCreator.changeScreen(Screens.MAIN));
     })
     .catch((err) => {
       dispatch(ActionCreator.badAuthorization(err.response.status));

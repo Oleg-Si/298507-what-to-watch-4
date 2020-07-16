@@ -3,7 +3,6 @@ const ActionType = {
   CHANGE_TAB: `filmsPageTabChange`,
   SHOW_MORE_FILMS: `showMoreFilms`,
   SELECTS_FILM: `selectsFilm`,
-  SIGN_IN: `signIn`,
   CHANGE_SCREEN: `changeScreen`
 };
 

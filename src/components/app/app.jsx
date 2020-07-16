@@ -124,7 +124,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   onSignInClick() {
-    dispatch(appActionCreator.signIn(Screens.SIGN_IN));
+    dispatch(appActionCreator.changeScreen(Screens.SIGN_IN));
   }
 });
 

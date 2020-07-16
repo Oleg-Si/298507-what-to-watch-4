@@ -27,9 +27,6 @@ const reducer = (state = initialState, action) => {
         selectedFilm: action.payload
       });
 
-    case ActionType.SIGN_IN:
-      return extend(state, {currentScreen: action.payload});
-
     case ActionType.CHANGE_SCREEN:
       return extend(state, {currentScreen: action.payload});
   }
