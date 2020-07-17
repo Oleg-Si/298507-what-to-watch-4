@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {Main} from './main.jsx';
 import {mockFilmsForTests} from '../../mock/films.js';
+import {AuthorizationStatus} from './../../constants';
 
 const promoFilm = {
   title: `The Grand Budapest Hotel`,
@@ -21,7 +22,10 @@ it(`Проверяет снепшот компонента Main`, () => {
         filmsCount={3}
         onFilmCardTitleClick={() => {}}
         onGenreCilck={() => {}}
+        onSignIn={() => {}}
         onShowMoreClick={() => {}}
+        authorizationStatus={AuthorizationStatus.AUTH}
+        userAvatar={`img/avatar.jpg`}
       />, {
         createNodeMock: () => {
           return {};

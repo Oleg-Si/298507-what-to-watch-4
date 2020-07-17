@@ -8,10 +8,19 @@ import {mockFilmForTests} from '../../mock/films.js';
 import appActionCreator from './../../redux/app/action-creator';
 import {Screens} from '../../constants.js';
 import {getCurrentScreen, getSelectedFilm} from '../../redux/app/selectors.js';
+import {getAuthorizationStatusCode} from '../../redux/user/selectors.js';
+import SignIn from './../sign-in/sign-in.jsx';
+import userOperations from './../../redux/user/operations';
 
 class App extends PureComponent {
   _renderApp() {
-    const {screen, onFilmCardTitleClick, activeFilm} = this.props;
+    const {
+      screen,
+      onFilmCardTitleClick,
+      activeFilm,
+      onSignIn,
+      authorizationStatusCode
+    } = this.props;
 
     switch (screen) {
       case Screens.MAIN:
@@ -26,6 +35,14 @@ class App extends PureComponent {
           <FilmPage
             activeFilm={activeFilm}
             onFilmCardTitleClick={onFilmCardTitleClick}
+          />
+        );
+
+      case Screens.SIGN_IN:
+        return (
+          <SignIn
+            authorizationStatusCode={authorizationStatusCode}
+            onSubmit={onSignIn}
           />
         );
     }
@@ -56,18 +73,25 @@ class App extends PureComponent {
 
 App.propTypes = {
   screen: PropTypes.string.isRequired,
+  authorizationStatusCode: PropTypes.number,
   onFilmCardTitleClick: PropTypes.func.isRequired,
+  onSignIn: PropTypes.func.isRequired,
   activeFilm: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
   screen: getCurrentScreen(state),
-  activeFilm: getSelectedFilm(state)
+  activeFilm: getSelectedFilm(state),
+  authorizationStatusCode: getAuthorizationStatusCode(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onFilmCardTitleClick(film) {
     dispatch(appActionCreator.selectsFilm(film));
+  },
+
+  onSignIn(authData) {
+    dispatch(userOperations.login(authData));
   }
 });
 

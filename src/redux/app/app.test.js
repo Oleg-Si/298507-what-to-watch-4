@@ -110,4 +110,23 @@ describe(`Reducer работает корректно`, () => {
       selectedFilm: mockFilmForTests
     });
   });
+
+  it(`Reducer записывает экран авторизации в currentScreen`, () => {
+    expect(reducer({
+      activeGenre: DEFAULT_GENRE,
+      activeTab: DEFAULT_TAB,
+      countFilmsForRender: RENDERED_FILMS_COUNT,
+      currentScreen: Screens.MAIN,
+      selectedFilm: {}
+    }, {
+      type: ActionType.SIGN_IN,
+      payload: Screens.SIGN_IN
+    })).toEqual({
+      activeGenre: DEFAULT_GENRE,
+      activeTab: DEFAULT_TAB,
+      countFilmsForRender: RENDERED_FILMS_COUNT,
+      currentScreen: Screens.SIGN_IN,
+      selectedFilm: {}
+    });
+  });
 });

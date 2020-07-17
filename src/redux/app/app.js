@@ -26,6 +26,9 @@ const reducer = (state = initialState, action) => {
         currentScreen: Screens.FILM_PAGE,
         selectedFilm: action.payload
       });
+
+    case ActionType.SIGN_IN:
+      return extend(state, {currentScreen: action.payload});
   }
 
   return state;

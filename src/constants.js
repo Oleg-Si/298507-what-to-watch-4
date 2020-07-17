@@ -21,9 +21,16 @@ export const RatingKey = {
 
 export const Screens = {
   MAIN: `Main`,
-  FILM_PAGE: `FilmPage`
+  FILM_PAGE: `FilmPage`,
+  SIGN_IN: `SignIn`
 };
 
 export const APIErrorsCode = {
-  UNAUTHORIZED: 401
+  UNAUTHORIZED: 401,
+  BAD_REQUEST: 400,
+};
+
+export const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`
 };

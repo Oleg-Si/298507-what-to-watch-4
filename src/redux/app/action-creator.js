@@ -20,6 +20,11 @@ const ActionCreator = {
   selectsFilm: (film) => ({
     type: ActionType.SELECTS_FILM,
     payload: film
+  }),
+
+  signIn: (screen) => ({
+    type: ActionType.SIGN_IN,
+    payload: screen
   })
 };
 
