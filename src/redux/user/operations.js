@@ -59,7 +59,9 @@ const Operations = {
       rating: review.rating,
       comment: review.comment
     })
-    .then((response) => response)
+    .then(() => {
+      dispatch(appActionCreator.changeScreen(Screens.MAIN));
+    })
     .catch((err) => {
       throw err;
     });

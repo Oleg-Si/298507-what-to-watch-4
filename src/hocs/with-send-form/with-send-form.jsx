@@ -36,9 +36,9 @@ const withSendForm = (Component) => {
       const form = this._formRef.current;
       const textarea = form.querySelector(`#review-text`);
 
-      const commentLenght = textarea.value.length;
+      const commentLength = textarea.value.length;
 
-      if (commentLenght >= 50 && commentLenght <= 400) {
+      if (commentLength >= 50 && commentLength <= 400) {
         if (this.state.isCorrectCommentLength === false) {
           this.setState({isCorrectCommentLength: true});
         }
@@ -54,7 +54,7 @@ const withSendForm = (Component) => {
         <Component
           {...this.props}
           isCorrectCommentLength={this.state.isCorrectCommentLength}
-          onSubmit={this._handleTextareaChange}
+          onSubmit={this._handleSubmit}
           onTextareaChange={this._handleTextareaChange}
           formRef={this._formRef}
         />

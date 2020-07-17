@@ -76,7 +76,7 @@ const AddReview = (props) => {
               <button
                 className="add-review__btn"
                 type="submit"
-                disabled={isCorrectCommentLength}
+                disabled={!isCorrectCommentLength}
                 style={(isCorrectCommentLength ? {opacity: 1, cursor: `pointer`} : {opacity: 0.5, cursor: `not-allowed`})}
               >Post</button>
             </div>
