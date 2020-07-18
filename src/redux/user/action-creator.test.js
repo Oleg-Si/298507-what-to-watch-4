@@ -1,6 +1,9 @@
 import ActionCreator from './action-creator';
 import ActionType from './action-type';
 import {AuthorizationStatus} from './../../constants';
+import {mockReviews} from '../../mock/films';
+
+const mockReview = mockReviews[0];
 
 const correctResponse = {
   email: `mail`,
@@ -36,6 +39,13 @@ describe(`ActionCreator работает корректно`, () => {
     expect(ActionCreator.correctAuthorization(correctResponse)).toEqual({
       type: ActionType.CORRECT_AUTHORIZATION,
       payload: correctResponse
+    });
+  });
+
+  it(`createReview возвращает переданный отзыв`, () => {
+    expect(ActionCreator.createReview(mockReview)).toEqual({
+      type: ActionType.CREATE_REVIEW,
+      payload: mockReview
     });
   });
 });

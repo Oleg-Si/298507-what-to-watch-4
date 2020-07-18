@@ -6,7 +6,8 @@ const AppHeader = (props) => {
   const {
     authorizationStatus,
     userAvatar,
-    onSignIn
+    onSignIn,
+    children
   } = props;
 
   const getAuthStatusMarkup = () => {
@@ -34,6 +35,8 @@ const AppHeader = (props) => {
         </a>
       </div>
 
+      {children}
+
       <div className="user-block">
         {getAuthStatusMarkup()}
       </div>
@@ -45,6 +48,7 @@ AppHeader.propTypes = {
   onSignIn: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   userAvatar: PropTypes.string,
+  children: PropTypes.node,
 };
 
 export default AppHeader;

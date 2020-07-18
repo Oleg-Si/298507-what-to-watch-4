@@ -4,6 +4,7 @@ exports[`Проверяет снепшот компонента FilmPageReviews 
 <div
   className="movie-card__reviews movie-card__row"
 >
+  
   <div
     className="movie-card__reviews-col"
   >
@@ -28,9 +29,9 @@ exports[`Проверяет снепшот компонента FilmPageReviews 
           </cite>
           <time
             className="review__date"
-            dateTime="2017-7-22"
+            dateTime="2017-7-23"
           >
-            July 22, 2017
+            July 23, 2017
           </time>
         </footer>
       </blockquote>

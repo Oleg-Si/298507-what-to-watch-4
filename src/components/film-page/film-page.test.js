@@ -13,7 +13,8 @@ it(`Проверяет снепшот компонента FilmPage`, () => {
         activeTab={`Overview`}
         onTabClick={() => {}}
         onFilmCardTitleClick={() => {}}
-        onSignIn={() => {}}
+        onSignInClick={() => {}}
+        onAddReview={() => {}}
         authorizationStatus={AuthorizationStatus.AUTH}
         userAvatar={`img/avatar.jpg`}
       />

@@ -46,10 +46,23 @@ const Operations = {
 
       dispatch(ActionCreator.requiredAuthorization(AuthorizationStatus.AUTH));
       dispatch(ActionCreator.correctAuthorization(userData));
-      dispatch(appActionCreator.signIn(Screens.MAIN));
+      dispatch(appActionCreator.changeScreen(Screens.MAIN));
     })
     .catch((err) => {
       dispatch(ActionCreator.badAuthorization(err.response.status));
+      throw err;
+    });
+  },
+
+  createReview: (review) => (dispatch, getState, api) => {
+    return api.post(`/comments/${review.id}`, {
+      rating: review.rating,
+      comment: review.comment
+    })
+    .then(() => {
+      dispatch(appActionCreator.changeScreen(Screens.MAIN));
+    })
+    .catch((err) => {
       throw err;
     });
   }

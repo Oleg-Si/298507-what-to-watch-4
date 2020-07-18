@@ -9,10 +9,10 @@ import FilmPageDetalis from '../film-page-details/film-page-details.jsx';
 import FilmPageReviews from '../film-page-reviews/film-page-reviews.jsx';
 import FilmList from './../film-list/film-list.jsx';
 import {getActiveTab} from '../../redux/app/selectors.js';
-import {getFilms} from './../../redux/data/selectors';
+import {getFilms, getFilmComments} from './../../redux/data/selectors';
 import AppHeader from '../app-header/app-header.jsx';
 import {getAuthorizationStatus, getUserAvatar} from './../../redux/user/selectors';
-import {Screens} from './../../constants';
+import {Screens, AuthorizationStatus} from './../../constants';
 
 const FilmPage = (props) => {
   const filmInfo = props.activeFilm;
@@ -22,8 +22,10 @@ const FilmPage = (props) => {
     onFilmCardTitleClick,
     films,
     authorizationStatus,
-    onSignIn,
-    userAvatar
+    onSignInClick,
+    userAvatar,
+    onAddReview,
+    filmReviews
   } = props;
 
   const getFilmInfo = () => {
@@ -40,7 +42,7 @@ const FilmPage = (props) => {
 
       case Tabs.REVIEWS:
         return <FilmPageReviews
-          filmInfo={filmInfo}
+          filmReviews={filmReviews}
         />;
     }
 
@@ -57,6 +59,17 @@ const FilmPage = (props) => {
     return filteredFilms;
   };
 
+  const getButtonAddReview = () => {
+    if (authorizationStatus === AuthorizationStatus.AUTH) {
+      return <a href="add-review.html" className="btn movie-card__button" onClick={(evt) => {
+        evt.preventDefault();
+        onAddReview();
+      }}>Add review</a>;
+    }
+
+    return null;
+  };
+
   return (
     <React.Fragment>
       <section className="movie-card movie-card--full" style={{backgroundColor: filmInfo.bgColor}}>
@@ -70,7 +83,7 @@ const FilmPage = (props) => {
           <AppHeader
             authorizationStatus={authorizationStatus}
             userAvatar={userAvatar}
-            onSignIn={onSignIn}
+            onSignIn={onSignInClick}
           />
 
           <div className="movie-card__wrap">
@@ -97,7 +110,9 @@ const FilmPage = (props) => {
                   </svg>
                   <span>My list</span>
                 </button>
-                <a href="add-review.html" className="btn movie-card__button">Add review</a>
+
+                {getButtonAddReview()}
+
               </div>
             </div>
           </div>
@@ -114,7 +129,7 @@ const FilmPage = (props) => {
 
                 <TabList
                   tabs={Object.values(Tabs)}
-                  activeTab={Tabs.OVERVIEW}
+                  activeTab={activeTab}
                   onTabClick={onTabClick}
                 />
 
@@ -183,9 +198,11 @@ FilmPage.propTypes = {
       })
   ).isRequired,
   onFilmCardTitleClick: PropTypes.func.isRequired,
-  onSignIn: PropTypes.func.isRequired,
+  onAddReview: PropTypes.func.isRequired,
+  onSignInClick: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
-  userAvatar: PropTypes.string
+  userAvatar: PropTypes.string,
+  filmReviews: PropTypes.array
 };
 
 const mapStateToProps = (state) => ({
@@ -193,6 +210,7 @@ const mapStateToProps = (state) => ({
   films: getFilms(state),
   authorizationStatus: getAuthorizationStatus(state),
   userAvatar: getUserAvatar(state),
+  filmReviews: getFilmComments(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -200,8 +218,12 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(appActionCreator.filmsPageTabChange(newTab));
   },
 
-  onSignIn() {
-    dispatch(appActionCreator.signIn(Screens.SIGN_IN));
+  onSignInClick() {
+    dispatch(appActionCreator.changeScreen(Screens.SIGN_IN));
+  },
+
+  onAddReview() {
+    dispatch(appActionCreator.changeScreen(Screens.ADD_REVIEW));
   }
 });
 

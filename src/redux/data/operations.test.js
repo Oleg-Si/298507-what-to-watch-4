@@ -3,6 +3,8 @@ import createAPI from '../../api';
 import ActionType from './action-type';
 import Operation from './operations';
 import {createFilm} from '../../adapter';
+import {mockReviews} from '../../mock/films';
+
 
 const mockServerFilm = {
   "id": 1,
@@ -61,6 +63,25 @@ it(`Operation должен сделать корректный запрос /fil
       expect(dispatch).toHaveBeenNthCalledWith(1, {
         type: ActionType.LOAD_PROMO_FILM,
         payload: createFilm(mockServerFilm)
+      });
+    });
+});
+
+it(`Operation должен сделать корректный запрос /comments/0`, () => {
+  const apiMock = new MockAdapter(api);
+  const dispatch = jest.fn();
+  const commentsFilmLoader = Operation.loadComments(0);
+
+  apiMock
+    .onGet(`/comments/0`)
+    .reply(200, mockReviews);
+
+  return commentsFilmLoader(dispatch, () => {}, api)
+    .then(() => {
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenNthCalledWith(1, {
+        type: ActionType.ADD_FILM_COMMENTS,
+        payload: mockReviews
       });
     });
 });

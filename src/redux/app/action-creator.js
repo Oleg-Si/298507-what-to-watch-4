@@ -22,8 +22,8 @@ const ActionCreator = {
     payload: film
   }),
 
-  signIn: (screen) => ({
-    type: ActionType.SIGN_IN,
+  changeScreen: (screen) => ({
+    type: ActionType.CHANGE_SCREEN,
     payload: screen
   })
 };

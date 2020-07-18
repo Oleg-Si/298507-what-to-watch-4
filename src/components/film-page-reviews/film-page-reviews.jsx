@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 const FilmPageReviews = (props) => {
-  const reviews = props.filmInfo.reviews;
+  const reviews = props.filmReviews;
 
   const col1 = [];
   const col2 = [];
@@ -18,14 +18,17 @@ const FilmPageReviews = (props) => {
 
   return (
     <div className="movie-card__reviews movie-card__row">
+
+      {!reviews.length ? <p>No reviews, add first review</p> : ``}
+
       <div className="movie-card__reviews-col">
         {col1.map((el) => (
-          <div className="review" key={el.date}>
+          <div className="review" key={el.id}>
             <blockquote className="review__quote">
               <p className="review__text">{el.comment}</p>
 
               <footer className="review__details">
-                <cite className="review__author">{el.author}</cite>
+                <cite className="review__author">{el.user.name}</cite>
                 <time className="review__date" dateTime={moment(el.date).format(`YYYY-M-D`)}>{moment(el.date).format(`LL`)}</time>
               </footer>
             </blockquote>
@@ -42,7 +45,7 @@ const FilmPageReviews = (props) => {
               <p className="review__text">{el.comment}</p>
 
               <footer className="review__details">
-                <cite className="review__author">{el.author}</cite>
+                <cite className="review__author">{el.user.name}</cite>
                 <time className="review__date" dateTime={moment(el.date).format(`YYYY-M-D`)}>{moment(el.date).format(`LL`)}</time>
               </footer>
             </blockquote>
@@ -56,27 +59,7 @@ const FilmPageReviews = (props) => {
 };
 
 FilmPageReviews.propTypes = {
-  filmInfo: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    releaseDate: PropTypes.number.isRequired,
-    runTime: PropTypes.number.isRequired,
-    ratingCount: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(
-        PropTypes.string
-    ).isRequired,
-    reviews: PropTypes.arrayOf(
-        PropTypes.shape({
-          author: PropTypes.string.isRequired,
-          rating: PropTypes.string.isRequired,
-          date: PropTypes.number.isRequired,
-          comment: PropTypes.string.isRequired
-        }).isRequired
-    ).isRequired,
-  }).isRequired
+  filmReviews: PropTypes.array.isRequired
 };
 
 export default FilmPageReviews;

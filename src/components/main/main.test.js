@@ -22,7 +22,7 @@ it(`Проверяет снепшот компонента Main`, () => {
         filmsCount={3}
         onFilmCardTitleClick={() => {}}
         onGenreCilck={() => {}}
-        onSignIn={() => {}}
+        onSignInClick={() => {}}
         onShowMoreClick={() => {}}
         authorizationStatus={AuthorizationStatus.AUTH}
         userAvatar={`img/avatar.jpg`}
