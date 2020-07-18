@@ -129,7 +129,7 @@ const FilmPage = (props) => {
 
                 <TabList
                   tabs={Object.values(Tabs)}
-                  activeTab={Tabs.OVERVIEW}
+                  activeTab={activeTab}
                   onTabClick={onTabClick}
                 />
 
