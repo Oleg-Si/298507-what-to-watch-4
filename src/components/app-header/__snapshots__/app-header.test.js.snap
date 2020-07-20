@@ -2,7 +2,7 @@
 
 exports[`Проверяет снепшот компонента AppHeader 1`] = `
 <header
-  className="page-header movie-card__head"
+  className="page-header undefined"
 >
   <div
     className="logo"
@@ -45,7 +45,7 @@ exports[`Проверяет снепшот компонента AppHeader 1`] = 
 
 exports[`Проверяет снепшот компонента AppHeader 2`] = `
 <header
-  className="page-header movie-card__head"
+  className="page-header undefined"
 >
   <div
     className="logo"

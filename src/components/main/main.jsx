@@ -10,7 +10,7 @@ import ShowMore from '../show-more/show-more.jsx';
 import {getPromoFilm, getFilteredFilmsByGenre, getFilms} from './../../redux/data/selectors';
 import {getActiveGenre, getCountFilmsForRender} from './../../redux/app/selectors';
 import {getAuthorizationStatus, getUserAvatar} from './../../redux/user/selectors';
-import AppHeader from '../app-header/app-header.jsx';
+import AppHeaderMovieCard from './../app-header-movie-card/app-header-movie-card.jsx';
 import AppFooter from '../app-footer/app-footer.jsx';
 import dataOperations from './../../redux/data/operations';
 
@@ -50,7 +50,7 @@ const Main = (props) => {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <AppHeader
+        <AppHeaderMovieCard
           authorizationStatus={authorizationStatus}
           userAvatar={userAvatar}
         />

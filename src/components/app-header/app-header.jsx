@@ -7,7 +7,8 @@ const AppHeader = (props) => {
   const {
     authorizationStatus,
     userAvatar,
-    children
+    children,
+    className
   } = props;
 
   const getAuthStatusMarkup = () => {
@@ -30,7 +31,7 @@ const AppHeader = (props) => {
   };
 
   return (
-    <header className="page-header movie-card__head">
+    <header className={`page-header ${className}`}>
       <div className="logo">
         <Link
           className="logo__link"
@@ -54,6 +55,7 @@ const AppHeader = (props) => {
 AppHeader.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   userAvatar: PropTypes.string,
+  className: PropTypes.string,
   children: PropTypes.node,
 };
 

@@ -10,7 +10,7 @@ import FilmPageReviews from '../film-page-reviews/film-page-reviews.jsx';
 import FilmList from './../film-list/film-list.jsx';
 import {getActiveTab} from '../../redux/app/selectors.js';
 import {getFilms, getFilmComments, getCurrentFilm} from './../../redux/data/selectors';
-import AppHeader from '../app-header/app-header.jsx';
+import AppHeaderMovieCard from './../app-header-movie-card/app-header-movie-card.jsx';
 import {getAuthorizationStatus, getUserAvatar} from './../../redux/user/selectors';
 import {AuthorizationStatus} from './../../constants';
 import AppFooter from '../app-footer/app-footer.jsx';
@@ -70,7 +70,7 @@ const FilmPage = (props) => {
 
           <h1 className="visually-hidden">WTW</h1>
 
-          <AppHeader
+          <AppHeaderMovieCard
             authorizationStatus={authorizationStatus}
             userAvatar={userAvatar}
           />
