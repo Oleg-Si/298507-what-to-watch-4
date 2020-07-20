@@ -19,6 +19,11 @@ const ActionCreator = {
   addFilmComments: (comments) => ({
     type: ActionType.ADD_FILM_COMMENTS,
     payload: comments
+  }),
+
+  loadFavoriteFilms: (films) => ({
+    type: ActionType.LOAD_FAVORITE_FILMS,
+    payload: films
   })
 };
 

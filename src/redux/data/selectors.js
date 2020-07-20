@@ -9,6 +9,10 @@ export const getFilms = (state) => {
   return state[NameSpace.DATA].films;
 };
 
+export const getFavoriteFilms = (state) => {
+  return state[NameSpace.DATA].favoriteFilms;
+};
+
 export const getPromoFilm = (state) => {
   return state[NAME_SPACE].promoFilm;
 };
@@ -19,6 +23,10 @@ export const getFilmComments = (state) => {
 
 export const getIsLoadedFilms = (state) => {
   return state[NAME_SPACE].isLoadedFilms;
+};
+
+export const getIsLoadedFavoriteFilms = (state) => {
+  return state[NAME_SPACE].isLoadedFavoriteFilms;
 };
 
 export const getFilteredFilmsByGenre = createSelector(
