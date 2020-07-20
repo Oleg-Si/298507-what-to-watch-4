@@ -5,7 +5,6 @@ import {AuthorizationStatus} from './../../constants';
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   isAuthorizationChecked: false,
-
   userAvatar: ``,
   authorizationStatusCode: null
 };

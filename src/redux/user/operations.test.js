@@ -2,8 +2,7 @@ import MockAdapter from 'axios-mock-adapter';
 import createAPI from '../../api';
 import ActionType from './action-type';
 import Operation from './operations';
-import {AuthorizationStatus, Screens} from './../../constants';
-import appActionType from './../app/action-type';
+import {AuthorizationStatus} from './../../constants';
 
 const api = createAPI(() => {});
 
@@ -61,7 +60,7 @@ it(`Operation должен сделать корректный post запрос
 
   return login(dispatch, () => {}, api)
     .then(() => {
-      expect(dispatch).toHaveBeenCalledTimes(3);
+      expect(dispatch).toHaveBeenCalledTimes(2);
       expect(dispatch).toHaveBeenNthCalledWith(1, {
         type: ActionType.REQUIRED_AUTHORIZATION,
         payload: AuthorizationStatus.AUTH
@@ -69,10 +68,6 @@ it(`Operation должен сделать корректный post запрос
       expect(dispatch).toHaveBeenNthCalledWith(2, {
         type: ActionType.CORRECT_AUTHORIZATION,
         payload: userData
-      });
-      expect(dispatch).toHaveBeenNthCalledWith(3, {
-        type: appActionType.CHANGE_SCREEN,
-        payload: Screens.MAIN
       });
     });
 });

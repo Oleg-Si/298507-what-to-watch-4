@@ -6,7 +6,6 @@ const initialState = {
   activeGenre: DEFAULT_GENRE,
   activeTab: DEFAULT_TAB,
   countFilmsForRender: RENDERED_FILMS_COUNT,
-  currentScreen: Screens.MAIN,
   selectedFilm: {}
 };
 
@@ -26,9 +25,6 @@ const reducer = (state = initialState, action) => {
         currentScreen: Screens.FILM_PAGE,
         selectedFilm: action.payload
       });
-
-    case ActionType.CHANGE_SCREEN:
-      return extend(state, {currentScreen: action.payload});
   }
 
   return state;

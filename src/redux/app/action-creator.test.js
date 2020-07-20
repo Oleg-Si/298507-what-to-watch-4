@@ -1,7 +1,7 @@
 import ActionCreator from './action-creator';
 import ActionType from './action-type';
 import {mockFilmForTests} from './../../mock/films';
-import {COUNT_MORE_FILMS, Screens} from '../../constants';
+import {COUNT_MORE_FILMS} from '../../constants';
 
 describe(`ActionCreator работает корректно`, () => {
   it(`genreFilterChange устанавливает переданный жанр`, () => {
@@ -29,20 +29,6 @@ describe(`ActionCreator работает корректно`, () => {
     expect(ActionCreator.selectsFilm(mockFilmForTests)).toEqual({
       type: ActionType.SELECTS_FILM,
       payload: mockFilmForTests,
-    });
-  });
-
-  it(`changeScreen меняет экран на переданный`, () => {
-    expect(ActionCreator.changeScreen(Screens.MAIN)).toEqual({
-      type: ActionType.CHANGE_SCREEN,
-      payload: Screens.MAIN,
-    });
-  });
-
-  it(`changeScreen меняет экран на переданный`, () => {
-    expect(ActionCreator.changeScreen(Screens.ADD_REVIEW)).toEqual({
-      type: ActionType.CHANGE_SCREEN,
-      payload: Screens.ADD_REVIEW,
     });
   });
 });

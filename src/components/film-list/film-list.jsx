@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import FilmCard from '../film-card/film-card.jsx';
 
 const FilmList = (props) => {
-  const {films, onFilmCardTitleClick, filmsCount} = props;
+  const {
+    films,
+    onFilmCardTitleClick,
+    filmsCount
+  } = props;
 
   const filmsForRender = films.slice(0, filmsCount);
 

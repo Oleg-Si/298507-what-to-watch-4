@@ -5,7 +5,7 @@ import GenreFilter from '../genre-filter/genre-filter.jsx';
 import {connect} from 'react-redux';
 import dataActionCreator from '../../redux/data/action-creator';
 import appActionCreator from '../../redux/app/action-creator';
-import {DEFAULT_GENRE, Screens} from './../../constants';
+import {DEFAULT_GENRE} from './../../constants';
 import ShowMore from '../show-more/show-more.jsx';
 import {getPromoFilm, getFilteredFilmsByGenre, getFilms} from './../../redux/data/selectors';
 import {getActiveGenre, getCountFilmsForRender} from './../../redux/app/selectors';
@@ -25,7 +25,6 @@ const Main = (props) => {
     filmsCount,
     onShowMoreClick,
     authorizationStatus,
-    onSignInClick,
     userAvatar
   } = props;
 
@@ -54,7 +53,6 @@ const Main = (props) => {
         <AppHeader
           authorizationStatus={authorizationStatus}
           userAvatar={userAvatar}
-          onSignIn={onSignInClick}
         />
 
         <div className="movie-card__wrap">
@@ -146,7 +144,6 @@ Main.propTypes = {
   activeGenre: PropTypes.string.isRequired,
   filmsCount: PropTypes.number.isRequired,
   onShowMoreClick: PropTypes.func.isRequired,
-  onSignInClick: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   userAvatar: PropTypes.string,
 };
@@ -169,10 +166,6 @@ const mapDispatchToProps = (dispatch) => ({
 
   onShowMoreClick(filmsCount) {
     dispatch(appActionCreator.showMoreFilms(filmsCount));
-  },
-
-  onSignInClick() {
-    dispatch(appActionCreator.changeScreen(Screens.SIGN_IN));
   },
 
   onFilmCardTitleClick(film) {

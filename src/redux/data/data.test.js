@@ -4,9 +4,11 @@ import reducer from './data';
 
 const initialState = {
   films: [],
+  isLoadedFilms: false,
   filteredFilmsByGenre: [],
   promoFilm: {},
-  currentFilmComments: []
+  isLoadedPromoFilms: false,
+  currentFilmComments: [],
 };
 
 describe(`Reducer работает корректно`, () => {
@@ -32,15 +34,21 @@ describe(`Reducer работает корректно`, () => {
   it(`Reducer при ошибочном ActionType возвращает начальный стейт`, () => {
     expect(reducer({
       films: [],
+      isLoadedFilms: false,
       filteredFilmsByGenre: [],
-      promoFilm: {}
+      promoFilm: {},
+      isLoadedPromoFilms: false,
+      currentFilmComments: [],
     }, {
       type: null,
       payload: mockFilmsForTests
     })).toEqual({
       films: [],
+      isLoadedFilms: false,
       filteredFilmsByGenre: [],
-      promoFilm: {}
+      promoFilm: {},
+      isLoadedPromoFilms: false,
+      currentFilmComments: [],
     });
   });
 

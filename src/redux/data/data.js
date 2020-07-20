@@ -4,12 +4,9 @@ import {extend} from './../../utils';
 const initialState = {
   films: [],
   isLoadedFilms: false,
-
   filteredFilmsByGenre: [],
-
   promoFilm: {},
   isLoadedPromoFilms: false,
-
   currentFilmComments: [],
 };
 

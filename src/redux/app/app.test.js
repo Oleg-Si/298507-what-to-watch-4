@@ -7,7 +7,6 @@ const initialState = {
   activeGenre: DEFAULT_GENRE,
   activeTab: DEFAULT_TAB,
   countFilmsForRender: RENDERED_FILMS_COUNT,
-  currentScreen: Screens.MAIN,
   selectedFilm: {}
 };
 
@@ -108,25 +107,6 @@ describe(`Reducer работает корректно`, () => {
       countFilmsForRender: RENDERED_FILMS_COUNT,
       currentScreen: Screens.FILM_PAGE,
       selectedFilm: mockFilmForTests
-    });
-  });
-
-  it(`Reducer записывает переданный экран в currentScreen`, () => {
-    expect(reducer({
-      activeGenre: DEFAULT_GENRE,
-      activeTab: DEFAULT_TAB,
-      countFilmsForRender: RENDERED_FILMS_COUNT,
-      currentScreen: Screens.MAIN,
-      selectedFilm: {}
-    }, {
-      type: ActionType.CHANGE_SCREEN,
-      payload: Screens.ADD_REVIEW
-    })).toEqual({
-      activeGenre: DEFAULT_GENRE,
-      activeTab: DEFAULT_TAB,
-      countFilmsForRender: RENDERED_FILMS_COUNT,
-      currentScreen: Screens.ADD_REVIEW,
-      selectedFilm: {}
     });
   });
 });

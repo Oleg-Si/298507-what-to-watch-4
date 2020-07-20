@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {mockFilmsForTests} from '../../mock/films.js';
 import NameSpace from './../../redux/name-space';
-import {AuthorizationStatus, Screens} from './../../constants';
+import {AuthorizationStatus, APIErrorsCode} from './../../constants';
 
 const mockStore = configureStore([]);
 
@@ -36,13 +36,9 @@ it(`Проверяет снепшот компонента App`, () => {
   const tree = renderer.create(
       <Provider store={store}>
         <App
-          screen={Screens.MAIN}
-          authorizationStatus={AuthorizationStatus.AUTH}
-          activeFilm={{}}
-          onFilmCardTitleClick={() => {}}
+          authorizationStatusCode={APIErrorsCode.BAD_REQUEST}
+          isLoadedFilms={true}
           onSignIn={() => {}}
-          onAddReviews={() => {}}
-          onSignInClick={() => {}}
         />
       </Provider>, {
         createNodeMock: () => {

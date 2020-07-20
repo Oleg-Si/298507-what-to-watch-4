@@ -22,7 +22,7 @@ exports[`Проверяет снепшот компонента FilmList 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/films/0"
         onClick={[Function]}
       >
         Aviator
@@ -47,7 +47,7 @@ exports[`Проверяет снепшот компонента FilmList 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/films/1"
         onClick={[Function]}
       >
         Macbeth
@@ -72,7 +72,7 @@ exports[`Проверяет снепшот компонента FilmList 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/films/2"
         onClick={[Function]}
       >
         Snatch
