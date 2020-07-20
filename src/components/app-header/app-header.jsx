@@ -7,7 +7,6 @@ const AppHeader = (props) => {
   const {
     authorizationStatus,
     userAvatar,
-    onSignIn,
     children
   } = props;
 
@@ -25,7 +24,6 @@ const AppHeader = (props) => {
         <Link
           className="user-block__link"
           to={AppRoute.LOGIN}
-          onClick={onSignIn}
         >Sign in</Link>
       );
     }
@@ -54,7 +52,6 @@ const AppHeader = (props) => {
 };
 
 AppHeader.propTypes = {
-  onSignIn: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   userAvatar: PropTypes.string,
   children: PropTypes.node,

@@ -1,5 +1,11 @@
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+
+const ValidationParameters = {
+  TEXT: {
+    MIN: 50,
+    MAX: 400
+  }
+};
 
 const withSendForm = (Component) => {
   class WithSendForm extends PureComponent {
@@ -7,44 +13,26 @@ const withSendForm = (Component) => {
       super(props);
 
       this.state = {
-        isCorrectCommentLength: false,
+        isValid: false,
+        isSend: false
       };
 
-      this._formRef = React.createRef();
-
-      this._handleSubmit = this._handleSubmit.bind(this);
-      this._handleTextareaChange = this._handleTextareaChange.bind(this);
+      this._handleCheckValidCommentLength = this._handleCheckValidCommentLength.bind(this);
+      this._handleSend = this._handleSend.bind(this);
     }
 
-    _handleSubmit() {
-      const form = this._formRef.current;
-
-      const id = this.props.film.id;
-      const rating = form.querySelector(`input[name="rating"]:checked`).value;
-      const comment = form.querySelector(`#review-text`).value;
-
-      const reviewData = {
-        id,
-        rating,
-        comment
-      };
-
-      this.props.onSubmit(reviewData);
+    _handleSend() {
+      this.setState({isSend: true});
     }
 
-    _handleTextareaChange() {
-      const form = this._formRef.current;
-      const textarea = form.querySelector(`#review-text`);
-
-      const commentLength = textarea.value.length;
-
-      if (commentLength >= 50 && commentLength <= 400) {
-        if (this.state.isCorrectCommentLength === false) {
-          this.setState({isCorrectCommentLength: true});
+    _handleCheckValidCommentLength(commentLength) {
+      if (commentLength >= ValidationParameters.TEXT.MIN && commentLength <= ValidationParameters.TEXT.MAX) {
+        if (this.state.isValid === false) {
+          this.setState({isValid: true});
         }
       } else {
-        if (this.state.isCorrectCommentLength === true) {
-          this.setState({isCorrectCommentLength: false});
+        if (this.state.isValid === true) {
+          this.setState({isValid: false});
         }
       }
     }
@@ -53,19 +41,14 @@ const withSendForm = (Component) => {
       return (
         <Component
           {...this.props}
-          isCorrectCommentLength={this.state.isCorrectCommentLength}
-          onSubmit={this._handleSubmit}
-          onTextareaChange={this._handleTextareaChange}
-          formRef={this._formRef}
+          isValid={this.state.isValid}
+          isSend={this.state.isSend}
+          onCheckValidCommentLength={this._handleCheckValidCommentLength}
+          onSend={this._handleSend}
         />
       );
     }
   }
-
-  WithSendForm.propTypes = {
-    onSubmit: PropTypes.func.isRequired,
-    film: PropTypes.object.isRequired
-  };
 
   return WithSendForm;
 };

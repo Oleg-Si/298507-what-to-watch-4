@@ -12,6 +12,7 @@ import {getActiveGenre, getCountFilmsForRender} from './../../redux/app/selector
 import {getAuthorizationStatus, getUserAvatar} from './../../redux/user/selectors';
 import AppHeader from '../app-header/app-header.jsx';
 import AppFooter from '../app-footer/app-footer.jsx';
+import dataOperations from './../../redux/data/operations';
 
 const Main = (props) => {
   const {
@@ -172,7 +173,12 @@ const mapDispatchToProps = (dispatch) => ({
 
   onSignInClick() {
     dispatch(appActionCreator.changeScreen(Screens.SIGN_IN));
-  }
+  },
+
+  onFilmCardTitleClick(film) {
+    dispatch(dataOperations.loadComments(film.id));
+    dispatch(appActionCreator.selectsFilm(film));
+  },
 });
 
 export {Main};
