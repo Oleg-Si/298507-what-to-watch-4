@@ -11,3 +11,7 @@ export const getAuthorizationStatusCode = (state) => {
 export const getUserAvatar = (state) => {
   return state[NameSpace.USER].userAvatar;
 };
+
+export const getIsAuthorizationChecked = (state) => {
+  return state[NameSpace.USER].isAuthorizationChecked;
+};
