@@ -85,3 +85,22 @@ it(`Operation должен сделать корректный запрос /com
       });
     });
 });
+
+it(`Operation должен сделать корректный запрос /favorite`, () => {
+  const apiMock = new MockAdapter(api);
+  const dispatch = jest.fn();
+  const favoriteFilmsLoader = Operation.loadFavoriteFilms();
+
+  apiMock
+    .onGet(`/favorite`)
+    .reply(200, mockServerFilm);
+
+  return favoriteFilmsLoader(dispatch, () => {}, api)
+    .then(() => {
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenNthCalledWith(1, {
+        type: ActionType.LOAD_FAVORITE_FILMS,
+        payload: createFilm(mockServerFilm)
+      });
+    });
+});

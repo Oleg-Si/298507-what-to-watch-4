@@ -2,7 +2,7 @@
 
 exports[`Проверяет снепшот компонента AppHeaderMyList 1`] = `
 <header
-  className="page-header otherClass"
+  className="page-header user-page__head"
 >
   <div
     className="logo"

@@ -9,6 +9,8 @@ const initialState = {
   promoFilm: {},
   isLoadedPromoFilms: false,
   currentFilmComments: [],
+  favoriteFilms: [],
+  isLoadedFavoriteFilms: false
 };
 
 describe(`Reducer работает корректно`, () => {
@@ -39,6 +41,8 @@ describe(`Reducer работает корректно`, () => {
       promoFilm: {},
       isLoadedPromoFilms: false,
       currentFilmComments: [],
+      favoriteFilms: [],
+      isLoadedFavoriteFilms: false
     }, {
       type: null,
       payload: mockFilmsForTests
@@ -49,6 +53,8 @@ describe(`Reducer работает корректно`, () => {
       promoFilm: {},
       isLoadedPromoFilms: false,
       currentFilmComments: [],
+      favoriteFilms: [],
+      isLoadedFavoriteFilms: false
     });
   });
 
@@ -66,6 +72,56 @@ describe(`Reducer работает корректно`, () => {
       filteredFilmsByGenre: [],
       promoFilm: {},
       currentFilmComments: mockReviews
+    });
+  });
+
+  it(`Reducer загружает фильмы и записывает в стейт`, () => {
+    expect(reducer({
+      films: [],
+      isLoadedFilms: false,
+      filteredFilmsByGenre: [],
+      promoFilm: {},
+      isLoadedPromoFilms: false,
+      currentFilmComments: [],
+      favoriteFilms: [],
+      isLoadedFavoriteFilms: false
+    }, {
+      type: ActionType.LOAD_FILMS,
+      payload: mockFilmsForTests
+    })).toEqual({
+      films: mockFilmsForTests,
+      isLoadedFilms: true,
+      filteredFilmsByGenre: mockFilmsForTests,
+      promoFilm: {},
+      isLoadedPromoFilms: false,
+      currentFilmComments: [],
+      favoriteFilms: [],
+      isLoadedFavoriteFilms: false
+    });
+  });
+
+  it(`Reducer загружает избранные фильмы и записывает в стейт`, () => {
+    expect(reducer({
+      films: [],
+      isLoadedFilms: false,
+      filteredFilmsByGenre: [],
+      promoFilm: {},
+      isLoadedPromoFilms: false,
+      currentFilmComments: [],
+      favoriteFilms: [],
+      isLoadedFavoriteFilms: false
+    }, {
+      type: ActionType.LOAD_FAVORITE_FILMS,
+      payload: mockFilmsForTests
+    })).toEqual({
+      films: [],
+      isLoadedFilms: false,
+      filteredFilmsByGenre: [],
+      promoFilm: {},
+      isLoadedPromoFilms: false,
+      currentFilmComments: [],
+      favoriteFilms: mockFilmsForTests,
+      isLoadedFavoriteFilms: true
     });
   });
 });

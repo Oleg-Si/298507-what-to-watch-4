@@ -38,6 +38,7 @@ it(`Проверяет снепшот компонента App`, () => {
         <App
           authorizationStatusCode={APIErrorsCode.BAD_REQUEST}
           isLoadedFilms={true}
+          isLoadedFavoriteFilms={true}
           onSignIn={() => {}}
         />
       </Provider>, {
