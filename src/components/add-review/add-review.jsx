@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withSendForm from '../../hocs/with-send-form/with-send-form.jsx';
 import AppHeader from '../app-header/app-header.jsx';
+import {Link} from 'react-router-dom';
+import {AppRoute} from '../../constants.js';
 
 const AddReview = (props) => {
   const {
@@ -32,7 +34,10 @@ const AddReview = (props) => {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="movie-page.html" className="breadcrumbs__link">The Grand Budapest Hotel</a>
+                <Link
+                  className="breadcrumbs__link"
+                  to={`${AppRoute.FILM}/${film.id}`}
+                >{film.title}</Link>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link">Add review</a>

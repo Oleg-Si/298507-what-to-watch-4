@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TabList from '../tab-list/tab-list.jsx';
-import {Tabs, COUNT_MORE_LIKE_THIS_FILMS} from '../../constants';
+import {Tabs, COUNT_MORE_LIKE_THIS_FILMS, AppRoute} from '../../constants';
 import {connect} from 'react-redux';
 import appActionCreator from './../../redux/app/action-creator';
 import FilmPageOverview from './../film-page-overview/film-page-overview.jsx';
@@ -13,6 +13,8 @@ import {getFilms, getFilmComments} from './../../redux/data/selectors';
 import AppHeader from '../app-header/app-header.jsx';
 import {getAuthorizationStatus, getUserAvatar} from './../../redux/user/selectors';
 import {Screens, AuthorizationStatus} from './../../constants';
+import AppFooter from '../app-footer/app-footer.jsx';
+import {Link} from 'react-router-dom';
 
 const FilmPage = (props) => {
   const filmInfo = props.activeFilm;
@@ -61,10 +63,13 @@ const FilmPage = (props) => {
 
   const getButtonAddReview = () => {
     if (authorizationStatus === AuthorizationStatus.AUTH) {
-      return <a href="add-review.html" className="btn movie-card__button" onClick={(evt) => {
-        evt.preventDefault();
-        onAddReview();
-      }}>Add review</a>;
+      return (
+        <Link
+          className="btn movie-card__button"
+          to={`${AppRoute.FILM}/${filmInfo.id}${AppRoute.ADD_REVIEW}`}
+          onClick={onAddReview}
+        >Add review</Link>
+      );
     }
 
     return null;
@@ -154,19 +159,7 @@ const FilmPage = (props) => {
 
         </section>
 
-        <footer className="page-footer">
-          <div className="logo">
-            <a href="main.html" className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="copyright">
-            <p>© 2020 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <AppFooter />
       </div>
     </React.Fragment>
   );
