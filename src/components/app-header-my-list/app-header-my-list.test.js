@@ -5,7 +5,6 @@ import {Router} from 'react-router-dom';
 import history from './../../history';
 import {AuthorizationStatus} from './../../constants';
 
-
 it(`Проверяет снепшот компонента AppHeaderMyList`, () => {
   const tree = renderer.create(
       <Router
@@ -14,6 +13,7 @@ it(`Проверяет снепшот компонента AppHeaderMyList`, () 
         <AppHeaderMyList
           className="otherClass"
           authorizationStatus={AuthorizationStatus.AUTH}
+          onMyListClick={() => {}}
         />
       </Router>
   ).toJSON();

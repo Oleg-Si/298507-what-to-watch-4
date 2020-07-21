@@ -37,4 +37,11 @@ describe(`ActionCreator работает корректно`, () => {
       payload: films
     });
   });
+
+  it(`updateFilms возвращает фильмы`, () => {
+    expect(ActionCreator.updateFilms(films)).toEqual({
+      type: ActionType.UPDATE_FILMS,
+      payload: films
+    });
+  });
 });

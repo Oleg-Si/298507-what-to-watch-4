@@ -4,7 +4,7 @@ import ActionType from './action-type';
 import Operation from './operations';
 import {createFilm} from '../../adapter';
 import {mockReviews} from '../../mock/films';
-
+import appActionType from './../app/action-type';
 
 const mockServerFilm = {
   "id": 1,
@@ -59,10 +59,14 @@ it(`Operation должен сделать корректный запрос /fil
 
   return promoFilmLoader(dispatch, () => {}, api)
     .then(() => {
-      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledTimes(2);
       expect(dispatch).toHaveBeenNthCalledWith(1, {
         type: ActionType.LOAD_PROMO_FILM,
         payload: createFilm(mockServerFilm)
+      });
+      expect(dispatch).toHaveBeenNthCalledWith(2, {
+        type: appActionType.CHANGE_PROMO_FILM_STATUS,
+        payload: createFilm(mockServerFilm).isFavorite
       });
     });
 });

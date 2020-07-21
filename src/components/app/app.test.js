@@ -24,7 +24,8 @@ it(`Проверяет снепшот компонента App`, () => {
     },
     [NameSpace.APP]: {
       activeGenre: `All genres`,
-      countFilmsForRender: 3
+      countFilmsForRender: 3,
+      promoFilmIsFavorite: true
     },
     [NameSpace.USER]: {
       authorizationStatus: AuthorizationStatus.AUTH,
@@ -38,7 +39,9 @@ it(`Проверяет снепшот компонента App`, () => {
         <App
           authorizationStatusCode={APIErrorsCode.BAD_REQUEST}
           isLoadedFilms={true}
+          isLoadedPromoFilm={true}
           isLoadedFavoriteFilms={true}
+          promoFilmStatus={true}
           onSignIn={() => {}}
         />
       </Provider>, {

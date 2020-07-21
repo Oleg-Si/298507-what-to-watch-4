@@ -14,7 +14,8 @@ const MyList = (props) => {
     films,
     onFilmCardTitleClick,
     authorizationStatus,
-    userAvatar
+    userAvatar,
+    onMyListClick
   } = props;
 
   return (
@@ -23,6 +24,7 @@ const MyList = (props) => {
       <AppHeaderMyList
         authorizationStatus={authorizationStatus}
         userAvatar={userAvatar}
+        onMyListClick={onMyListClick}
       >
         <h1 className="page-title user-page__title">My list</h1>
       </AppHeaderMyList>
@@ -45,6 +47,7 @@ const MyList = (props) => {
 MyList.propTypes = {
   films: PropTypes.array.isRequired,
   onFilmCardTitleClick: PropTypes.func.isRequired,
+  onMyListClick: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   userAvatar: PropTypes.string,
 };
@@ -58,6 +61,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onFilmCardTitleClick(film) {
     dispatch(dataOperations.loadComments(film.id));
+  },
+
+  onMyListClick() {
+    dispatch(dataOperations.loadFavoriteFilms());
   }
 });
 

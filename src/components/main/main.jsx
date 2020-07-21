@@ -28,6 +28,7 @@ const Main = (props) => {
     authorizationStatus,
     userAvatar,
     onFavorite,
+    onMyListClick,
     promoFilmStatus
   } = props;
 
@@ -56,6 +57,7 @@ const Main = (props) => {
         <AppHeaderMovieCard
           authorizationStatus={authorizationStatus}
           userAvatar={userAvatar}
+          onMyListClick={onMyListClick}
         />
 
         <div className="movie-card__wrap">
@@ -156,6 +158,7 @@ Main.propTypes = {
   promoFilmStatus: PropTypes.bool.isRequired,
   onShowMoreClick: PropTypes.func.isRequired,
   onFavorite: PropTypes.func.isRequired,
+  onMyListClick: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   userAvatar: PropTypes.string,
 };
@@ -187,6 +190,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   onFavorite(filmId, status) {
     dispatch(userOperations.isFavorite(filmId, status));
+  },
+
+  onMyListClick() {
+    dispatch(dataOperations.loadFavoriteFilms());
   }
 });
 

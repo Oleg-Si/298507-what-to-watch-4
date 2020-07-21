@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {AuthorizationStatus, AppRoute} from './../../constants';
 import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
-import Operations from '../../redux/data/operations';
 
 const AppHeader = (props) => {
   const {
@@ -66,11 +64,4 @@ AppHeader.propTypes = {
   children: PropTypes.node,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  onMyListClick() {
-    dispatch(Operations.loadFavoriteFilms());
-  }
-});
-
-export {AppHeader};
-export default connect(null, mapDispatchToProps)(AppHeader);
+export default AppHeader;

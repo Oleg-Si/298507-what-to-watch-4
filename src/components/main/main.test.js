@@ -28,6 +28,9 @@ it(`Проверяет снепшот компонента Main`, () => {
           onFilmCardTitleClick={() => {}}
           onGenreCilck={() => {}}
           onShowMoreClick={() => {}}
+          onFavorite={() => {}}
+          onMyListClick={() => {}}
+          promoFilmStatus={true}
           authorizationStatus={AuthorizationStatus.AUTH}
           userAvatar={`img/avatar.jpg`}
         />

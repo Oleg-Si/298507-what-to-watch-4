@@ -1,4 +1,4 @@
-import {mockFilmsForTests, mockReviews} from '../../mock/films';
+import films, {mockFilmsForTests, mockReviews} from '../../mock/films';
 import ActionType from './action-type';
 import reducer from './data';
 
@@ -122,6 +122,31 @@ describe(`Reducer работает корректно`, () => {
       currentFilmComments: [],
       favoriteFilms: mockFilmsForTests,
       isLoadedFavoriteFilms: true
+    });
+  });
+
+  it(`Reducer обновляет фильмы и записывает в стейт`, () => {
+    expect(reducer({
+      films,
+      isLoadedFilms: false,
+      filteredFilmsByGenre: [],
+      promoFilm: {},
+      isLoadedPromoFilms: false,
+      currentFilmComments: [],
+      favoriteFilms: [],
+      isLoadedFavoriteFilms: false
+    }, {
+      type: ActionType.UPDATE_FILMS,
+      payload: mockFilmsForTests
+    })).toEqual({
+      films: mockFilmsForTests,
+      isLoadedFilms: false,
+      filteredFilmsByGenre: [],
+      promoFilm: {},
+      isLoadedPromoFilms: false,
+      currentFilmComments: [],
+      favoriteFilms: [],
+      isLoadedFavoriteFilms: false
     });
   });
 });

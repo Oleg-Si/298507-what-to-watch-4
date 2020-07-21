@@ -29,6 +29,7 @@ const FilmPage = (props) => {
     userAvatar,
     filmReviews,
     onFavorite,
+    onMyListClick
   } = props;
 
   const getFilmInfo = () => {
@@ -75,6 +76,7 @@ const FilmPage = (props) => {
           <AppHeaderMovieCard
             authorizationStatus={authorizationStatus}
             userAvatar={userAvatar}
+            onMyListClick={onMyListClick}
           />
 
           <div className="movie-card__wrap">
@@ -183,6 +185,7 @@ FilmPage.propTypes = {
   ).isRequired,
   onFilmCardTitleClick: PropTypes.func.isRequired,
   onFavorite: PropTypes.func.isRequired,
+  onMyListClick: PropTypes.func.isRequired,
   filmId: PropTypes.string.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   userAvatar: PropTypes.string,
@@ -213,6 +216,10 @@ const mapDispatchToProps = (dispatch, props) => ({
   onFavorite(filmId, status) {
     dispatch(userOperations.isFavorite(filmId, status));
   },
+
+  onMyListClick() {
+    dispatch(dataOperations.loadFavoriteFilms());
+  }
 });
 
 export {FilmPage};

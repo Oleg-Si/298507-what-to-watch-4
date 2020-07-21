@@ -14,6 +14,7 @@ it(`Проверяет снепшот компонента MyList`, () => {
         <MyList
           films={mockFilmsForTests}
           onFilmCardTitleClick={() => {}}
+          onMyListClick={() => {}}
           authorizationStatus={AuthorizationStatus.AUTH}
           userAvatar={`https://4.react.pages.academy/wtw/static/avatar/2.jpg`}
         />
