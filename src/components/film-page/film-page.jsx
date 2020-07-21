@@ -16,6 +16,7 @@ import {AuthorizationStatus} from './../../constants';
 import AppFooter from '../app-footer/app-footer.jsx';
 import {Link} from 'react-router-dom';
 import dataOperations from './../../redux/data/operations';
+import userOperations from './../../redux/user/operations';
 
 const FilmPage = (props) => {
   const {
@@ -26,7 +27,8 @@ const FilmPage = (props) => {
     film,
     authorizationStatus,
     userAvatar,
-    filmReviews
+    filmReviews,
+    onFavorite,
   } = props;
 
   const getFilmInfo = () => {
@@ -93,10 +95,14 @@ const FilmPage = (props) => {
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
+                <button className="btn btn--list movie-card__button" type="button" onClick={(evt) => {
+                  evt.preventDefault();
+                  onFavorite(film.id, +!film.isFavorite);
+                }}>
+                  {film.isFavorite
+                    ? <svg viewBox="0 0 18 14" width="18" height="14"><use xlinkHref="#in-list"></use></svg>
+                    : <svg viewBox="0 0 19 20" width="19" height="20"><use xlinkHref="#add"></use></svg>
+                  }
                   <span>My list</span>
                 </button>
 
@@ -162,6 +168,7 @@ FilmPage.propTypes = {
     bgImg: PropTypes.string.isRequired,
     bgColor: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
+    isFavorite: PropTypes.bool.isRequired,
     starring: PropTypes.arrayOf(
         PropTypes.string
     ).isRequired
@@ -175,6 +182,8 @@ FilmPage.propTypes = {
       })
   ).isRequired,
   onFilmCardTitleClick: PropTypes.func.isRequired,
+  onFavorite: PropTypes.func.isRequired,
+  filmId: PropTypes.string.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   userAvatar: PropTypes.string,
   filmReviews: PropTypes.array
@@ -186,7 +195,7 @@ const mapStateToProps = (state, props) => ({
   authorizationStatus: getAuthorizationStatus(state),
   userAvatar: getUserAvatar(state),
   filmReviews: getFilmComments(state),
-  film: getCurrentFilm(state, props.filmId),
+  film: getCurrentFilm(state, props.filmId)
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
@@ -198,8 +207,11 @@ const mapDispatchToProps = (dispatch, props) => ({
   },
 
   onFilmCardTitleClick(film) {
-    dispatch(appActionCreator.selectsFilm(film));
     dispatch(dataOperations.loadComments(film.id));
+  },
+
+  onFavorite(filmId, status) {
+    dispatch(userOperations.isFavorite(filmId, status));
   },
 });
 

@@ -18,6 +18,6 @@ export const getCurrentScreen = (state) => {
   return state[NAME_SPACE].currentScreen;
 };
 
-export const getSelectedFilm = (state) => {
-  return state[NAME_SPACE].selectedFilm;
+export const getPromoFilmStatus = (state) => {
+  return state[NAME_SPACE].promoFilmIsFavorite;
 };

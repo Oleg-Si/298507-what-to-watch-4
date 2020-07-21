@@ -38,6 +38,11 @@ const reducer = (state = initialState, action) => {
         favoriteFilms: action.payload,
         isLoadedFavoriteFilms: true
       });
+
+    case ActionType.UPDATE_FILMS:
+      return extend(state, {
+        films: action.payload
+      });
   }
 
   return state;

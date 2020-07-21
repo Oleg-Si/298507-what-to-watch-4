@@ -1,6 +1,7 @@
 import ActionCreator from './action-creator';
 import {createFilm} from '../../adapter';
 import {formatData} from '../../utils';
+import appActionCreator from './../app/action-creator';
 
 const Operations = {
   loadFilms: () => (dispatch, getState, api) => {
@@ -13,7 +14,10 @@ const Operations = {
   loadPromoFilm: () => (dispatch, getState, api) => {
     return api.get(`/films/promo`)
       .then((response) => {
-        dispatch(ActionCreator.loadPromoFilm(createFilm(response.data)));
+        const film = createFilm(response.data);
+
+        dispatch(ActionCreator.loadPromoFilm(film));
+        dispatch(appActionCreator.changePromoFilmStatus(film.isFavorite));
       });
   },
 

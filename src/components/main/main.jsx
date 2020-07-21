@@ -8,11 +8,12 @@ import appActionCreator from '../../redux/app/action-creator';
 import {DEFAULT_GENRE} from './../../constants';
 import ShowMore from '../show-more/show-more.jsx';
 import {getPromoFilm, getFilteredFilmsByGenre, getFilms} from './../../redux/data/selectors';
-import {getActiveGenre, getCountFilmsForRender} from './../../redux/app/selectors';
+import {getActiveGenre, getCountFilmsForRender, getPromoFilmStatus} from './../../redux/app/selectors';
 import {getAuthorizationStatus, getUserAvatar} from './../../redux/user/selectors';
 import AppHeaderMovieCard from './../app-header-movie-card/app-header-movie-card.jsx';
 import AppFooter from '../app-footer/app-footer.jsx';
 import dataOperations from './../../redux/data/operations';
+import userOperations from './../../redux/user/operations';
 
 const Main = (props) => {
   const {
@@ -25,7 +26,9 @@ const Main = (props) => {
     filmsCount,
     onShowMoreClick,
     authorizationStatus,
-    userAvatar
+    userAvatar,
+    onFavorite,
+    promoFilmStatus
   } = props;
 
   const getAllgenre = (data) => {
@@ -78,10 +81,15 @@ const Main = (props) => {
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
+
+                <button className="btn btn--list movie-card__button" type="button" onClick={(evt) => {
+                  evt.preventDefault();
+                  onFavorite(promoFilm.id, +!promoFilmStatus);
+                }}>
+                  {promoFilmStatus
+                    ? <svg viewBox="0 0 18 14" width="18" height="14"><use xlinkHref="#in-list"></use></svg>
+                    : <svg viewBox="0 0 19 20" width="19" height="20"><use xlinkHref="#add"></use></svg>
+                  }
                   <span>My list</span>
                 </button>
               </div>
@@ -124,8 +132,10 @@ Main.propTypes = {
     title: PropTypes.string,
     genre: PropTypes.string,
     releaseDate: PropTypes.number,
+    id: PropTypes.number,
     bgImg: PropTypes.string,
     poster: PropTypes.string,
+    isFavorite: PropTypes.bool,
   }),
   films: PropTypes.arrayOf(
       PropTypes.shape({
@@ -143,7 +153,9 @@ Main.propTypes = {
   onGenreCilck: PropTypes.func.isRequired,
   activeGenre: PropTypes.string.isRequired,
   filmsCount: PropTypes.number.isRequired,
+  promoFilmStatus: PropTypes.bool.isRequired,
   onShowMoreClick: PropTypes.func.isRequired,
+  onFavorite: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   userAvatar: PropTypes.string,
 };
@@ -156,6 +168,7 @@ const mapStateToProps = (state) => ({
   filteredFilms: getFilteredFilmsByGenre(state),
   authorizationStatus: getAuthorizationStatus(state),
   userAvatar: getUserAvatar(state),
+  promoFilmStatus: getPromoFilmStatus(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -170,8 +183,11 @@ const mapDispatchToProps = (dispatch) => ({
 
   onFilmCardTitleClick(film) {
     dispatch(dataOperations.loadComments(film.id));
-    dispatch(appActionCreator.selectsFilm(film));
   },
+
+  onFavorite(filmId, status) {
+    dispatch(userOperations.isFavorite(filmId, status));
+  }
 });
 
 export {Main};

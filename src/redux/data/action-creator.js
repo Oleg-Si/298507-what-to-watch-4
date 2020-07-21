@@ -24,6 +24,11 @@ const ActionCreator = {
   loadFavoriteFilms: (films) => ({
     type: ActionType.LOAD_FAVORITE_FILMS,
     payload: films
+  }),
+
+  updateFilms: (films) => ({
+    type: ActionType.UPDATE_FILMS,
+    payload: films
   })
 };
 

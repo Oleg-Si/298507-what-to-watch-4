@@ -10,7 +10,7 @@ import SignIn from './../sign-in/sign-in.jsx';
 import userOperations from './../../redux/user/operations';
 import AddReview from './../add-review/add-review.jsx';
 import history from './../../history';
-import {getIsLoadedFilms, getIsLoadedFavoriteFilms} from './../../redux/data/selectors';
+import {getIsLoadedFilms, getIsLoadedFavoriteFilms, getIsLoadedPromoFilms} from './../../redux/data/selectors';
 import Preloader from '../preloader/preloader.jsx';
 import PrivateRoute from './../private-route/private-route.jsx';
 import MyList from '../my-list/my-list.jsx';
@@ -21,6 +21,7 @@ class App extends PureComponent {
       onSignIn,
       authorizationStatusCode,
       isLoadedFilms,
+      isLoadedPromoFilm,
       isLoadedFavoriteFilms
     } = this.props;
 
@@ -29,9 +30,15 @@ class App extends PureComponent {
         history={history}
       >
         <Switch>
-          <Route exact path={AppRoute.ROOT}>
-            <Main />
-          </Route>
+          <Route
+            exact
+            path={AppRoute.ROOT}
+            render={() => {
+              return (
+                (isLoadedFilms && isLoadedPromoFilm) ? <Main /> : <Preloader />
+              );
+            }}
+          />
 
           <Route exact path={AppRoute.LOGIN}>
             <SignIn
@@ -93,12 +100,14 @@ App.propTypes = {
   onSignIn: PropTypes.func.isRequired,
   isLoadedFilms: PropTypes.bool.isRequired,
   isLoadedFavoriteFilms: PropTypes.bool.isRequired,
+  isLoadedPromoFilm: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = (state) => ({
   authorizationStatusCode: getAuthorizationStatusCode(state),
   isLoadedFilms: getIsLoadedFilms(state),
-  isLoadedFavoriteFilms: getIsLoadedFavoriteFilms(state)
+  isLoadedFavoriteFilms: getIsLoadedFavoriteFilms(state),
+  isLoadedPromoFilm: getIsLoadedPromoFilms(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

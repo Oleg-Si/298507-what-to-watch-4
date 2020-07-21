@@ -29,6 +29,10 @@ export const getIsLoadedFavoriteFilms = (state) => {
   return state[NAME_SPACE].isLoadedFavoriteFilms;
 };
 
+export const getIsLoadedPromoFilms = (state) => {
+  return state[NAME_SPACE].isLoadedPromoFilms;
+};
+
 export const getFilteredFilmsByGenre = createSelector(
     getFilms,
     getActiveGenre,
@@ -45,4 +49,22 @@ export const getCurrentFilm = createSelector(
     getFilms,
     (state, filmId) => parseInt(filmId, 10),
     (films, filmId) => films.filter((el) => el.id === filmId)[0]
+);
+
+export const getUpdatedFilms = createSelector(
+    getFilms,
+    (state, filmId) => parseInt(filmId, 10),
+    (state, filmId, newFilm) => newFilm,
+    (films, filmId, newFilm) => {
+      const newFilms = films.slice();
+      const index = films.findIndex((el) => el.id === filmId);
+      newFilms[index] = newFilm;
+
+      return newFilms;
+    }
+);
+
+export const getPromoFilmId = createSelector(
+    getPromoFilm,
+    (film) => film.id
 );

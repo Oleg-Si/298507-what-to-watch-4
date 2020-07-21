@@ -4,7 +4,6 @@ import AppHeaderMyList from './../app-header-my-list/app-header-my-list.jsx';
 import AppFooter from './../app-footer/app-footer.jsx';
 import {connect} from 'react-redux';
 import dataOperations from './../../redux/data/operations';
-import appActionCreator from './../../redux/app/action-creator';
 import {getFavoriteFilms} from '../../redux/data/selectors.js';
 import FilmList from './../film-list/film-list.jsx';
 import {getAuthorizationStatus, getUserAvatar} from './../../redux/user/selectors';
@@ -59,7 +58,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onFilmCardTitleClick(film) {
     dispatch(dataOperations.loadComments(film.id));
-    dispatch(appActionCreator.selectsFilm(film));
   }
 });
 

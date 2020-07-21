@@ -17,9 +17,9 @@ const ActionCreator = {
     payload: newTab
   }),
 
-  selectsFilm: (film) => ({
-    type: ActionType.SELECTS_FILM,
-    payload: film
+  changePromoFilmStatus: (status) => ({
+    type: ActionType.CHANGE_PROMO_FILM_STATUS,
+    payload: status
   })
 };
 
