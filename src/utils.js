@@ -1,3 +1,5 @@
+import {createFilm} from './adapter';
+
 export const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
 export const getRandomArrayItems = (array, count) => {
@@ -18,4 +20,16 @@ export const getRandomArrayItems = (array, count) => {
 
 export const extend = (a, b) => {
   return Object.assign({}, a, b);
+};
+
+export const formatData = (data) => {
+  let formattedData;
+
+  if (Array.isArray(data)) {
+    formattedData = data.map((el) => createFilm(el));
+  } else {
+    formattedData = createFilm(data);
+  }
+
+  return formattedData;
 };

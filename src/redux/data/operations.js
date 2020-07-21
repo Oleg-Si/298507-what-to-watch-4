@@ -1,17 +1,6 @@
 import ActionCreator from './action-creator';
 import {createFilm} from '../../adapter';
-
-const formatData = (data) => {
-  let formattedData;
-
-  if (Array.isArray(data)) {
-    formattedData = data.map((el) => createFilm(el));
-  } else {
-    formattedData = createFilm(data);
-  }
-
-  return formattedData;
-};
+import {formatData} from '../../utils';
 
 const Operations = {
   loadFilms: () => (dispatch, getState, api) => {
