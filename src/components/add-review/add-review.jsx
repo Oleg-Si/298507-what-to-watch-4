@@ -2,18 +2,40 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withSendForm from '../../hocs/with-send-form/with-send-form.jsx';
 import AppHeader from '../app-header/app-header.jsx';
+import {Link} from 'react-router-dom';
+import {AppRoute} from '../../constants.js';
+import {connect} from 'react-redux';
+import {getCurrentFilm} from '../../redux/data/selectors.js';
+import {getUserAvatar, getAuthorizationStatus} from './../../redux/user/selectors';
+import userOperations from './../../redux/user/operations';
 
 const AddReview = (props) => {
   const {
-    isCorrectCommentLength,
-    formRef,
-    onSubmit,
-    onTextareaChange,
+    isValid,
+    isSend,
+    onCheckValidCommentLength,
+    onSend,
     authorizationStatus,
-    onSignIn,
+    onAddReviews,
     userAvatar,
-    film
+    film,
+    filmId
   } = props;
+
+  const formRef = React.createRef();
+
+  const onSubmit = () => {
+    const rating = formRef.current.querySelector(`input[name="rating"]:checked`).value;
+    const comment = formRef.current.querySelector(`#review-text`).value;
+
+    const reviewData = {
+      id: filmId,
+      rating,
+      comment
+    };
+
+    onAddReviews(reviewData);
+  };
 
   return (
     <section className="movie-card movie-card--full" style={{backgroundColor: film.bgColor}}>
@@ -27,12 +49,14 @@ const AddReview = (props) => {
         <AppHeader
           authorizationStatus={authorizationStatus}
           userAvatar={userAvatar}
-          onSignIn={onSignIn}
         >
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="movie-page.html" className="breadcrumbs__link">The Grand Budapest Hotel</a>
+                <Link
+                  className="breadcrumbs__link"
+                  to={`${AppRoute.FILM}/${film.id}`}
+                >{film.title}</Link>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link">Add review</a>
@@ -50,6 +74,7 @@ const AddReview = (props) => {
         <form action="#" className="add-review__form" ref={formRef} onSubmit={(evt) => {
           evt.preventDefault();
           onSubmit();
+          onSend();
         }}>
           <div className="rating">
             <div className="rating__stars">
@@ -71,13 +96,15 @@ const AddReview = (props) => {
           </div>
 
           <div className="add-review__text">
-            <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text" onChange={onTextareaChange}></textarea>
+            <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text" onChange={(evt) => {
+              onCheckValidCommentLength(evt.target.value.length);
+            }}></textarea>
             <div className="add-review__submit">
               <button
                 className="add-review__btn"
                 type="submit"
-                disabled={!isCorrectCommentLength}
-                style={(isCorrectCommentLength ? {opacity: 1, cursor: `pointer`} : {opacity: 0.5, cursor: `not-allowed`})}
+                disabled={!isValid || isSend}
+                style={((isValid && !isSend) ? {opacity: 1, cursor: `pointer`} : {opacity: 0.5, cursor: `not-allowed`})}
               >Post</button>
             </div>
           </div>
@@ -88,17 +115,28 @@ const AddReview = (props) => {
 };
 
 AddReview.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  onTextareaChange: PropTypes.func.isRequired,
-  isCorrectCommentLength: PropTypes.bool.isRequired,
-  formRef: PropTypes.shape({
-    current: PropTypes.instanceOf(Element)
-  }),
-  onSignIn: PropTypes.func.isRequired,
+  onCheckValidCommentLength: PropTypes.func.isRequired,
+  onSend: PropTypes.func.isRequired,
+  isValid: PropTypes.bool.isRequired,
+  isSend: PropTypes.bool.isRequired,
+  onAddReviews: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   userAvatar: PropTypes.string,
-  film: PropTypes.object.isRequired
+  film: PropTypes.object.isRequired,
+  filmId: PropTypes.string.isRequired
 };
 
+const mapStateToProps = (state, props) => ({
+  film: getCurrentFilm(state, props.filmId),
+  userAvatar: getUserAvatar(state),
+  authorizationStatus: getAuthorizationStatus(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onAddReviews(reviews) {
+    dispatch(userOperations.createReview(reviews));
+  }
+});
+
 export {AddReview};
-export default withSendForm(AddReview);
+export default connect(mapStateToProps, mapDispatchToProps)(withSendForm(AddReview));

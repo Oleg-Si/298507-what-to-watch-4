@@ -3,6 +3,8 @@ import renderer from 'react-test-renderer';
 import {Main} from './main.jsx';
 import {mockFilmsForTests} from '../../mock/films.js';
 import {AuthorizationStatus} from './../../constants';
+import {Router} from 'react-router-dom';
+import history from './../../history';
 
 const promoFilm = {
   title: `The Grand Budapest Hotel`,
@@ -14,19 +16,22 @@ const promoFilm = {
 
 it(`Проверяет снепшот компонента Main`, () => {
   const tree = renderer.create(
-      <Main
-        promoFilm={promoFilm}
-        films={mockFilmsForTests}
-        activeGenre={`All genres`}
-        filteredFilms={mockFilmsForTests}
-        filmsCount={3}
-        onFilmCardTitleClick={() => {}}
-        onGenreCilck={() => {}}
-        onSignInClick={() => {}}
-        onShowMoreClick={() => {}}
-        authorizationStatus={AuthorizationStatus.AUTH}
-        userAvatar={`img/avatar.jpg`}
-      />, {
+      <Router
+        history={history}
+      >
+        <Main
+          promoFilm={promoFilm}
+          films={mockFilmsForTests}
+          activeGenre={`All genres`}
+          filteredFilms={mockFilmsForTests}
+          filmsCount={3}
+          onFilmCardTitleClick={() => {}}
+          onGenreCilck={() => {}}
+          onShowMoreClick={() => {}}
+          authorizationStatus={AuthorizationStatus.AUTH}
+          userAvatar={`img/avatar.jpg`}
+        />
+      </Router>, {
         createNodeMock: () => {
           return {};
         }}

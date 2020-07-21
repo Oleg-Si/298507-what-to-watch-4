@@ -17,6 +17,10 @@ export const getFilmComments = (state) => {
   return state[NAME_SPACE].currentFilmComments;
 };
 
+export const getIsLoadedFilms = (state) => {
+  return state[NAME_SPACE].isLoadedFilms;
+};
+
 export const getFilteredFilmsByGenre = createSelector(
     getFilms,
     getActiveGenre,
@@ -27,4 +31,10 @@ export const getFilteredFilmsByGenre = createSelector(
 
       return films.filter((el) => el.genre === genre);
     }
+);
+
+export const getCurrentFilm = createSelector(
+    getFilms,
+    (state, filmId) => parseInt(filmId, 10),
+    (films, filmId) => films.filter((el) => el.id === filmId)[0]
 );

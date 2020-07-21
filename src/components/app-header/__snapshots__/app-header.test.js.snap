@@ -9,6 +9,8 @@ exports[`Проверяет снепшот компонента AppHeader 1`] = 
   >
     <a
       className="logo__link"
+      href="/"
+      onClick={[Function]}
     >
       <span
         className="logo__letter logo__letter--1"
@@ -32,7 +34,7 @@ exports[`Проверяет снепшот компонента AppHeader 1`] = 
   >
     <a
       className="user-block__link"
-      href="sign-in.html"
+      href="/login"
       onClick={[Function]}
     >
       Sign in
@@ -50,6 +52,8 @@ exports[`Проверяет снепшот компонента AppHeader 2`] = 
   >
     <a
       className="logo__link"
+      href="/"
+      onClick={[Function]}
     >
       <span
         className="logo__letter logo__letter--1"
@@ -71,16 +75,21 @@ exports[`Проверяет снепшот компонента AppHeader 2`] = 
   <div
     className="user-block"
   >
-    <div
-      className="user-block__avatar"
+    <a
+      href="/mylist"
+      onClick={[Function]}
     >
-      <img
-        alt="User avatar"
-        height="63"
-        src="https://4.react.pages.academy/wtw/static/avatar/2.jpg"
-        width="63"
-      />
-    </div>
+      <div
+        className="user-block__avatar"
+      >
+        <img
+          alt="User avatar"
+          height="63"
+          src="https://4.react.pages.academy/wtw/static/avatar/2.jpg"
+          width="63"
+        />
+      </div>
+    </a>
   </div>
 </header>
 `;

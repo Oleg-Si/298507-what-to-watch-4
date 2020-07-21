@@ -5,6 +5,7 @@ import {AuthorizationStatus} from './../../constants';
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
+  isAuthorizationChecked: false,
   userAvatar: ``,
   authorizationStatusCode: null
 };
@@ -26,6 +27,7 @@ describe(`Reducer работает корректно`, () => {
     expect(reducer({
       authorizationStatus: AuthorizationStatus.NO_AUTH,
       userAvatar: ``,
+      isAuthorizationChecked: false,
       authorizationStatusCode: null
     }, {
       type: null,
@@ -33,6 +35,7 @@ describe(`Reducer работает корректно`, () => {
     })).toEqual({
       authorizationStatus: AuthorizationStatus.NO_AUTH,
       userAvatar: ``,
+      isAuthorizationChecked: false,
       authorizationStatusCode: null
     });
   });
@@ -41,6 +44,7 @@ describe(`Reducer работает корректно`, () => {
     expect(reducer({
       authorizationStatus: AuthorizationStatus.NO_AUTH,
       userAvatar: ``,
+      isAuthorizationChecked: false,
       authorizationStatusCode: null
     }, {
       type: ActionType.REQUIRED_AUTHORIZATION,
@@ -48,6 +52,7 @@ describe(`Reducer работает корректно`, () => {
     })).toEqual({
       authorizationStatus: AuthorizationStatus.AUTH,
       userAvatar: ``,
+      isAuthorizationChecked: true,
       authorizationStatusCode: null
     });
   });
@@ -56,6 +61,7 @@ describe(`Reducer работает корректно`, () => {
     expect(reducer({
       authorizationStatus: AuthorizationStatus.NO_AUTH,
       userAvatar: ``,
+      isAuthorizationChecked: false,
       authorizationStatusCode: null
     }, {
       type: ActionType.CORRECT_AUTHORIZATION,
@@ -63,6 +69,7 @@ describe(`Reducer работает корректно`, () => {
     })).toEqual({
       authorizationStatus: AuthorizationStatus.NO_AUTH,
       userAvatar: correctResponse.avatar,
+      isAuthorizationChecked: true,
       authorizationStatusCode: correctResponse.statusCode
     });
   });
@@ -71,6 +78,7 @@ describe(`Reducer работает корректно`, () => {
     expect(reducer({
       authorizationStatus: AuthorizationStatus.NO_AUTH,
       userAvatar: ``,
+      isAuthorizationChecked: false,
       authorizationStatusCode: null
     }, {
       type: ActionType.BAD_AUTHORIZATION,
@@ -78,6 +86,7 @@ describe(`Reducer работает корректно`, () => {
     })).toEqual({
       authorizationStatus: AuthorizationStatus.NO_AUTH,
       userAvatar: ``,
+      isAuthorizationChecked: true,
       authorizationStatusCode: badResponse
     });
   });

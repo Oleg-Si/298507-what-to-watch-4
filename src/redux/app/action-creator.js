@@ -20,11 +20,6 @@ const ActionCreator = {
   selectsFilm: (film) => ({
     type: ActionType.SELECTS_FILM,
     payload: film
-  }),
-
-  changeScreen: (screen) => ({
-    type: ActionType.CHANGE_SCREEN,
-    payload: screen
   })
 };
 

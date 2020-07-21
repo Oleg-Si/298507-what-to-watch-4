@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TabList from '../tab-list/tab-list.jsx';
-import {Tabs, COUNT_MORE_LIKE_THIS_FILMS} from '../../constants';
+import {Tabs, COUNT_MORE_LIKE_THIS_FILMS, AppRoute} from '../../constants';
 import {connect} from 'react-redux';
 import appActionCreator from './../../redux/app/action-creator';
 import FilmPageOverview from './../film-page-overview/film-page-overview.jsx';
@@ -9,22 +9,23 @@ import FilmPageDetalis from '../film-page-details/film-page-details.jsx';
 import FilmPageReviews from '../film-page-reviews/film-page-reviews.jsx';
 import FilmList from './../film-list/film-list.jsx';
 import {getActiveTab} from '../../redux/app/selectors.js';
-import {getFilms, getFilmComments} from './../../redux/data/selectors';
+import {getFilms, getFilmComments, getCurrentFilm} from './../../redux/data/selectors';
 import AppHeader from '../app-header/app-header.jsx';
 import {getAuthorizationStatus, getUserAvatar} from './../../redux/user/selectors';
-import {Screens, AuthorizationStatus} from './../../constants';
+import {AuthorizationStatus} from './../../constants';
+import AppFooter from '../app-footer/app-footer.jsx';
+import {Link} from 'react-router-dom';
+import dataOperations from './../../redux/data/operations';
 
 const FilmPage = (props) => {
-  const filmInfo = props.activeFilm;
   const {
     activeTab,
     onTabClick,
     onFilmCardTitleClick,
     films,
+    film,
     authorizationStatus,
-    onSignInClick,
     userAvatar,
-    onAddReview,
     filmReviews
   } = props;
 
@@ -32,12 +33,12 @@ const FilmPage = (props) => {
     switch (activeTab) {
       case Tabs.OVERVIEW:
         return <FilmPageOverview
-          filmInfo={filmInfo}
+          filmInfo={film}
         />;
 
       case Tabs.DETAILS:
         return <FilmPageDetalis
-          filmInfo={filmInfo}
+          filmInfo={film}
         />;
 
       case Tabs.REVIEWS:
@@ -50,8 +51,8 @@ const FilmPage = (props) => {
   };
 
   const getFilmsByCurrentGenre = () => {
-    const filteredFilms = films.filter((el) => el.genre === filmInfo.genre);
-    const currentFilmIndex = filteredFilms.findIndex((el) => el.id === filmInfo.id);
+    const filteredFilms = films.filter((el) => el.genre === film.genre);
+    const currentFilmIndex = filteredFilms.findIndex((el) => el.id === film.id);
 
     // Удаляем текущий фильм из похожих
     filteredFilms.splice(currentFilmIndex, 1);
@@ -59,23 +60,12 @@ const FilmPage = (props) => {
     return filteredFilms;
   };
 
-  const getButtonAddReview = () => {
-    if (authorizationStatus === AuthorizationStatus.AUTH) {
-      return <a href="add-review.html" className="btn movie-card__button" onClick={(evt) => {
-        evt.preventDefault();
-        onAddReview();
-      }}>Add review</a>;
-    }
-
-    return null;
-  };
-
   return (
     <React.Fragment>
-      <section className="movie-card movie-card--full" style={{backgroundColor: filmInfo.bgColor}}>
+      <section className="movie-card movie-card--full" style={{backgroundColor: film.bgColor}}>
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src={filmInfo.bgImg} alt={filmInfo.title} />
+            <img src={film.bgImg} alt={film.title} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -83,15 +73,14 @@ const FilmPage = (props) => {
           <AppHeader
             authorizationStatus={authorizationStatus}
             userAvatar={userAvatar}
-            onSignIn={onSignInClick}
           />
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{filmInfo.title}</h2>
+              <h2 className="movie-card__title">{film.title}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{filmInfo.genre}</span>
-                <span className="movie-card__year">{filmInfo.releaseDate}</span>
+                <span className="movie-card__genre">{film.genre}</span>
+                <span className="movie-card__year">{film.releaseDate}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -111,7 +100,7 @@ const FilmPage = (props) => {
                   <span>My list</span>
                 </button>
 
-                {getButtonAddReview()}
+                {authorizationStatus === AuthorizationStatus.AUTH && <Link className="btn movie-card__button" to={`${AppRoute.FILM}/${film.id}${AppRoute.ADD_REVIEW}`}>Add review</Link>}
 
               </div>
             </div>
@@ -121,7 +110,7 @@ const FilmPage = (props) => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src={filmInfo.poster} alt={filmInfo.title} width="218" height="327" />
+              <img src={film.poster} alt={film.title} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
@@ -154,26 +143,14 @@ const FilmPage = (props) => {
 
         </section>
 
-        <footer className="page-footer">
-          <div className="logo">
-            <a href="main.html" className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="copyright">
-            <p>© 2020 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <AppFooter />
       </div>
     </React.Fragment>
   );
 };
 
 FilmPage.propTypes = {
-  activeFilm: PropTypes.shape({
+  film: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
@@ -198,33 +175,32 @@ FilmPage.propTypes = {
       })
   ).isRequired,
   onFilmCardTitleClick: PropTypes.func.isRequired,
-  onAddReview: PropTypes.func.isRequired,
-  onSignInClick: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   userAvatar: PropTypes.string,
   filmReviews: PropTypes.array
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, props) => ({
   activeTab: getActiveTab(state),
   films: getFilms(state),
   authorizationStatus: getAuthorizationStatus(state),
   userAvatar: getUserAvatar(state),
-  filmReviews: getFilmComments(state)
+  filmReviews: getFilmComments(state),
+  film: getCurrentFilm(state, props.filmId),
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, props) => ({
   onTabClick(newTab) {
+    if (newTab === Tabs.REVIEWS) {
+      dispatch(dataOperations.loadComments(props.filmId));
+    }
     dispatch(appActionCreator.filmsPageTabChange(newTab));
   },
 
-  onSignInClick() {
-    dispatch(appActionCreator.changeScreen(Screens.SIGN_IN));
+  onFilmCardTitleClick(film) {
+    dispatch(appActionCreator.selectsFilm(film));
+    dispatch(dataOperations.loadComments(film.id));
   },
-
-  onAddReview() {
-    dispatch(appActionCreator.changeScreen(Screens.ADD_REVIEW));
-  }
 });
 
 export {FilmPage};

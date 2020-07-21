@@ -1,23 +1,27 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {FilmPage} from './film-page.jsx';
-import {mockFilmForTests} from '../../mock/films.js';
-import {mockFilmsForTests} from '../../mock/films.js';
+import {mockFilmsForTests, mockFilmForTests, mockReviews} from '../../mock/films.js';
 import {AuthorizationStatus} from './../../constants';
+import {Router} from 'react-router-dom';
+import history from './../../history';
 
 it(`Проверяет снепшот компонента FilmPage`, () => {
   const tree = renderer.create(
-      <FilmPage
-        films={mockFilmsForTests}
-        activeFilm={mockFilmForTests}
-        activeTab={`Overview`}
-        onTabClick={() => {}}
-        onFilmCardTitleClick={() => {}}
-        onSignInClick={() => {}}
-        onAddReview={() => {}}
-        authorizationStatus={AuthorizationStatus.AUTH}
-        userAvatar={`img/avatar.jpg`}
-      />
+      <Router
+        history={history}
+      >
+        <FilmPage
+          films={mockFilmsForTests}
+          film={mockFilmForTests}
+          activeTab={`Overview`}
+          onTabClick={() => {}}
+          onFilmCardTitleClick={() => {}}
+          authorizationStatus={AuthorizationStatus.AUTH}
+          userAvatar={`img/avatar.jpg`}
+          filmReviews={mockReviews}
+        />
+      </Router>
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

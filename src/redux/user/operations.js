@@ -1,6 +1,8 @@
 import ActionCreator from './action-creator';
-import {AuthorizationStatus, Screens} from '../../constants';
+import {AuthorizationStatus, AppRoute} from '../../constants';
 import appActionCreator from './../app/action-creator';
+import history from './../../history';
+import {Tabs} from './../../constants';
 
 const formatAvatarUrl = (url) => {
   const splittedUrl = url.split(`/`);
@@ -46,7 +48,7 @@ const Operations = {
 
       dispatch(ActionCreator.requiredAuthorization(AuthorizationStatus.AUTH));
       dispatch(ActionCreator.correctAuthorization(userData));
-      dispatch(appActionCreator.changeScreen(Screens.MAIN));
+      history.push(AppRoute.ROOT);
     })
     .catch((err) => {
       dispatch(ActionCreator.badAuthorization(err.response.status));
@@ -60,7 +62,8 @@ const Operations = {
       comment: review.comment
     })
     .then(() => {
-      dispatch(appActionCreator.changeScreen(Screens.MAIN));
+      dispatch(appActionCreator.filmsPageTabChange(Tabs.OVERVIEW));
+      history.push(`${AppRoute.FILM}/${review.id}`);
     })
     .catch((err) => {
       throw err;

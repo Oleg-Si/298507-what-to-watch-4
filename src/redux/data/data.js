@@ -3,9 +3,11 @@ import {extend} from './../../utils';
 
 const initialState = {
   films: [],
+  isLoadedFilms: false,
   filteredFilmsByGenre: [],
   promoFilm: {},
-  currentFilmComments: []
+  isLoadedPromoFilms: false,
+  currentFilmComments: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -16,11 +18,15 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_FILMS:
       return extend(state, {
         films: action.payload,
-        filteredFilmsByGenre: action.payload
+        filteredFilmsByGenre: action.payload,
+        isLoadedFilms: true
       });
 
     case ActionType.LOAD_PROMO_FILM:
-      return extend(state, {promoFilm: action.payload});
+      return extend(state, {
+        promoFilm: action.payload,
+        isLoadedPromoFilms: true
+      });
 
     case ActionType.ADD_FILM_COMMENTS:
       return extend(state, {currentFilmComments: action.payload});

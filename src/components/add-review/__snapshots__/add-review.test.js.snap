@@ -33,6 +33,8 @@ exports[`Проверяет снепшот компонента AddReview 1`] = 
       >
         <a
           className="logo__link"
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -62,9 +64,10 @@ exports[`Проверяет снепшот компонента AddReview 1`] = 
           >
             <a
               className="breadcrumbs__link"
-              href="movie-page.html"
+              href="/films/0"
+              onClick={[Function]}
             >
-              The Grand Budapest Hotel
+              Revenant
             </a>
           </li>
           <li
@@ -81,16 +84,21 @@ exports[`Проверяет снепшот компонента AddReview 1`] = 
       <div
         className="user-block"
       >
-        <div
-          className="user-block__avatar"
+        <a
+          href="/mylist"
+          onClick={[Function]}
         >
-          <img
-            alt="User avatar"
-            height="63"
-            src="img/avatar.jpg"
-            width="63"
-          />
-        </div>
+          <div
+            className="user-block__avatar"
+          >
+            <img
+              alt="User avatar"
+              height="63"
+              src="img/avatar.jpg"
+              width="63"
+            />
+          </div>
+        </a>
       </div>
     </header>
     <div

@@ -5,12 +5,14 @@ import GenreFilter from '../genre-filter/genre-filter.jsx';
 import {connect} from 'react-redux';
 import dataActionCreator from '../../redux/data/action-creator';
 import appActionCreator from '../../redux/app/action-creator';
-import {DEFAULT_GENRE, Screens} from './../../constants';
+import {DEFAULT_GENRE} from './../../constants';
 import ShowMore from '../show-more/show-more.jsx';
 import {getPromoFilm, getFilteredFilmsByGenre, getFilms} from './../../redux/data/selectors';
 import {getActiveGenre, getCountFilmsForRender} from './../../redux/app/selectors';
 import {getAuthorizationStatus, getUserAvatar} from './../../redux/user/selectors';
 import AppHeader from '../app-header/app-header.jsx';
+import AppFooter from '../app-footer/app-footer.jsx';
+import dataOperations from './../../redux/data/operations';
 
 const Main = (props) => {
   const {
@@ -23,7 +25,6 @@ const Main = (props) => {
     filmsCount,
     onShowMoreClick,
     authorizationStatus,
-    onSignInClick,
     userAvatar
   } = props;
 
@@ -52,7 +53,6 @@ const Main = (props) => {
         <AppHeader
           authorizationStatus={authorizationStatus}
           userAvatar={userAvatar}
-          onSignIn={onSignInClick}
         />
 
         <div className="movie-card__wrap">
@@ -113,19 +113,7 @@ const Main = (props) => {
           />
         </section>
 
-        <footer className="page-footer">
-          <div className="logo">
-            <a className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <AppFooter />
       </div>
     </React.Fragment>
   );
@@ -156,7 +144,6 @@ Main.propTypes = {
   activeGenre: PropTypes.string.isRequired,
   filmsCount: PropTypes.number.isRequired,
   onShowMoreClick: PropTypes.func.isRequired,
-  onSignInClick: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   userAvatar: PropTypes.string,
 };
@@ -181,9 +168,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(appActionCreator.showMoreFilms(filmsCount));
   },
 
-  onSignInClick() {
-    dispatch(appActionCreator.changeScreen(Screens.SIGN_IN));
-  }
+  onFilmCardTitleClick(film) {
+    dispatch(dataOperations.loadComments(film.id));
+    dispatch(appActionCreator.selectsFilm(film));
+  },
 });
 
 export {Main};

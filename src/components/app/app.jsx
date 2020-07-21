@@ -1,130 +1,105 @@
 import React, {PureComponent} from 'react';
 import Main from '../main/main.jsx';
 import PropTypes from 'prop-types';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {Router, Switch, Route, Link} from 'react-router-dom';
 import FilmPage from '../film-page/film-page.jsx';
 import {connect} from 'react-redux';
-import {mockFilmForTests} from '../../mock/films.js';
-import appActionCreator from './../../redux/app/action-creator';
-import {Screens} from '../../constants.js';
-import {getCurrentScreen, getSelectedFilm} from '../../redux/app/selectors.js';
+import {AppRoute} from '../../constants.js';
 import {getAuthorizationStatusCode} from '../../redux/user/selectors.js';
 import SignIn from './../sign-in/sign-in.jsx';
 import userOperations from './../../redux/user/operations';
-import dataOperations from './../../redux/data/operations';
 import AddReview from './../add-review/add-review.jsx';
-import {getAuthorizationStatus, getUserAvatar} from './../../redux/user/selectors';
+import history from './../../history';
+import {getIsLoadedFilms} from './../../redux/data/selectors';
+import Preloader from '../preloader/preloader.jsx';
+import PrivateRoute from './../private-route/private-route.jsx';
 
 class App extends PureComponent {
-  _renderApp() {
+  render() {
     const {
-      screen,
-      onFilmCardTitleClick,
-      activeFilm,
       onSignIn,
       authorizationStatusCode,
-      onAddReviews,
-      authorizationStatus,
-      onSignInClick,
-      userAvatar
+      isLoadedFilms
     } = this.props;
 
-    switch (screen) {
-      case Screens.MAIN:
-        return (
-          <Main
-            onFilmCardTitleClick={onFilmCardTitleClick}
-          />
-        );
-
-      case Screens.FILM_PAGE:
-        return (
-          <FilmPage
-            activeFilm={activeFilm}
-            onFilmCardTitleClick={onFilmCardTitleClick}
-          />
-        );
-
-      case Screens.SIGN_IN:
-        return (
-          <SignIn
-            authorizationStatusCode={authorizationStatusCode}
-            onSubmit={onSignIn}
-          />
-        );
-
-      case Screens.ADD_REVIEW:
-        return (
-          <AddReview
-            onSubmit={onAddReviews}
-            film={activeFilm}
-            onSignIn={onSignInClick}
-            authorizationStatus={authorizationStatus}
-            userAvatar={userAvatar}
-          />
-        );
-    }
-
-    return null;
-  }
-
-  render() {
-    const {onFilmCardTitleClick} = this.props;
-
     return (
-      <BrowserRouter>
+      <Router
+        history={history}
+      >
         <Switch>
-          <Route exact path="/">
-            {this._renderApp()}
+          <Route exact path={AppRoute.ROOT}>
+            <Main />
           </Route>
-          <Route exact path="/dev-film">
-            <FilmPage
-              activeFilm={mockFilmForTests}
-              onFilmCardTitleClick={onFilmCardTitleClick}
+
+          <Route exact path={AppRoute.LOGIN}>
+            <SignIn
+              authorizationStatusCode={authorizationStatusCode}
+              onSubmit={onSignIn}
             />
           </Route>
+
+          <PrivateRoute
+            exact
+            path={AppRoute.MY_LIST}
+            render={() => {
+              return (
+                null
+              );
+            }}
+          />
+
+          <Route
+            exact
+            path={`${AppRoute.FILM}/:filmId`}
+            render={(props) => {
+              return (
+                isLoadedFilms ? <FilmPage filmId={props.match.params.filmId} /> : <Preloader />
+              );
+            }}
+          />
+
+          <PrivateRoute
+            exact
+            path={`${AppRoute.FILM}/:filmId${AppRoute.ADD_REVIEW}`}
+            render={(props) => {
+              return (
+                isLoadedFilms ? <AddReview filmId={props.match.params.filmId} /> : <Preloader />
+              );
+            }}
+          />
+
+          <Route
+            render={() => (
+              <React.Fragment>
+                <h1>
+                  404.
+                  <br />
+                  <small>Page not found</small>
+                </h1>
+                <Link to={AppRoute.ROOT}>Go to main page</Link>
+              </React.Fragment>
+            )}
+          />
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
 
 App.propTypes = {
-  screen: PropTypes.string.isRequired,
   authorizationStatusCode: PropTypes.number,
-  onFilmCardTitleClick: PropTypes.func.isRequired,
   onSignIn: PropTypes.func.isRequired,
-  onAddReviews: PropTypes.func.isRequired,
-  activeFilm: PropTypes.object.isRequired,
-  onSignInClick: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  userAvatar: PropTypes.string
+  isLoadedFilms: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  screen: getCurrentScreen(state),
-  activeFilm: getSelectedFilm(state),
   authorizationStatusCode: getAuthorizationStatusCode(state),
-  authorizationStatus: getAuthorizationStatus(state),
-  userAvatar: getUserAvatar(state),
+  isLoadedFilms: getIsLoadedFilms(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onFilmCardTitleClick(film) {
-    dispatch(dataOperations.loadComments(film.id));
-    dispatch(appActionCreator.selectsFilm(film));
-  },
-
   onSignIn(authData) {
     dispatch(userOperations.login(authData));
-  },
-
-  onAddReviews(reviews) {
-    dispatch(userOperations.createReview(reviews));
-  },
-
-  onSignInClick() {
-    dispatch(appActionCreator.changeScreen(Screens.SIGN_IN));
   }
 });
 

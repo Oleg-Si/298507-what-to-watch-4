@@ -26,6 +26,8 @@ Array [
       >
         <a
           className="logo__link"
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -47,16 +49,21 @@ Array [
       <div
         className="user-block"
       >
-        <div
-          className="user-block__avatar"
+        <a
+          href="/mylist"
+          onClick={[Function]}
         >
-          <img
-            alt="User avatar"
-            height="63"
-            src="img/avatar.jpg"
-            width="63"
-          />
-        </div>
+          <div
+            className="user-block__avatar"
+          >
+            <img
+              alt="User avatar"
+              height="63"
+              src="img/avatar.jpg"
+              width="63"
+            />
+          </div>
+        </a>
       </div>
     </header>
     <div
@@ -230,7 +237,7 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/0"
               onClick={[Function]}
             >
               Aviator
@@ -255,7 +262,7 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/1"
               onClick={[Function]}
             >
               Macbeth
@@ -280,7 +287,7 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/2"
               onClick={[Function]}
             >
               Snatch
@@ -300,6 +307,8 @@ Array [
       >
         <a
           className="logo__link logo__link--light"
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -322,7 +331,7 @@ Array [
         className="copyright"
       >
         <p>
-          © 2019 What to watch Ltd.
+          © 2020 What to watch Ltd.
         </p>
       </div>
     </footer>
