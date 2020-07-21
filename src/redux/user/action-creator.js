@@ -19,11 +19,6 @@ const ActionCreator = {
   createReview: (review) => ({
     type: ActionType.CREATE_REVIEW,
     payload: review
-  }),
-
-  isFavorite: (film) => ({
-    type: ActionType.CREATE_REVIEW,
-    payload: film
   })
 };
 
