@@ -14,12 +14,14 @@ it(`Проверяет снепшот компонента AddReview`, () => {
         <AddReview
           isValid={true}
           isSend={false}
+          isError={false}
           authorizationStatus={AuthorizationStatus.AUTH}
           film={mockFilmForTests}
           onCheckValidCommentLength={() => {}}
           onSend={() => {}}
           onAddReviews={() => {}}
           onMyListClick={() => {}}
+          changeIsErrorStatus={() => {}}
           userAvatar={`img/avatar.jpg`}
           filmId={`1`}
         />

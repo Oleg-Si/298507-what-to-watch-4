@@ -19,6 +19,11 @@ const ActionCreator = {
   createReview: (review) => ({
     type: ActionType.CREATE_REVIEW,
     payload: review
+  }),
+
+  sendReviewError: (status) => ({
+    type: ActionType.SEND_REVIEW_ERROR,
+    payload: status
   })
 };
 
