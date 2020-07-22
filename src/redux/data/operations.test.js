@@ -26,7 +26,6 @@ const mockServerFilm = {
   "is_favorite": false
 };
 
-
 const api = createAPI(() => {});
 
 it(`Operation должен сделать корректный запрос /films`, () => {

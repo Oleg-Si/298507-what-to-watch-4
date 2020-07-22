@@ -14,10 +14,6 @@ export const getCountFilmsForRender = (state) => {
   return state[NAME_SPACE].countFilmsForRender;
 };
 
-export const getCurrentScreen = (state) => {
-  return state[NAME_SPACE].currentScreen;
-};
-
 export const getPromoFilmStatus = (state) => {
   return state[NAME_SPACE].promoFilmIsFavorite;
 };

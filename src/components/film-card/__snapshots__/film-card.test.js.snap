@@ -21,7 +21,7 @@ exports[`Проверяет снепшот компонента FilmCard 1`] = `
   >
     <a
       className="small-movie-card__link"
-      href="/films/0"
+      href="/films/1"
       onClick={[Function]}
     >
       Revenant
