@@ -42,6 +42,8 @@ it(`Проверяет состояния Воспроизведение и Па
   setTimeout(() => expect(element.state(`isPlaying`)).toBe(true), 1000);
   jest.runAllTimers();
 
+  element.instance().componentWillUnmount();
+
   play.mockRestore();
   load.mockRestore();
 });

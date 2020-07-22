@@ -1,4 +1,4 @@
-import films, {mockFilmsForTests, mockReviews} from '../../mock/films';
+import films, {mockFilmsForTests, mockReviews, mockFilmForTests} from '../../mock/films';
 import ActionType from './action-type';
 import reducer from './data';
 
@@ -94,6 +94,31 @@ describe(`Reducer работает корректно`, () => {
       filteredFilmsByGenre: mockFilmsForTests,
       promoFilm: {},
       isLoadedPromoFilms: false,
+      currentFilmComments: [],
+      favoriteFilms: [],
+      isLoadedFavoriteFilms: false
+    });
+  });
+
+  it(`Reducer загружает промо фильм и записывает в стейт`, () => {
+    expect(reducer({
+      films: [],
+      isLoadedFilms: false,
+      filteredFilmsByGenre: [],
+      promoFilm: {},
+      isLoadedPromoFilms: false,
+      currentFilmComments: [],
+      favoriteFilms: [],
+      isLoadedFavoriteFilms: false
+    }, {
+      type: ActionType.LOAD_PROMO_FILM,
+      payload: mockFilmForTests
+    })).toEqual({
+      films: [],
+      isLoadedFilms: false,
+      filteredFilmsByGenre: [],
+      promoFilm: mockFilmForTests,
+      isLoadedPromoFilms: true,
       currentFilmComments: [],
       favoriteFilms: [],
       isLoadedFavoriteFilms: false

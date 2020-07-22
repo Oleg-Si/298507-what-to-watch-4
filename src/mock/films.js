@@ -128,7 +128,7 @@ const promoFilmMock = {
 };
 
 const mockFilmForTests = {
-  id: 0,
+  id: 1,
   title: `Revenant`,
   img: `img/revenant.jpg`,
   genre: `Drama`,
