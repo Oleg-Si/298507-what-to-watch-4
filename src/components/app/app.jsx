@@ -14,6 +14,7 @@ import {getIsLoadedFilms, getIsLoadedFavoriteFilms, getIsLoadedPromoFilms} from 
 import Preloader from '../preloader/preloader.jsx';
 import PrivateRoute from './../private-route/private-route.jsx';
 import MyList from '../my-list/my-list.jsx';
+import Player from '../player/player.jsx';
 
 class App extends PureComponent {
   render() {
@@ -26,9 +27,7 @@ class App extends PureComponent {
     } = this.props;
 
     return (
-      <Router
-        history={history}
-      >
+      <Router history={history} >
         <Switch>
           <Route
             exact
@@ -73,6 +72,21 @@ class App extends PureComponent {
             render={(props) => {
               return (
                 isLoadedFilms ? <AddReview filmId={props.match.params.filmId} /> : <Preloader />
+              );
+            }}
+          />
+
+          <Route
+            exact
+            path={`${AppRoute.PLAYER}/:filmId`}
+            render={(props) => {
+              return (
+                isLoadedFilms
+                  ? <Player
+                    filmId={props.match.params.filmId}
+                    isMuted={false}
+                  />
+                  : <Preloader />
               );
             }}
           />

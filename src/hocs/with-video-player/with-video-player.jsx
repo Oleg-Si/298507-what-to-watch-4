@@ -4,6 +4,12 @@ import VideoPlayer from './../../components/video-player/video-player.jsx';
 
 const VIDEO_PLAY_TIMEOUT = 1000; // ms
 
+const VideoSettings = {
+  WIDTH: 280,
+  HEIGHT: 175,
+  TIMEOUT: 1000 // ms
+};
+
 const withVideoPlayer = (Component) => {
   class WithVideoPlayer extends PureComponent {
     constructor(props) {
@@ -47,6 +53,8 @@ const withVideoPlayer = (Component) => {
             film={this.props.film}
             isMuted={this.state.isMuted}
             controls={this.state.controls}
+            width={VideoSettings.WIDTH}
+            height={VideoSettings.HEIGHT}
           />
         </Component>
       );
