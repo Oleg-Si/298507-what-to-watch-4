@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withPlayer from '../../hocs/with-player/with-player.jsx';
 import {Link} from 'react-router-dom';
-import {AppRoute} from '../../constants.js';
+import {AppRoute, preloaderCardStyle} from '../../constants.js';
 import VideoPlayer from './../video-player/video-player.jsx';
+import Preloader from './../preloader/preloader.jsx';
 
 const VideoSettings = {
   WIDTH: 280,
@@ -16,9 +17,11 @@ const FilmCard = (props) => {
     film,
     onPlay,
     onStop,
+    onReady,
     onFilmCardTitleClick,
     isPlaying,
     isMuted,
+    isReady,
     controls,
   } = props;
 
@@ -29,6 +32,8 @@ const FilmCard = (props) => {
       onStop();
     }}>
 
+      {!isReady && <Preloader style={preloaderCardStyle} />}
+
       <div className="small-movie-card__image">
 
         <VideoPlayer
@@ -37,10 +42,12 @@ const FilmCard = (props) => {
           isPlaying={isPlaying}
           film={film}
           isMuted={isMuted}
+          isReady={isReady}
           controls={controls}
           width={VideoSettings.WIDTH}
           height={VideoSettings.HEIGHT}
           onPlay={onPlay}
+          onReady={onReady}
         />
 
       </div>
@@ -69,9 +76,11 @@ FilmCard.propTypes = {
   onFilmCardTitleClick: PropTypes.func.isRequired,
   onPlay: PropTypes.func.isRequired,
   onStop: PropTypes.func.isRequired,
+  onReady: PropTypes.func.isRequired,
   controls: PropTypes.bool.isRequired,
   isMuted: PropTypes.bool.isRequired,
-  isPlaying: PropTypes.bool.isRequired
+  isPlaying: PropTypes.bool.isRequired,
+  isReady: PropTypes.bool.isRequired
 };
 
 export {FilmCard};

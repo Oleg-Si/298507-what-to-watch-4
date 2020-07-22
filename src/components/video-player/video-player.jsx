@@ -32,9 +32,11 @@ class VideoPlayer extends PureComponent {
     const {
       controls,
       isMuted,
+      isReady,
       onChangeProgress,
       onPause,
       onPlay,
+      onReady
     } = this.props;
 
     video.controls = controls;
@@ -53,11 +55,21 @@ class VideoPlayer extends PureComponent {
     video.onpause = () => {
       onPause();
     };
+
+    video.addEventListener(`canplay`, () => {
+      if (!isReady) {
+        onReady();
+      }
+    });
   }
 
   componentDidUpdate() {
     const video = this._videoRef.current;
-    const {isPlaying, isPause, fullScreen} = this.props;
+    const {
+      isPlaying,
+      isPause,
+      fullScreen
+    } = this.props;
 
     if (isPlaying) {
       video.play();
@@ -119,11 +131,13 @@ VideoPlayer.propTypes = {
   isMuted: PropTypes.bool.isRequired,
   isPlaying: PropTypes.bool.isRequired,
   isPause: PropTypes.bool,
+  isReady: PropTypes.bool,
   fullScreen: PropTypes.bool,
   onFullScreenChange: PropTypes.func,
   onChangeProgress: PropTypes.func,
   onPause: PropTypes.func,
   onPlay: PropTypes.func,
+  onReady: PropTypes.func,
   className: PropTypes.string,
   src: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,

@@ -11,6 +11,7 @@ const withPlayer = (Component) => {
       this.state = {
         isPlaying: false,
         isPause: false,
+        isReady: false,
         controls: false,
         progress: 0,
         allTime: 0,
@@ -24,6 +25,7 @@ const withPlayer = (Component) => {
       this._handleVideoPause = this._handleVideoPause.bind(this);
       this._handleChangeProgress = this._handleChangeProgress.bind(this);
       this._handleFullScreenChange = this._handleFullScreenChange.bind(this);
+      this._handleReady = this._handleReady.bind(this);
     }
 
     _handleVideoPlay(timeout = false) {
@@ -65,6 +67,10 @@ const withPlayer = (Component) => {
       this.setState((prevState) => ({fullScreen: !prevState.fullScreen}));
     }
 
+    _handleReady() {
+      this.setState({isReady: true});
+    }
+
     componentWillUnmount() {
       clearTimeout(this._timer);
     }
@@ -77,6 +83,7 @@ const withPlayer = (Component) => {
           onStop={this._handleVideoStop}
           onChangeProgress={this._handleChangeProgress}
           onFullScreenClick={this._handleFullScreenChange}
+          onReady={this._handleReady}
 
           progress={this.state.progress}
           allTime={this.state.allTime}
@@ -86,6 +93,7 @@ const withPlayer = (Component) => {
           controls={this.state.controls}
           isPlaying={this.state.isPlaying}
           isPause={this.state.isPause}
+          isReady={this.state.isReady}
           {...this.props}
         />
       );
