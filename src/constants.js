@@ -44,3 +44,18 @@ export const AppRoute = {
   ADD_REVIEW: `/review`,
   PLAYER: `/player`
 };
+
+export const preloaderMainStyle = {
+  top: `45vh`,
+  left: `50vw`,
+  position: `absolute`
+};
+
+export const preloaderCardStyle = {
+  top: `50%`,
+  left: `50%`,
+  marginLeft: `-32px`,
+  marginTop: `-32px`,
+  zIndex: `2`,
+  position: `absolute`
+};

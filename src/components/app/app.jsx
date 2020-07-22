@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {Router, Switch, Route, Link} from 'react-router-dom';
 import FilmPage from '../film-page/film-page.jsx';
 import {connect} from 'react-redux';
-import {AppRoute} from '../../constants.js';
+import {AppRoute, preloaderMainStyle} from '../../constants.js';
 import {getAuthorizationStatusCode} from '../../redux/user/selectors.js';
 import SignIn from './../sign-in/sign-in.jsx';
 import userOperations from './../../redux/user/operations';
@@ -34,7 +34,7 @@ class App extends PureComponent {
             path={AppRoute.ROOT}
             render={() => {
               return (
-                (isLoadedFilms && isLoadedPromoFilm) ? <Main /> : <Preloader />
+                (isLoadedFilms && isLoadedPromoFilm) ? <Main /> : <Preloader style={preloaderMainStyle} />
               );
             }}
           />
@@ -51,7 +51,7 @@ class App extends PureComponent {
             path={AppRoute.MY_LIST}
             render={() => {
               return (
-                isLoadedFavoriteFilms ? <MyList /> : <Preloader />
+                isLoadedFavoriteFilms ? <MyList /> : <Preloader style={preloaderMainStyle} />
               );
             }}
           />
@@ -61,7 +61,7 @@ class App extends PureComponent {
             path={`${AppRoute.FILM}/:filmId`}
             render={(props) => {
               return (
-                isLoadedFilms ? <FilmPage filmId={props.match.params.filmId} /> : <Preloader />
+                isLoadedFilms ? <FilmPage filmId={props.match.params.filmId} /> : <Preloader style={preloaderMainStyle} />
               );
             }}
           />
@@ -71,7 +71,7 @@ class App extends PureComponent {
             path={`${AppRoute.FILM}/:filmId${AppRoute.ADD_REVIEW}`}
             render={(props) => {
               return (
-                isLoadedFilms ? <AddReview filmId={props.match.params.filmId} /> : <Preloader />
+                isLoadedFilms ? <AddReview filmId={props.match.params.filmId} /> : <Preloader style={preloaderMainStyle} />
               );
             }}
           />
@@ -86,7 +86,7 @@ class App extends PureComponent {
                     filmId={props.match.params.filmId}
                     isMuted={false}
                   />
-                  : <Preloader />
+                  : <Preloader style={preloaderMainStyle} />
               );
             }}
           />
