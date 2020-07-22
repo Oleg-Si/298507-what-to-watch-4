@@ -1,13 +1,13 @@
-import {DEFAULT_GENRE, RENDERED_FILMS_COUNT, COUNT_MORE_FILMS, DEFAULT_TAB, Screens} from '../../constants';
-import {mockFilmForTests, mockFilmsForTests} from '../../mock/films';
+import {DEFAULT_GENRE, RENDERED_FILMS_COUNT, COUNT_MORE_FILMS, DEFAULT_TAB} from '../../constants';
+import {mockFilmsForTests} from '../../mock/films';
 import ActionType from './action-type';
 import reducer from './app';
 
 const initialState = {
   activeGenre: DEFAULT_GENRE,
   activeTab: DEFAULT_TAB,
-  countFilmsForRender: RENDERED_FILMS_COUNT,
-  selectedFilm: {}
+  promoFilmIsFavorite: null,
+  countFilmsForRender: RENDERED_FILMS_COUNT
 };
 
 describe(`Reducer работает корректно`, () => {
@@ -19,18 +19,16 @@ describe(`Reducer работает корректно`, () => {
     expect(reducer({
       activeGenre: DEFAULT_GENRE,
       activeTab: DEFAULT_TAB,
-      countFilmsForRender: RENDERED_FILMS_COUNT,
-      currentScreen: Screens.MAIN,
-      selectedFilm: {}
+      promoFilmIsFavorite: null,
+      countFilmsForRender: RENDERED_FILMS_COUNT
     }, {
       type: ActionType.CHANGE_GENRE,
       payload: `Dramas`
     })).toEqual({
       activeGenre: `Dramas`,
       activeTab: DEFAULT_TAB,
-      countFilmsForRender: RENDERED_FILMS_COUNT,
-      currentScreen: Screens.MAIN,
-      selectedFilm: {}
+      promoFilmIsFavorite: null,
+      countFilmsForRender: RENDERED_FILMS_COUNT
     });
   });
 
@@ -38,18 +36,16 @@ describe(`Reducer работает корректно`, () => {
     expect(reducer({
       activeGenre: DEFAULT_GENRE,
       activeTab: DEFAULT_TAB,
-      countFilmsForRender: RENDERED_FILMS_COUNT,
-      currentScreen: Screens.MAIN,
-      selectedFilm: {}
+      promoFilmIsFavorite: null,
+      countFilmsForRender: RENDERED_FILMS_COUNT
     }, {
       type: null,
       payload: mockFilmsForTests
     })).toEqual({
       activeGenre: DEFAULT_GENRE,
       activeTab: DEFAULT_TAB,
-      countFilmsForRender: RENDERED_FILMS_COUNT,
-      currentScreen: Screens.MAIN,
-      selectedFilm: {}
+      promoFilmIsFavorite: null,
+      countFilmsForRender: RENDERED_FILMS_COUNT
     });
   });
 
@@ -57,18 +53,16 @@ describe(`Reducer работает корректно`, () => {
     expect(reducer({
       activeGenre: DEFAULT_GENRE,
       activeTab: DEFAULT_TAB,
-      countFilmsForRender: RENDERED_FILMS_COUNT,
-      currentScreen: Screens.MAIN,
-      selectedFilm: {}
+      promoFilmIsFavorite: null,
+      countFilmsForRender: RENDERED_FILMS_COUNT
     }, {
       type: ActionType.SHOW_MORE_FILMS,
       payload: RENDERED_FILMS_COUNT + COUNT_MORE_FILMS
     })).toEqual({
       activeGenre: DEFAULT_GENRE,
       activeTab: DEFAULT_TAB,
+      promoFilmIsFavorite: null,
       countFilmsForRender: RENDERED_FILMS_COUNT + COUNT_MORE_FILMS,
-      currentScreen: Screens.MAIN,
-      selectedFilm: {}
     });
   });
 
@@ -76,37 +70,33 @@ describe(`Reducer работает корректно`, () => {
     expect(reducer({
       activeGenre: DEFAULT_GENRE,
       activeTab: DEFAULT_TAB,
-      countFilmsForRender: RENDERED_FILMS_COUNT,
-      currentScreen: Screens.MAIN,
-      selectedFilm: {}
+      promoFilmIsFavorite: null,
+      countFilmsForRender: RENDERED_FILMS_COUNT
     }, {
       type: ActionType.CHANGE_TAB,
       payload: `Details`
     })).toEqual({
-      activeGenre: DEFAULT_GENRE,
       activeTab: `Details`,
-      countFilmsForRender: RENDERED_FILMS_COUNT,
-      currentScreen: Screens.MAIN,
-      selectedFilm: {}
+      activeGenre: DEFAULT_GENRE,
+      promoFilmIsFavorite: null,
+      countFilmsForRender: RENDERED_FILMS_COUNT
     });
   });
 
-  it(`Reducer записывает в selectedFilm переданный фильм`, () => {
+  it(`Reducer записывает в promoFilmIsFavorite переданный статус`, () => {
     expect(reducer({
       activeGenre: DEFAULT_GENRE,
       activeTab: DEFAULT_TAB,
-      countFilmsForRender: RENDERED_FILMS_COUNT,
-      currentScreen: Screens.MAIN,
-      selectedFilm: {}
+      promoFilmIsFavorite: null,
+      countFilmsForRender: RENDERED_FILMS_COUNT
     }, {
-      type: ActionType.SELECTS_FILM,
-      payload: mockFilmForTests
+      type: ActionType.CHANGE_PROMO_FILM_STATUS,
+      payload: true
     })).toEqual({
       activeGenre: DEFAULT_GENRE,
       activeTab: DEFAULT_TAB,
-      countFilmsForRender: RENDERED_FILMS_COUNT,
-      currentScreen: Screens.FILM_PAGE,
-      selectedFilm: mockFilmForTests
+      promoFilmIsFavorite: true,
+      countFilmsForRender: RENDERED_FILMS_COUNT
     });
   });
 });

@@ -1,6 +1,5 @@
 import ActionCreator from './action-creator';
 import ActionType from './action-type';
-import {mockFilmForTests} from './../../mock/films';
 import {COUNT_MORE_FILMS} from '../../constants';
 
 describe(`ActionCreator работает корректно`, () => {
@@ -25,10 +24,17 @@ describe(`ActionCreator работает корректно`, () => {
     });
   });
 
-  it(`selectsFilm записывает выбранный фильм`, () => {
-    expect(ActionCreator.selectsFilm(mockFilmForTests)).toEqual({
-      type: ActionType.SELECTS_FILM,
-      payload: mockFilmForTests,
+  it(`changePromoFilmStatus устанавливает переданный статус`, () => {
+    expect(ActionCreator.changePromoFilmStatus(0)).toEqual({
+      type: ActionType.CHANGE_PROMO_FILM_STATUS,
+      payload: 0
+    });
+  });
+
+  it(`changePromoFilmStatus устанавливает переданный статус`, () => {
+    expect(ActionCreator.changePromoFilmStatus(1)).toEqual({
+      type: ActionType.CHANGE_PROMO_FILM_STATUS,
+      payload: 1
     });
   });
 });

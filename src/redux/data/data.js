@@ -8,6 +8,8 @@ const initialState = {
   promoFilm: {},
   isLoadedPromoFilms: false,
   currentFilmComments: [],
+  favoriteFilms: [],
+  isLoadedFavoriteFilms: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -30,6 +32,17 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.ADD_FILM_COMMENTS:
       return extend(state, {currentFilmComments: action.payload});
+
+    case ActionType.LOAD_FAVORITE_FILMS:
+      return extend(state, {
+        favoriteFilms: action.payload,
+        isLoadedFavoriteFilms: true
+      });
+
+    case ActionType.UPDATE_FILMS:
+      return extend(state, {
+        films: action.payload
+      });
   }
 
   return state;

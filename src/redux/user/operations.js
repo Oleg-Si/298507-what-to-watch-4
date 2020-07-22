@@ -1,8 +1,12 @@
 import ActionCreator from './action-creator';
 import {AuthorizationStatus, AppRoute} from '../../constants';
 import appActionCreator from './../app/action-creator';
+import dataActionCreator from './../data/action-creator';
 import history from './../../history';
 import {Tabs} from './../../constants';
+import {formatData} from '../../utils';
+import {getUpdatedFilms, getPromoFilmId} from './../data/selectors';
+import dataOperations from './../data/operations';
 
 const formatAvatarUrl = (url) => {
   const splittedUrl = url.split(`/`);
@@ -64,6 +68,27 @@ const Operations = {
     .then(() => {
       dispatch(appActionCreator.filmsPageTabChange(Tabs.OVERVIEW));
       history.push(`${AppRoute.FILM}/${review.id}`);
+    })
+    .catch((err) => {
+      throw err;
+    });
+  },
+
+  isFavorite: (filmId, status) => (dispatch, getState, api) => {
+    return api.post(`/favorite/${filmId}/${status}`)
+    .then((response) => {
+
+      const state = getState();
+      const newFilm = formatData(response.data);
+      const mewFilms = getUpdatedFilms(state, filmId, newFilm);
+      const promoFilmId = getPromoFilmId(state);
+
+      if (filmId === promoFilmId) {
+        dispatch(appActionCreator.changePromoFilmStatus(Boolean(status)));
+        dispatch(dataOperations.loadPromoFilm());
+      }
+
+      dispatch(dataActionCreator.updateFilms(mewFilms));
     })
     .catch((err) => {
       throw err;

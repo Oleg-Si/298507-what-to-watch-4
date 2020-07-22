@@ -19,6 +19,7 @@ it(`Проверяет снепшот компонента AddReview`, () => {
           onCheckValidCommentLength={() => {}}
           onSend={() => {}}
           onAddReviews={() => {}}
+          onMyListClick={() => {}}
           userAvatar={`img/avatar.jpg`}
           filmId={`1`}
         />

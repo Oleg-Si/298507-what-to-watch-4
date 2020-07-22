@@ -7,13 +7,18 @@ const AppHeader = (props) => {
   const {
     authorizationStatus,
     userAvatar,
-    children
+    children,
+    className,
+    onMyListClick
   } = props;
 
   const getAuthStatusMarkup = () => {
     if (authorizationStatus === AuthorizationStatus.AUTH) {
       return (
-        <Link to={AppRoute.MY_LIST} >
+        <Link
+          onClick={onMyListClick}
+          to={AppRoute.MY_LIST}
+        >
           <div className="user-block__avatar">
             <img src={userAvatar} alt="User avatar" width="63" height="63" />
           </div>
@@ -30,7 +35,7 @@ const AppHeader = (props) => {
   };
 
   return (
-    <header className="page-header movie-card__head">
+    <header className={`page-header ${className}`}>
       <div className="logo">
         <Link
           className="logo__link"
@@ -53,7 +58,9 @@ const AppHeader = (props) => {
 
 AppHeader.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
+  onMyListClick: PropTypes.func.isRequired,
   userAvatar: PropTypes.string,
+  className: PropTypes.string,
   children: PropTypes.node,
 };
 

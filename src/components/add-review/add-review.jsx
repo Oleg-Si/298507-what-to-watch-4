@@ -8,6 +8,7 @@ import {connect} from 'react-redux';
 import {getCurrentFilm} from '../../redux/data/selectors.js';
 import {getUserAvatar, getAuthorizationStatus} from './../../redux/user/selectors';
 import userOperations from './../../redux/user/operations';
+import dataOperations from './../../redux/data/operations';
 
 const AddReview = (props) => {
   const {
@@ -19,7 +20,8 @@ const AddReview = (props) => {
     onAddReviews,
     userAvatar,
     film,
-    filmId
+    filmId,
+    onMyListClick
   } = props;
 
   const formRef = React.createRef();
@@ -49,6 +51,7 @@ const AddReview = (props) => {
         <AppHeader
           authorizationStatus={authorizationStatus}
           userAvatar={userAvatar}
+          onMyListClick={onMyListClick}
         >
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
@@ -120,6 +123,7 @@ AddReview.propTypes = {
   isValid: PropTypes.bool.isRequired,
   isSend: PropTypes.bool.isRequired,
   onAddReviews: PropTypes.func.isRequired,
+  onMyListClick: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   userAvatar: PropTypes.string,
   film: PropTypes.object.isRequired,
@@ -135,6 +139,10 @@ const mapStateToProps = (state, props) => ({
 const mapDispatchToProps = (dispatch) => ({
   onAddReviews(reviews) {
     dispatch(userOperations.createReview(reviews));
+  },
+
+  onMyListClick() {
+    dispatch(dataOperations.loadFavoriteFilms());
   }
 });
 

@@ -10,16 +10,19 @@ import SignIn from './../sign-in/sign-in.jsx';
 import userOperations from './../../redux/user/operations';
 import AddReview from './../add-review/add-review.jsx';
 import history from './../../history';
-import {getIsLoadedFilms} from './../../redux/data/selectors';
+import {getIsLoadedFilms, getIsLoadedFavoriteFilms, getIsLoadedPromoFilms} from './../../redux/data/selectors';
 import Preloader from '../preloader/preloader.jsx';
 import PrivateRoute from './../private-route/private-route.jsx';
+import MyList from '../my-list/my-list.jsx';
 
 class App extends PureComponent {
   render() {
     const {
       onSignIn,
       authorizationStatusCode,
-      isLoadedFilms
+      isLoadedFilms,
+      isLoadedPromoFilm,
+      isLoadedFavoriteFilms
     } = this.props;
 
     return (
@@ -27,9 +30,15 @@ class App extends PureComponent {
         history={history}
       >
         <Switch>
-          <Route exact path={AppRoute.ROOT}>
-            <Main />
-          </Route>
+          <Route
+            exact
+            path={AppRoute.ROOT}
+            render={() => {
+              return (
+                (isLoadedFilms && isLoadedPromoFilm) ? <Main /> : <Preloader />
+              );
+            }}
+          />
 
           <Route exact path={AppRoute.LOGIN}>
             <SignIn
@@ -43,7 +52,7 @@ class App extends PureComponent {
             path={AppRoute.MY_LIST}
             render={() => {
               return (
-                null
+                isLoadedFavoriteFilms ? <MyList /> : <Preloader />
               );
             }}
           />
@@ -90,11 +99,15 @@ App.propTypes = {
   authorizationStatusCode: PropTypes.number,
   onSignIn: PropTypes.func.isRequired,
   isLoadedFilms: PropTypes.bool.isRequired,
+  isLoadedFavoriteFilms: PropTypes.bool.isRequired,
+  isLoadedPromoFilm: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = (state) => ({
   authorizationStatusCode: getAuthorizationStatusCode(state),
   isLoadedFilms: getIsLoadedFilms(state),
+  isLoadedFavoriteFilms: getIsLoadedFavoriteFilms(state),
+  isLoadedPromoFilm: getIsLoadedPromoFilms(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

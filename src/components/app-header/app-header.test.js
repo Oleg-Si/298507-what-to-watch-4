@@ -2,18 +2,22 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import AppHeader from './app-header';
 import {AuthorizationStatus} from './../../constants';
-import {BrowserRouter} from 'react-router-dom';
+import {Router} from 'react-router-dom';
+import history from './../../history';
 
 
 it(`Проверяет снепшот компонента AppHeader`, () => {
   const tree = renderer.create(
-      <BrowserRouter>
+      <Router
+        history={history}
+      >
         <AppHeader
           authorizationStatus={AuthorizationStatus.NO_AUTH}
           userAvatar={`https://4.react.pages.academy/wtw/static/avatar/2.jpg`}
           onSignIn={() => {}}
+          onMyListClick={() => {}}
         />
-      </BrowserRouter>
+      </Router>
   ).toJSON();
 
   expect(tree).toMatchSnapshot();
@@ -21,13 +25,16 @@ it(`Проверяет снепшот компонента AppHeader`, () => {
 
 it(`Проверяет снепшот компонента AppHeader`, () => {
   const tree = renderer.create(
-      <BrowserRouter>
+      <Router
+        history={history}
+      >
         <AppHeader
           authorizationStatus={AuthorizationStatus.AUTH}
           userAvatar={`https://4.react.pages.academy/wtw/static/avatar/2.jpg`}
           onSignIn={() => {}}
+          onMyListClick={() => {}}
         />
-      </BrowserRouter>
+      </Router>
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

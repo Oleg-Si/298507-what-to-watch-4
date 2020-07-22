@@ -2,7 +2,9 @@ const ActionType = {
   FILTER_FILMS_BY_GENRE: `filterFilmsByGenre`,
   LOAD_FILMS: `loadFilms`,
   LOAD_PROMO_FILM: `loadPromoFilm`,
-  ADD_FILM_COMMENTS: `addFilmComments`
+  LOAD_FAVORITE_FILMS: `loadFavoriteFilms`,
+  ADD_FILM_COMMENTS: `addFilmComments`,
+  UPDATE_FILMS: `updateFilms`,
 };
 
 export default ActionType;

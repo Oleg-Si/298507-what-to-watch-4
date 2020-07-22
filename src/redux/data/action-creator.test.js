@@ -30,4 +30,18 @@ describe(`ActionCreator работает корректно`, () => {
       payload: mockReviews
     });
   });
+
+  it(`loadFavoriteFilms возвращает загруженные фильмы`, () => {
+    expect(ActionCreator.loadFavoriteFilms(films)).toEqual({
+      type: ActionType.LOAD_FAVORITE_FILMS,
+      payload: films
+    });
+  });
+
+  it(`updateFilms возвращает фильмы`, () => {
+    expect(ActionCreator.updateFilms(films)).toEqual({
+      type: ActionType.UPDATE_FILMS,
+      payload: films
+    });
+  });
 });

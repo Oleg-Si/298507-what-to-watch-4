@@ -14,9 +14,12 @@ it(`Проверяет снепшот компонента FilmPage`, () => {
         <FilmPage
           films={mockFilmsForTests}
           film={mockFilmForTests}
+          filmId={`1`}
           activeTab={`Overview`}
           onTabClick={() => {}}
+          onFavorite={() => {}}
           onFilmCardTitleClick={() => {}}
+          onMyListClick={() => {}}
           authorizationStatus={AuthorizationStatus.AUTH}
           userAvatar={`img/avatar.jpg`}
           filmReviews={mockReviews}

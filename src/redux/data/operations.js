@@ -1,28 +1,23 @@
 import ActionCreator from './action-creator';
 import {createFilm} from '../../adapter';
+import {formatData} from '../../utils';
+import appActionCreator from './../app/action-creator';
 
 const Operations = {
   loadFilms: () => (dispatch, getState, api) => {
     return api.get(`/films`)
       .then((response) => {
-        let formattedData;
-
-        if (Array.isArray(response.data)) {
-          formattedData = response.data.map((el) => createFilm(el));
-        } else {
-          formattedData = createFilm(response.data);
-        }
-
-        dispatch(ActionCreator.loadFilms(formattedData));
+        dispatch(ActionCreator.loadFilms(formatData(response.data)));
       });
   },
 
   loadPromoFilm: () => (dispatch, getState, api) => {
     return api.get(`/films/promo`)
       .then((response) => {
-        const formattedData = createFilm(response.data);
+        const film = createFilm(response.data);
 
-        dispatch(ActionCreator.loadPromoFilm(formattedData));
+        dispatch(ActionCreator.loadPromoFilm(film));
+        dispatch(appActionCreator.changePromoFilmStatus(film.isFavorite));
       });
   },
 
@@ -30,6 +25,13 @@ const Operations = {
     return api.get(`/comments/${id}`)
       .then((response) => {
         dispatch(ActionCreator.addFilmComments(response.data));
+      });
+  },
+
+  loadFavoriteFilms: () => (dispatch, getState, api) => {
+    return api.get(`/favorite`)
+      .then((response) => {
+        dispatch(ActionCreator.loadFavoriteFilms(formatData(response.data)));
       });
   },
 };
