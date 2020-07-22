@@ -11,8 +11,6 @@ Enzyme.configure({
   adapter: new Adapter()
 });
 
-const children = <div className="children-component"></div>;
-
 const mockEvent = {
   preventDefault() {}
 };
@@ -29,7 +27,12 @@ it(`Клик на заголовок вызывает коллбэк`, () => {
           onFilmCardTitleClick={onFilmCardTitleClick}
           onPlay={() => {}}
           onStop={() => {}}
-        >{children}</FilmCard>
+          onReady={() => {}}
+          controls={false}
+          isMuted={true}
+          isPlaying={false}
+          isReady={true}
+        />
       </Router>
   );
 

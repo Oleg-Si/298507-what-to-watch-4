@@ -6,13 +6,16 @@ import {mockFilmForTests} from '../../mock/films.js';
 it(`Проверяет снепшот компонента VideoPlayer`, () => {
   const tree = renderer.create(
       <VideoPlayer
-        film={mockFilmForTests}
+        src={mockFilmForTests.src}
+        poster={mockFilmForTests.poster}
         controls={false}
         isMuted={true}
         isPlaying={false}
       />, {
         createNodeMock: () => {
-          return {};
+          return {
+            addEventListener: () => {}
+          };
         }}
   ).toJSON();
 
