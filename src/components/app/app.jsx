@@ -1,11 +1,11 @@
 import React, {PureComponent} from 'react';
 import Main from '../main/main.jsx';
 import PropTypes from 'prop-types';
-import {Router, Switch, Route, Link} from 'react-router-dom';
+import {Router, Switch, Route, Link, Redirect} from 'react-router-dom';
 import FilmPage from '../film-page/film-page.jsx';
 import {connect} from 'react-redux';
-import {AppRoute, preloaderMainStyle} from '../../constants.js';
-import {getAuthorizationStatusCode} from '../../redux/user/selectors.js';
+import {AppRoute, preloaderMainStyle, AuthorizationStatus} from '../../constants.js';
+import {getAuthorizationStatusCode, getAuthorizationStatus} from '../../redux/user/selectors.js';
 import SignIn from './../sign-in/sign-in.jsx';
 import userOperations from './../../redux/user/operations';
 import AddReview from './../add-review/add-review.jsx';
@@ -21,6 +21,7 @@ class App extends PureComponent {
     const {
       onSignIn,
       authorizationStatusCode,
+      authorizationStatus,
       isLoadedFilms,
       isLoadedPromoFilm,
       isLoadedFavoriteFilms
@@ -39,12 +40,20 @@ class App extends PureComponent {
             }}
           />
 
-          <Route exact path={AppRoute.LOGIN}>
-            <SignIn
-              authorizationStatusCode={authorizationStatusCode}
-              onSubmit={onSignIn}
-            />
-          </Route>
+          <Route
+            exact
+            path={AppRoute.LOGIN}
+            render={() => {
+              return (
+                authorizationStatus === AuthorizationStatus.AUTH
+                  ? <Redirect to={AppRoute.ROOT} />
+                  : <SignIn
+                    authorizationStatusCode={authorizationStatusCode}
+                    onSubmit={onSignIn}
+                  />
+              );
+            }}
+          />
 
           <PrivateRoute
             exact
@@ -113,12 +122,14 @@ App.propTypes = {
   authorizationStatusCode: PropTypes.number,
   onSignIn: PropTypes.func.isRequired,
   isLoadedFilms: PropTypes.bool.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
   isLoadedFavoriteFilms: PropTypes.bool.isRequired,
   isLoadedPromoFilm: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = (state) => ({
   authorizationStatusCode: getAuthorizationStatusCode(state),
+  authorizationStatus: getAuthorizationStatus(state),
   isLoadedFilms: getIsLoadedFilms(state),
   isLoadedFavoriteFilms: getIsLoadedFavoriteFilms(state),
   isLoadedPromoFilm: getIsLoadedPromoFilms(state)
