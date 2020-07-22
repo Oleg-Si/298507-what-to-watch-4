@@ -102,6 +102,9 @@ class VideoPlayer extends PureComponent {
 
     video.controls = null;
     video.muted = null;
+    video.ontimeupdate = null;
+    video.onpause = null;
+    video.onolay = null;
   }
 
   render() {

@@ -28,6 +28,7 @@ class Player extends PureComponent {
       allTime,
       fullScreen,
       onFullScreenClick,
+      onReady,
       onExitClick
     } = this.props;
 
@@ -56,6 +57,7 @@ class Player extends PureComponent {
           onFullScreenChange={onFullScreenClick}
           onPlay={onPlay}
           onPause={onPause}
+          onReady={onReady}
         />
 
         <button type="button" className="player__exit" onClick={onExitClick}>Exit</button>
@@ -122,6 +124,7 @@ Player.propTypes = {
   onChangeProgress: PropTypes.func,
   onPause: PropTypes.func,
   onPlay: PropTypes.func,
+  onReady: PropTypes.func,
   onFullScreenClick: PropTypes.func,
   onExitClick: PropTypes.func.isRequired,
   progress: PropTypes.number,
