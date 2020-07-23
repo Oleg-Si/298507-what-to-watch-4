@@ -1,13 +1,12 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {connect} from 'react-redux';
 import {getCurrentFilm} from '../../redux/data/selectors';
-import withPlayer from '../../hocs/with-player/with-player.jsx';
-import VideoPlayer from '../video-player/video-player.jsx';
-import moment from 'moment';
+import withPlayer from '../../hocs/with-player/with-player';
+import VideoPlayer from '../video-player/video-player';
+import * as moment from 'moment';
 import history from '../../history';
 
-class Player extends PureComponent {
+class Player extends React.PureComponent {
   constructor(props) {
     super(props);
 

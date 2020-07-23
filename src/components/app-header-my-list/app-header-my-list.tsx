@@ -1,5 +1,5 @@
-import React from 'react';
-import AppHeader from '../app-header/app-header.js';
+import * as React from 'react';
+import AppHeader from '../app-header/app-header';
 
 const AppHeaderMyList = (props) => {
   return (

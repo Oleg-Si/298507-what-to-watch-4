@@ -1,8 +1,7 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {APIErrorsCode, AppRoute} from '../../constants';
 import {Link} from 'react-router-dom';
-import AppFooter from '../app-footer/app-footer.js';
+import AppFooter from '../app-footer/app-footer';
 
 class SignIn extends PureComponent {
   constructor(props) {

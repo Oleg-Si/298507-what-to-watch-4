@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {RatingKey} from '../../constants';
 
 const FilmPageOverview = (props) => {

@@ -1,10 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {Route, Redirect} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus, preloaderMainStyle} from '../../constants';
 import {connect} from 'react-redux';
 import {getAuthorizationStatus, getIsAuthorizationChecked} from '../../redux/user/selectors';
-import Preloader from '../preloader/preloader.js';
+import Preloader from '../preloader/preloader';
 
 const PrivateRoute = (props) => {
   const {

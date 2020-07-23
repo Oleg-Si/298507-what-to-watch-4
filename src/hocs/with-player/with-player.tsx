@@ -1,10 +1,9 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 
 const VIDEO_PLAY_TIMEOUT = 1000; // ms
 
 const withPlayer = (Component) => {
-  class WithPlayer extends PureComponent {
+  class WithPlayer extends React.PureComponent {
     constructor(props) {
       super(props);
 

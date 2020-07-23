@@ -1,8 +1,7 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 
 const withActiveTab = (Component) => {
-  class WithActiveTab extends PureComponent {
+  class WithActiveTab extends React.PureComponent {
     constructor(props) {
       super(props);
 

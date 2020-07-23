@@ -1,11 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import withSendForm from '../../hocs/with-send-form/with-send-form.jsx';
-import AppHeader from '../app-header/app-header.jsx';
+import * as React from 'react';
+import withSendForm from '../../hocs/with-send-form/with-send-form';
+import AppHeader from '../app-header/app-header';
 import {Link} from 'react-router-dom';
-import {AppRoute} from '../../constants.js';
+import {AppRoute} from '../../constants';
 import {connect} from 'react-redux';
-import {getCurrentFilm} from '../../redux/data/selectors.js';
+import {getCurrentFilm} from '../../redux/data/selectors';
 import {getUserAvatar, getAuthorizationStatus, getSendReviewErrorStatus} from '../../redux/user/selectors';
 import userOperations from '../../redux/user/operations';
 import dataOperations from '../../redux/data/operations';

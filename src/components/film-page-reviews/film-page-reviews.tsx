@@ -1,6 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import moment from 'moment';
+import * as React from 'react';
+import * as moment from 'moment';
 
 const FilmPageReviews = (props) => {
   const reviews = props.filmReviews;

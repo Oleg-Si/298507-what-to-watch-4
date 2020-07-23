@@ -1,7 +1,6 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 
-class VideoPlayer extends PureComponent {
+class VideoPlayer extends React.PureComponent {
   constructor(props) {
     super(props);
 

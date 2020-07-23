@@ -1,10 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import withPlayer from '../../hocs/with-player/with-player.jsx';
+import * as React from 'react';
+import withPlayer from '../../hocs/with-player/with-player';
 import {Link} from 'react-router-dom';
-import {AppRoute, preloaderCardStyle} from '../../constants.js';
-import VideoPlayer from '../video-player/video-player.jsx';
-import Preloader from '../preloader/preloader.jsx';
+import {AppRoute, preloaderCardStyle} from '../../constants';
+import VideoPlayer from '../video-player/video-player';
+import Preloader from '../preloader/preloader';
 
 const VideoSettings = {
   WIDTH: 280,

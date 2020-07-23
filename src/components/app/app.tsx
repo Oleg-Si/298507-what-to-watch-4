@@ -1,22 +1,21 @@
-import React, {PureComponent} from 'react';
-import Main from '../main/main.jsx';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import Main from '../main/main';
 import {Router, Switch, Route, Link, Redirect} from 'react-router-dom';
-import FilmPage from '../film-page/film-page.jsx';
+import FilmPage from '../film-page/film-page';
 import {connect} from 'react-redux';
-import {AppRoute, preloaderMainStyle, AuthorizationStatus} from '../../constants.js';
-import {getAuthorizationStatusCode, getAuthorizationStatus} from '../../redux/user/selectors.js';
-import SignIn from '../sign-in/sign-in.jsx';
+import {AppRoute, preloaderMainStyle, AuthorizationStatus} from '../../constants';
+import {getAuthorizationStatusCode, getAuthorizationStatus} from '../../redux/user/selectors';
+import SignIn from '../sign-in/sign-in';
 import userOperations from '../../redux/user/operations';
-import AddReview from '../add-review/add-review.jsx';
+import AddReview from '../add-review/add-review';
 import history from '../../history';
 import {getIsLoadedFilms, getIsLoadedFavoriteFilms, getIsLoadedPromoFilms} from '../../redux/data/selectors';
-import Preloader from '../preloader/preloader.jsx';
-import PrivateRoute from '../private-route/private-route.jsx';
-import MyList from '../my-list/my-list.jsx';
-import Player from '../player/player.jsx';
+import Preloader from '../preloader/preloader';
+import PrivateRoute from '../private-route/private-route';
+import MyList from '../my-list/my-list';
+import Player from '../player/player';
 
-class App extends PureComponent {
+class App extends React.PureComponent {
   render() {
     const {
       onSignIn,

@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/app/app.jsx';
+import App from './components/app/app';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import reducer from './redux/reducer';

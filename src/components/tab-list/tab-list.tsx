@@ -1,6 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import withActiveTab from '../../hocs/with-active-tab/with-active-tab.jsx';
+import * as React from 'react';
+import withActiveTab from '../../hocs/with-active-tab/with-active-tab';
 
 const TabList = (props) => {
   const {tabs, activeTab, onTabClick} = props;

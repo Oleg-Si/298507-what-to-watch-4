@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import * as React from 'react';
 
 const ValidationParameters = {
   TEXT: {
@@ -8,7 +8,7 @@ const ValidationParameters = {
 };
 
 const withSendForm = (Component) => {
-  class WithSendForm extends PureComponent {
+  class WithSendForm extends React.PureComponent {
     constructor(props) {
       super(props);
 
