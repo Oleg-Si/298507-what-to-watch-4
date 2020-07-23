@@ -9,8 +9,11 @@ exports[`Проверяет снепшот компонента FilmCard 1`] = `
   <div
     className="small-movie-card__image"
   >
-    <div
-      className="children-component"
+    <video
+      height={175}
+      poster="img/revenant.jpg"
+      src="https://archive.org/download/ElephantsDream/ed_1024_512kb.mp4"
+      width={280}
     />
   </div>
   <h3

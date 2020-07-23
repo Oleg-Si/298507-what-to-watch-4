@@ -104,6 +104,7 @@ Array [
           >
             <button
               className="btn btn--play movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -233,7 +234,7 @@ Array [
               <span
                 className="movie-rating__level"
               >
-                Awesome
+                Very good
               </span>
               <span
                 className="movie-rating__count"

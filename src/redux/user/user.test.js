@@ -7,7 +7,8 @@ const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   isAuthorizationChecked: false,
   userAvatar: ``,
-  authorizationStatusCode: null
+  authorizationStatusCode: null,
+  sendReviewError: false
 };
 
 const correctResponse = {
@@ -88,6 +89,25 @@ describe(`Reducer работает корректно`, () => {
       userAvatar: ``,
       isAuthorizationChecked: true,
       authorizationStatusCode: badResponse
+    });
+  });
+
+  it(`Reducer меняет sendReviewError на true`, () => {
+    expect(reducer({
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
+      userAvatar: ``,
+      isAuthorizationChecked: false,
+      authorizationStatusCode: null,
+      sendReviewError: false
+    }, {
+      type: ActionType.SEND_REVIEW_ERROR,
+      payload: true
+    })).toEqual({
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
+      userAvatar: ``,
+      isAuthorizationChecked: false,
+      authorizationStatusCode: null,
+      sendReviewError: true
     });
   });
 });

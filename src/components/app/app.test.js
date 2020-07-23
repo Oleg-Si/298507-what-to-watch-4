@@ -38,6 +38,7 @@ it(`Проверяет снепшот компонента App`, () => {
       <Provider store={store}>
         <App
           authorizationStatusCode={APIErrorsCode.BAD_REQUEST}
+          authorizationStatus={AuthorizationStatus.AUTH}
           isLoadedFilms={true}
           isLoadedPromoFilm={true}
           isLoadedFavoriteFilms={true}
@@ -46,7 +47,9 @@ it(`Проверяет снепшот компонента App`, () => {
         />
       </Provider>, {
         createNodeMock: () => {
-          return {};
+          return {
+            addEventListener: () => {}
+          };
         }}
   ).toJSON();
 

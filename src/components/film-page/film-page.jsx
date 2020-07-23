@@ -17,6 +17,7 @@ import AppFooter from '../app-footer/app-footer.jsx';
 import {Link} from 'react-router-dom';
 import dataOperations from './../../redux/data/operations';
 import userOperations from './../../redux/user/operations';
+import history from './../../history';
 
 const FilmPage = (props) => {
   const {
@@ -29,7 +30,8 @@ const FilmPage = (props) => {
     userAvatar,
     filmReviews,
     onFavorite,
-    onMyListClick
+    onMyListClick,
+    onPlayClick
   } = props;
 
   const getFilmInfo = () => {
@@ -88,7 +90,9 @@ const FilmPage = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <button className="btn btn--play movie-card__button" type="button" onClick={() => {
+                  onPlayClick(film.id);
+                }}>
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                     <symbol id="play-s" viewBox="0 0 19 19">
@@ -186,6 +190,7 @@ FilmPage.propTypes = {
   onFilmCardTitleClick: PropTypes.func.isRequired,
   onFavorite: PropTypes.func.isRequired,
   onMyListClick: PropTypes.func.isRequired,
+  onPlayClick: PropTypes.func.isRequired,
   filmId: PropTypes.string.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   userAvatar: PropTypes.string,
@@ -219,6 +224,10 @@ const mapDispatchToProps = (dispatch, props) => ({
 
   onMyListClick() {
     dispatch(dataOperations.loadFavoriteFilms());
+  },
+
+  onPlayClick(filmId) {
+    history.push(`${AppRoute.PLAYER}/${filmId}`);
   }
 });
 

@@ -8,15 +8,15 @@ const FilmPageOverview = (props) => {
   const getRatingDescr = () => {
     const rating = parseFloat(filmInfo.rating);
 
-    if (rating < 2) {
+    if (rating >= 0 && rating < 3) {
       return RatingKey.BAD;
-    } else if (rating >= 2 && rating < 4) {
+    } else if (rating >= 3 && rating < 5) {
       return RatingKey.NORMAL;
-    } else if (rating >= 4 && rating < 6) {
+    } else if (rating >= 5 && rating < 8) {
       return RatingKey.GOOD;
-    } else if (rating >= 6 && rating < 8) {
+    } else if (rating >= 8 && rating < 10) {
       return RatingKey.VERY_GOOD;
-    } else if (rating >= 8) {
+    } else if (rating >= 10) {
       return RatingKey.AWESOME;
     }
 
