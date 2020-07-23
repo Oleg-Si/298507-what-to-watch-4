@@ -2,7 +2,7 @@ import * as React from 'react';
 import withSendForm from '../../hocs/with-send-form/with-send-form';
 import AppHeader from '../app-header/app-header';
 import {Link} from 'react-router-dom';
-import {AppRoute} from '../../constants';
+import {AppRoute, AuthorizationStatus} from '../../constants';
 import {connect} from 'react-redux';
 import {getCurrentFilm} from '../../redux/data/selectors';
 import {getUserAvatar, getAuthorizationStatus, getSendReviewErrorStatus} from '../../redux/user/selectors';
@@ -20,7 +20,7 @@ interface Props {
   onAddReviews: (reviewData: {id: string, rating: string, comment: string}) => void,
   changeIsErrorStatus: () => void,
   onMyListClick: () => void,
-  authorizationStatus: string,
+  authorizationStatus: AuthorizationStatus,
   userAvatar: string,
   film: FilmInterface,
   filmId: string

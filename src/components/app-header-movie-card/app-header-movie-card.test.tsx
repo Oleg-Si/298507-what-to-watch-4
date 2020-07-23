@@ -1,9 +1,9 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import AppHeaderMovieCard from './app-header-movie-card.jsx';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import AppHeaderMovieCard from './app-header-movie-card.js';
 import {Router} from 'react-router-dom';
 import history from '../../history';
-import {AuthorizationStatus} from './../../constants';
+import {AuthorizationStatus} from '../../constants';
 
 it(`Проверяет снепшот компонента AppHeaderMovieCard`, () => {
   const tree = renderer.create(
@@ -12,6 +12,7 @@ it(`Проверяет снепшот компонента AppHeaderMovieCard`, 
       >
         <AppHeaderMovieCard
           className="otherClass"
+          userAvatar={`img/avatar.jpg`}
           authorizationStatus={AuthorizationStatus.AUTH}
           onMyListClick={() => {}}
         />

@@ -1,9 +1,9 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 import AppHeader from './app-header';
-import {AuthorizationStatus} from './../../constants';
+import {AuthorizationStatus} from '../../constants';
 import {Router} from 'react-router-dom';
-import history from './../../history';
+import history from '../../history';
 
 
 it(`Проверяет снепшот компонента AppHeader`, () => {
@@ -14,7 +14,6 @@ it(`Проверяет снепшот компонента AppHeader`, () => {
         <AppHeader
           authorizationStatus={AuthorizationStatus.NO_AUTH}
           userAvatar={`https://4.react.pages.academy/wtw/static/avatar/2.jpg`}
-          onSignIn={() => {}}
           onMyListClick={() => {}}
         />
       </Router>
@@ -31,7 +30,6 @@ it(`Проверяет снепшот компонента AppHeader`, () => {
         <AppHeader
           authorizationStatus={AuthorizationStatus.AUTH}
           userAvatar={`https://4.react.pages.academy/wtw/static/avatar/2.jpg`}
-          onSignIn={() => {}}
           onMyListClick={() => {}}
         />
       </Router>

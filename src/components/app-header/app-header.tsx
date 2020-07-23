@@ -2,7 +2,15 @@ import * as React from 'react';
 import {AuthorizationStatus, AppRoute} from '../../constants';
 import {Link} from 'react-router-dom';
 
-const AppHeader = (props) => {
+interface Props {
+  authorizationStatus: AuthorizationStatus,
+  onMyListClick: () => void,
+  userAvatar: string,
+  className?: string,
+  children?: React.ReactNode,
+}
+
+const AppHeader: React.FC<Props> = (props) => {
   const {
     authorizationStatus,
     userAvatar,
@@ -53,14 +61,6 @@ const AppHeader = (props) => {
       </div>
     </header>
   );
-};
-
-AppHeader.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
-  onMyListClick: PropTypes.func.isRequired,
-  userAvatar: PropTypes.string,
-  className: PropTypes.string,
-  children: PropTypes.node,
 };
 
 export default AppHeader;

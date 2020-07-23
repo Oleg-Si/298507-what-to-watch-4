@@ -1,8 +1,8 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import AppFooter from './app-footer.jsx';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import AppFooter from './app-footer.js';
 import {Router} from 'react-router-dom';
-import history from './../../history';
+import history from '../../history';
 
 it(`Проверяет снепшот компонента AppFooter`, () => {
   const tree = renderer.create(

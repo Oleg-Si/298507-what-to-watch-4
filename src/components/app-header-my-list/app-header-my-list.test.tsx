@@ -1,9 +1,9 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import AppHeaderMyList from './app-header-my-list.jsx';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import AppHeaderMyList from './app-header-my-list.js';
 import {Router} from 'react-router-dom';
-import history from './../../history';
-import {AuthorizationStatus} from './../../constants';
+import history from '../../history';
+import {AuthorizationStatus} from '../../constants';
 
 it(`Проверяет снепшот компонента AppHeaderMyList`, () => {
   const tree = renderer.create(
@@ -12,6 +12,7 @@ it(`Проверяет снепшот компонента AppHeaderMyList`, () 
       >
         <AppHeaderMyList
           className="otherClass"
+          userAvatar={`img/avatar.jpg`}
           authorizationStatus={AuthorizationStatus.AUTH}
           onMyListClick={() => {}}
         />
