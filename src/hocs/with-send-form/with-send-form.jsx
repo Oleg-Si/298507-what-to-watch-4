@@ -22,7 +22,7 @@ const withSendForm = (Component) => {
     }
 
     _handleSend() {
-      this.setState({isSend: true});
+      this.setState((prevState) => ({isSend: !prevState.isSend}));
     }
 
     _handleCheckValidCommentLength(commentLength) {

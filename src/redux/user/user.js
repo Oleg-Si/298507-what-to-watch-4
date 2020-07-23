@@ -6,7 +6,8 @@ const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   isAuthorizationChecked: false,
   userAvatar: ``,
-  authorizationStatusCode: null
+  authorizationStatusCode: null,
+  sendReviewError: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -29,6 +30,9 @@ const reducer = (state = initialState, action) => {
         authorizationStatusCode: action.payload.statusCode,
         isAuthorizationChecked: true
       });
+
+    case ActionType.SEND_REVIEW_ERROR:
+      return extend(state, {sendReviewError: action.payload});
   }
 
   return state;

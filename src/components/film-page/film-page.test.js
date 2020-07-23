@@ -20,6 +20,7 @@ it(`Проверяет снепшот компонента FilmPage`, () => {
           onFavorite={() => {}}
           onFilmCardTitleClick={() => {}}
           onMyListClick={() => {}}
+          onPlayClick={() => {}}
           authorizationStatus={AuthorizationStatus.AUTH}
           userAvatar={`img/avatar.jpg`}
           filmReviews={mockReviews}

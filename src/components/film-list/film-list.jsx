@@ -18,6 +18,7 @@ const FilmList = (props) => {
           film={film}
           onFilmCardTitleClick={onFilmCardTitleClick}
           key={film.id}
+          isMuted={true}
         />
       ))}
     </div>

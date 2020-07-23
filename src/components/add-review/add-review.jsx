@@ -6,15 +6,18 @@ import {Link} from 'react-router-dom';
 import {AppRoute} from '../../constants.js';
 import {connect} from 'react-redux';
 import {getCurrentFilm} from '../../redux/data/selectors.js';
-import {getUserAvatar, getAuthorizationStatus} from './../../redux/user/selectors';
+import {getUserAvatar, getAuthorizationStatus, getSendReviewErrorStatus} from './../../redux/user/selectors';
 import userOperations from './../../redux/user/operations';
 import dataOperations from './../../redux/data/operations';
+import userActionCreator from './../../redux/user/action-creator';
 
 const AddReview = (props) => {
   const {
     isValid,
     isSend,
+    isError,
     onCheckValidCommentLength,
+    changeIsErrorStatus,
     onSend,
     authorizationStatus,
     onAddReviews,
@@ -98,9 +101,15 @@ const AddReview = (props) => {
             </div>
           </div>
 
+          {isError && <p style={{textAlign: `center`}}>Review is not send, please try again</p>}
+
           <div className="add-review__text">
             <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text" onChange={(evt) => {
               onCheckValidCommentLength(evt.target.value.length);
+              if (isError) {
+                changeIsErrorStatus();
+                onSend();
+              }
             }}></textarea>
             <div className="add-review__submit">
               <button
@@ -122,7 +131,9 @@ AddReview.propTypes = {
   onSend: PropTypes.func.isRequired,
   isValid: PropTypes.bool.isRequired,
   isSend: PropTypes.bool.isRequired,
+  isError: PropTypes.bool.isRequired,
   onAddReviews: PropTypes.func.isRequired,
+  changeIsErrorStatus: PropTypes.func.isRequired,
   onMyListClick: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   userAvatar: PropTypes.string,
@@ -134,6 +145,7 @@ const mapStateToProps = (state, props) => ({
   film: getCurrentFilm(state, props.filmId),
   userAvatar: getUserAvatar(state),
   authorizationStatus: getAuthorizationStatus(state),
+  isError: getSendReviewErrorStatus(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -143,6 +155,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   onMyListClick() {
     dispatch(dataOperations.loadFavoriteFilms());
+  },
+
+  changeIsErrorStatus() {
+    dispatch(userActionCreator.sendReviewError(false));
   }
 });
 

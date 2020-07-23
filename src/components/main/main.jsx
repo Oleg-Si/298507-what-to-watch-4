@@ -5,7 +5,7 @@ import GenreFilter from '../genre-filter/genre-filter.jsx';
 import {connect} from 'react-redux';
 import dataActionCreator from '../../redux/data/action-creator';
 import appActionCreator from '../../redux/app/action-creator';
-import {DEFAULT_GENRE} from './../../constants';
+import {DEFAULT_GENRE, AppRoute} from './../../constants';
 import ShowMore from '../show-more/show-more.jsx';
 import {getPromoFilm, getFilteredFilmsByGenre, getFilms} from './../../redux/data/selectors';
 import {getActiveGenre, getCountFilmsForRender, getPromoFilmStatus} from './../../redux/app/selectors';
@@ -14,6 +14,7 @@ import AppHeaderMovieCard from './../app-header-movie-card/app-header-movie-card
 import AppFooter from '../app-footer/app-footer.jsx';
 import dataOperations from './../../redux/data/operations';
 import userOperations from './../../redux/user/operations';
+import history from './../../history';
 
 const Main = (props) => {
   const {
@@ -29,7 +30,8 @@ const Main = (props) => {
     userAvatar,
     onFavorite,
     onMyListClick,
-    promoFilmStatus
+    promoFilmStatus,
+    onPlayClick
   } = props;
 
   const getAllgenre = (data) => {
@@ -74,7 +76,9 @@ const Main = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <button className="btn btn--play movie-card__button" type="button" onClick={() => {
+                  onPlayClick(promoFilm.id);
+                }}>
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                     <symbol id="play-s" viewBox="0 0 19 19">
@@ -155,9 +159,10 @@ Main.propTypes = {
   onGenreCilck: PropTypes.func.isRequired,
   activeGenre: PropTypes.string.isRequired,
   filmsCount: PropTypes.number.isRequired,
-  promoFilmStatus: PropTypes.bool.isRequired,
+  promoFilmStatus: PropTypes.bool,
   onShowMoreClick: PropTypes.func.isRequired,
   onFavorite: PropTypes.func.isRequired,
+  onPlayClick: PropTypes.func.isRequired,
   onMyListClick: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   userAvatar: PropTypes.string,
@@ -194,6 +199,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   onMyListClick() {
     dispatch(dataOperations.loadFavoriteFilms());
+  },
+
+  onPlayClick(filmId) {
+    history.push(`${AppRoute.PLAYER}/${filmId}`);
   }
 });
 

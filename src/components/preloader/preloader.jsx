@@ -1,8 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Preloader = () => {
+const Preloader = (props) => {
+  const {style} = props;
+
   return (
-    <div className="preloader" style={{top: `45vh`, left: `50vw`, position: `absolute`}}>
+    <div className="preloader" style={style}>
       <svg width="64px" height="64px" viewBox="0 0 128 128" xmlSpace="preserve">
         <rect x="0" y="0" width="100%" height="100%" fill="#FFFFFF" />
         <g><circle cx="16" cy="64" r="16" fill="#000000" fillOpacity="1"/><circle cx="16" cy="64" r="14.344" fill="#000000" fillOpacity="1" transform="rotate(45 64 64)"/>
@@ -17,6 +20,10 @@ const Preloader = () => {
       </svg>
     </div>
   );
+};
+
+Preloader.propTypes = {
+  style: PropTypes.object.isRequired
 };
 
 export default Preloader;

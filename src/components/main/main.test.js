@@ -30,13 +30,16 @@ it(`Проверяет снепшот компонента Main`, () => {
           onShowMoreClick={() => {}}
           onFavorite={() => {}}
           onMyListClick={() => {}}
+          onPlayClick={() => {}}
           promoFilmStatus={true}
           authorizationStatus={AuthorizationStatus.AUTH}
           userAvatar={`img/avatar.jpg`}
         />
       </Router>, {
         createNodeMock: () => {
-          return {};
+          return {
+            addEventListener: () => {}
+          };
         }}
   ).toJSON();
 

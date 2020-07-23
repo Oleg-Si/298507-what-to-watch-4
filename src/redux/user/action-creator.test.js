@@ -48,4 +48,11 @@ describe(`ActionCreator работает корректно`, () => {
       payload: mockReview
     });
   });
+
+  it(`sendReviewError работает корректно`, () => {
+    expect(ActionCreator.sendReviewError(true)).toEqual({
+      type: ActionType.SEND_REVIEW_ERROR,
+      payload: true
+    });
+  });
 });

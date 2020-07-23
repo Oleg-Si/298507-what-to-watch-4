@@ -104,6 +104,7 @@ Array [
           >
             <button
               className="btn btn--play movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -150,7 +151,7 @@ Array [
             </button>
             <a
               className="btn movie-card__button"
-              href="/films/0/review"
+              href="/films/1/review"
               onClick={[Function]}
             >
               Add review
@@ -233,7 +234,7 @@ Array [
               <span
                 className="movie-rating__level"
               >
-                Awesome
+                Very good
               </span>
               <span
                 className="movie-rating__count"

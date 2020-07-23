@@ -70,6 +70,7 @@ const Operations = {
       history.push(`${AppRoute.FILM}/${review.id}`);
     })
     .catch((err) => {
+      dispatch(ActionCreator.sendReviewError(true));
       throw err;
     });
   },
