@@ -107,24 +107,3 @@ it(`Проверяет компонент videoPlayer 2`, () => {
   expect(load).toHaveBeenCalledTimes(1);
   load.mockRestore();
 });
-
-/*
-
-element.setState({isSend: false});
-  element.instance()._handleSend();
-  expect(element.state(`isSend`)).toBe(true);
-
-  element.setState({isValid: false});
-  element.instance()._handleCheckValidCommentLength(ValidationParameters.TEXT.MIN);
-  expect(element.state(`isValid`)).toBe(true);
-
-  element.instance()._handleCheckValidCommentLength(ValidationParameters.TEXT.MAX + 1);
-  expect(element.state(`isValid`)).toBe(false);
-
-  element.instance()._handleCheckValidCommentLength(ValidationParameters.TEXT.MAX);
-  expect(element.state(`isValid`)).toBe(true);
-
-  element.instance()._handleCheckValidCommentLength(ValidationParameters.TEXT.MIN - 1);
-  expect(element.state(`isValid`)).toBe(false);
-
-  */

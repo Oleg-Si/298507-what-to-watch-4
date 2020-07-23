@@ -1,32 +1,44 @@
 import React from 'react';
-import Enzyme, {shallow} from 'enzyme';
+import Enzyme, {mount, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {Player} from './player';
 import {mockFilmForTests} from '../../mock/films';
+import history from './../../history';
+import {Router} from 'react-router-dom';
 
 Enzyme.configure({
   adapter: new Adapter()
 });
 
 it(`Клик по кнопкам выхода и полноэкранного режима вызывает коллбек`, () => {
-  const onExitClick = jest.fn();
+  const mockGoBack = jest.fn();
+  history.goBack = mockGoBack;
+  const onExitClick = jest.fn(() => {
+    history.goBack();
+  });
+
   const onFullScreenClick = jest.fn();
 
-  const player = shallow(
-      <Player
-        film={mockFilmForTests}
-        controls={false}
-        isMuted={true}
-        isPlaying={false}
-        onExitClick={onExitClick}
-        onFullScreenClick={onFullScreenClick}
-      />
+  const player = mount(
+      <Router
+        history={history}
+      >
+        <Player
+          film={mockFilmForTests}
+          controls={false}
+          isMuted={true}
+          isPlaying={false}
+          onExitClick={onExitClick}
+          onFullScreenClick={onFullScreenClick}
+        />
+      </Router>
   );
 
   player.find(`button.player__exit`).simulate(`click`);
   player.find(`button.player__full-screen`).simulate(`click`);
 
   expect(onExitClick).toHaveBeenCalledTimes(1);
+  expect(mockGoBack).toHaveBeenCalledTimes(1);
   expect(onFullScreenClick).toHaveBeenCalledTimes(1);
 });
 

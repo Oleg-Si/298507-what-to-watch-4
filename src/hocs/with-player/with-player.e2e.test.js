@@ -69,7 +69,19 @@ it(`Проверяет состояния хок withPlayer`, () => {
     progress: 0,
     allTime: 0
   });
+
   element.instance()._handleChangeProgress(20.4, 50.4);
   expect(element.state(`allTime`)).toBe(50);
   expect(element.state(`progress`)).toBe(20);
+
+  element.setState({
+    progress: 0,
+    allTime: 10
+  });
+
+  element.instance()._handleChangeProgress(20.3, 51);
+  expect(element.state(`allTime`)).toBe(10);
+  expect(element.state(`progress`)).toBe(20);
+
+  element.instance().componentWillUnmount();
 });

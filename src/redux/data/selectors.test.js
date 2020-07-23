@@ -1,4 +1,4 @@
-import { getFavoriteFilms, getFilmComments, getUpdatedFilms, getIsLoadedFilms, getIsLoadedFavoriteFilms, getIsLoadedPromoFilms, getFilteredFilmsByGenre, getCurrentFilm, getPromoFilmId } from './selectors';
+import {getFavoriteFilms, getFilmComments, getUpdatedFilms, getIsLoadedFilms, getIsLoadedFavoriteFilms, getIsLoadedPromoFilms, getFilteredFilmsByGenre, getCurrentFilm, getPromoFilmId} from './selectors';
 import NameSpace from './../name-space';
 import {mockFilmForTests, mockFilmsForTests, mockReviews} from '../../mock/films';
 

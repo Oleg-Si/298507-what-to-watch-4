@@ -43,4 +43,13 @@ it(`Проверяет состояния хок withSendForm`, () => {
 
   element.instance()._handleCheckValidCommentLength(ValidationParameters.TEXT.MIN - 1);
   expect(element.state(`isValid`)).toBe(false);
+
+
+  element.setState({isValid: true});
+  element.instance()._handleCheckValidCommentLength(ValidationParameters.TEXT.MIN);
+  expect(element.state(`isValid`)).toBe(true);
+
+  element.setState({isValid: false});
+  element.instance()._handleCheckValidCommentLength(ValidationParameters.TEXT.MIN - 1);
+  expect(element.state(`isValid`)).toBe(false);
 });
