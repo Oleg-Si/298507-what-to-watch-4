@@ -3,21 +3,21 @@ import PropTypes from 'prop-types';
 import TabList from '../tab-list/tab-list.jsx';
 import {Tabs, COUNT_MORE_LIKE_THIS_FILMS, AppRoute} from '../../constants';
 import {connect} from 'react-redux';
-import appActionCreator from './../../redux/app/action-creator';
-import FilmPageOverview from './../film-page-overview/film-page-overview.jsx';
+import appActionCreator from '../../redux/app/action-creator';
+import FilmPageOverview from '../film-page-overview/film-page-overview.jsx';
 import FilmPageDetalis from '../film-page-details/film-page-details.jsx';
 import FilmPageReviews from '../film-page-reviews/film-page-reviews.jsx';
-import FilmList from './../film-list/film-list.jsx';
+import FilmList from '../film-list/film-list.js';
 import {getActiveTab} from '../../redux/app/selectors.js';
-import {getFilms, getFilmComments, getCurrentFilm} from './../../redux/data/selectors';
-import AppHeaderMovieCard from './../app-header-movie-card/app-header-movie-card.jsx';
-import {getAuthorizationStatus, getUserAvatar} from './../../redux/user/selectors';
-import {AuthorizationStatus} from './../../constants';
-import AppFooter from '../app-footer/app-footer.jsx';
+import {getFilms, getFilmComments, getCurrentFilm} from '../../redux/data/selectors';
+import AppHeaderMovieCard from '../app-header-movie-card/app-header-movie-card.js';
+import {getAuthorizationStatus, getUserAvatar} from '../../redux/user/selectors';
+import {AuthorizationStatus} from '../../constants';
+import AppFooter from '../app-footer/app-footer.js';
 import {Link} from 'react-router-dom';
-import dataOperations from './../../redux/data/operations';
-import userOperations from './../../redux/user/operations';
-import history from './../../history';
+import dataOperations from '../../redux/data/operations';
+import userOperations from '../../redux/user/operations';
+import history from '../../history';
 
 const FilmPage = (props) => {
   const {

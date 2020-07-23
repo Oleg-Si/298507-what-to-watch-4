@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AppHeaderMyList from './../app-header-my-list/app-header-my-list.jsx';
-import AppFooter from './../app-footer/app-footer.jsx';
+import AppHeaderMyList from '../app-header-my-list/app-header-my-list.js';
+import AppFooter from '../app-footer/app-footer.js';
 import {connect} from 'react-redux';
-import dataOperations from './../../redux/data/operations';
+import dataOperations from '../../redux/data/operations';
 import {getFavoriteFilms} from '../../redux/data/selectors.js';
-import FilmList from './../film-list/film-list.jsx';
-import {getAuthorizationStatus, getUserAvatar} from './../../redux/user/selectors';
+import FilmList from '../film-list/film-list.js';
+import {getAuthorizationStatus, getUserAvatar} from '../../redux/user/selectors';
 
 
 const MyList = (props) => {

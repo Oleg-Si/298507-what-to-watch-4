@@ -6,10 +6,10 @@ import {Link} from 'react-router-dom';
 import {AppRoute} from '../../constants.js';
 import {connect} from 'react-redux';
 import {getCurrentFilm} from '../../redux/data/selectors.js';
-import {getUserAvatar, getAuthorizationStatus, getSendReviewErrorStatus} from './../../redux/user/selectors';
-import userOperations from './../../redux/user/operations';
-import dataOperations from './../../redux/data/operations';
-import userActionCreator from './../../redux/user/action-creator';
+import {getUserAvatar, getAuthorizationStatus, getSendReviewErrorStatus} from '../../redux/user/selectors';
+import userOperations from '../../redux/user/operations';
+import dataOperations from '../../redux/data/operations';
+import userActionCreator from '../../redux/user/action-creator';
 
 const AddReview = (props) => {
   const {

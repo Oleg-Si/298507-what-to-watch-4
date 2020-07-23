@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FilmList from './../film-list/film-list.jsx';
-import GenreFilter from '../genre-filter/genre-filter.jsx';
+import FilmList from '../film-list/film-list.js';
+import GenreFilter from '../genre-filter/genre-filter.js';
 import {connect} from 'react-redux';
 import dataActionCreator from '../../redux/data/action-creator';
 import appActionCreator from '../../redux/app/action-creator';
-import {DEFAULT_GENRE, AppRoute} from './../../constants';
+import {DEFAULT_GENRE, AppRoute} from '../../constants';
 import ShowMore from '../show-more/show-more.jsx';
-import {getPromoFilm, getFilteredFilmsByGenre, getFilms} from './../../redux/data/selectors';
-import {getActiveGenre, getCountFilmsForRender, getPromoFilmStatus} from './../../redux/app/selectors';
-import {getAuthorizationStatus, getUserAvatar} from './../../redux/user/selectors';
-import AppHeaderMovieCard from './../app-header-movie-card/app-header-movie-card.jsx';
-import AppFooter from '../app-footer/app-footer.jsx';
-import dataOperations from './../../redux/data/operations';
-import userOperations from './../../redux/user/operations';
-import history from './../../history';
+import {getPromoFilm, getFilteredFilmsByGenre, getFilms} from '../../redux/data/selectors';
+import {getActiveGenre, getCountFilmsForRender, getPromoFilmStatus} from '../../redux/app/selectors';
+import {getAuthorizationStatus, getUserAvatar} from '../../redux/user/selectors';
+import AppHeaderMovieCard from '../app-header-movie-card/app-header-movie-card.js';
+import AppFooter from '../app-footer/app-footer.js';
+import dataOperations from '../../redux/data/operations';
+import userOperations from '../../redux/user/operations';
+import history from '../../history';
 
 const Main = (props) => {
   const {

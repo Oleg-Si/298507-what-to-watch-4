@@ -1,5 +1,5 @@
 import React from 'react';
-import AppHeader from '../app-header/app-header.jsx';
+import AppHeader from '../app-header/app-header.js';
 
 const AppHeaderMovieCard = (props) => {
   return (
