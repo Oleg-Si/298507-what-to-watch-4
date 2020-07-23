@@ -5,8 +5,32 @@ import withPlayer from '../../hocs/with-player/with-player';
 import VideoPlayer from '../video-player/video-player';
 import * as moment from 'moment';
 import history from '../../history';
+import {FilmInterface} from '../../types';
 
-class Player extends React.PureComponent {
+interface Props {
+  film: FilmInterface,
+  onFilmCardTitleClick: (film: FilmInterface) => void,
+  onPlay: () => void,
+  onStop: () => void,
+  onReady: () => void,
+  controls: boolean,
+  isMuted: boolean,
+  isPlaying: boolean,
+  isReady: boolean,
+  isPause: boolean,
+  fullScreen: boolean,
+  onFullScreenChange: () => void,
+  onChangeProgress: (currentTime: number, duration: number) => {},
+  onPause: () => void,
+  onFullScreenClick: () => void,
+  onExitClick: () => void,
+  progress: number,
+  allTime: number,
+}
+
+class Player extends React.PureComponent<Props> {
+  private _videoRef: React.RefObject<HTMLVideoElement>;
+
   constructor(props) {
     super(props);
 
@@ -107,28 +131,6 @@ class Player extends React.PureComponent {
     );
   }
 }
-
-Player.propTypes = {
-  film: PropTypes.shape({
-    src: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired
-  }),
-  controls: PropTypes.bool.isRequired,
-  isMuted: PropTypes.bool.isRequired,
-  isPlaying: PropTypes.bool.isRequired,
-  isPause: PropTypes.bool,
-  fullScreen: PropTypes.bool,
-  onFullScreenChange: PropTypes.func,
-  onChangeProgress: PropTypes.func,
-  onPause: PropTypes.func,
-  onPlay: PropTypes.func,
-  onReady: PropTypes.func,
-  onFullScreenClick: PropTypes.func,
-  onExitClick: PropTypes.func.isRequired,
-  progress: PropTypes.number,
-  allTime: PropTypes.number,
-};
 
 const mapStateToProps = (state, props) => ({
   film: getCurrentFilm(state, props.filmId)

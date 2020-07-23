@@ -1,9 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import Enzyme, {mount, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {Player} from './player';
 import {mockFilmForTests} from '../../mock/films';
-import history from './../../history';
+import history from '../../history';
 import {Router} from 'react-router-dom';
 
 Enzyme.configure({
@@ -30,6 +30,18 @@ it(`Клик по кнопкам выхода и полноэкранного р
           isPlaying={false}
           onExitClick={onExitClick}
           onFullScreenClick={onFullScreenClick}
+          onReady={() => null}
+          onPlay={() => null}
+          onPause={() => null}
+          onStop={() => null}
+          onFilmCardTitleClick={() => null}
+          onFullScreenChange={() => null}
+          onChangeProgress={() => null}
+          isReady={true}
+          isPause={true}
+          progress={10}
+          allTime={50}
+          fullScreen={false}
         />
       </Router>
   );
@@ -52,10 +64,20 @@ it(`Клик по кнопкe play вызывает коллбек`, () => {
         controls={false}
         isMuted={true}
         isPlaying={false}
-        onExitClick={() => {}}
-        onFullScreenClick={() => {}}
+        onExitClick={() => null}
+        onFullScreenClick={() => null}
         onPlay={onPlay}
         onPause={onPause}
+        onReady={() => null}
+        onStop={() => null}
+        onFilmCardTitleClick={() => null}
+        onFullScreenChange={() => null}
+        onChangeProgress={() => null}
+        isReady={true}
+        isPause={true}
+        progress={10}
+        allTime={50}
+        fullScreen={false}
       />
   );
 
@@ -75,10 +97,20 @@ it(`Клик по кнопкe pause вызывает коллбек`, () => {
         controls={false}
         isMuted={true}
         isPlaying={true}
-        onExitClick={() => {}}
-        onFullScreenClick={() => {}}
+        onExitClick={() => null}
+        onFullScreenClick={() => null}
         onPlay={onPlay}
         onPause={onPause}
+        onReady={() => null}
+        onStop={() => null}
+        onFilmCardTitleClick={() => null}
+        onFullScreenChange={() => null}
+        onChangeProgress={() => null}
+        isReady={true}
+        isPause={true}
+        progress={10}
+        allTime={50}
+        fullScreen={false}
       />
   );
 
@@ -96,9 +128,20 @@ describe(`convertTimeToBar возвращает корректное значе�
           controls={false}
           isMuted={true}
           isPlaying={true}
-          onExitClick={() => {}}
-          onFullScreenClick={() => {}}
+          onExitClick={() => null}
+          onFullScreenClick={() => null}
           allTime={0}
+          onReady={() => null}
+          onPlay={() => null}
+          onPause={() => null}
+          onStop={() => null}
+          onFilmCardTitleClick={() => null}
+          onFullScreenChange={() => null}
+          onChangeProgress={() => null}
+          isReady={true}
+          isPause={true}
+          progress={10}
+          fullScreen={false}
         />
     );
 
@@ -113,9 +156,20 @@ describe(`convertTimeToBar возвращает корректное значе�
           controls={false}
           isMuted={true}
           isPlaying={true}
-          onExitClick={() => {}}
-          onFullScreenClick={() => {}}
+          onExitClick={() => null}
+          onFullScreenClick={() => null}
           allTime={NaN}
+          onReady={() => null}
+          onPlay={() => null}
+          onPause={() => null}
+          onStop={() => null}
+          onFilmCardTitleClick={() => null}
+          onFullScreenChange={() => null}
+          onChangeProgress={() => null}
+          isReady={true}
+          isPause={true}
+          progress={10}
+          fullScreen={false}
         />
     );
 
@@ -130,10 +184,20 @@ describe(`convertTimeToBar возвращает корректное значе�
           controls={false}
           isMuted={true}
           isPlaying={true}
-          onExitClick={() => {}}
-          onFullScreenClick={() => {}}
+          onExitClick={() => null}
+          onFullScreenClick={() => null}
           allTime={50}
           progress={20}
+          onReady={() => null}
+          onPlay={() => null}
+          onPause={() => null}
+          onStop={() => null}
+          onFilmCardTitleClick={() => null}
+          onFullScreenChange={() => null}
+          onChangeProgress={() => null}
+          isReady={true}
+          isPause={true}
+          fullScreen={false}
         />
     );
 

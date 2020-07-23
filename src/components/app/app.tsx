@@ -24,7 +24,7 @@ interface Props {
   isLoadedPromoFilm: boolean
 }
 
-class App extends React.PureComponent<Props, any> {
+class App extends React.PureComponent<Props> {
   render() {
     const {
       onSignIn,

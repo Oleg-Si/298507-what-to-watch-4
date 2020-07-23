@@ -4,12 +4,25 @@ import {Link} from 'react-router-dom';
 import {AppRoute, preloaderCardStyle} from '../../constants';
 import VideoPlayer from '../video-player/video-player';
 import Preloader from '../preloader/preloader';
+import {FilmInterface} from '../../types';
 
 const VideoSettings = {
   WIDTH: 280,
   HEIGHT: 175,
   TIMEOUT: 1000 // ms
 };
+
+interface Props {
+  film: FilmInterface,
+  onFilmCardTitleClick: (film: FilmInterface) => void,
+  onPlay: () => void,
+  onStop: () => void,
+  onReady: () => void,
+  controls: boolean,
+  isMuted: boolean,
+  isPlaying: boolean,
+  isReady: boolean
+}
 
 const FilmCard = (props) => {
   const {
@@ -39,7 +52,6 @@ const FilmCard = (props) => {
           src={film.previewVideoLink}
           poster={film.img}
           isPlaying={isPlaying}
-          film={film}
           isMuted={isMuted}
           isReady={isReady}
           controls={controls}
@@ -63,23 +75,6 @@ const FilmCard = (props) => {
       </h3>
     </article>
   );
-};
-
-FilmCard.propTypes = {
-  film: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired,
-    previewVideoLink: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired
-  }),
-  onFilmCardTitleClick: PropTypes.func.isRequired,
-  onPlay: PropTypes.func.isRequired,
-  onStop: PropTypes.func.isRequired,
-  onReady: PropTypes.func.isRequired,
-  controls: PropTypes.bool.isRequired,
-  isMuted: PropTypes.bool.isRequired,
-  isPlaying: PropTypes.bool.isRequired,
-  isReady: PropTypes.bool.isRequired
 };
 
 export {FilmCard};

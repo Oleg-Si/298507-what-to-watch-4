@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import VideoPlayer from './video-player.jsx';
+import VideoPlayer from './video-player.js';
 import {mockFilmForTests} from '../../mock/films.js';
 
 Enzyme.configure({
@@ -35,6 +35,7 @@ it(`Проверяет компонент videoPlayer`, () => {
         isMuted={true}
         isPlaying={false}
         isPause={true}
+        onReady={() => null}
         onChangeProgress={onChangeProgress}
         onFullScreenChange={onFullScreenChange}
         onPlay={onPlay}
@@ -60,17 +61,19 @@ it(`Проверяет компонент videoPlayer 2`, () => {
         isMuted={true}
         isPlaying={true}
         isPause={true}
+        onReady={() => null}
+        onPlay={() => null}
       />
   );
 
-  const play = jest.spyOn(window.HTMLMediaElement.prototype, `play`).mockImplementation(() => {});
+  const play = jest.spyOn(window.HTMLMediaElement.prototype, `play`).mockImplementation(() => null);
 
   videoPlayer.instance().componentDidUpdate();
   expect(play).toHaveBeenCalledTimes(1);
   play.mockRestore();
 });
 
-it(`Проверяет компонент videoPlayer 2`, () => {
+it(`Проверяет компонент videoPlayer 3`, () => {
   const videoPlayer = mount(
       <VideoPlayer
         src={mockFilmForTests.src}
@@ -79,6 +82,8 @@ it(`Проверяет компонент videoPlayer 2`, () => {
         isMuted={true}
         isPlaying={false}
         isPause={true}
+        onReady={() => null}
+        onPlay={() => null}
       />
   );
 
@@ -89,7 +94,7 @@ it(`Проверяет компонент videoPlayer 2`, () => {
   pause.mockRestore();
 });
 
-it(`Проверяет компонент videoPlayer 2`, () => {
+it(`Проверяет компонент videoPlayer 4`, () => {
   const videoPlayer = mount(
       <VideoPlayer
         src={mockFilmForTests.src}
@@ -98,6 +103,8 @@ it(`Проверяет компонент videoPlayer 2`, () => {
         isMuted={true}
         isPlaying={false}
         isPause={false}
+        onReady={() => null}
+        onPlay={() => null}
       />
   );
 

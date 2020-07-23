@@ -1,6 +1,27 @@
 import * as React from 'react';
 
-class VideoPlayer extends React.PureComponent {
+interface Props {
+  controls: boolean,
+  isMuted: boolean,
+  isPlaying: boolean,
+  isPause?: boolean,
+  isReady?: boolean,
+  fullScreen?: boolean,
+  onFullScreenChange?: () => void,
+  onChangeProgress?: (currentTime: number, duration: number) => {},
+  onPause?: () => void,
+  onPlay: () => void,
+  onReady: () => void,
+  className?: string,
+  src: string,
+  poster: string,
+  width?: number,
+  height?: number
+};
+
+class VideoPlayer extends React.PureComponent<Props> {
+  private _videoRef: React.RefObject<HTMLVideoElement>;
+
   constructor(props) {
     super(props);
 
@@ -103,7 +124,7 @@ class VideoPlayer extends React.PureComponent {
     video.muted = null;
     video.ontimeupdate = null;
     video.onpause = null;
-    video.onolay = null;
+    video.onplay = null;
   }
 
   render() {
@@ -127,24 +148,5 @@ class VideoPlayer extends React.PureComponent {
     );
   }
 }
-
-VideoPlayer.propTypes = {
-  controls: PropTypes.bool.isRequired,
-  isMuted: PropTypes.bool.isRequired,
-  isPlaying: PropTypes.bool.isRequired,
-  isPause: PropTypes.bool,
-  isReady: PropTypes.bool,
-  fullScreen: PropTypes.bool,
-  onFullScreenChange: PropTypes.func,
-  onChangeProgress: PropTypes.func,
-  onPause: PropTypes.func,
-  onPlay: PropTypes.func,
-  onReady: PropTypes.func,
-  className: PropTypes.string,
-  src: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
-  width: PropTypes.number,
-  height: PropTypes.number,
-};
 
 export default VideoPlayer;

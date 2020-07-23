@@ -1,6 +1,6 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import VideoPlayer from './video-player.jsx';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import VideoPlayer from './video-player.js';
 import {mockFilmForTests} from '../../mock/films.js';
 
 it(`Проверяет снепшот компонента VideoPlayer`, () => {
@@ -8,6 +8,9 @@ it(`Проверяет снепшот компонента VideoPlayer`, () => {
       <VideoPlayer
         src={mockFilmForTests.src}
         poster={mockFilmForTests.poster}
+        isReady={false}
+        onPlay={() => null}
+        onReady={() => null}
         controls={false}
         isMuted={true}
         isPlaying={false}

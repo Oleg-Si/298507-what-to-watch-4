@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {FilmCard} from './film-card.jsx';
+import {FilmCard} from './film-card.js';
 import {mockFilmForTests} from '../../mock/films.js';
 import {Router} from 'react-router-dom';
-import history from './../../history';
+import history from '../../history';
 
 Enzyme.configure({
   adapter: new Adapter()
