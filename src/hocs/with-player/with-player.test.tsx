@@ -1,6 +1,6 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import withPlayer from './with-player.jsx';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import withPlayer from './with-player.js';
 
 const Component = () => {
   return (

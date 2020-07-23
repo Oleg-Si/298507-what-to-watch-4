@@ -1,14 +1,17 @@
-import React from 'react';
+import * as React from 'react';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import withActiveTab from './../with-active-tab/with-active-tab.jsx';
-import PropTypes from 'prop-types';
+import withActiveTab from './with-active-tab.js';
 
 Enzyme.configure({
   adapter: new Adapter()
 });
 
-const Component = (props) => {
+interface MockComponentProps {
+  onTabClick: (newTab: string) => void
+}
+
+const Component: React.FC<MockComponentProps> = (props: MockComponentProps) => {
   const {onTabClick} = props;
 
   return (
@@ -18,10 +21,6 @@ const Component = (props) => {
       }}/>
     </div>
   );
-};
-
-Component.propTypes = {
-  onTabClick: PropTypes.func.isRequired
 };
 
 const WrappedComponent = withActiveTab(Component);

@@ -1,8 +1,22 @@
 import * as React from 'react';
+import {Subtract} from 'utility-types';
+
+interface State {
+  activeTab: string
+}
+
+interface InjectingProps {
+  onTabClick: () => void,
+  activeTab: string
+}
 
 const withActiveTab = (Component) => {
-  class WithActiveTab extends React.PureComponent {
-    constructor(props) {
+
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithActiveTab extends React.PureComponent<T, State> {
+    constructor(props: T) {
       super(props);
 
       this.state = {
@@ -12,7 +26,7 @@ const withActiveTab = (Component) => {
       this._handleClick = this._handleClick.bind(this);
     }
 
-    _handleClick(newTab) {
+    _handleClick(newTab: string) {
       this.setState({activeTab: newTab});
     }
 
@@ -20,7 +34,7 @@ const withActiveTab = (Component) => {
       return (
         <Component
           {...this.props}
-          onTabClick={(newTab) => {
+          onTabClick={(newTab: string) => {
             this._handleClick(newTab);
             this.props.onTabClick(newTab);
           }}
@@ -29,11 +43,6 @@ const withActiveTab = (Component) => {
       );
     }
   }
-
-  WithActiveTab.propTypes = {
-    activeTab: PropTypes.string.isRequired,
-    onTabClick: PropTypes.func.isRequired
-  };
 
   return WithActiveTab;
 };

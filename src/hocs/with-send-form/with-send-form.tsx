@@ -1,4 +1,17 @@
 import * as React from 'react';
+import {Subtract} from 'utility-types';
+
+interface State {
+  isValid: boolean,
+  isSend: boolean
+}
+
+interface InjectingProps {
+  isValid: boolean,
+  isSend: boolean,
+  onCheckValidCommentLength: (commentLength: number) => void,
+  onSend: () => void
+}
 
 const ValidationParameters = {
   TEXT: {
@@ -8,7 +21,11 @@ const ValidationParameters = {
 };
 
 const withSendForm = (Component) => {
-  class WithSendForm extends React.PureComponent {
+
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithSendForm extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 
@@ -25,7 +42,7 @@ const withSendForm = (Component) => {
       this.setState((prevState) => ({isSend: !prevState.isSend}));
     }
 
-    _handleCheckValidCommentLength(commentLength) {
+    _handleCheckValidCommentLength(commentLength: number) {
       if (commentLength >= ValidationParameters.TEXT.MIN && commentLength <= ValidationParameters.TEXT.MAX) {
         if (this.state.isValid === false) {
           this.setState({isValid: true});

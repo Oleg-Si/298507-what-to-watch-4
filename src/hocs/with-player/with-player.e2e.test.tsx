@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import withPlayer from './with-player.jsx';
+import withPlayer from './with-player.js';
 
 Enzyme.configure({
   adapter: new Adapter()
@@ -26,9 +26,9 @@ it(`Проверяет состояния хок withPlayer`, () => {
       />
   );
 
-  const play = jest.spyOn(window.HTMLMediaElement.prototype, `play`).mockImplementation(() => {});
-  const load = jest.spyOn(window.HTMLMediaElement.prototype, `load`).mockImplementation(() => {});
-  const pause = jest.spyOn(window.HTMLMediaElement.prototype, `pause`).mockImplementation(() => {});
+  const play = jest.spyOn(window.HTMLMediaElement.prototype, `play`).mockImplementation(() => null);
+  const load = jest.spyOn(window.HTMLMediaElement.prototype, `load`).mockImplementation(() => null);
+  const pause = jest.spyOn(window.HTMLMediaElement.prototype, `pause`).mockImplementation(() => null);
 
   element.setState({
     isPlaying: true,

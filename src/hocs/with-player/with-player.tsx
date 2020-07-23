@@ -1,10 +1,44 @@
 import * as React from 'react';
+import {Subtract} from 'utility-types';
+
+interface State {
+  isPlaying: boolean,
+  isPause: boolean,
+  isReady: boolean,
+  controls: boolean,
+  progress: number,
+  allTime: number,
+  fullScreen: boolean,
+  isMuted: boolean
+}
+
+interface InjectingProps {
+  onPlay: (timeout?: boolean) => void,
+  onPause: () => void,
+  onStop: () => void,
+  onChangeProgress: (currentTime: number, allTime: number) => void,
+  onFullScreenClick: () => void,
+  onReady: () => void,
+  progress: number,
+  allTime: number,
+  fullScreen: boolean,
+  isMuted: boolean,
+  controls: boolean,
+  isPlaying: boolean,
+  isPause: boolean,
+  isReady: boolean
+}
 
 const VIDEO_PLAY_TIMEOUT = 1000; // ms
 
 const withPlayer = (Component) => {
-  class WithPlayer extends React.PureComponent {
-    constructor(props) {
+
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithPlayer extends React.PureComponent<T, State> {
+    private _timer: ReturnType<typeof setTimeout>;
+    constructor(props: T) {
       super(props);
 
       this.state = {
@@ -98,10 +132,6 @@ const withPlayer = (Component) => {
       );
     }
   }
-
-  WithPlayer.propTypes = {
-    isMuted: PropTypes.bool.isRequired
-  };
 
   return WithPlayer;
 };
