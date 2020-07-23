@@ -1,11 +1,11 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import {App} from './app.jsx';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import {App} from './app';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
-import {mockFilmsForTests} from '../../mock/films.js';
-import NameSpace from './../../redux/name-space';
-import {AuthorizationStatus, APIErrorsCode} from './../../constants';
+import {mockFilmsForTests} from '../../mock/films';
+import NameSpace from '../../redux/name-space';
+import {AuthorizationStatus, APIErrorsCode} from '../../constants';
 
 const mockStore = configureStore([]);
 
@@ -42,8 +42,7 @@ it(`Проверяет снепшот компонента App`, () => {
           isLoadedFilms={true}
           isLoadedPromoFilm={true}
           isLoadedFavoriteFilms={true}
-          promoFilmStatus={true}
-          onSignIn={() => {}}
+          onSignIn={() => null}
         />
       </Provider>, {
         createNodeMock: () => {

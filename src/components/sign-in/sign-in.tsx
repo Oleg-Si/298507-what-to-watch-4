@@ -3,7 +3,14 @@ import {APIErrorsCode, AppRoute} from '../../constants';
 import {Link} from 'react-router-dom';
 import AppFooter from '../app-footer/app-footer';
 
-class SignIn extends PureComponent {
+interface Props {
+  onSubmit: (authData: {login: string, password: string}) => void,
+  authorizationStatusCode: number,
+}
+
+class SignIn extends React.PureComponent<Props> {
+  private _formRef: React.RefObject<HTMLFormElement>;
+
   constructor(props) {
     super(props);
 
@@ -16,8 +23,8 @@ class SignIn extends PureComponent {
 
     const form = this._formRef.current;
 
-    const login = form.querySelector(`#user-email`).value;
-    const password = form.querySelector(`#user-password`).value;
+    const login = form.querySelector<HTMLInputElement>(`#user-email`).value;
+    const password = form.querySelector<HTMLInputElement>(`#user-password`).value;
 
     const authData = {
       login,
@@ -83,10 +90,5 @@ class SignIn extends PureComponent {
     );
   }
 }
-
-SignIn.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  authorizationStatusCode: PropTypes.number,
-};
 
 export default SignIn;

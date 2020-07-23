@@ -15,7 +15,16 @@ import PrivateRoute from '../private-route/private-route';
 import MyList from '../my-list/my-list';
 import Player from '../player/player';
 
-class App extends React.PureComponent {
+interface Props {
+  authorizationStatusCode: number | null,
+  onSignIn: (authData: {login: string, password: string}) => void,
+  isLoadedFilms: boolean,
+  authorizationStatus: AuthorizationStatus,
+  isLoadedFavoriteFilms: boolean,
+  isLoadedPromoFilm: boolean
+}
+
+class App extends React.PureComponent<Props, any> {
   render() {
     const {
       onSignIn,
@@ -116,15 +125,6 @@ class App extends React.PureComponent {
     );
   }
 }
-
-App.propTypes = {
-  authorizationStatusCode: PropTypes.number,
-  onSignIn: PropTypes.func.isRequired,
-  isLoadedFilms: PropTypes.bool.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  isLoadedFavoriteFilms: PropTypes.bool.isRequired,
-  isLoadedPromoFilm: PropTypes.bool.isRequired
-};
 
 const mapStateToProps = (state) => ({
   authorizationStatusCode: getAuthorizationStatusCode(state),

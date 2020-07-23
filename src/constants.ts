@@ -31,9 +31,9 @@ export const APIErrorsCode = {
   BAD_REQUEST: 400
 };
 
-export const AuthorizationStatus = {
-  AUTH: `AUTH`,
-  NO_AUTH: `NO_AUTH`
+export enum AuthorizationStatus {
+  AUTH = `AUTH`,
+  NO_AUTH = `NO_AUTH`
 };
 
 export const AppRoute = {

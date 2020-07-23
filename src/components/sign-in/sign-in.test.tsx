@@ -1,8 +1,8 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 import SignIn from './sign-in';
 import {Router} from 'react-router-dom';
-import history from './../../history';
+import history from '../../history';
 
 it(`Проверяет снепшот компонента SignIn`, () => {
   const tree = renderer.create(
@@ -10,7 +10,8 @@ it(`Проверяет снепшот компонента SignIn`, () => {
         history={history}
       >
         <SignIn
-          onSubmit={() => {}}
+          authorizationStatusCode={200}
+          onSubmit={() => null}
         />
       </Router>
   ).toJSON();

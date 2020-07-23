@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import SignIn from './sign-in.jsx';
+import SignIn from './sign-in';
 import {Router} from 'react-router-dom';
-import history from './../../history';
-import {APIErrorsCode} from '../../constants.js';
+import history from '../../history';
+import {APIErrorsCode} from '../../constants';
 
 Enzyme.configure({
   adapter: new Adapter()

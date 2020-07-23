@@ -9,8 +9,24 @@ import {getUserAvatar, getAuthorizationStatus, getSendReviewErrorStatus} from '.
 import userOperations from '../../redux/user/operations';
 import dataOperations from '../../redux/data/operations';
 import userActionCreator from '../../redux/user/action-creator';
+import {FilmInterface} from '../../types';
 
-const AddReview = (props) => {
+interface Props {
+  onCheckValidCommentLength: (evtTargetValue: number) => void,
+  onSend: () => void,
+  isValid: boolean,
+  isSend: boolean,
+  isError: boolean,
+  onAddReviews: (reviewData: {id: string, rating: string, comment: string}) => void,
+  changeIsErrorStatus: () => void,
+  onMyListClick: () => void,
+  authorizationStatus: string,
+  userAvatar: string,
+  film: FilmInterface,
+  filmId: string
+};
+
+const AddReview: React.FC<Props> = (props: Props) => {
   const {
     isValid,
     isSend,
@@ -26,11 +42,11 @@ const AddReview = (props) => {
     onMyListClick
   } = props;
 
-  const formRef = React.createRef();
+  const formRef = React.createRef<HTMLFormElement>();
 
   const onSubmit = () => {
-    const rating = formRef.current.querySelector(`input[name="rating"]:checked`).value;
-    const comment = formRef.current.querySelector(`#review-text`).value;
+    const rating: string = formRef.current.querySelector<HTMLInputElement>(`input[name="rating"]:checked`).value;
+    const comment = formRef.current.querySelector<HTMLInputElement>(`#review-text`).value;
 
     const reviewData = {
       id: filmId,
@@ -123,21 +139,6 @@ const AddReview = (props) => {
       </div>
     </section>
   );
-};
-
-AddReview.propTypes = {
-  onCheckValidCommentLength: PropTypes.func.isRequired,
-  onSend: PropTypes.func.isRequired,
-  isValid: PropTypes.bool.isRequired,
-  isSend: PropTypes.bool.isRequired,
-  isError: PropTypes.bool.isRequired,
-  onAddReviews: PropTypes.func.isRequired,
-  changeIsErrorStatus: PropTypes.func.isRequired,
-  onMyListClick: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  userAvatar: PropTypes.string,
-  film: PropTypes.object.isRequired,
-  filmId: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state, props) => ({
