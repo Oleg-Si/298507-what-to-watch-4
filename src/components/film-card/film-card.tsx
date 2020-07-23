@@ -15,7 +15,7 @@ const VideoSettings = {
 interface Props {
   film: FilmInterface,
   onFilmCardTitleClick: (film: FilmInterface) => void,
-  onPlay: () => void,
+  onPlay: (setTimeout?: boolean) => void,
   onStop: () => void,
   onReady: () => void,
   controls: boolean,
@@ -24,7 +24,7 @@ interface Props {
   isReady: boolean
 }
 
-const FilmCard = (props) => {
+const FilmCard: React.FC<Props> = (props: Props) => {
   const {
     film,
     onPlay,

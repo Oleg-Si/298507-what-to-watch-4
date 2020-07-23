@@ -17,8 +17,24 @@ import {Link} from 'react-router-dom';
 import dataOperations from '../../redux/data/operations';
 import userOperations from '../../redux/user/operations';
 import history from '../../history';
+import {FilmInterface, FilmReviewInterface} from './../../types';
 
-const FilmPage = (props) => {
+interface Props {
+  film: FilmInterface,
+  activeTab: string,
+  onTabClick: (newTab: string) => void,
+  films: FilmInterface[],
+  onFilmCardTitleClick: (film: FilmInterface) => void,
+  onFavorite: (filmId: number, filmIsFavorite: number) => void,
+  onMyListClick: () => void,
+  onPlayClick: (filmId: number) => void,
+  filmId: number,
+  authorizationStatus: AuthorizationStatus,
+  userAvatar: string,
+  filmReviews: FilmReviewInterface
+};
+
+const FilmPage: React.FC<Props> = (props: Props) => {
   const {
     activeTab,
     onTabClick,
@@ -158,42 +174,6 @@ const FilmPage = (props) => {
       </div>
     </React.Fragment>
   );
-};
-
-FilmPage.propTypes = {
-  film: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    releaseDate: PropTypes.number.isRequired,
-    ratingCount: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    bgImg: PropTypes.string.isRequired,
-    bgColor: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-    starring: PropTypes.arrayOf(
-        PropTypes.string
-    ).isRequired
-  }).isRequired,
-  activeTab: PropTypes.string.isRequired,
-  onTabClick: PropTypes.func.isRequired,
-  films: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        img: PropTypes.string.isRequired
-      })
-  ).isRequired,
-  onFilmCardTitleClick: PropTypes.func.isRequired,
-  onFavorite: PropTypes.func.isRequired,
-  onMyListClick: PropTypes.func.isRequired,
-  onPlayClick: PropTypes.func.isRequired,
-  filmId: PropTypes.string.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  userAvatar: PropTypes.string,
-  filmReviews: PropTypes.array
 };
 
 const mapStateToProps = (state, props) => ({

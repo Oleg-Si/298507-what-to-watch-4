@@ -10,7 +10,7 @@ interface Props {
   children?: React.ReactNode,
 }
 
-const AppHeader: React.FC<Props> = (props) => {
+const AppHeader: React.FC<Props> = (props: Props) => {
   const {
     authorizationStatus,
     userAvatar,

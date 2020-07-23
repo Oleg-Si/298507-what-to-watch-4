@@ -5,11 +5,11 @@ import {AuthorizationStatus} from '../../constants';
 interface Props {
   authorizationStatus: AuthorizationStatus,
   userAvatar: string,
-  className: string,
+  className?: string,
   onMyListClick: () => void
 }
 
-const AppHeaderMovieCard: React.FC<Props> = (props) => {
+const AppHeaderMovieCard: React.FC<Props> = (props: Props) => {
   return (
     <AppHeader {...props} className="movie-card__head" />
   );

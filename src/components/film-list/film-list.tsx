@@ -1,7 +1,14 @@
 import * as React from 'react';
 import FilmCard from '../film-card/film-card';
+import {FilmInterface} from './../../types';
 
-const FilmList = (props) => {
+interface Props {
+  films: Array<FilmInterface>,
+  onFilmCardTitleClick: (film: FilmInterface) => void,
+  filmsCount: number
+}
+
+const FilmList: React.FC<Props> = (props: Props) => {
   const {
     films,
     onFilmCardTitleClick,
@@ -12,7 +19,7 @@ const FilmList = (props) => {
 
   return (
     <div className="catalog__movies-list">
-      {filmsForRender.map((film) => (
+      {filmsForRender.map((film: FilmInterface) => (
         <FilmCard
           film={film}
           onFilmCardTitleClick={onFilmCardTitleClick}
@@ -22,17 +29,6 @@ const FilmList = (props) => {
       ))}
     </div>
   );
-};
-
-FilmList.propTypes = {
-  films: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        img: PropTypes.string.isRequired
-      })
-  ).isRequired,
-  onFilmCardTitleClick: PropTypes.func.isRequired,
-  filmsCount: PropTypes.number.isRequired
 };
 
 export default FilmList;

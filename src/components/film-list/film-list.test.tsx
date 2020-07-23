@@ -1,9 +1,9 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import FilmList from './film-list.jsx';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import FilmList from './film-list.js';
 import {mockFilmsForTests} from '../../mock/films.js';
 import {Router} from 'react-router-dom';
-import history from './../../history';
+import history from '../../history';
 
 const onFilmCardTitleClick = () => {};
 

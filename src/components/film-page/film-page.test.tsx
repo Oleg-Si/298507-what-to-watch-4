@@ -1,10 +1,10 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import {FilmPage} from './film-page.jsx';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import {FilmPage} from './film-page.js';
 import {mockFilmsForTests, mockFilmForTests, mockReviews} from '../../mock/films.js';
-import {AuthorizationStatus} from './../../constants';
+import {AuthorizationStatus} from '../../constants';
 import {Router} from 'react-router-dom';
-import history from './../../history';
+import history from '../../history';
 
 it(`Проверяет снепшот компонента FilmPage`, () => {
   const tree = renderer.create(
@@ -14,7 +14,7 @@ it(`Проверяет снепшот компонента FilmPage`, () => {
         <FilmPage
           films={mockFilmsForTests}
           film={mockFilmForTests}
-          filmId={`1`}
+          filmId={1}
           activeTab={`Overview`}
           onTabClick={() => {}}
           onFavorite={() => {}}
