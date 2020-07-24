@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Enzyme, {mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import withActiveTab from './with-active-tab.js';
+import * as Enzyme from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
+import withActiveTab from './with-active-tab';
 
 Enzyme.configure({
   adapter: new Adapter()
@@ -29,7 +29,7 @@ it(`Клик на таб меняет стейт хока на переданн�
   const onTabClick = jest.fn();
   const defaultTab = `Overview`;
 
-  const tree = mount(
+  const tree = Enzyme.mount(
       <WrappedComponent
         activeTab={defaultTab}
         onTabClick={onTabClick}

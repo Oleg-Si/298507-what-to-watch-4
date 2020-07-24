@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Enzyme, {mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import withSendForm from './with-send-form.js';
+import * as Enzyme from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
+import withSendForm from './with-send-form';
 
 Enzyme.configure({
   adapter: new Adapter()
@@ -25,7 +25,7 @@ const ValidationParameters = {
 const WrappedComponent = withSendForm(Component);
 
 it(`Проверяет состояния хок withSendForm`, () => {
-  const element = mount(<WrappedComponent />);
+  const element = Enzyme.mount(<WrappedComponent />);
 
   element.setState({isSend: false});
   element.instance()._handleSend();

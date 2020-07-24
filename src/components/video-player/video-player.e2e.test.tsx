@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Enzyme, {mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import VideoPlayer from './video-player.js';
-import {mockFilmForTests} from '../../mock/films.js';
+import * as Enzyme from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
+import VideoPlayer from './video-player';
+import {mockFilmForTests} from '../../mock/films';
 
 Enzyme.configure({
   adapter: new Adapter()
@@ -27,7 +27,7 @@ it(`Проверяет компонент videoPlayer`, () => {
   const video2 = {mozRequestFullScreen: requestFullScreen};
   const video3 = {webkitRequestFullScreen: requestFullScreen};
 
-  const videoPlayer = mount(
+  const videoPlayer = Enzyme.mount(
       <VideoPlayer
         src={mockFilmForTests.src}
         poster={mockFilmForTests.poster}
@@ -53,7 +53,7 @@ it(`Проверяет компонент videoPlayer`, () => {
 });
 
 it(`Проверяет компонент videoPlayer 2`, () => {
-  const videoPlayer = mount(
+  const videoPlayer = Enzyme.mount(
       <VideoPlayer
         src={mockFilmForTests.src}
         poster={mockFilmForTests.poster}
@@ -74,7 +74,7 @@ it(`Проверяет компонент videoPlayer 2`, () => {
 });
 
 it(`Проверяет компонент videoPlayer 3`, () => {
-  const videoPlayer = mount(
+  const videoPlayer = Enzyme.mount(
       <VideoPlayer
         src={mockFilmForTests.src}
         poster={mockFilmForTests.poster}
@@ -95,7 +95,7 @@ it(`Проверяет компонент videoPlayer 3`, () => {
 });
 
 it(`Проверяет компонент videoPlayer 4`, () => {
-  const videoPlayer = mount(
+  const videoPlayer = Enzyme.mount(
       <VideoPlayer
         src={mockFilmForTests.src}
         poster={mockFilmForTests.poster}

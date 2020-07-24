@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import AppHeaderMyList from './app-header-my-list.js';
+import AppHeaderMyList from './app-header-my-list';
 import {Router} from 'react-router-dom';
 import history from '../../history';
 import {AuthorizationStatus} from '../../constants';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import {Player} from './player.js';
-import {mockFilmForTests} from '../../mock/films.js';
+import {Player} from './player';
+import {mockFilmForTests} from '../../mock/films';
 
 it(`Проверяет снепшот компонента Player`, () => {
   const tree = renderer.create(

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Enzyme, {mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import * as Enzyme from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
 import SignIn from './sign-in';
 import {Router} from 'react-router-dom';
 import history from '../../history';
@@ -13,7 +13,7 @@ Enzyme.configure({
 it(`Отправка формы вызывает коллбэк`, () => {
   const onSubmit = jest.fn();
 
-  const signIn = mount(
+  const signIn = Enzyme.mount(
       <Router
         history={history}
       >

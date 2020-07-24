@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Enzyme, {shallow} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import * as Enzyme from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
 import ShowMore from './show-more';
 
 Enzyme.configure({
@@ -10,7 +10,7 @@ Enzyme.configure({
 it(`Клик на кнопку вызывает коллбэк`, () => {
   const onShowMoreClick = jest.fn();
 
-  const showMore = shallow(
+  const showMore = Enzyme.shallow(
       <ShowMore
         allFilmsCount={8}
         filmsCount={5}

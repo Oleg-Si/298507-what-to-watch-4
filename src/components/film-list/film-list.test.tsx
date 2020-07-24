@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import FilmList from './film-list.js';
-import {mockFilmsForTests} from '../../mock/films.js';
+import FilmList from './film-list';
+import {mockFilmsForTests} from '../../mock/films';
 import {Router} from 'react-router-dom';
 import history from '../../history';
 

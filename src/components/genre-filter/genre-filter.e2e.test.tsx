@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Enzyme, {shallow} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import * as Enzyme from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
 import {GenreFilter} from './genre-filter';
 
 Enzyme.configure({
@@ -23,7 +23,7 @@ const genre: string[] = [
 it(`Клик по жанру вызывает коллбэк и передает корректное значение`, () => {
   const onGenreCilck = jest.fn();
 
-  const genreFilter = shallow(
+  const genreFilter = Enzyme.shallow(
       <GenreFilter
         genre={genre}
         activeTab={`All genres`}

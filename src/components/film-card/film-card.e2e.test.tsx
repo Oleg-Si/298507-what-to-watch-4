@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Enzyme, {mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import {FilmCard} from './film-card.js';
-import {mockFilmForTests} from '../../mock/films.js';
+import * as Enzyme from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
+import {FilmCard} from './film-card';
+import {mockFilmForTests} from '../../mock/films';
 import {Router} from 'react-router-dom';
 import history from '../../history';
 
@@ -19,7 +19,7 @@ it(`Клик на заголовок вызывает коллбэк`, () => {
   const onPlay = jest.fn();
   const onStop = jest.fn();
 
-  const filmCard = mount(
+  const filmCard = Enzyme.mount(
       <Router
         history={history}
       >

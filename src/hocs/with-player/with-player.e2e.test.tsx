@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Enzyme, {mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import withPlayer from './with-player.js';
+import * as Enzyme from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
+import withPlayer from './with-player';
 
 Enzyme.configure({
   adapter: new Adapter()
@@ -20,7 +20,7 @@ const WrappedComponent = withPlayer(Component);
 it(`Проверяет состояния хок withPlayer`, () => {
   jest.useFakeTimers();
 
-  const element = mount(
+  const element = Enzyme.mount(
       <WrappedComponent
         isMuted={true}
       />

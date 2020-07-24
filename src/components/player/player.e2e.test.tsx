@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Enzyme, {mount, shallow} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import * as Enzyme from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
 import {Player} from './player';
 import {mockFilmForTests} from '../../mock/films';
 import history from '../../history';
@@ -19,7 +19,7 @@ it(`Клик по кнопкам выхода и полноэкранного р
 
   const onFullScreenClick = jest.fn();
 
-  const player = mount(
+  const player = Enzyme.mount(
       <Router
         history={history}
       >
@@ -58,7 +58,7 @@ it(`Клик по кнопкe play вызывает коллбек`, () => {
   const onPlay = jest.fn();
   const onPause = jest.fn();
 
-  const player = shallow(
+  const player = Enzyme.shallow(
       <Player
         film={mockFilmForTests}
         controls={false}
@@ -91,7 +91,7 @@ it(`Клик по кнопкe pause вызывает коллбек`, () => {
   const onPlay = jest.fn();
   const onPause = jest.fn();
 
-  const player = shallow(
+  const player = Enzyme.shallow(
       <Player
         film={mockFilmForTests}
         controls={false}
@@ -122,7 +122,7 @@ it(`Клик по кнопкe pause вызывает коллбек`, () => {
 
 describe(`convertTimeToBar возвращает корректное значение`, () => {
   it(`значение 0`, () => {
-    const player = shallow(
+    const player = Enzyme.shallow(
         <Player
           film={mockFilmForTests}
           controls={false}
@@ -150,7 +150,7 @@ describe(`convertTimeToBar возвращает корректное значе�
   });
 
   it(`значение 0`, () => {
-    const player = shallow(
+    const player = Enzyme.shallow(
         <Player
           film={mockFilmForTests}
           controls={false}
@@ -178,7 +178,7 @@ describe(`convertTimeToBar возвращает корректное значе�
   });
 
   it(`значение 40`, () => {
-    const player = shallow(
+    const player = Enzyme.shallow(
         <Player
           film={mockFilmForTests}
           controls={false}

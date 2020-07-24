@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import AppFooter from './app-footer.js';
+import AppFooter from './app-footer';
 import {Router} from 'react-router-dom';
 import history from '../../history';
 

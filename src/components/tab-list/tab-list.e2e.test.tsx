@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Enzyme, {shallow} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import * as Enzyme from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
 import {TabList} from './tab-list';
 
 const Tabs: string[] = [
@@ -16,7 +16,7 @@ Enzyme.configure({
 it(`Клик на таб вызывает коллбэк и передает корректное значение`, () => {
   const onTabClick = jest.fn();
 
-  const tabList = shallow(
+  const tabList = Enzyme.shallow(
       <TabList
         tabs={Tabs}
         activeTab={`Overview`}

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Enzyme, {mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import * as Enzyme from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
 import {mockFilmsForTests} from '../../mock/films';
 import history from '../../history';
 import {Router} from 'react-router-dom';
@@ -15,7 +15,7 @@ it(`Клик по заголовку вызывает коллбек`, () => {
   const onMyListClick = jest.fn();
   const onFilmCardTitleClick = jest.fn();
 
-  const player = mount(
+  const player = Enzyme.mount(
       <Router
         history={history}
       >

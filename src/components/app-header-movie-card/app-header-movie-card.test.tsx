@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import AppHeaderMovieCard from './app-header-movie-card.js';
+import AppHeaderMovieCard from './app-header-movie-card';
 import {Router} from 'react-router-dom';
 import history from '../../history';
 import {AuthorizationStatus} from '../../constants';

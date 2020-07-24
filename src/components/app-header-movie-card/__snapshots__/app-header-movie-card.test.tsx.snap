@@ -42,6 +42,7 @@ exports[`Проверяет снепшот компонента AppHeaderMovieCa
         <img
           alt="User avatar"
           height="63"
+          src="img/avatar.jpg"
           width="63"
         />
       </div>

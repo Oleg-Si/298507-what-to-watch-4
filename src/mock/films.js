@@ -281,6 +281,7 @@ const mockFilmsForTests = [
 const mockReviews = [
   {
     user: {
+      id: 1,
       name: `Edward Norton`
     },
     id: 0,
@@ -290,6 +291,7 @@ const mockReviews = [
   },
   {
     user: {
+      id: 2,
       name: `Willem Dafoe`
     },
     id: 1,
@@ -299,6 +301,7 @@ const mockReviews = [
   },
   {
     user: {
+      id: 3,
       name: `Ralph Fiennes`
     },
     id: 2,

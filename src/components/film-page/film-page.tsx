@@ -31,7 +31,7 @@ interface Props {
   filmId: number;
   authorizationStatus: AuthorizationStatus;
   userAvatar: string;
-  filmReviews: FilmReviewInterface;
+  filmReviews: FilmReviewInterface[];
 }
 
 const FilmPage: React.FC<Props> = (props: Props) => {

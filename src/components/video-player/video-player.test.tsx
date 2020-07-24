@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import VideoPlayer from './video-player.js';
-import {mockFilmForTests} from '../../mock/films.js';
+import VideoPlayer from './video-player';
+import {mockFilmForTests} from '../../mock/films';
 
 it(`Проверяет снепшот компонента VideoPlayer`, () => {
   const tree = renderer.create(
