@@ -1,8 +1,12 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import Preloader from './preloader.jsx';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import Preloader from './preloader';
 
-const preloaderMainStyle = {
+const preloaderMainStyle: {
+  top: string,
+  left: string,
+  position: string
+} = {
   top: `45vh`,
   left: `50vw`,
   position: `absolute`

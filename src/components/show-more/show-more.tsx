@@ -1,6 +1,12 @@
 import * as React from 'react';
 
-const ShowMore = (props) => {
+interface Props {
+  onShowMoreClick: (filmsCount: number) => void,
+  filmsCount: number,
+  allFilmsCount: number
+}
+
+const ShowMore: React.FC<Props> = (props: Props) => {
   const {
     onShowMoreClick,
     filmsCount,
@@ -12,12 +18,6 @@ const ShowMore = (props) => {
       {filmsCount < allFilmsCount ? <button className="catalog__button" type="button" onClick={() => onShowMoreClick(filmsCount)}>Show more</button> : null}
     </div>
   );
-};
-
-ShowMore.propTypes = {
-  onShowMoreClick: PropTypes.func.isRequired,
-  filmsCount: PropTypes.number.isRequired,
-  allFilmsCount: PropTypes.number.isRequired
 };
 
 export default ShowMore;

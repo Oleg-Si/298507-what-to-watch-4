@@ -1,6 +1,12 @@
 import * as React from 'react';
 
-const Preloader = (props) => {
+interface Props {
+  style: {
+    [key: string]: string | number
+  }
+}
+
+const Preloader: React.FC<Props> = (props: Props) => {
   const {style} = props;
 
   return (
@@ -19,10 +25,6 @@ const Preloader = (props) => {
       </svg>
     </div>
   );
-};
-
-Preloader.propTypes = {
-  style: PropTypes.object.isRequired
 };
 
 export default Preloader;

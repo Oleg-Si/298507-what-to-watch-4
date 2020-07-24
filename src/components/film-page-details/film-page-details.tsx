@@ -1,9 +1,14 @@
 import * as React from 'react';
+import {FilmInterface} from './../../types';
 
-const FilmPageDetalis = (props) => {
+interface Props {
+  filmInfo: FilmInterface
+};
+
+const FilmPageDetalis: React.FC<Props> = (props: Props) => {
   const {filmInfo} = props;
 
-  const getDurationFromMins = (min) => {
+  const getDurationFromMins = (min: number) => {
     return `${Math.trunc(min / 60)}h ${(min % 60)}m`;
   };
 
@@ -17,7 +22,7 @@ const FilmPageDetalis = (props) => {
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Starring</strong>
           <span className="movie-card__details-value">
-            {filmInfo.starring.map((el) => el)}
+            {filmInfo.starring.map((el: string) => el)}
           </span>
         </p>
       </div>
@@ -38,22 +43,6 @@ const FilmPageDetalis = (props) => {
       </div>
     </div>
   );
-};
-
-FilmPageDetalis.propTypes = {
-  filmInfo: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    releaseDate: PropTypes.number.isRequired,
-    runTime: PropTypes.number.isRequired,
-    ratingCount: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(
-        PropTypes.string
-    ).isRequired
-  }).isRequired,
 };
 
 export default FilmPageDetalis;

@@ -1,7 +1,13 @@
 import * as React from 'react';
 import withActiveTab from '../../hocs/with-active-tab/with-active-tab';
 
-const GenreFilter = (props) => {
+interface Props {
+  genre: string[],
+  activeTab: string,
+  onTabClick: (newTab: string) => void
+}
+
+const GenreFilter: React.FC<Props> = (props: Props) => {
   const {genre, activeTab, onTabClick} = props;
 
   return (
@@ -19,12 +25,6 @@ const GenreFilter = (props) => {
 
     </ul>
   );
-};
-
-GenreFilter.propTypes = {
-  genre: PropTypes.array.isRequired,
-  activeTab: PropTypes.string.isRequired,
-  onTabClick: PropTypes.func.isRequired
 };
 
 export {GenreFilter};

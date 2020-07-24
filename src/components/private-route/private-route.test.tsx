@@ -1,12 +1,12 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import PrivateRoute from './private-route.jsx';
-import {AuthorizationStatus} from './../../constants';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import PrivateRoute from './private-route';
+import {AuthorizationStatus} from '../../constants';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
-import NameSpace from './../../redux/name-space';
+import NameSpace from '../../redux/name-space';
 import {Router} from 'react-router-dom';
-import history from './../../history';
+import history from '../../history';
 
 const mockStore = configureStore([]);
 

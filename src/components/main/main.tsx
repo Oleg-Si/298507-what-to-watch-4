@@ -4,7 +4,7 @@ import GenreFilter from '../genre-filter/genre-filter';
 import {connect} from 'react-redux';
 import dataActionCreator from '../../redux/data/action-creator';
 import appActionCreator from '../../redux/app/action-creator';
-import {DEFAULT_GENRE, AppRoute} from '../../constants';
+import {DEFAULT_GENRE, AppRoute, AuthorizationStatus} from '../../constants';
 import ShowMore from '../show-more/show-more';
 import {getPromoFilm, getFilteredFilmsByGenre, getFilms} from '../../redux/data/selectors';
 import {getActiveGenre, getCountFilmsForRender, getPromoFilmStatus} from '../../redux/app/selectors';
@@ -14,8 +14,27 @@ import AppFooter from '../app-footer/app-footer';
 import dataOperations from '../../redux/data/operations';
 import userOperations from '../../redux/user/operations';
 import history from '../../history';
+import {FilmInterface} from './../../types';
 
-const Main = (props) => {
+interface Props {
+  promoFilm: FilmInterface,
+  films: FilmInterface[],
+  filteredFilms: FilmInterface[],
+
+  onFilmCardTitleClick: (film: FilmInterface) => void,
+  onGenreCilck: (newGenre: string) => void,
+  activeGenre: string,
+  filmsCount: number,
+  promoFilmStatus: boolean,
+  onShowMoreClick: () => void,
+  onFavorite: (filmId: number, status: number) => void,
+  onPlayClick: (filmId: number) => void,
+  onMyListClick: () => void,
+  authorizationStatus: AuthorizationStatus,
+  userAvatar: string,
+}
+
+const Main: React.FC<Props> = (props: Props) => {
   const {
     promoFilm,
     films,
@@ -130,41 +149,6 @@ const Main = (props) => {
       </div>
     </React.Fragment>
   );
-};
-
-Main.propTypes = {
-  promoFilm: PropTypes.shape({
-    title: PropTypes.string,
-    genre: PropTypes.string,
-    releaseDate: PropTypes.number,
-    id: PropTypes.number,
-    bgImg: PropTypes.string,
-    poster: PropTypes.string,
-    isFavorite: PropTypes.bool,
-  }),
-  films: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        img: PropTypes.string.isRequired
-      })
-  ).isRequired,
-  filteredFilms: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        img: PropTypes.string.isRequired
-      })
-  ).isRequired,
-  onFilmCardTitleClick: PropTypes.func.isRequired,
-  onGenreCilck: PropTypes.func.isRequired,
-  activeGenre: PropTypes.string.isRequired,
-  filmsCount: PropTypes.number.isRequired,
-  promoFilmStatus: PropTypes.bool,
-  onShowMoreClick: PropTypes.func.isRequired,
-  onFavorite: PropTypes.func.isRequired,
-  onPlayClick: PropTypes.func.isRequired,
-  onMyListClick: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  userAvatar: PropTypes.string,
 };
 
 const mapStateToProps = (state) => ({

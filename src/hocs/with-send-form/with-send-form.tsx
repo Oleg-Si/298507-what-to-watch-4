@@ -26,7 +26,7 @@ const withSendForm = (Component) => {
   type T = Subtract<P, InjectingProps>;
 
   class WithSendForm extends React.PureComponent<T, State> {
-    constructor(props) {
+    constructor(props: T) {
       super(props);
 
       this.state = {

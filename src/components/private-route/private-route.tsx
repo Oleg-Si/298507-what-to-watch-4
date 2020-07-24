@@ -5,7 +5,15 @@ import {connect} from 'react-redux';
 import {getAuthorizationStatus, getIsAuthorizationChecked} from '../../redux/user/selectors';
 import Preloader from '../preloader/preloader';
 
-const PrivateRoute = (props) => {
+interface Props {
+  authorizationStatus: string,
+  exact: boolean,
+  path: string,
+  render: (renderProps: () => React.ReactNode) => React.ReactNode,
+  isAuthorizationChecked: boolean
+}
+
+const PrivateRoute: React.FC<Props> = (props: Props) => {
   const {
     authorizationStatus,
     render,
@@ -18,7 +26,7 @@ const PrivateRoute = (props) => {
     <Route
       path={path}
       exact={exact}
-      render={(renderProps) => {
+      render={(renderProps: () => React.ReactNode) => {
 
         if (isAuthorizationChecked) {
           return (
@@ -32,14 +40,6 @@ const PrivateRoute = (props) => {
       }}
     />
   );
-};
-
-PrivateRoute.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
-  exact: PropTypes.bool.isRequired,
-  path: PropTypes.string.isRequired,
-  render: PropTypes.func.isRequired,
-  isAuthorizationChecked: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = (state) => ({

@@ -1,7 +1,7 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import {mockReviews} from '../../mock/films.js';
-import FilmPageReviews from './film-page-reviews.jsx';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import {mockReviews} from '../../mock/films';
+import FilmPageReviews from './film-page-reviews';
 
 it(`Проверяет снепшот компонента FilmPageReviews`, () => {
   const tree = renderer.create(

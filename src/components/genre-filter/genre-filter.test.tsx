@@ -1,8 +1,8 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import GenreFilter from './genre-filter.jsx';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import GenreFilter from './genre-filter';
 
-const genre = [
+const genre: string[] = [
   `All genres`,
   `Dramas`,
   `Horror`,
@@ -20,7 +20,7 @@ it(`Проверяет снепшот компонента GenreFilter`, () => {
       <GenreFilter
         genre={genre}
         activeTab={`All genres`}
-        onTabClick={() => {}}
+        onTabClick={() => null}
       />
   ).toJSON();
 

@@ -1,7 +1,7 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import {mockFilmForTests} from '../../mock/films.js';
-import FilmPageOverview from './film-page-overview.jsx';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import {mockFilmForTests} from '../../mock/films';
+import FilmPageOverview from './film-page-overview';
 
 it(`Проверяет снепшот компонента FilmPageOverview`, () => {
   const tree = renderer.create(

@@ -6,8 +6,18 @@ import dataOperations from '../../redux/data/operations';
 import {getFavoriteFilms} from '../../redux/data/selectors';
 import FilmList from '../film-list/film-list';
 import {getAuthorizationStatus, getUserAvatar} from '../../redux/user/selectors';
+import {AuthorizationStatus} from '../../constants';
+import {FilmInterface} from './../../types';
 
-const MyList = (props) => {
+interface Props {
+  films: FilmInterface[],
+  onFilmCardTitleClick: (film: FilmInterface) => void,
+  onMyListClick: () => void,
+  authorizationStatus: AuthorizationStatus,
+  userAvatar: string,
+}
+
+const MyList: React.FC<Props> = (props: Props) => {
   const {
     films,
     onFilmCardTitleClick,
@@ -40,14 +50,6 @@ const MyList = (props) => {
       <AppFooter />
     </div>
   );
-};
-
-MyList.propTypes = {
-  films: PropTypes.array.isRequired,
-  onFilmCardTitleClick: PropTypes.func.isRequired,
-  onMyListClick: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  userAvatar: PropTypes.string,
 };
 
 const mapStateToProps = (state) => ({

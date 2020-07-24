@@ -1,6 +1,6 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import ShowMore from './show-more.jsx';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import ShowMore from './show-more';
 
 describe(`Проверяет снепшоты компонента ShowMore`, () => {
   it(`Проверяет снепшот компонента ShowMore с кнопкой`, () => {
@@ -8,7 +8,7 @@ describe(`Проверяет снепшоты компонента ShowMore`, ()
         <ShowMore
           allFilmsCount={8}
           filmsCount={5}
-          onShowMoreClick={() => {}}
+          onShowMoreClick={() => null}
         />
     ).toJSON();
 
@@ -20,7 +20,7 @@ describe(`Проверяет снепшоты компонента ShowMore`, ()
         <ShowMore
           allFilmsCount={8}
           filmsCount={10}
-          onShowMoreClick={() => {}}
+          onShowMoreClick={() => null}
         />
     ).toJSON();
 

@@ -1,7 +1,12 @@
 import * as React from 'react';
 import * as moment from 'moment';
+import {FilmReviewInterface} from '../../types';
 
-const FilmPageReviews = (props) => {
+interface Props {
+  filmReviews: FilmReviewInterface[]
+}
+
+const FilmPageReviews: React.FC<Props> = (props: Props) => {
   const reviews = props.filmReviews;
 
   const col1 = [];
@@ -55,10 +60,6 @@ const FilmPageReviews = (props) => {
       </div>
     </div>
   );
-};
-
-FilmPageReviews.propTypes = {
-  filmReviews: PropTypes.array.isRequired
 };
 
 export default FilmPageReviews;

@@ -1,8 +1,8 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import TabList from './tab-list.jsx';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import TabList from './tab-list';
 
-const Tabs = [
+const Tabs: string[] = [
   `Overview`,
   `Details`,
   `Reviews`
@@ -13,7 +13,7 @@ it(`Проверяет снепшот компонента TabList`, () => {
       <TabList
         tabs={Tabs}
         activeTab={`Overview`}
-        onTabClick={() => {}}
+        onTabClick={() => null}
       />
   ).toJSON();
 

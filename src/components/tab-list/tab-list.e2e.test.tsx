@@ -1,9 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {TabList} from './tab-list.jsx';
+import {TabList} from './tab-list';
 
-const Tabs = [
+const Tabs: string[]  = [
   `Overview`,
   `Details`,
   `Reviews`

@@ -1,11 +1,16 @@
 import * as React from 'react';
 import {RatingKey} from '../../constants';
+import {FilmInterface} from '../../types';
 
-const FilmPageOverview = (props) => {
+interface Props {
+  filmInfo: FilmInterface
+};
+
+const FilmPageOverview: React.FC<Props> = (props: Props) => {
   const {filmInfo} = props;
 
   const getRatingDescr = () => {
-    const rating = parseFloat(filmInfo.rating);
+    const rating = filmInfo.rating;
 
     if (rating >= 0 && rating < 3) {
       return RatingKey.BAD;
@@ -40,21 +45,6 @@ const FilmPageOverview = (props) => {
       </div>
     </React.Fragment>
   );
-};
-
-FilmPageOverview.propTypes = {
-  filmInfo: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    releaseDate: PropTypes.number.isRequired,
-    ratingCount: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(
-        PropTypes.string
-    ).isRequired
-  }).isRequired,
 };
 
 export default FilmPageOverview;

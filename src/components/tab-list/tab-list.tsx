@@ -1,7 +1,13 @@
 import * as React from 'react';
 import withActiveTab from '../../hocs/with-active-tab/with-active-tab';
 
-const TabList = (props) => {
+interface Props {
+  tabs: string[],
+  activeTab: string,
+  onTabClick: (newTab: string) => void
+}
+
+const TabList: React.FC<Props> = (props: Props) => {
   const {tabs, activeTab, onTabClick} = props;
 
   return (
@@ -16,12 +22,6 @@ const TabList = (props) => {
       ))}
     </ul>
   );
-};
-
-TabList.propTypes = {
-  tabs: PropTypes.arrayOf(PropTypes.string).isRequired,
-  activeTab: PropTypes.string.isRequired,
-  onTabClick: PropTypes.func.isRequired
 };
 
 export {TabList};
