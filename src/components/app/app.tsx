@@ -24,107 +24,105 @@ interface Props {
   isLoadedPromoFilm: boolean;
 }
 
-class App extends React.PureComponent<Props> {
-  render() {
-    const {
-      onSignIn,
-      authorizationStatusCode,
-      authorizationStatus,
-      isLoadedFilms,
-      isLoadedPromoFilm,
-      isLoadedFavoriteFilms
-    } = this.props;
+const App: React.FC<Props> = (props: Props) => {
+  const {
+    onSignIn,
+    authorizationStatusCode,
+    authorizationStatus,
+    isLoadedFilms,
+    isLoadedPromoFilm,
+    isLoadedFavoriteFilms
+  } = props;
 
-    return (
-      <Router history={history} >
-        <Switch>
-          <Route
-            exact
-            path={AppRoute.ROOT}
-            render={() => {
-              return (
-                (isLoadedFilms && isLoadedPromoFilm) ? <Main /> : <Preloader style={preloaderMainStyle} />
-              );
-            }}
-          />
+  return (
+    <Router history={history} >
+      <Switch>
+        <Route
+          exact
+          path={AppRoute.ROOT}
+          render={() => {
+            return (
+              (isLoadedFilms && isLoadedPromoFilm) ? <Main /> : <Preloader style={preloaderMainStyle} />
+            );
+          }}
+        />
 
-          <Route
-            exact
-            path={AppRoute.LOGIN}
-            render={() => {
-              return (
-                authorizationStatus === AuthorizationStatus.AUTH
-                  ? <Redirect to={AppRoute.ROOT} />
-                  : <SignIn
-                    authorizationStatusCode={authorizationStatusCode}
-                    onSubmit={onSignIn}
-                  />
-              );
-            }}
-          />
+        <Route
+          exact
+          path={AppRoute.LOGIN}
+          render={() => {
+            return (
+              authorizationStatus === AuthorizationStatus.AUTH
+                ? <Redirect to={AppRoute.ROOT} />
+                : <SignIn
+                  authorizationStatusCode={authorizationStatusCode}
+                  onSubmit={onSignIn}
+                />
+            );
+          }}
+        />
 
-          <PrivateRoute
-            exact
-            path={AppRoute.MY_LIST}
-            render={() => {
-              return (
-                isLoadedFavoriteFilms ? <MyList /> : <Preloader style={preloaderMainStyle} />
-              );
-            }}
-          />
+        <PrivateRoute
+          exact
+          path={AppRoute.MY_LIST}
+          render={() => {
+            return (
+              isLoadedFavoriteFilms ? <MyList /> : <Preloader style={preloaderMainStyle} />
+            );
+          }}
+        />
 
-          <Route
-            exact
-            path={`${AppRoute.FILM}/:filmId`}
-            render={(props) => {
-              return (
-                isLoadedFilms ? <FilmPage filmId={props.match.params.filmId} /> : <Preloader style={preloaderMainStyle} />
-              );
-            }}
-          />
+        <Route
+          exact
+          path={`${AppRoute.FILM}/:filmId`}
+          render={(renderProps) => {
+            return (
+              isLoadedFilms ? <FilmPage filmId={renderProps.match.params.filmId} /> : <Preloader style={preloaderMainStyle} />
+            );
+          }}
+        />
 
-          <PrivateRoute
-            exact
-            path={`${AppRoute.FILM}/:filmId${AppRoute.ADD_REVIEW}`}
-            render={(props) => {
-              return (
-                isLoadedFilms ? <AddReview filmId={props.match.params.filmId} /> : <Preloader style={preloaderMainStyle} />
-              );
-            }}
-          />
+        <PrivateRoute
+          exact
+          path={`${AppRoute.FILM}/:filmId${AppRoute.ADD_REVIEW}`}
+          render={(renderProps) => {
+            return (
+              isLoadedFilms ? <AddReview filmId={renderProps.match.params.filmId} /> : <Preloader style={preloaderMainStyle} />
+            );
+          }}
+        />
 
-          <Route
-            exact
-            path={`${AppRoute.PLAYER}/:filmId`}
-            render={(props) => {
-              return (
-                isLoadedFilms
-                  ? <Player
-                    filmId={props.match.params.filmId}
-                    isMuted={false}
-                  />
-                  : <Preloader style={preloaderMainStyle} />
-              );
-            }}
-          />
+        <Route
+          exact
+          path={`${AppRoute.PLAYER}/:filmId`}
+          render={(renderProps) => {
+            return (
+              isLoadedFilms
+                ? <Player
+                  filmId={renderProps.match.params.filmId}
+                  isMuted={false}
+                />
+                : <Preloader style={preloaderMainStyle} />
+            );
+          }}
+        />
 
-          <Route
-            render={() => (
-              <React.Fragment>
-                <h1>
-                  404.
-                  <br />
-                  <small>Page not found</small>
-                </h1>
-                <Link to={AppRoute.ROOT}>Go to main page</Link>
-              </React.Fragment>
-            )}
-          />
-        </Switch>
-      </Router>
-    );
-  }
-}
+        <Route
+          render={() => (
+            <React.Fragment>
+              <h1>
+                404.
+                <br />
+                <small>Page not found</small>
+              </h1>
+              <Link to={AppRoute.ROOT}>Go to main page</Link>
+            </React.Fragment>
+          )}
+        />
+      </Switch>
+    </Router>
+  );
+};
 
 const mapStateToProps = (state) => ({
   authorizationStatusCode: getAuthorizationStatusCode(state),
