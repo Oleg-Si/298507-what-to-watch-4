@@ -61,6 +61,10 @@ const withPlayer = (Component) => {
       this._handleReady = this._handleReady.bind(this);
     }
 
+    componentWillUnmount() {
+      clearTimeout(this._timer);
+    }
+
     _handleVideoPlay(timeout = false) {
       if (timeout) {
         this._timer = setTimeout(() => {
@@ -102,10 +106,6 @@ const withPlayer = (Component) => {
 
     _handleReady() {
       this.setState({isReady: true});
-    }
-
-    componentWillUnmount() {
-      clearTimeout(this._timer);
     }
 
     render() {

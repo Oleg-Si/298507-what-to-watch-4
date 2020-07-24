@@ -10,16 +10,16 @@ const createAPI = (onUnauthorized) => {
 
   const onSucces = (response) => response;
 
-  const onError = (err) => {
-    const {response} = err;
+  const onError = (error) => {
+    const {response} = error;
 
     if (response.status === APIErrorsCode.UNAUTHORIZED) {
       onUnauthorized();
 
-      throw err;
+      throw error;
     }
 
-    throw err;
+    throw error;
   };
 
   api.interceptors.response.use(onSucces, onError);

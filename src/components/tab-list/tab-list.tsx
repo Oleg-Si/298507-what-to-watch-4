@@ -12,12 +12,12 @@ const TabList: React.FC<Props> = (props: Props) => {
 
   return (
     <ul className="movie-nav__list">
-      {tabs.map((el) => (
-        <li className={`movie-nav__item ${el === activeTab ? `movie-nav__item--active` : ``}`} key={`tab-${el}`}>
+      {tabs.map((tab) => (
+        <li className={`movie-nav__item ${tab === activeTab ? `movie-nav__item--active` : ``}`} key={`tab-${tab}`}>
           <a href="#" className="movie-nav__link" onClick={(evt) => {
             evt.preventDefault();
-            onTabClick(el);
-          }}>{el}</a>
+            onTabClick(tab);
+          }}>{tab}</a>
         </li>
       ))}
     </ul>

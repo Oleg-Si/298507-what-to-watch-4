@@ -4,10 +4,10 @@ import {FILM_COUNT} from '../constants';
 const getFilms = (count) => {
   const allFilms = new Array(count).fill(``);
 
-  allFilms.forEach((el, i, arr) => {
+  allFilms.forEach((film, index, array) => {
     const element = getMockFilm();
-    element.id = i;
-    arr[i] = element;
+    element.id = index;
+    array[index] = element;
   });
 
   return allFilms;

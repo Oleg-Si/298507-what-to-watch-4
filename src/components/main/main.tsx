@@ -52,18 +52,18 @@ const Main: React.FC<Props> = (props: Props) => {
     onPlayClick
   } = props;
 
-  const getAllgenre = (data) => {
-    const allGenre = new Set();
-    allGenre.add(DEFAULT_GENRE);
+  const getAllgenres = (filmsData: FilmInterface[]) => {
+    const allGenres = new Set();
+    allGenres.add(DEFAULT_GENRE);
 
-    data.forEach((el) => {
-      allGenre.add(el.genre);
+    filmsData.forEach((film) => {
+      allGenres.add(film.genre);
     });
 
-    return allGenre;
+    return allGenres;
   };
 
-  const genre = getAllgenre(films);
+  const genres = getAllgenres(films);
 
   return (
     <React.Fragment>
@@ -127,7 +127,7 @@ const Main: React.FC<Props> = (props: Props) => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <GenreFilter
-            genre={Array.from(genre)}
+            genres={Array.from(genres)}
             activeTab={activeGenre}
             onTabClick={onGenreCilck}
           />

@@ -8,8 +8,8 @@ interface Props {
 const FilmPageDetalis: React.FC<Props> = (props: Props) => {
   const {filmInfo} = props;
 
-  const getDurationFromMins = (min: number) => {
-    return `${Math.trunc(min / 60)}h ${(min % 60)}m`;
+  const getDurationFromMins = (minutes: number) => {
+    return `${Math.trunc(minutes / 60)}h ${(minutes % 60)}m`;
   };
 
   return (
@@ -22,7 +22,7 @@ const FilmPageDetalis: React.FC<Props> = (props: Props) => {
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Starring</strong>
           <span className="movie-card__details-value">
-            {filmInfo.starring.map((el: string) => el)}
+            {filmInfo.starring.map((item: string) => item)}
           </span>
         </p>
       </div>

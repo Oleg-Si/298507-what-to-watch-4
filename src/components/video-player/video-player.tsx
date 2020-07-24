@@ -28,25 +28,6 @@ class VideoPlayer extends React.PureComponent<Props> {
     this._videoRef = React.createRef();
   }
 
-  _launchFullScreen(element) {
-    if (element.requestFullScreen) {
-      element.requestFullScreen();
-    } else if (element.mozRequestFullScreen) {
-      element.mozRequestFullScreen();
-    } else if (element.webkitRequestFullScreen) {
-      element.webkitRequestFullScreen();
-    }
-  }
-
-  _changeFullscreen(video) {
-    const {onFullScreenChange} = this.props;
-
-    if (video.classList.contains(`fullscreen`)) {
-      video.classList.remove(`fullscreen`);
-      onFullScreenChange();
-    }
-  }
-
   componentDidMount() {
     const video = this._videoRef.current;
     const {
@@ -125,6 +106,25 @@ class VideoPlayer extends React.PureComponent<Props> {
     video.ontimeupdate = null;
     video.onpause = null;
     video.onplay = null;
+  }
+
+  _launchFullScreen(element) {
+    if (element.requestFullScreen) {
+      element.requestFullScreen();
+    } else if (element.mozRequestFullScreen) {
+      element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullScreen) {
+      element.webkitRequestFullScreen();
+    }
+  }
+
+  _changeFullscreen(video) {
+    const {onFullScreenChange} = this.props;
+
+    if (video.classList.contains(`fullscreen`)) {
+      video.classList.remove(`fullscreen`);
+      onFullScreenChange();
+    }
   }
 
   render() {

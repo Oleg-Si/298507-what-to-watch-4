@@ -2,23 +2,23 @@ import * as React from 'react';
 import withActiveTab from '../../hocs/with-active-tab/with-active-tab';
 
 interface Props {
-  genre: string[];
+  genres: string[];
   activeTab: string;
   onTabClick: (newTab: string) => void;
 }
 
 const GenreFilter: React.FC<Props> = (props: Props) => {
-  const {genre, activeTab, onTabClick} = props;
+  const {genres, activeTab, onTabClick} = props;
 
   return (
     <ul className="catalog__genres-list">
-      {genre.map((el) => {
+      {genres.map((genre) => {
         return (
-          <li className={`catalog__genres-item ${el === activeTab ? `catalog__genres-item--active` : ``}`} key={`genre-${el}`}>
+          <li className={`catalog__genres-item ${genre === activeTab ? `catalog__genres-item--active` : ``}`} key={`genre-${genre}`}>
             <a href="#" className="catalog__genres-link" onClick={(evt) => {
               evt.preventDefault();
-              onTabClick(el);
-            }}>{el}</a>
+              onTabClick(genre);
+            }}>{genre}</a>
           </li>
         );
       })}

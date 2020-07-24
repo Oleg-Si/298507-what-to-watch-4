@@ -11,19 +11,12 @@ export const Tabs = {
   REVIEWS: `Reviews`
 };
 
-export const RatingKey = {
+export const RatingKeys = {
   BAD: `Bad`,
   NORMAL: `Normal`,
   GOOD: `Good`,
   VERY_GOOD: `Very good`,
   AWESOME: `Awesome`
-};
-
-export const Screens = {
-  MAIN: `Main`,
-  FILM_PAGE: `FilmPage`,
-  SIGN_IN: `SignIn`,
-  ADD_REVIEW: `AddReview`
 };
 
 export const APIErrorsCode = {

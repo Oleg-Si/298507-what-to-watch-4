@@ -9,14 +9,14 @@ interface Props {
 const FilmPageReviews: React.FC<Props> = (props: Props) => {
   const reviews = props.filmReviews;
 
-  const col1 = [];
-  const col2 = [];
+  const column1 = [];
+  const column2 = [];
 
-  reviews.forEach((el, i) => {
-    if (i % 2 === 0) {
-      col1.push(el);
+  reviews.forEach((review, index) => {
+    if (index % 2 === 0) {
+      column1.push(review);
     } else {
-      col2.push(el);
+      column2.push(review);
     }
   });
 
@@ -26,35 +26,35 @@ const FilmPageReviews: React.FC<Props> = (props: Props) => {
       {!reviews.length ? <p>No reviews, add first review</p> : ``}
 
       <div className="movie-card__reviews-col">
-        {col1.map((el) => (
-          <div className="review" key={el.id}>
+        {column1.map((review) => (
+          <div className="review" key={review.id}>
             <blockquote className="review__quote">
-              <p className="review__text">{el.comment}</p>
+              <p className="review__text">{review.comment}</p>
 
               <footer className="review__details">
-                <cite className="review__author">{el.user.name}</cite>
-                <time className="review__date" dateTime={moment(el.date).format(`YYYY-M-D`)}>{moment(el.date).format(`LL`)}</time>
+                <cite className="review__author">{review.user.name}</cite>
+                <time className="review__date" dateTime={moment(review.date).format(`YYYY-M-D`)}>{moment(review.date).format(`LL`)}</time>
               </footer>
             </blockquote>
 
-            <div className="review__rating">{el.rating}</div>
+            <div className="review__rating">{review.rating}</div>
           </div>
         ))}
       </div>
 
       <div className="movie-card__reviews-col">
-        {col2.map((el) => (
-          <div className="review" key={el.date}>
+        {column2.map((review) => (
+          <div className="review" key={review.date}>
             <blockquote className="review__quote">
-              <p className="review__text">{el.comment}</p>
+              <p className="review__text">{review.comment}</p>
 
               <footer className="review__details">
-                <cite className="review__author">{el.user.name}</cite>
-                <time className="review__date" dateTime={moment(el.date).format(`YYYY-M-D`)}>{moment(el.date).format(`LL`)}</time>
+                <cite className="review__author">{review.user.name}</cite>
+                <time className="review__date" dateTime={moment(review.date).format(`YYYY-M-D`)}>{moment(review.date).format(`LL`)}</time>
               </footer>
             </blockquote>
 
-            <div className="review__rating">{el.rating}</div>
+            <div className="review__rating">{review.rating}</div>
           </div>
         ))}
       </div>

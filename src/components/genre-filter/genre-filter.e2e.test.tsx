@@ -7,7 +7,7 @@ Enzyme.configure({
   adapter: new Adapter()
 });
 
-const genre: string[] = [
+const genres: string[] = [
   `All genres`,
   `Dramas`,
   `Horror`,
@@ -25,7 +25,7 @@ it(`Клик по жанру вызывает коллбэк и передает
 
   const genreFilter = Enzyme.shallow(
       <GenreFilter
-        genre={genre}
+        genres={genres}
         activeTab={`All genres`}
         onTabClick={onGenreCilck}
       />

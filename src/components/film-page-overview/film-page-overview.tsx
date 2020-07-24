@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {RatingKey} from '../../constants';
+import {RatingKeys} from '../../constants';
 import {FilmInterface} from '../../types';
 
 interface Props {
@@ -13,15 +13,15 @@ const FilmPageOverview: React.FC<Props> = (props: Props) => {
     const rating = filmInfo.rating;
 
     if (rating >= 0 && rating < 3) {
-      return RatingKey.BAD;
+      return RatingKeys.BAD;
     } else if (rating >= 3 && rating < 5) {
-      return RatingKey.NORMAL;
+      return RatingKeys.NORMAL;
     } else if (rating >= 5 && rating < 8) {
-      return RatingKey.GOOD;
+      return RatingKeys.GOOD;
     } else if (rating >= 8 && rating < 10) {
-      return RatingKey.VERY_GOOD;
+      return RatingKeys.VERY_GOOD;
     } else if (rating >= 10) {
-      return RatingKey.AWESOME;
+      return RatingKeys.AWESOME;
     }
 
     return rating;

@@ -44,7 +44,7 @@ exports[`Проверяет снепшот компонента Player 1`] = `
       <div
         className="player__time-value"
       >
-        0:00:50
+        0:00:40
       </div>
     </div>
     <div
