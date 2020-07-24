@@ -16,11 +16,11 @@ it(`Проверяет снепшот компонента FilmPage`, () => {
           film={mockFilmForTests}
           filmId={1}
           activeTab={`Overview`}
-          onTabClick={() => {}}
-          onFavorite={() => {}}
-          onFilmCardTitleClick={() => {}}
-          onMyListClick={() => {}}
-          onPlayClick={() => {}}
+          onTabClick={() => null}
+          onFavorite={() => null}
+          onFilmCardTitleClick={() => null}
+          onMyListClick={() => null}
+          onPlayClick={() => null}
           authorizationStatus={AuthorizationStatus.AUTH}
           userAvatar={`img/avatar.jpg`}
           filmReviews={mockReviews}

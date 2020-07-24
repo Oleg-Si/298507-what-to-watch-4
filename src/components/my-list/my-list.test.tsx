@@ -21,7 +21,7 @@ it(`Проверяет снепшот компонента MyList`, () => {
       </Router>, {
         createNodeMock: () => {
           return {
-            addEventListener: () => {}
+            addEventListener: () => null
           };
         }}
   ).toJSON();

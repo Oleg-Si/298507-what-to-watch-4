@@ -14,7 +14,7 @@ it(`Проверяет снепшот компонента AppHeaderMovieCard`, 
           className="otherClass"
           userAvatar={`img/avatar.jpg`}
           authorizationStatus={AuthorizationStatus.AUTH}
-          onMyListClick={() => {}}
+          onMyListClick={() => null}
         />
       </Router>
   ).toJSON();

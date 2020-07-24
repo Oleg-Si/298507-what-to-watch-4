@@ -47,7 +47,7 @@ it(`Проверяет снепшот компонента App`, () => {
       </Provider>, {
         createNodeMock: () => {
           return {
-            addEventListener: () => {}
+            addEventListener: () => null
           };
         }}
   ).toJSON();

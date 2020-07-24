@@ -13,7 +13,7 @@ const mockedElementDOM = {
     contains: () => {
       return `fullscreen`;
     },
-    remove: () => {}
+    remove: () => null
   }
 };
 
@@ -87,7 +87,7 @@ it(`Проверяет компонент videoPlayer 3`, () => {
       />
   );
 
-  const pause = jest.spyOn(window.HTMLMediaElement.prototype, `pause`).mockImplementation(() => {});
+  const pause = jest.spyOn(window.HTMLMediaElement.prototype, `pause`).mockImplementation(() => null);
 
   videoPlayer.instance().componentDidUpdate();
   expect(pause).toHaveBeenCalledTimes(1);
@@ -108,7 +108,7 @@ it(`Проверяет компонент videoPlayer 4`, () => {
       />
   );
 
-  const load = jest.spyOn(window.HTMLMediaElement.prototype, `load`).mockImplementation(() => {});
+  const load = jest.spyOn(window.HTMLMediaElement.prototype, `load`).mockImplementation(() => null);
 
   videoPlayer.instance().componentDidUpdate();
   expect(load).toHaveBeenCalledTimes(1);

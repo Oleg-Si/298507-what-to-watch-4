@@ -27,7 +27,7 @@ it(`Проверяет снепшот компонента Player`, () => {
       />, {
         createNodeMock: () => {
           return {
-            addEventListener: () => {}
+            addEventListener: () => null
           };
         }}
   ).toJSON();

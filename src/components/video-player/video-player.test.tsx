@@ -17,7 +17,7 @@ it(`Проверяет снепшот компонента VideoPlayer`, () => {
       />, {
         createNodeMock: () => {
           return {
-            addEventListener: () => {}
+            addEventListener: () => null
           };
         }}
   ).toJSON();

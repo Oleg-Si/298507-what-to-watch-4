@@ -26,7 +26,7 @@ it(`Клик на таб вызывает коллбэк и передает к�
 
   const tab = tabList.find(`a.movie-nav__link`);
 
-  tab.at(1).simulate(`click`, {preventDefault() {}});
+  tab.at(1).simulate(`click`, {preventDefault: () => null});
 
   expect(onTabClick).toHaveBeenCalledTimes(1);
 });

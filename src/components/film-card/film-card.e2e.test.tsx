@@ -11,7 +11,7 @@ Enzyme.configure({
 });
 
 const mockEvent = {
-  preventDefault() {}
+  preventDefault: () => null
 };
 
 it(`Клик на заголовок вызывает коллбэк`, () => {
@@ -28,7 +28,7 @@ it(`Клик на заголовок вызывает коллбэк`, () => {
           onFilmCardTitleClick={onFilmCardTitleClick}
           onPlay={onPlay}
           onStop={onStop}
-          onReady={() => {}}
+          onReady={() => null}
           controls={false}
           isMuted={true}
           isPlaying={false}

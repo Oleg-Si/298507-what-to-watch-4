@@ -12,10 +12,10 @@ it(`Проверяет снепшот компонента FilmCard`, () => {
       >
         <FilmCard
           film={mockFilmForTests}
-          onFilmCardTitleClick={() => {}}
-          onPlay={() => {}}
-          onStop={() => {}}
-          onReady={() => {}}
+          onFilmCardTitleClick={() => null}
+          onPlay={() => null}
+          onStop={() => null}
+          onReady={() => null}
           controls={false}
           isMuted={true}
           isPlaying={false}
@@ -24,7 +24,7 @@ it(`Проверяет снепшот компонента FilmCard`, () => {
       </Router>, {
         createNodeMock: () => {
           return {
-            addEventListener: () => {}
+            addEventListener: () => null
           };
         }}
   ).toJSON();

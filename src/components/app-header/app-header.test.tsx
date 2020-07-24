@@ -14,7 +14,7 @@ it(`Проверяет снепшот компонента AppHeader`, () => {
         <AppHeader
           authorizationStatus={AuthorizationStatus.NO_AUTH}
           userAvatar={`https://4.react.pages.academy/wtw/static/avatar/2.jpg`}
-          onMyListClick={() => {}}
+          onMyListClick={() => null}
         />
       </Router>
   ).toJSON();
@@ -30,7 +30,7 @@ it(`Проверяет снепшот компонента AppHeader`, () => {
         <AppHeader
           authorizationStatus={AuthorizationStatus.AUTH}
           userAvatar={`https://4.react.pages.academy/wtw/static/avatar/2.jpg`}
-          onMyListClick={() => {}}
+          onMyListClick={() => null}
         />
       </Router>
   ).toJSON();

@@ -33,7 +33,7 @@ it(`Клик по жанру вызывает коллбэк и передает
 
   const filters = genreFilter.find(`a.catalog__genres-link`);
 
-  filters.at(1).simulate(`click`, {preventDefault() {}});
+  filters.at(1).simulate(`click`, {preventDefault: () => null});
 
   expect(onGenreCilck).toHaveBeenCalledTimes(1);
 });

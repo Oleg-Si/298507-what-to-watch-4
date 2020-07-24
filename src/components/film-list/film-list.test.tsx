@@ -5,7 +5,7 @@ import {mockFilmsForTests} from '../../mock/films.js';
 import {Router} from 'react-router-dom';
 import history from '../../history';
 
-const onFilmCardTitleClick = () => {};
+const onFilmCardTitleClick = () => null;
 
 it(`Проверяет снепшот компонента FilmList`, () => {
   const tree = renderer.create(
@@ -20,7 +20,7 @@ it(`Проверяет снепшот компонента FilmList`, () => {
       </Router>, {
         createNodeMock: () => {
           return {
-            addEventListener: () => {}
+            addEventListener: () => null
           };
         }}
   ).toJSON();

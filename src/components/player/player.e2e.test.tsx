@@ -81,7 +81,7 @@ it(`Клик по кнопкe play вызывает коллбек`, () => {
       />
   );
 
-  player.find(`button.player__play`).simulate(`click`, {preventDefault() {}});
+  player.find(`button.player__play`).simulate(`click`, {preventDefault: () => null});
 
   expect(onPlay).toHaveBeenCalledTimes(1);
   expect(onPause).toHaveBeenCalledTimes(0);
@@ -114,7 +114,7 @@ it(`Клик по кнопкe pause вызывает коллбек`, () => {
       />
   );
 
-  player.find(`button.player__play`).simulate(`click`, {preventDefault() {}});
+  player.find(`button.player__play`).simulate(`click`, {preventDefault: () => null});
 
   expect(onPlay).toHaveBeenCalledTimes(0);
   expect(onPause).toHaveBeenCalledTimes(1);

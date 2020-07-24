@@ -30,7 +30,7 @@ it(`Проверяет снепшот компонента Main`, () => {
       </Router>, {
         createNodeMock: () => {
           return {
-            addEventListener: () => {}
+            addEventListener: () => null
           };
         }}
   ).toJSON();

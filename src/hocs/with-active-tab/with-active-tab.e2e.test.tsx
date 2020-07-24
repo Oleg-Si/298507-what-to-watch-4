@@ -39,7 +39,7 @@ it(`Клик на таб меняет стейт хока на переданн�
   // Проверяем дефолтное значение
   expect(tree.state(`activeTab`)).toEqual(defaultTab);
 
-  tree.find(`button`).simulate(`click`, {preventDefault() {}});
+  tree.find(`button`).simulate(`click`, {preventDefault: () => null});
 
   // Проверяем что обработчик вызван
   expect(onTabClick).toHaveBeenCalledTimes(1);
