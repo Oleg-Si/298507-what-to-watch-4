@@ -37,6 +37,25 @@ exports[`Проверяет снепшот компонента SignIn 1`] = `
     >
       Sign in
     </h1>
+    <div
+      className="user-block"
+    >
+      <a
+        href="/mylist"
+        onClick={[Function]}
+      >
+        <div
+          className="user-block__avatar"
+        >
+          <img
+            alt="User avatar"
+            height="63"
+            src="https://4.react.pages.academy/wtw/static/avatar/2.jpg"
+            width="63"
+          />
+        </div>
+      </a>
+    </div>
   </header>
   <div
     className="sign-in user-page__content"

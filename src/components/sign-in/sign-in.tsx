@@ -1,11 +1,17 @@
 import * as React from 'react';
-import {APIErrorsCode, AppRoute} from '../../constants';
-import {Link} from 'react-router-dom';
+import {APIErrorsCode, AuthorizationStatus} from '../../constants';
 import AppFooter from '../app-footer/app-footer';
+import AppHeaderMyList from '../app-header-my-list/app-header-my-list';
+import {connect} from 'react-redux';
+import dataOperations from './../../redux/data/operations';
+import {getUserAvatar, getAuthorizationStatus} from './../../redux/user/selectors';
 
 interface Props {
   onSubmit: (authData: {login: string; password: string}) => void;
   authorizationStatusCode: number;
+  onMyListClick: () => void;
+  authorizationStatus: AuthorizationStatus;
+  userAvatar: string;
 }
 
 class SignIn extends React.PureComponent<Props> {
@@ -48,23 +54,21 @@ class SignIn extends React.PureComponent<Props> {
 
   render() {
     const code = this.props.authorizationStatusCode;
+    const {
+      authorizationStatus,
+      userAvatar,
+      onMyListClick
+    } = this.props;
 
     return (
       <div className="user-page">
-        <header className="page-header user-page__head">
-          <div className="logo">
-            <Link
-              className="logo__link"
-              to={AppRoute.ROOT}
-            >
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </Link>
-          </div>
-
+        <AppHeaderMyList
+          authorizationStatus={authorizationStatus}
+          userAvatar={userAvatar}
+          onMyListClick={onMyListClick}
+        >
           <h1 className="page-title user-page__title">Sign in</h1>
-        </header>
+        </AppHeaderMyList>
 
         <div className="sign-in user-page__content">
           <form action="#" className="sign-in__form" ref={this._formRef} onSubmit={this._handleSubmit}>
@@ -91,4 +95,16 @@ class SignIn extends React.PureComponent<Props> {
   }
 }
 
-export default SignIn;
+const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorizationStatus(state),
+  userAvatar: getUserAvatar(state)
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onMyListClick() {
+    dispatch(dataOperations.loadFavoriteFilms());
+  }
+});
+
+export {SignIn};
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

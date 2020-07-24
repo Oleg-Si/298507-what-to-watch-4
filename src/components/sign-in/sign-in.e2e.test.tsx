@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as Enzyme from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
-import SignIn from './sign-in';
+import {SignIn} from './sign-in';
 import {Router} from 'react-router-dom';
 import history from '../../history';
-import {APIErrorsCode} from '../../constants';
+import {APIErrorsCode, AuthorizationStatus} from '../../constants';
 
 Enzyme.configure({
   adapter: new Adapter()
@@ -20,6 +20,9 @@ it(`Отправка формы вызывает коллбэк`, () => {
         <SignIn
           onSubmit={onSubmit}
           authorizationStatusCode={APIErrorsCode.BAD_REQUEST}
+          onMyListClick={() => null}
+          authorizationStatus={AuthorizationStatus.AUTH}
+          userAvatar={`https://4.react.pages.academy/wtw/static/avatar/2.jpg`}
         />
       </Router>
   );
