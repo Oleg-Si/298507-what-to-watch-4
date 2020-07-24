@@ -20,19 +20,19 @@ import history from '../../history';
 import {FilmInterface, FilmReviewInterface} from './../../types';
 
 interface Props {
-  film: FilmInterface,
-  activeTab: string,
-  onTabClick: (newTab: string) => void,
-  films: FilmInterface[],
-  onFilmCardTitleClick: (film: FilmInterface) => void,
-  onFavorite: (filmId: number, filmIsFavorite: number) => void,
-  onMyListClick: () => void,
-  onPlayClick: (filmId: number) => void,
-  filmId: number,
-  authorizationStatus: AuthorizationStatus,
-  userAvatar: string,
-  filmReviews: FilmReviewInterface
-};
+  film: FilmInterface;
+  activeTab: string;
+  onTabClick: (newTab: string) => void;
+  films: FilmInterface[];
+  onFilmCardTitleClick: (film: FilmInterface) => void;
+  onFavorite: (filmId: number, filmIsFavorite: number) => void;
+  onMyListClick: () => void;
+  onPlayClick: (filmId: number) => void;
+  filmId: number;
+  authorizationStatus: AuthorizationStatus;
+  userAvatar: string;
+  filmReviews: FilmReviewInterface;
+}
 
 const FilmPage: React.FC<Props> = (props: Props) => {
   const {

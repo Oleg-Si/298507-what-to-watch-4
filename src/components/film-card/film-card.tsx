@@ -13,15 +13,15 @@ const VideoSettings = {
 };
 
 interface Props {
-  film: FilmInterface,
-  onFilmCardTitleClick: (film: FilmInterface) => void,
-  onPlay: (setTimeout?: boolean) => void,
-  onStop: () => void,
-  onReady: () => void,
-  controls: boolean,
-  isMuted: boolean,
-  isPlaying: boolean,
-  isReady: boolean
+  film: FilmInterface;
+  onFilmCardTitleClick: (film: FilmInterface) => void;
+  onPlay: (setTimeout?: boolean) => void;
+  onStop: () => void;
+  onReady: () => void;
+  controls: boolean;
+  isMuted: boolean;
+  isPlaying: boolean;
+  isReady: boolean;
 }
 
 const FilmCard: React.FC<Props> = (props: Props) => {

@@ -3,8 +3,8 @@ import {RatingKey} from '../../constants';
 import {FilmInterface} from '../../types';
 
 interface Props {
-  filmInfo: FilmInterface
-};
+  filmInfo: FilmInterface;
+}
 
 const FilmPageOverview: React.FC<Props> = (props: Props) => {
   const {filmInfo} = props;

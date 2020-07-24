@@ -2,9 +2,9 @@ import * as React from 'react';
 import withActiveTab from '../../hocs/with-active-tab/with-active-tab';
 
 interface Props {
-  genre: string[],
-  activeTab: string,
-  onTabClick: (newTab: string) => void
+  genre: string[];
+  activeTab: string;
+  onTabClick: (newTab: string) => void;
 }
 
 const GenreFilter: React.FC<Props> = (props: Props) => {

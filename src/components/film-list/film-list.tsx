@@ -3,9 +3,9 @@ import FilmCard from '../film-card/film-card';
 import {FilmInterface} from './../../types';
 
 interface Props {
-  films: Array<FilmInterface>,
-  onFilmCardTitleClick: (film: FilmInterface) => void,
-  filmsCount: number
+  films: Array<FilmInterface>;
+  onFilmCardTitleClick: (film: FilmInterface) => void;
+  filmsCount: number;
 }
 
 const FilmList: React.FC<Props> = (props: Props) => {

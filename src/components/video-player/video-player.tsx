@@ -1,23 +1,23 @@
 import * as React from 'react';
 
 interface Props {
-  controls: boolean,
-  isMuted: boolean,
-  isPlaying: boolean,
-  isPause?: boolean,
-  isReady?: boolean,
-  fullScreen?: boolean,
-  onFullScreenChange?: () => void,
-  onChangeProgress?: (currentTime: number, duration: number) => {},
-  onPause?: () => void,
-  onPlay: () => void,
-  onReady: () => void,
-  className?: string,
-  src: string,
-  poster: string,
-  width?: number,
-  height?: number
-};
+  controls: boolean;
+  isMuted: boolean;
+  isPlaying: boolean;
+  isPause?: boolean;
+  isReady?: boolean;
+  fullScreen?: boolean;
+  onFullScreenChange?: () => void;
+  onChangeProgress?: (currentTime: number, duration: number) => {};
+  onPause?: () => void;
+  onPlay: () => void;
+  onReady: () => void;
+  className?: string;
+  src: string;
+  poster: string;
+  width?: number;
+  height?: number;
+}
 
 class VideoPlayer extends React.PureComponent<Props> {
   private _videoRef: React.RefObject<HTMLVideoElement>;

@@ -10,11 +10,11 @@ import {AuthorizationStatus} from '../../constants';
 import {FilmInterface} from './../../types';
 
 interface Props {
-  films: FilmInterface[],
-  onFilmCardTitleClick: (film: FilmInterface) => void,
-  onMyListClick: () => void,
-  authorizationStatus: AuthorizationStatus,
-  userAvatar: string,
+  films: FilmInterface[];
+  onFilmCardTitleClick: (film: FilmInterface) => void;
+  onMyListClick: () => void;
+  authorizationStatus: AuthorizationStatus;
+  userAvatar: string;
 }
 
 const MyList: React.FC<Props> = (props: Props) => {

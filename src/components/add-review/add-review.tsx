@@ -12,19 +12,19 @@ import userActionCreator from '../../redux/user/action-creator';
 import {FilmInterface} from '../../types';
 
 interface Props {
-  onCheckValidCommentLength: (evtTargetValue: number) => void,
-  onSend: () => void,
-  isValid: boolean,
-  isSend: boolean,
-  isError: boolean,
-  onAddReviews: (reviewData: {id: string, rating: string, comment: string}) => void,
-  changeIsErrorStatus: () => void,
-  onMyListClick: () => void,
-  authorizationStatus: AuthorizationStatus,
-  userAvatar: string,
-  film: FilmInterface,
-  filmId: string
-};
+  onCheckValidCommentLength: (evtTargetValue: number) => void;
+  onSend: () => void;
+  isValid: boolean;
+  isSend: boolean;
+  isError: boolean;
+  onAddReviews: (reviewData: {id: string; rating: string; comment: string}) => void;
+  changeIsErrorStatus: () => void;
+  onMyListClick: () => void;
+  authorizationStatus: AuthorizationStatus;
+  userAvatar: string;
+  film: FilmInterface;
+  filmId: string;
+}
 
 const AddReview: React.FC<Props> = (props: Props) => {
   const {

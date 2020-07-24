@@ -6,11 +6,11 @@ import {getAuthorizationStatus, getIsAuthorizationChecked} from '../../redux/use
 import Preloader from '../preloader/preloader';
 
 interface Props {
-  authorizationStatus: string,
-  exact: boolean,
-  path: string,
-  render: (renderProps: () => React.ReactNode) => React.ReactNode,
-  isAuthorizationChecked: boolean
+  authorizationStatus: string;
+  exact: boolean;
+  path: string;
+  render: (renderProps: () => React.ReactNode) => React.ReactNode;
+  isAuthorizationChecked: boolean;
 }
 
 const PrivateRoute: React.FC<Props> = (props: Props) => {

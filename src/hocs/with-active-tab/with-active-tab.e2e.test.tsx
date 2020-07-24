@@ -8,7 +8,7 @@ Enzyme.configure({
 });
 
 interface MockComponentProps {
-  onTabClick: (newTab: string) => void
+  onTabClick: (newTab: string) => void;
 }
 
 const Component: React.FC<MockComponentProps> = (props: MockComponentProps) => {

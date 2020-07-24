@@ -2,12 +2,12 @@ import * as React from 'react';
 import {Subtract} from 'utility-types';
 
 interface State {
-  activeTab: string
+  activeTab: string;
 }
 
 interface InjectingProps {
-  onTabClick: () => void,
-  activeTab: string
+  onTabClick: () => void;
+  activeTab: string;
 }
 
 const withActiveTab = (Component) => {

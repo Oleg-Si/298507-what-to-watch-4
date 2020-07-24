@@ -2,15 +2,15 @@ import * as React from 'react';
 import {Subtract} from 'utility-types';
 
 interface State {
-  isValid: boolean,
-  isSend: boolean
+  isValid: boolean;
+  isSend: boolean;
 }
 
 interface InjectingProps {
-  isValid: boolean,
-  isSend: boolean,
-  onCheckValidCommentLength: (commentLength: number) => void,
-  onSend: () => void
+  isValid: boolean;
+  isSend: boolean;
+  onCheckValidCommentLength: (commentLength: number) => void;
+  onSend: () => void;
 }
 
 const ValidationParameters = {

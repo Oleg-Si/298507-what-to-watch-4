@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom';
 import AppFooter from '../app-footer/app-footer';
 
 interface Props {
-  onSubmit: (authData: {login: string, password: string}) => void,
-  authorizationStatusCode: number,
+  onSubmit: (authData: {login: string; password: string}) => void;
+  authorizationStatusCode: number;
 }
 
 class SignIn extends React.PureComponent<Props> {

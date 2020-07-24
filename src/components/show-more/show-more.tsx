@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 interface Props {
-  onShowMoreClick: (filmsCount: number) => void,
-  filmsCount: number,
-  allFilmsCount: number
+  onShowMoreClick: (filmsCount: number) => void;
+  filmsCount: number;
+  allFilmsCount: number;
 }
 
 const ShowMore: React.FC<Props> = (props: Props) => {

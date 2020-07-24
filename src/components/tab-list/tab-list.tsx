@@ -2,9 +2,9 @@ import * as React from 'react';
 import withActiveTab from '../../hocs/with-active-tab/with-active-tab';
 
 interface Props {
-  tabs: string[],
-  activeTab: string,
-  onTabClick: (newTab: string) => void
+  tabs: string[];
+  activeTab: string;
+  onTabClick: (newTab: string) => void;
 }
 
 const TabList: React.FC<Props> = (props: Props) => {

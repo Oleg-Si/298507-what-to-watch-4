@@ -2,8 +2,8 @@ import * as React from 'react';
 
 interface Props {
   style: {
-    [key: string]: string | number
-  }
+    [key: string]: string | number;
+  };
 }
 
 const Preloader: React.FC<Props> = (props: Props) => {

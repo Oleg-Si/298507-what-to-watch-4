@@ -16,12 +16,12 @@ import MyList from '../my-list/my-list';
 import Player from '../player/player';
 
 interface Props {
-  authorizationStatusCode: number | null,
-  onSignIn: (authData: {login: string, password: string}) => void,
-  isLoadedFilms: boolean,
-  authorizationStatus: AuthorizationStatus,
-  isLoadedFavoriteFilms: boolean,
-  isLoadedPromoFilm: boolean
+  authorizationStatusCode: number | null;
+  onSignIn: (authData: {login: string; password: string}) => void;
+  isLoadedFilms: boolean;
+  authorizationStatus: AuthorizationStatus;
+  isLoadedFavoriteFilms: boolean;
+  isLoadedPromoFilm: boolean;
 }
 
 class App extends React.PureComponent<Props> {

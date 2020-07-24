@@ -3,10 +3,10 @@ import AppHeader from '../app-header/app-header';
 import {AuthorizationStatus} from '../../constants';
 
 interface Props {
-  authorizationStatus: AuthorizationStatus,
-  userAvatar: string,
-  className?: string,
-  onMyListClick: () => void
+  authorizationStatus: AuthorizationStatus;
+  userAvatar: string;
+  className?: string;
+  onMyListClick: () => void;
 }
 
 const AppHeaderMyList: React.FC<Props> = (props: Props) => {

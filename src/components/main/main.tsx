@@ -17,21 +17,21 @@ import history from '../../history';
 import {FilmInterface} from './../../types';
 
 interface Props {
-  promoFilm: FilmInterface,
-  films: FilmInterface[],
-  filteredFilms: FilmInterface[],
+  promoFilm: FilmInterface;
+  films: FilmInterface[];
+  filteredFilms: FilmInterface[];
 
-  onFilmCardTitleClick: (film: FilmInterface) => void,
-  onGenreCilck: (newGenre: string) => void,
-  activeGenre: string,
-  filmsCount: number,
-  promoFilmStatus: boolean,
-  onShowMoreClick: () => void,
-  onFavorite: (filmId: number, status: number) => void,
-  onPlayClick: (filmId: number) => void,
-  onMyListClick: () => void,
-  authorizationStatus: AuthorizationStatus,
-  userAvatar: string,
+  onFilmCardTitleClick: (film: FilmInterface) => void;
+  onGenreCilck: (newGenre: string) => void;
+  activeGenre: string;
+  filmsCount: number;
+  promoFilmStatus: boolean;
+  onShowMoreClick: () => void;
+  onFavorite: (filmId: number, status: number) => void;
+  onPlayClick: (filmId: number) => void;
+  onMyListClick: () => void;
+  authorizationStatus: AuthorizationStatus;
+  userAvatar: string;
 }
 
 const Main: React.FC<Props> = (props: Props) => {

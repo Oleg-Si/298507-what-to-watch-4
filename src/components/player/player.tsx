@@ -8,24 +8,24 @@ import history from '../../history';
 import {FilmInterface} from '../../types';
 
 interface Props {
-  film: FilmInterface,
-  onFilmCardTitleClick: (film: FilmInterface) => void,
-  onPlay: () => void,
-  onStop: () => void,
-  onReady: () => void,
-  controls: boolean,
-  isMuted: boolean,
-  isPlaying: boolean,
-  isReady: boolean,
-  isPause: boolean,
-  fullScreen: boolean,
-  onFullScreenChange: () => void,
-  onChangeProgress: (currentTime: number, duration: number) => {},
-  onPause: () => void,
-  onFullScreenClick: () => void,
-  onExitClick: () => void,
-  progress: number,
-  allTime: number,
+  film: FilmInterface;
+  onFilmCardTitleClick: (film: FilmInterface) => void;
+  onPlay: () => void;
+  onStop: () => void;
+  onReady: () => void;
+  controls: boolean;
+  isMuted: boolean;
+  isPlaying: boolean;
+  isReady: boolean;
+  isPause: boolean;
+  fullScreen: boolean;
+  onFullScreenChange: () => void;
+  onChangeProgress: (currentTime: number, duration: number) => {};
+  onPause: () => void;
+  onFullScreenClick: () => void;
+  onExitClick: () => void;
+  progress: number;
+  allTime: number;
 }
 
 class Player extends React.PureComponent<Props> {

@@ -2,31 +2,31 @@ import * as React from 'react';
 import {Subtract} from 'utility-types';
 
 interface State {
-  isPlaying: boolean,
-  isPause: boolean,
-  isReady: boolean,
-  controls: boolean,
-  progress: number,
-  allTime: number,
-  fullScreen: boolean,
-  isMuted: boolean
+  isPlaying: boolean;
+  isPause: boolean;
+  isReady: boolean;
+  controls: boolean;
+  progress: number;
+  allTime: number;
+  fullScreen: boolean;
+  isMuted: boolean;
 }
 
 interface InjectingProps {
-  onPlay: (timeout?: boolean) => void,
-  onPause: () => void,
-  onStop: () => void,
-  onChangeProgress: (currentTime: number, allTime: number) => void,
-  onFullScreenClick: () => void,
-  onReady: () => void,
-  progress: number,
-  allTime: number,
-  fullScreen: boolean,
-  isMuted: boolean,
-  controls: boolean,
-  isPlaying: boolean,
-  isPause: boolean,
-  isReady: boolean
+  onPlay: (timeout?: boolean) => void;
+  onPause: () => void;
+  onStop: () => void;
+  onChangeProgress: (currentTime: number, allTime: number) => void;
+  onFullScreenClick: () => void;
+  onReady: () => void;
+  progress: number;
+  allTime: number;
+  fullScreen: boolean;
+  isMuted: boolean;
+  controls: boolean;
+  isPlaying: boolean;
+  isPause: boolean;
+  isReady: boolean;
 }
 
 const VIDEO_PLAY_TIMEOUT = 1000; // ms

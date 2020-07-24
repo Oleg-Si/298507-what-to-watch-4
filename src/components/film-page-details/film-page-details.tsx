@@ -2,8 +2,8 @@ import * as React from 'react';
 import {FilmInterface} from './../../types';
 
 interface Props {
-  filmInfo: FilmInterface
-};
+  filmInfo: FilmInterface;
+}
 
 const FilmPageDetalis: React.FC<Props> = (props: Props) => {
   const {filmInfo} = props;

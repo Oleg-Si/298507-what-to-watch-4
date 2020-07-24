@@ -3,7 +3,7 @@ import * as moment from 'moment';
 import {FilmReviewInterface} from '../../types';
 
 interface Props {
-  filmReviews: FilmReviewInterface[]
+  filmReviews: FilmReviewInterface[];
 }
 
 const FilmPageReviews: React.FC<Props> = (props: Props) => {

@@ -3,11 +3,11 @@ import {AuthorizationStatus, AppRoute} from '../../constants';
 import {Link} from 'react-router-dom';
 
 interface Props {
-  authorizationStatus: AuthorizationStatus,
-  onMyListClick: () => void,
-  userAvatar: string,
-  className?: string,
-  children?: React.ReactNode,
+  authorizationStatus: AuthorizationStatus;
+  onMyListClick: () => void;
+  userAvatar: string;
+  className?: string;
+  children?: React.ReactNode;
 }
 
 const AppHeader: React.FC<Props> = (props: Props) => {
