@@ -23,12 +23,12 @@ export const Screens = {
   MAIN: `Main`,
   FILM_PAGE: `FilmPage`,
   SIGN_IN: `SignIn`,
-  ADD_REVIEW: `AddReview`,
+  ADD_REVIEW: `AddReview`
 };
 
 export const APIErrorsCode = {
   UNAUTHORIZED: 401,
-  BAD_REQUEST: 400,
+  BAD_REQUEST: 400
 };
 
 export const AuthorizationStatus = {
@@ -41,5 +41,21 @@ export const AppRoute = {
   LOGIN: `/login`,
   MY_LIST: `/mylist`,
   FILM: `/films`,
-  ADD_REVIEW: `/review`
+  ADD_REVIEW: `/review`,
+  PLAYER: `/player`
+};
+
+export const preloaderMainStyle = {
+  top: `45vh`,
+  left: `50vw`,
+  position: `absolute`
+};
+
+export const preloaderCardStyle = {
+  top: `50%`,
+  left: `50%`,
+  marginLeft: `-32px`,
+  marginTop: `-32px`,
+  zIndex: `2`,
+  position: `absolute`
 };

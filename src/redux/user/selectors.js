@@ -15,3 +15,7 @@ export const getUserAvatar = (state) => {
 export const getIsAuthorizationChecked = (state) => {
   return state[NameSpace.USER].isAuthorizationChecked;
 };
+
+export const getSendReviewErrorStatus = (state) => {
+  return state[NameSpace.USER].sendReviewError;
+};

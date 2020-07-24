@@ -5,8 +5,6 @@ import {mockFilmForTests} from '../../mock/films.js';
 import {Router} from 'react-router-dom';
 import history from './../../history';
 
-const children = <div className="children-component"></div>;
-
 it(`Проверяет снепшот компонента FilmCard`, () => {
   const tree = renderer.create(
       <Router
@@ -17,10 +15,17 @@ it(`Проверяет снепшот компонента FilmCard`, () => {
           onFilmCardTitleClick={() => {}}
           onPlay={() => {}}
           onStop={() => {}}
-        >{children}</FilmCard>
+          onReady={() => {}}
+          controls={false}
+          isMuted={true}
+          isPlaying={false}
+          isReady={true}
+        />
       </Router>, {
         createNodeMock: () => {
-          return {};
+          return {
+            addEventListener: () => {}
+          };
         }}
   ).toJSON();
 

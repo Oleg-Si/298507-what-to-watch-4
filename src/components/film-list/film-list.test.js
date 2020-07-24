@@ -19,7 +19,9 @@ it(`Проверяет снепшот компонента FilmList`, () => {
         />
       </Router>, {
         createNodeMock: () => {
-          return {};
+          return {
+            addEventListener: () => {}
+          };
         }}
   ).toJSON();
 

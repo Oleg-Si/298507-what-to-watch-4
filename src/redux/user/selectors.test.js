@@ -1,10 +1,11 @@
 import NameSpace from './../name-space';
-import {getAuthorizationStatusCode, getIsAuthorizationChecked} from './selectors';
+import {getAuthorizationStatusCode, getIsAuthorizationChecked, getSendReviewErrorStatus} from './selectors';
 
 const state = {
   [NameSpace.USER]: {
     isAuthorizationChecked: true,
-    authorizationStatusCode: 200
+    authorizationStatusCode: 200,
+    sendReviewError: false
   }
 };
 
@@ -15,5 +16,9 @@ describe(`Selectors работают корректно`, () => {
 
   it(`getIsAuthorizationChecked возвращает корректное значение`, () => {
     expect(getIsAuthorizationChecked(state)).toBe(true);
+  });
+
+  it(`getSendReviewErrorStatus возвращает корректное значение`, () => {
+    expect(getSendReviewErrorStatus(state)).toBe(false);
   });
 });
