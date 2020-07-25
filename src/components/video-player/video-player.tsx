@@ -22,7 +22,7 @@ interface Props {
 class VideoPlayer extends React.PureComponent<Props> {
   private _videoRef: React.RefObject<HTMLVideoElement>;
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this._videoRef = React.createRef();
@@ -57,10 +57,22 @@ class VideoPlayer extends React.PureComponent<Props> {
       onPause();
     };
 
-    video.addEventListener(`canplay`, () => {
+    video.oncanplay = () => {
       if (!isReady) {
         onReady();
       }
+    };
+
+    video.addEventListener(`webkitfullscreenchange`, () => {
+      this._changeFullscreen(video);
+    });
+
+    video.addEventListener(`mozfullscreenchange`, () => {
+      this._changeFullscreen(video);
+    });
+
+    video.addEventListener(`fullscreenchange`, () => {
+      this._changeFullscreen(video);
     });
   }
 
@@ -69,7 +81,8 @@ class VideoPlayer extends React.PureComponent<Props> {
     const {
       isPlaying,
       isPause,
-      fullScreen
+      fullScreen,
+      controls
     } = this.props;
 
     if (isPlaying) {
@@ -82,17 +95,9 @@ class VideoPlayer extends React.PureComponent<Props> {
       }
     }
 
-    video.addEventListener(`webkitfullscreenchange`, () => {
-      this._changeFullscreen(video);
-    });
-    video.addEventListener(`mozfullscreenchange`, () => {
-      this._changeFullscreen(video);
-    });
-    video.addEventListener(`fullscreenchange`, () => {
-      this._changeFullscreen(video);
-    });
+    video.controls = controls;
 
-    if (fullScreen) {
+    if (fullScreen && !document.fullscreenElement) {
       this._launchFullScreen(video);
       video.classList.add(`fullscreen`);
     }
@@ -106,6 +111,7 @@ class VideoPlayer extends React.PureComponent<Props> {
     video.ontimeupdate = null;
     video.onpause = null;
     video.onplay = null;
+    video.oncanplay = null;
   }
 
   _launchFullScreen(element) {
@@ -121,7 +127,7 @@ class VideoPlayer extends React.PureComponent<Props> {
   _changeFullscreen(video) {
     const {onFullScreenChange} = this.props;
 
-    if (video.classList.contains(`fullscreen`)) {
+    if (video.classList.contains(`fullscreen`) && !document.fullscreenElement) {
       video.classList.remove(`fullscreen`);
       onFullScreenChange();
     }

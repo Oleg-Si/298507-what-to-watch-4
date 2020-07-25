@@ -101,7 +101,10 @@ const withPlayer = (Component) => {
     }
 
     _handleFullScreenChange() {
-      this.setState((prevState) => ({fullScreen: !prevState.fullScreen}));
+      this.setState((prevState) => ({
+        fullScreen: !prevState.fullScreen,
+        controls: !prevState.controls
+      }));
     }
 
     _handleReady() {
