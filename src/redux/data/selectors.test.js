@@ -53,18 +53,18 @@ describe(`Selectors работают корректно`, () => {
   });
 
   it(`getFilteredFilmsByGenre возвращает корректное значение`, () => {
-    const response = mockFilmsForTests.filter((el) => el.genre === `Horror`);
+    const response = mockFilmsForTests.filter((film) => film.genre === `Horror`);
     expect(getFilteredFilmsByGenre(state)).toEqual(response);
   });
 
   it(`getCurrentFilm возвращает корректное значение`, () => {
-    const response = mockFilmsForTests.filter((el) => el.id === 10)[0];
+    const response = mockFilmsForTests.filter((film) => film.id === 10)[0];
     expect(getCurrentFilm(state, `10`)).toEqual(response);
   });
 
   it(`getUpdatedFilms возвращает корректное значение`, () => {
     const newFilms = mockFilmsForTests.slice();
-    const index = mockFilmsForTests.findIndex((el) => el.id === 1);
+    const index = mockFilmsForTests.findIndex((film) => film.id === 1);
     newFilms[index] = mockFilmForTests;
 
     expect(getUpdatedFilms(state, `1`, mockFilmForTests)).toEqual(newFilms);

@@ -71,8 +71,8 @@ const FilmPage: React.FC<Props> = (props: Props) => {
   };
 
   const getFilmsByCurrentGenre = () => {
-    const filteredFilms = films.filter((el) => el.genre === film.genre);
-    const currentFilmIndex = filteredFilms.findIndex((el) => el.id === film.id);
+    const filteredFilms = films.filter((filmItem) => filmItem.genre === film.genre);
+    const currentFilmIndex = filteredFilms.findIndex((filmItem) => filmItem.id === film.id);
 
     // Удаляем текущий фильм из похожих
     filteredFilms.splice(currentFilmIndex, 1);

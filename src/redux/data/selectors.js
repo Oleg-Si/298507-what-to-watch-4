@@ -41,14 +41,14 @@ export const getFilteredFilmsByGenre = createSelector(
         return films;
       }
 
-      return films.filter((el) => el.genre === genre);
+      return films.filter((film) => film.genre === genre);
     }
 );
 
 export const getCurrentFilm = createSelector(
     getFilms,
     (state, filmId) => parseInt(filmId, 10),
-    (films, filmId) => films.filter((el) => el.id === filmId)[0]
+    (films, filmId) => films.filter((film) => film.id === filmId)[0]
 );
 
 export const getUpdatedFilms = createSelector(
@@ -57,7 +57,7 @@ export const getUpdatedFilms = createSelector(
     (state, filmId, newFilm) => newFilm,
     (films, filmId, newFilm) => {
       const newFilms = films.slice();
-      const index = films.findIndex((el) => el.id === filmId);
+      const index = films.findIndex((film) => film.id === filmId);
       newFilms[index] = newFilm;
 
       return newFilms;

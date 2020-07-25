@@ -7,8 +7,8 @@ export const getRandomArrayItems = (array, count) => {
   const copyArray = array.slice(0, array.length);
 
   for (let i = 0; i < count; i++) {
-    const el = copyArray.splice(getRandomInt(0, copyArray.length), 1);
-    newArray.push(el[0]);
+    const arrayElement = copyArray.splice(getRandomInt(0, copyArray.length), 1);
+    newArray.push(arrayElement[0]);
   }
 
   if (count === 1) {
@@ -26,7 +26,7 @@ export const formatData = (data) => {
   let formattedData;
 
   if (Array.isArray(data)) {
-    formattedData = data.map((el) => createFilm(el));
+    formattedData = data.map((filmData) => createFilm(filmData));
   } else {
     formattedData = createFilm(data);
   }
